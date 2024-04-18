@@ -36,13 +36,14 @@ export async function POST(req: Request) {
 		// Validate request body
 		const { variables } = requestBodySchema.parse(body);
 
-		// get topic from variables
 		const topic = variables.find(
 			variable => variable.name === 'topic'
 		)?.value;
+
 		const wordCount = variables.find(
 			variable => variable.name === 'word_count'
 		)?.value;
+
 		const sentenceCount = variables.find(
 			variable => variable.name === 'sentence_count'
 		)?.value;
