@@ -25,7 +25,7 @@ const Message = ({
 		<div className="mt-1 px-2 py-4 w-full">
 			<MemoizedReactMarkdown
 				className={cn(
-					'prose prose-zinc break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 !max-w-[80%]',
+					'prose prose-zinc break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 md:!max-w-[80%]',
 					size && `prose-${size}`
 				)}
 				remarkPlugins={[remarkGfm, remarkMath]}

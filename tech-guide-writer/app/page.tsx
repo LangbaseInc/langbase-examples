@@ -58,9 +58,9 @@ export default function Home() {
 	});
 
 	return (
-		<main className="space-y-12">
-			<div className="grid grid-cols-3">
-				<div className="relative col-span-1 min-h-screen flex flex-col justify-between p-20">
+		<main className="md:space-y-12">
+			<div className="md:grid md:grid-cols-3">
+				<div className="relative col-span-1 md:min-h-screen flex flex-col justify-between px-8 pt-16 md:p-20">
 					<div className="space-y-16">
 						<header className="flex flex-col justify-center space-y-4">
 							<h1 className="text-2xl font-bold leading-7 text-foreground sm:truncate sm:text-3xl sm:tracking-tight uppercase">
@@ -175,7 +175,7 @@ export default function Home() {
 							</form>
 						</div>
 					</div>
-					<footer className="mt-12">
+					<footer className="mt-12 hidden md:block">
 						<p className="text-xs text-muted-foreground uppercase">
 							Powered by{' '}
 							<a
@@ -219,8 +219,8 @@ export default function Home() {
 								)}
 							{messages.length === 0 && !error && (
 								<div className="text-muted-foreground italic">
-									No content yet. Generate a guide to see
-									the preview.
+									No content yet. Generate a guide to see the
+									preview.
 								</div>
 							)}
 						</div>
