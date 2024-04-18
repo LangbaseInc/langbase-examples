@@ -105,6 +105,8 @@ export default function Home() {
 									<input
 										required
 										tabIndex={2}
+										min={300}
+										max={750}
 										value={wordCount}
 										onChange={e =>
 											setWordCount(
@@ -127,6 +129,8 @@ export default function Home() {
 									<input
 										required
 										tabIndex={3}
+										min={3}
+										max={6}
 										value={sentenceCount}
 										onChange={e =>
 											setSentenceCount(
