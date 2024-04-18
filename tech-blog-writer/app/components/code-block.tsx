@@ -36,7 +36,7 @@ export const programmingLanguages: languageMap = {
 	shell: '.sh',
 	sql: '.sql',
 	html: '.html',
-	css: '.css',
+	css: '.css'
 	// Can add more file extensions here, ensure the key is same as language prop in CodeBlock component
 };
 
@@ -52,29 +52,29 @@ export const generateRandomString = (length: number, lowercase = false) => {
 const CodeBlock: FC<Props> = memo(({ language, value }) => {
 	return (
 		<div className="codeblock relative w-full font-sans">
-			<div className='flex items-center justify-between w-full px-6 py-2 pr-4 bg-zinc-800 text-primary'>
-				<span className='text-xs lowercase'>{language}</span>
+			<div className="flex items-center justify-between w-full px-6 py-2 pr-4 bg-zinc-800 text-primary">
+				<span className="text-xs lowercase">{language}</span>
 			</div>
 			<SyntaxHighlighter
 				language={language}
 				style={shadesOfPurple}
-				PreTag='div'
+				PreTag="div"
 				showLineNumbers
 				customStyle={{
 					margin: 0,
 					width: '100%',
 					overflow: 'auto',
 					background: '#2D2B55',
-					padding: '1.5rem 1rem',
+					padding: '1.5rem 1rem'
 				}}
 				lineNumberStyle={{
-					userSelect: 'none',
+					userSelect: 'none'
 				}}
 				codeTagProps={{
 					style: {
 						fontSize: '0.9rem',
-						fontFamily: 'var(--font-mono)',
-					},
+						fontFamily: 'var(--font-mono)'
+					}
 				}}
 			>
 				{value}

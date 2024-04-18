@@ -13,9 +13,16 @@ type PromptMessage = {
 	content: string;
 };
 
-const Message = ({ message, size }: { message: PromptMessage; data?: any; size?: string }) => {
+const Message = ({
+	message,
+	size
+}: {
+	message: PromptMessage;
+	data?: any;
+	size?: string;
+}) => {
 	return (
-		<div className='mt-1 px-2 py-4 w-full'>
+		<div className="mt-1 px-2 py-4 w-full">
 			<MemoizedReactMarkdown
 				className={cn(
 					'prose prose-zinc break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 !max-w-[80%]',
@@ -24,12 +31,12 @@ const Message = ({ message, size }: { message: PromptMessage; data?: any; size?:
 				remarkPlugins={[remarkGfm, remarkMath]}
 				components={{
 					p({ children }) {
-						return <p className='mb-2 last:mb-0'>{children}</p>;
+						return <p className="mb-2 last:mb-0">{children}</p>;
 					},
 					hr: (props: any) => {
 						return (
 							<hr
-								className='h-[3px] w-full bg-background border-0 border-border border-b-[2px] my-10'
+								className="h-[3px] w-full bg-background border-0 border-border border-b-[2px] my-10"
 								{...props}
 							/>
 						);
@@ -53,7 +60,7 @@ const Message = ({ message, size }: { message: PromptMessage; data?: any; size?:
 								{...props}
 							/>
 						);
-					},
+					}
 				}}
 			>
 				{message.content}

@@ -8,17 +8,19 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
 	title: 'AI Tech Blog Writer - Langbase',
 	description: 'Craft Your Tech Blogs Effortlessly with AI',
-	keywords: ['AI', 'Tech', 'Blog', 'Writer', 'langbase'],
+	keywords: ['AI', 'Tech', 'Blog', 'Writer', 'langbase']
 };
 
 export default function RootLayout({
-	children,
+	children
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en'>
-			<body className={cn(inter.className, 'dark bg-background')}>{children}</body>
+		<html lang="en">
+			<body className={cn(inter.className, 'dark bg-background')}>
+				{children}
+			</body>
 		</html>
 	);
 }
