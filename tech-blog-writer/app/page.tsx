@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useChat, useCompletion } from 'ai/react';
+import { useState } from 'react';
+import { useChat } from 'ai/react';
 import Message from './components/message';
 
 export default function Home() {
