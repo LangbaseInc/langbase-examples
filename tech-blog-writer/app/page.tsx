@@ -5,7 +5,7 @@ import { useChat } from 'ai/react';
 import Message from './components/message';
 
 export default function Home() {
-	const [topic, setTopic] = useState('REST API Best Practices');
+	const [topic, setTopic] = useState('How to call REST API in JavaScript?');
 	const [wordCount, setWordCount] = useState(500);
 	const [sentenceCount, setSentenceCount] = useState(4);
 	const [error, setError] = useState('');
