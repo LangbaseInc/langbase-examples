@@ -39,7 +39,7 @@ export default function Home() {
 	};
 
 	const { messages, setMessages, isLoading, append } = useChat({
-		api: `/api/generate-blog`,
+		api: `/api/generate-guide`,
 		body,
 		onResponse: async (response: any) => {
 			// Error handling
@@ -64,10 +64,10 @@ export default function Home() {
 					<div className="space-y-16">
 						<header className="flex flex-col justify-center space-y-4">
 							<h1 className="text-2xl font-bold leading-7 text-foreground sm:truncate sm:text-3xl sm:tracking-tight uppercase">
-								AI Tech Blog Writer
+								AI Tech Guide Writer
 							</h1>
 							<p className="text-muted-foreground">
-								Craft Your Tech Blogs Effortlessly with AI
+								Craft Your Tech Guides Effortlessly with AI
 							</p>
 						</header>
 						<div className="flex flex-col justify-center space-y-4">
@@ -193,7 +193,7 @@ export default function Home() {
 						<div className="py-5 px-4 sm:px-6 lg:px-6 md:flex md:items-center md:justify-between bg-background">
 							<div className="min-w-0 flex-1 flex gap-2 items-center">
 								<h2 className="text-2xl font-bold leading-7 text-foreground sm:truncate sm:text-3xl sm:tracking-tight">
-									Blog Preview
+									Guide Preview
 								</h2>
 							</div>
 						</div>
@@ -219,7 +219,7 @@ export default function Home() {
 								)}
 							{messages.length === 0 && !error && (
 								<div className="text-muted-foreground italic">
-									No content yet. Generate a blog post to see
+									No content yet. Generate a guide to see
 									the preview.
 								</div>
 							)}

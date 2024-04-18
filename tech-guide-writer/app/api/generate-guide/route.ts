@@ -51,7 +51,7 @@ export async function POST(req: Request) {
 			messages: [
 				{
 					role: 'user',
-					content: 'Write blog'
+					content: 'Write guide'
 				}
 			],
 			variables: [
