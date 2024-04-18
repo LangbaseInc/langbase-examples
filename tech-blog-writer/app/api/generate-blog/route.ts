@@ -1,6 +1,8 @@
 import { StreamingTextResponse } from 'ai';
 import zod from 'zod';
 
+export const runtime = 'edge';
+
 type RequestBody = {
 	messages: { role: string; content: string }[];
 	variables: { name: string; value: string }[];

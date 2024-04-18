@@ -21,6 +21,8 @@
 		"zod": "^3.22.4"
 	},
 	"devDependencies": {
+		"@cloudflare/next-on-pages": "^1.11.0",
+		"@cloudflare/workers-types": "^4.20240405.0",
 		"@tailwindcss/typography": "^0.5.12",
 		"@types/node": "^20",
 		"@types/react": "^18",
@@ -28,6 +30,7 @@
 		"@types/react-syntax-highlighter": "^15.5.11",
 		"postcss": "^8",
 		"tailwindcss": "^3.4.1",
-		"typescript": "^5"
+		"typescript": "^5",
+		"wrangler": "^3.51.2"
 	}
 }
