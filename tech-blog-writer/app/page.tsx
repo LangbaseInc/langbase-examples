@@ -54,9 +54,6 @@ export default function Home() {
 					);
 				}
 			}
-		},
-		onFinish: message => {
-			console.log('onFinish', message);
 		}
 	});
 
