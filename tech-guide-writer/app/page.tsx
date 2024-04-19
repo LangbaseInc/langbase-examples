@@ -100,7 +100,7 @@ export default function Home() {
 										htmlFor="word_count"
 										className="block text-sm font-medium leading-6 text-foreground"
 									>
-										Word count
+										Max word count
 									</label>
 									<input
 										required
@@ -124,7 +124,7 @@ export default function Home() {
 										htmlFor="sentence_count"
 										className="block text-sm font-medium leading-6 text-foreground"
 									>
-										Sentences per paragraph
+										Max sentences per paragraph
 									</label>
 									<input
 										required
