@@ -100,7 +100,7 @@ export default function Home() {
 										htmlFor="word_count"
 										className="block text-sm font-medium leading-6 text-foreground"
 									>
-										Max word count
+										Max words
 									</label>
 									<input
 										required
