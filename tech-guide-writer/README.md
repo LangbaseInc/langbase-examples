@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![cover](public/tech-guide-writer.png)
 
-## Getting Started
+## Tech Guide Writer
 
-First, run the development server:
+A simple LLM API project to help you write technical guides. The tool uses Langbase pipe API under the hood to integrate 10+ LLM models in the app.
+
+## Create a Langbase Pipe
+
+1. Go to langbase.com and create an [account](https://beta.langbase.com/signup)
+2. Add LLM API keyset to your profile [settings](https://beta.langbase.com/settings/profile)
+3. Click on Pipes. Create a new pipe. Let's call it "Tech Guide Writer"
+4. Select any LLM model. This tool uses `gemma-7b-it` model
+5. Add the following System Prompt Instructions:
+
+```
+Your task is to embody the role of a professional technical guide writer, emphasizing the creation of SEO-optimized content. You are instructed to craft a concise and engaging tech guide in markdown tailored for a technical audience on the {{topic}}. If the topic requires code snippets, add them. Ensure that you remains approachable through simple English usage, fostering an interactive reader experience.
+
+## SEO Optimization:
+  - Develop an SEO-friendly title that captures attention while remaining pertinent to {{topic}}.
+  - Create a compelling meta description that succinctly previews your blog's content focus on{{topic}}.
+
+## Limitations
+
+- Max word count of the guide should be {{word_count}} words.
+- Each paragraph should be concise, containing max {{sentence_count}} sentences.
+```
+
+6. Deploy the pipe to production
+7. Head to API tab and copy the API key
+
+## Local Development
+
+1. Clone this repo, install node modules, and create an `.env.local` file in the root directory
+2.  Add the following environment variables:
+
+```
+NEXT_LB_PIPE_API_KEY=YOUR_PIPE_API_KEY
+```
+
+3.  Run the project using the following command:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+***Powered by [Langbase](https://langbase.com/)***
