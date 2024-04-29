@@ -2,7 +2,7 @@
 
 ## Tech Guide Writer
 
-A simple LLM API project to help you write technical guides. The tool uses Langbase pipe API under the hood to integrate 10+ LLM models in the app.
+A simple LLM API project to help you write technical guides. The tool uses Langbase Pipe API under the hood to integrate 10+ LLM models in the app.
 
 ## Create a Langbase Pipe
 
@@ -25,7 +25,7 @@ Your task is to embody the role of a professional technical guide writer, emphas
 - Each paragraph should be concise, containing max {{sentence_count}} sentences.
 ```
 
-6. Deploy the pipe to production
+6. Deploy the Pipe to production
 7. Head to API tab and copy the API key
 
 ## Local Development
@@ -36,6 +36,8 @@ Your task is to embody the role of a professional technical guide writer, emphas
 ```
 NEXT_LB_PIPE_API_KEY=YOUR_PIPE_API_KEY
 ```
+
+Replace `YOUR_PIPE_API_KEY` with your Pipe's API key.
 
 3.  Run the project using the following command:
 
