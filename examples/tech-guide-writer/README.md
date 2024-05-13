@@ -30,8 +30,8 @@ Your task is to embody the role of a professional technical guide writer, emphas
 
 ## Local Development
 
-1. Clone this repo, install node modules, and create an `.env.local` file in the root directory
-2.  Add the following environment variables:
+1. Duplicate the `.env.example` file and rename it to `.env.local`.
+2. Add the following environment variables:
 
 ```
 NEXT_LB_PIPE_API_KEY=YOUR_PIPE_API_KEY
