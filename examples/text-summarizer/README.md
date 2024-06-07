@@ -4,6 +4,11 @@
 
 A simple AI text summarizer app powered by [Langbase](https://langbase.com/). This tool uses the `gpt-o` model to generate a concise summary of any provided content.
 
+### Features
+
+- Summarize any text content.
+- Make the summary as long or short as you want.
+
 ## Local Development
 
 1. Fork the [text-summarizer](https://beta.langbase.com/langbase/text-summarizer) Pipe on Langbase.
