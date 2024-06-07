@@ -1,4 +1,4 @@
-![cover](public/cover.png)
+![cover](public/cover.jpg)
 
 ## AI Text Summarizer
 
