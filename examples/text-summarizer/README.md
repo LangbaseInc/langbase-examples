@@ -6,10 +6,10 @@ A simple AI text summarizer app powered by [Langbase](https://langbase.com/). Th
 
 Check out the live demo [here](https://text-summarizer.vercel.app/).
 
-### Features
+## Features
 
-- Summarize any text content.
-- Make the summary as long or short as you want.
+- Summarize any text content
+- Make the summary long or short as you like
 
 ## Local Development
 
