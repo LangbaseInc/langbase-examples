@@ -1,0 +1,3 @@
+name = "ai-text-summarizer"
+
+compatibility_flags = ["nodejs_compat"]
