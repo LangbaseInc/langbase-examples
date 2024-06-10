@@ -7,17 +7,10 @@ import { DEFAULT_CONTENT } from './data';
 
 export default function Home() {
 	const [content, setContent] = useState(DEFAULT_CONTENT);
-	const [lessWordyVersion, setLessWordyVersion] = useState(true);
 	const [error, setError] = useState('');
 
 	const body = {
-		content,
-		variables: [
-			{
-				name: 'wordy',
-				value: lessWordyVersion ? 'less wordy' : 'detailed'
-			}
-		]
+		content
 	};
 
 	const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -89,26 +82,6 @@ export default function Home() {
 										id="content"
 										className="block bg-muted w-full rounded-lg border-0 py-1.5 text-foreground file:border-0 file:bg-transparent file:text-sm file:font-medium file:cursor-pointer shadow-sm ring-1 ring-inset ring-ring/5 placeholder:text-muted-foreground focus:ring-1 focus:ring-inset focus:ring-ring/50 sm:text-sm sm:leading-6 px-4"
 									/>
-								</div>
-								<div className="flex gap-x-2 items-center">
-									<input
-										tabIndex={2}
-										type="checkbox"
-										name="less_wordy_version"
-										id="less_wordy_version"
-										checked={lessWordyVersion}
-										onChange={e =>
-											setLessWordyVersion(
-												e.target.checked
-											)
-										}
-									/>
-									<label
-										htmlFor="less_wordy_version"
-										className="block text-sm font-medium leading-6 text-foreground"
-									>
-										Less wordy version
-									</label>
 								</div>
 								<div className="flex gap-x-4">
 									<button

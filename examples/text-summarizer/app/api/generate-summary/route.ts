@@ -5,7 +5,6 @@ export const runtime = 'edge';
 
 type RequestBody = {
 	messages: { role: string; content: string }[];
-	variables: { name: string; value: string }[];
 };
 
 const requestBodySchema = zod.object({
@@ -15,13 +14,7 @@ const requestBodySchema = zod.object({
 			content: zod.string()
 		})
 	),
-	content: zod.string(),
-	variables: zod.array(
-		zod.object({
-			name: zod.string(),
-			value: zod.string()
-		})
-	)
+	content: zod.string()
 });
 
 export async function POST(req: Request) {
@@ -35,23 +28,13 @@ export async function POST(req: Request) {
 		const body: RequestBody = await req.json();
 
 		// Validate request body
-		const { content, variables } = requestBodySchema.parse(body);
-
-		const wordy = variables.find(
-			variable => variable.name === 'wordy'
-		)?.value;
+		const { content } = requestBodySchema.parse(body);
 
 		const requestBody = {
 			messages: [
 				{
 					role: 'user',
 					content
-				}
-			],
-			variables: [
-				{
-					name: 'wordy',
-					value: wordy
 				}
 			]
 		};
