@@ -10,8 +10,7 @@ export async function POST(req: Request) {
         'Please set NEXT_LB_PIPE_API_KEY in your environment variables.'
       )
     }
-    // const endpointUrl = 'https://api.langbase.com/beta/chat'
-    const endpointUrl = 'http://localhost:8787/beta/chat'
+    const endpointUrl = 'https://api.langbase.com/beta/chat'
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_LB_PIPE_API_KEY}`
