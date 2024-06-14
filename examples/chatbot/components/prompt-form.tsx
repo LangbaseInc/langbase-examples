@@ -1,7 +1,6 @@
 import { UseChatHelpers } from 'ai/react'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
-import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import {
   IconPlayground,
@@ -24,7 +23,6 @@ export function PromptForm({
 }: PromptProps) {
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
-  const router = useRouter()
 
   React.useEffect(() => {
     if (inputRef.current) {
@@ -65,8 +63,7 @@ export function PromptForm({
                 className="max-w-xs"
                 onClick={e => {
                   e.preventDefault()
-                  router.refresh()
-                  router.push('/')
+                  location.reload()
                 }}
               >
                 Reset
