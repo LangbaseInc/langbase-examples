@@ -29,8 +29,8 @@ export function ChatInput({
   messages
 }: ChatInputProps) {
   return (
-    <div className="bg-muted fixed inset-x-0 bottom-0">
-      <div className="mx-auto max-w-3xl sm:max-w-4xl">
+    <div className="fixed inset-x-0 bottom-0">
+      <div className="bg-muted mx-auto max-w-3xl sm:max-w-4xl">
         <div className="flex h-10 items-center justify-center">
           {isLoading ? (
             <Button
