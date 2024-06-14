@@ -2,10 +2,10 @@
 
 import { useChat, type Message } from 'ai/react'
 import { ChatList } from '@/components/chat-list'
-import { EmptyScreen } from '@/components/empty-screen'
 import cn from 'mxcn'
 import { ChatInput } from './chat-input'
 import { useState } from 'react'
+import { Opening } from './opening'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
@@ -37,7 +37,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
             <ChatList messages={messages} />
           </>
         ) : (
-          <EmptyScreen setInput={setInput} />
+          <Opening />
         )}
       </div>
       <ChatInput

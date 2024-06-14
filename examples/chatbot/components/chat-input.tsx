@@ -29,8 +29,8 @@ export function ChatInput({
   messages
 }: ChatInputProps) {
   return (
-    <div className="fixed inset-x-0 bottom-4">
-      <div className="mx-auto max-w-5xl sm:px-4">
+    <div className="bg-muted fixed inset-x-0 bottom-0">
+      <div className="mx-auto max-w-3xl sm:max-w-4xl">
         <div className="flex h-10 items-center justify-center">
           {isLoading ? (
             <Button
@@ -54,7 +54,7 @@ export function ChatInput({
             )
           )}
         </div>
-        <div className="xborder-t sm:xrounded-t-xl sm:xborder xshadow-lg space-y-4 bg-muted px-4 py-2 md:py-4">
+        <div className="space-y-4 py-2 md:py-4">
           <PromptForm
             onSubmit={async value => {
               await append({
