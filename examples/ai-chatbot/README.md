@@ -8,19 +8,19 @@ Check out the live demo [here][demo].
 
 ## Features
 
-- [AI Chatbot][demo] — Built with an [AI Pipe on ⌘ Langbase][pipe]
-- Streaming — Real-time chat experience with streamed responses
-- Q/A — Ask questions and get pre-defined answers with your preferred AI model and tone
-- Responsive and open source — Works on all devices and platforms
+- 💬 [AI Chatbot][demo] — Built with an [AI Pipe on ⌘ Langbase][pipe]
+- ⚡️ Streaming — Real-time chat experience with streamed responses
+- 🗣️ Q/A — Ask questions and get pre-defined answers with your preferred AI model and tone
+- 🔋 Responsive and open source — Works on all devices and platforms
 
-## Quick Start
+## Learn more
 
 1. Check the [AI Chatbot Pipe on ⌘ Langbase][pipe]
 2. Read the [source code on GitHub][gh] for this example
 3. Go through Documentaion: [Pipe Quick Start][qs]
 4. Learn more about [Pipes & Memory features on ⌘ Langbase][docs]
 
-## Usage
+## Get started
 
 Let's get started with the project:
 
