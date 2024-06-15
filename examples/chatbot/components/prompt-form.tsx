@@ -69,7 +69,7 @@ export function PromptForm({
                 {isLoading ? (
                   <IconSpinner />
                 ) : (
-                  <IconCommand className="w-4 h-4" />
+                  <IconCommand className="size-4" />
                 )}
                 Send
                 <span className="sr-only">Send message</span>

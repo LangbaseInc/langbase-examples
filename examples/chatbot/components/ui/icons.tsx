@@ -10,7 +10,7 @@ function IconOpenAI({ className, ...props }: React.ComponentProps<'svg'>) {
       viewBox="0 0 24 24"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <title>OpenAI icon</title>
@@ -26,7 +26,7 @@ function IconGitHub({ className, ...props }: React.ComponentProps<'svg'>) {
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <title>GitHub</title>
@@ -41,7 +41,7 @@ function IconArrowRight({ className, ...props }: React.ComponentProps<'svg'>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="text-background"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <path d="m221.66 133.66-72 72a8 8 0 0 1-11.32-11.32L196.69 136H40a8 8 0 0 1 0-16h156.69l-58.35-58.34a8 8 0 0 1 11.32-11.32l72 72a8 8 0 0 1 0 11.32Z" />
@@ -75,7 +75,7 @@ function IconSpinner({ className, ...props }: React.ComponentProps<'svg'>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className={cn('h-4 w-4 animate-spin', className)}
+      className={cn('size-4 animate-spin', className)}
       {...props}
     >
       <path d="M232 128a104 104 0 0 1-208 0c0-41 23.81-78.36 60.66-95.27a8 8 0 0 1 6.68 14.54C60.15 61.59 40 93.27 40 128a88 88 0 0 0 176 0c0-34.73-20.15-66.41-51.34-80.73a8 8 0 0 1 6.68-14.54C208.19 49.64 232 87 232 128Z" />
@@ -89,7 +89,7 @@ function IconMessage({ className, ...props }: React.ComponentProps<'svg'>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <path d="M216 48H40a16 16 0 0 0-16 16v160a15.84 15.84 0 0 0 9.25 14.5A16.05 16.05 0 0 0 40 240a15.89 15.89 0 0 0 10.25-3.78.69.69 0 0 0 .13-.11L82.5 208H216a16 16 0 0 0 16-16V64a16 16 0 0 0-16-16ZM40 224Zm176-32H82.5a16 16 0 0 0-10.3 3.75l-.12.11L40 224V64h176Z" />
@@ -103,7 +103,7 @@ function IconRefresh({ className, ...props }: React.ComponentProps<'svg'>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <path d="M197.67 186.37a8 8 0 0 1 0 11.29C196.58 198.73 170.82 224 128 224c-37.39 0-64.53-22.4-80-39.85V208a8 8 0 0 1-16 0v-48a8 8 0 0 1 8-8h48a8 8 0 0 1 0 16H55.44C67.76 183.35 93 208 128 208c36 0 58.14-21.46 58.36-21.68a8 8 0 0 1 11.31.05ZM216 40a8 8 0 0 0-8 8v23.85C192.53 54.4 165.39 32 128 32c-42.82 0-68.58 25.27-69.66 26.34a8 8 0 0 0 11.3 11.34C69.86 69.46 92 48 128 48c35 0 60.24 24.65 72.56 40H168a8 8 0 0 0 0 16h48a8 8 0 0 0 8-8V48a8 8 0 0 0-8-8Z" />
@@ -157,7 +157,7 @@ function IconStop({ className, ...props }: React.ComponentProps<'svg'>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <path d="M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24Zm0 192a88 88 0 1 1 88-88 88.1 88.1 0 0 1-88 88Zm24-120h-48a8 8 0 0 0-8 8v48a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8v-48a8 8 0 0 0-8-8Zm-8 48h-32v-32h32Z" />
@@ -171,7 +171,7 @@ function IconCopy({ className, ...props }: React.ComponentProps<'svg'>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <path d="M216 32H88a8 8 0 0 0-8 8v40H40a8 8 0 0 0-8 8v128a8 8 0 0 0 8 8h128a8 8 0 0 0 8-8v-40h40a8 8 0 0 0 8-8V40a8 8 0 0 0-8-8Zm-56 176H48V96h112Zm48-48h-32V88a8 8 0 0 0-8-8H96V48h112Z" />
@@ -185,7 +185,7 @@ function IconCheck({ className, ...props }: React.ComponentProps<'svg'>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <path d="m229.66 77.66-128 128a8 8 0 0 1-11.32 0l-56-56a8 8 0 0 1 11.32-11.32L96 188.69 218.34 66.34a8 8 0 0 1 11.32 11.32Z" />
@@ -199,7 +199,7 @@ function IconDownload({ className, ...props }: React.ComponentProps<'svg'>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <path d="M224 152v56a16 16 0 0 1-16 16H48a16 16 0 0 1-16-16v-56a8 8 0 0 1 16 0v56h160v-56a8 8 0 0 1 16 0Zm-101.66 5.66a8 8 0 0 0 11.32 0l40-40a8 8 0 0 0-11.32-11.32L136 132.69V40a8 8 0 0 0-16 0v92.69l-26.34-26.35a8 8 0 0 0-11.32 11.32Z" />
@@ -213,7 +213,7 @@ function IconClose({ className, ...props }: React.ComponentProps<'svg'>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
       fill="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
       {...props}
     >
       <path d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128 50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z" />
@@ -229,7 +229,7 @@ function IconSparkles({ className, ...props }: React.ComponentProps<'svg'>) {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
     >
       <path
         strokeLinecap="round"
@@ -249,7 +249,7 @@ function IconPlayground({ className, ...props }: React.ComponentProps<'svg'>) {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
     >
       <path
         d="M16 1.5C16.5523 1.5 17 1.94772 17 2.5V4H18C20.2091 4 22 5.79086 22 8V16C22 18.2091 20.2091 20 18 20H17V21.5C17 22.0523 16.5523 22.5 16 22.5C15.4477 22.5 15 22.0523 15 21.5V2.5C15 1.94772 15.4477 1.5 16 1.5Z"
@@ -274,7 +274,7 @@ function IconInfo({ className, ...props }: React.ComponentProps<'svg'>) {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
     >
       <path
         fillRule="evenodd"
@@ -295,7 +295,7 @@ function IconFork({ className, ...props }: React.ComponentProps<'svg'>) {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className={cn('h-4 w-4', className)}
+      className={cn('size-4', className)}
     >
       <path
         d="M3 5.5C3 3.567 4.567 2 6.5 2C8.433 2 10 3.567 10 5.5C10 7.08551 8.94574 8.42479 7.5 8.85506V11H11C11.3643 11 11.7058 11.0974 12 11.2676C12.2942 11.0974 12.6357 11 13 11H16.5V8.85506C15.0543 8.42479 14 7.08551 14 5.5C14 3.567 15.567 2 17.5 2C19.433 2 21 3.567 21 5.5C21 7.08551 19.9457 8.42479 18.5 8.85506V11C18.5 12.1046 17.6046 13 16.5 13H13V15.1449C14.4457 15.5752 15.5 16.9145 15.5 18.5C15.5 20.433 13.933 22 12 22C10.067 22 8.5 20.433 8.5 18.5C8.5 16.9145 9.55426 15.5752 11 15.1449V13H7.5C6.39543 13 5.5 12.1046 5.5 11V8.85506C4.05426 8.42479 3 7.08551 3 5.5Z"
