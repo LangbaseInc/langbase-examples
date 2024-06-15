@@ -90,7 +90,7 @@ export default function Home() {
 									>
 										{isLoading && (
 											<svg
-												className="h-4 w-4 animate-spin mr-2"
+												className="size-4 animate-spin mr-2"
 												viewBox="0 0 24 24"
 												fill="none"
 											>
