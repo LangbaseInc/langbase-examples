@@ -1,10 +1,11 @@
 'use client'
 
-import { useChat, type Message } from 'ai/react'
 import { ChatList } from '@/components/chat-list'
+import { useChat, type Message } from 'ai/react'
 import cn from 'mxcn'
-import { ChatInput } from './chat-input'
 import { useState } from 'react'
+import { toast } from 'sonner'
+import { ChatInput } from './chat-input'
 import { Opening } from './opening'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
@@ -12,7 +13,7 @@ export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[] // Optional: Messages to pre-populate the chat from DB
 }
 
-export function Chat({ id, initialMessages, className }: ChatProps) {
+export function ChatbotPage({ id, initialMessages, className }: ChatProps) {
   const [threadId, setThreadId] = useState<null | string>(null)
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
@@ -21,7 +22,8 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       body: { threadId },
       onResponse(response) {
         if (response.status !== 200) {
-          alert(response.statusText)
+          console.log('✨ ~ response:', response)
+          toast.error(response.statusText)
         }
 
         // Get Thread ID from response header

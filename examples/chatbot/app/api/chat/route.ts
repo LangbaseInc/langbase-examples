@@ -1,8 +1,11 @@
 export const runtime = 'edge'
 
-// Route for Streaming Chat Messages from Langbase
-// Ensure that streaming is enabled for your Langbase pipe.
-
+/**
+ * Stream AI Chat Messages from Langbase
+ *
+ * @param req
+ * @returns
+ */
 export async function POST(req: Request) {
   try {
     if (!process.env.NEXT_LB_PIPE_API_KEY) {
@@ -10,12 +13,14 @@ export async function POST(req: Request) {
         'Please set NEXT_LB_PIPE_API_KEY in your environment variables.'
       )
     }
+
     const endpointUrl = 'https://api.langbase.com/beta/chat'
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_LB_PIPE_API_KEY}`
     }
 
+    // Get chat prompt messages and threadId from the client.
     const body = await req.json()
     const { messages, threadId } = body
 
@@ -24,6 +29,7 @@ export async function POST(req: Request) {
       ...(threadId && { threadId }) // Only include threadId if it exists
     }
 
+    // Send the request to Langbase API.
     const response = await fetch(endpointUrl, {
       method: 'POST',
       headers,
@@ -39,7 +45,7 @@ export async function POST(req: Request) {
       headers: response.headers
     })
   } catch (error: any) {
-    console.error('API Error:', error)
+    console.error('Uncaught API Error:', error)
     return new Response(JSON.stringify(error), { status: 500 })
   }
 }

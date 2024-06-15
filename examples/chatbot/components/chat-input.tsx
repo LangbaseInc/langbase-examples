@@ -2,7 +2,7 @@ import { type UseChatHelpers } from 'ai/react'
 
 import { PromptForm } from '@/components/prompt-form'
 import { Button } from '@/components/ui/button'
-import { IconRefresh, IconStop } from '@/components/ui/icons'
+import { IconRegenerate, IconStop } from '@/components/ui/icons'
 
 export interface ChatInputProps
   extends Pick<
@@ -37,8 +37,9 @@ export function ChatInput({
               variant="outline"
               onClick={() => stop()}
               className="bg-background"
+              size={'sm'}
             >
-              <IconStop className="mr-2" />
+              <IconStop className="text-muted-foreground/50 group-hover:text-background" />
               Stop generating
             </Button>
           ) : (
@@ -47,14 +48,15 @@ export function ChatInput({
                 variant="outline"
                 onClick={() => reload()}
                 className="bg-background"
+                size={'sm'}
               >
-                <IconRefresh className="mr-2" />
+                <IconRegenerate className="w-4 h-4 text-muted-foreground/50 group-hover:text-background" />
                 Regenerate response
               </Button>
             )
           )}
         </div>
-        <div className="space-y-4 py-2 md:py-4">
+        <div className="space-y-4 py-2 md:pb-4 md:pt-2">
           <PromptForm
             onSubmit={async value => {
               await append({

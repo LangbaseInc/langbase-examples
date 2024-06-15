@@ -5,7 +5,7 @@ import * as React from 'react'
 import cn from 'mxcn'
 
 const buttonVariants = cva(
-  'focus-visible:ring-ring-muted-foreground/25 inline-flex cursor-pointer select-none items-center justify-center rounded-lg text-sm font-medium transition-colors focus:ring-1 focus:ring-muted-foreground/25 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50',
+  'focus-visible:ring-ring-muted-foreground/25 inline-flex cursor-pointer select-none items-center justify-center rounded-lg text-sm font-medium transition-colors focus:ring-1 focus:ring-muted-foreground/25 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 gap-2 group',
   {
     variants: {
       variant: {

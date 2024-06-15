@@ -1,13 +1,9 @@
+import { Button } from '@/components/ui/button'
+import { IconCommand, IconPlayground, IconSpinner } from '@/components/ui/icons'
+import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { UseChatHelpers } from 'ai/react'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
-import { Button } from '@/components/ui/button'
-import {
-  IconPlayground,
-  IconSparkles,
-  IconSpinner
-} from '@/components/ui/icons'
-import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 
 export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
@@ -42,7 +38,7 @@ export function PromptForm({
       }}
       ref={formRef}
     >
-      <div className="bg-background relative flex max-h-60 w-full grow flex-col overflow-hidden p-2 sm:rounded-2xl sm:border">
+      <div className="bg-background relative flex max-h-60 w-full grow flex-col overflow-hidden px-2 pb-2 sm:rounded-2xl sm:border">
         <div className="flex w-full flex-col">
           <label
             htmlFor="playground"
@@ -71,9 +67,9 @@ export function PromptForm({
               {/* Send button */}
               <Button type="submit" disabled={isLoading || input === ''}>
                 {isLoading ? (
-                  <IconSpinner className="mr-2" />
+                  <IconSpinner />
                 ) : (
-                  <IconSparkles className="mr-2" />
+                  <IconCommand className="w-4 h-4" />
                 )}
                 Send
                 <span className="sr-only">Send message</span>

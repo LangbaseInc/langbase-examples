@@ -4,5 +4,8 @@
 	},
 	"devDependencies": {
 		"prettier": "^3.2.5"
+	},
+	"dependencies": {
+		"sonner": "^1.5.0"
 	}
 }

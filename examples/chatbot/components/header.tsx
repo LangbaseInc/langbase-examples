@@ -1,11 +1,11 @@
-import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
-import { IconFork, IconGitHub } from './ui/icons'
 import cn from 'mxcn'
+import Link from 'next/link'
+import { IconFork, IconGitHub } from './ui/icons'
 
 export async function Header() {
   return (
-    <header className="bg-background sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between border-b px-4">
+    <header className="bg-background sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between px-4">
       <div className="flex h-16 shrink-0 items-center">
         <h1>
           <Link href="/" className="font-bold">
@@ -28,16 +28,18 @@ export async function Header() {
           className={cn(buttonVariants({ variant: 'outline' }))}
         >
           <IconGitHub />
-          <span className="ml-2 hidden md:flex">GitHub</span>
+          <span className="hidden md:flex">GitHub</span>
         </a>
         <a
           target="_blank"
-          href="https://beta.langbase.com/examples/chatbot"
+          href="https://beta.langbase.com/examples/ai-chatbot"
           rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: 'outline' }))}
+          className={cn(buttonVariants({ variant: 'default' }))}
         >
           <IconFork />
-          <span className="ml-2 hidden md:flex">Fork on Langbase</span>
+          <span className="hidden md:flex gap-1">
+            Fork on <span className="font-bold">⌘ Langbase</span>
+          </span>
         </a>
       </div>
     </header>

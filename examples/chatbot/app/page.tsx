@@ -1,7 +1,7 @@
-import { Chat } from '@/components/chat'
+import { ChatbotPage } from '@/components/chatbot-page'
 
 export const runtime = 'edge'
 
 export default function ChatPage() {
-  return <Chat />
+  return <ChatbotPage />
 }
