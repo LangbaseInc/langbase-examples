@@ -38,7 +38,7 @@ export async function Header() {
         >
           <IconFork />
           <span className="hidden md:flex gap-1">
-            Fork on <span className="font-bold">⌘ Langbase</span>
+            Fork on <span className="font-bold">Langbase</span>
           </span>
         </a>
       </div>
