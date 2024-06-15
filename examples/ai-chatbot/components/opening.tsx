@@ -31,11 +31,11 @@ export function Opening() {
           <div className="mt-4 flex flex-col gap-4 text-sm [&>p]:my-0 [&>p]:py-0">
             <p>Learn more by checking out:</p>
             <div className="flex flex-col gap-4 mt-2">
-              <Dlink href="https://beta.langbase.com/examples/chatbot">
+              <Dlink href="https://beta.langbase.com/examples/ai-chatbot">
                 <span>1.</span>
                 <span>Check the AI Chatbot Pipe on ⌘ Langbase</span>
               </Dlink>
-              <Dlink href="https://beta.langbase.com/examples/chatbot">
+              <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot">
                 <span>2.</span>
                 <span>Read the source code on GitHub for this example</span>
               </Dlink>
