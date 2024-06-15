@@ -1,5 +1,7 @@
 ![AI Chatbot by ⌘ Langbase][cover]
 
+![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
+
 ## Build an AI Chatbot with Pipes — ⌘ Langbase
 
 An AI Chatbot example to help you create chatbots for any use case. This chatbot is built by using an AI Pipe on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
@@ -73,3 +75,5 @@ This project is created by [Langbase][lb] team members, with contributions from:
 [xaa]:https://x.com/MrAhmadAwais
 [xab]:https://x.com/AhmadBilalDev
 [local]:http://localhost:3000
+[mit]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&color=%23000000
+[fork]: https://img.shields.io/badge/FORK%20ON-%E2%8C%98%20Langbase-000000.svg?style=for-the-badge&logo=%E2%8C%98%20Langbase&logoColor=000000
