@@ -13,8 +13,8 @@ export function Opening() {
 
         <div className="mt-2">
           <header className="mb-8">
-            <h4 className="text-foreground mt-4 flex gap-1 tracking-wide">
-              <span>AI Chatbot powered by a</span>
+            <h4 className="text-foreground text-sm sm:text-base mt-4 flex gap-1 tracking-wide">
+              <span>AI Chatbot by a</span>
               <Link
                 target="_blank"
                 className="underline hover:text-indigo-400 mb-2"
@@ -24,25 +24,25 @@ export function Opening() {
               </Link>
             </h4>
             <h5 className="text-sm text-muted-foreground">
-              Ship hyper-personalized AI assistants with memory!
+              Ship hyper-personalized AI assistants with memory.
             </h5>
           </header>
 
           <div className="mt-4 flex flex-col gap-4 text-sm [&>p]:my-0 [&>p]:py-0">
             <p>Learn more by checking out:</p>
-            <div className="flex flex-col gap-4 mt-2">
+            <div className="flex flex-col gap-4 mt-2 text-sm">
               <Dlink href="https://beta.langbase.com/examples/ai-chatbot">
                 <span>1.</span>
-                <span>Check the AI Chatbot Pipe on ⌘ Langbase</span>
+                <span>Fork this AI Chatbot Pipe on ⌘ Langbase</span>
               </Dlink>
               <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot">
                 <span>2.</span>
-                <span>Read the source code on GitHub for this example</span>
+                <span>Use LangUI.dev's open source code compnents</span>
               </Dlink>
 
               <Dlink href="https://langbase.com/docs/pipe/quickstart">
                 <span>3.</span>
-                <span>Go through Documentaion: Pipe Quick Start </span>
+                <span>Go through Documentaion: Pipe Quickstart </span>
               </Dlink>
               <Dlink href="https://langbase.com/docs">
                 <span>4.</span>
