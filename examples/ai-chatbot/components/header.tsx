@@ -23,7 +23,7 @@ export async function Header() {
       <div className="flex items-center justify-end space-x-2">
         <a
           target="_blank"
-          href="https://github.com/LangbaseInc/langbase/tree/main/examples/chatbot"
+          href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot"
           rel="noopener noreferrer"
           className={cn(buttonVariants({ variant: 'outline' }))}
         >
