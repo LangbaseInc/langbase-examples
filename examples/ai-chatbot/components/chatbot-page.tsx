@@ -13,7 +13,7 @@ export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[] // Optional: Messages to pre-populate the chat from DB
 }
 
-export function ChatbotPage({ id, initialMessages, className }: ChatProps) {
+export function Chatbot({ id, initialMessages, className }: ChatProps) {
   const [threadId, setThreadId] = useState<null | string>(null)
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
