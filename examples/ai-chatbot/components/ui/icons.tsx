@@ -40,7 +40,7 @@ function IconArrowRight({ className, ...props }: React.ComponentProps<'svg'>) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 256 256"
-      fill="text-background"
+      fill="none"
       className={cn('size-4', className)}
       {...props}
     >
@@ -240,7 +240,7 @@ function IconSparkles({ className, ...props }: React.ComponentProps<'svg'>) {
   )
 }
 
-function IconPlayground({ className, ...props }: React.ComponentProps<'svg'>) {
+export function IconChat(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}
@@ -249,16 +249,11 @@ function IconPlayground({ className, ...props }: React.ComponentProps<'svg'>) {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className={cn('size-4', className)}
     >
-      <path
-        d="M16 1.5C16.5523 1.5 17 1.94772 17 2.5V4H18C20.2091 4 22 5.79086 22 8V16C22 18.2091 20.2091 20 18 20H17V21.5C17 22.0523 16.5523 22.5 16 22.5C15.4477 22.5 15 22.0523 15 21.5V2.5C15 1.94772 15.4477 1.5 16 1.5Z"
-        fill="currentColor"
-      />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M2 8C2 5.79086 3.79086 4 6 4H13V20H6C3.79086 20 2 18.2091 2 16V8ZM7.70711 8.79289C7.31658 8.40237 6.68342 8.40237 6.29289 8.79289C5.90237 9.18342 5.90237 9.81658 6.29289 10.2071L8.08579 12L6.29289 13.7929C5.90237 14.1834 5.90237 14.8166 6.29289 15.2071C6.68342 15.5976 7.31658 15.5976 7.70711 15.2071L10.2071 12.7071C10.5976 12.3166 10.5976 11.6834 10.2071 11.2929L7.70711 8.79289Z"
+        d="M2 9C2 5.68629 4.68629 3 8 3H16C19.3137 3 22 5.68629 22 9V15C22 18.3137 19.3137 21 16 21H3C2.44772 21 2 20.5523 2 20V9ZM9 9C8.44772 9 8 9.44772 8 10C8 10.5523 8.44772 11 9 11H15C15.5523 11 16 10.5523 16 10C16 9.44772 15.5523 9 15 9H9ZM9 13C8.44772 13 8 13.4477 8 14C8 14.5523 8.44772 15 9 15H12C12.5523 15 13 14.5523 13 14C13 13.4477 12.5523 13 12 13H9Z"
         fill="currentColor"
       />
     </svg>
@@ -336,7 +331,6 @@ export {
   IconInfo,
   IconMessage,
   IconOpenAI,
-  IconPlayground,
   IconRefresh,
   IconSparkles,
   IconSpinner,

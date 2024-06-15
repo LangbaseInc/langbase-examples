@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { IconCommand, IconPlayground, IconSpinner } from '@/components/ui/icons'
+import { IconChat, IconCommand, IconSpinner } from '@/components/ui/icons'
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { UseChatHelpers } from 'ai/react'
 import * as React from 'react'
@@ -45,7 +45,7 @@ export function PromptForm({
             className="text-config text-foreground flex justify-between gap-y-4 rounded-xl px-3 py-4 font-medium leading-6 md:flex-row md:items-center md:gap-y-0"
           >
             <div className="flex items-center gap-x-2">
-              <IconPlayground
+              <IconChat
                 className="text-muted-foreground/50 h-5 w-5"
                 aria-hidden="true"
               />

@@ -1,4 +1,3 @@
-import { IconArrowRight } from '@/components/ui/icons'
 import Link from 'next/link'
 
 export function Opening() {
@@ -13,60 +12,44 @@ export function Opening() {
         </div>
 
         <div className="mt-2">
-          <h4 className="text-foreground mt-4 flex gap-1 tracking-wide">
-            <span>AI Chatbot powered by a</span>
-            <Link
-              target="_blank"
-              className="underline hover:text-indigo-400"
-              href="https://beta.langbase.com/examples/ai-chatbot"
-            >
-              <span className="font-bold">pipe on ⌘ Langbase</span>
-            </Link>
-          </h4>
+          <header className="mb-8">
+            <h4 className="text-foreground mt-4 flex gap-1 tracking-wide">
+              <span>AI Chatbot powered by a</span>
+              <Link
+                target="_blank"
+                className="underline hover:text-indigo-400 mb-2"
+                href="https://beta.langbase.com/examples/ai-chatbot"
+              >
+                <span className="font-bold">pipe on ⌘ Langbase</span>
+              </Link>
+            </h4>
+            <h5 className="text-sm text-muted-foreground">
+              Ship hyper-personalized AI assistants with memory!
+            </h5>
+          </header>
 
           <div className="mt-4 flex flex-col gap-4 text-sm [&>p]:my-0 [&>p]:py-0">
-            <p>
-              Try the chatbot by sending a message. Follow these links for the
-              next steps:
-            </p>
+            <p>Learn more by checking out:</p>
             <div className="flex flex-col gap-4 mt-2">
-              <DLink
-                href="https://beta.langbase.com/examples/chatbot"
-                icon={<IconArrowRight />}
-                text={`→ Code on GitHub`}
-              />
-              <Link
-                href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/chatbot"
-                target="_blank"
-                className="flex hover:text-indigo-400 flex items-center gap-2"
-              >
-                <IconArrowRight className="text-indigo-400" />
-                <span>Code on GitHub</span>
-              </Link>
-              <Link
-                href="https://beta.langbase.com/examples/chatbot"
-                target="_blank"
-                className="flex hover:text-indigo-400 flex items-center gap-2"
-              >
-                <IconArrowRight className="text-indigo-400" />
-                <span>Langbase chatbot pipe used in this example</span>
-              </Link>
-              <Link
-                href="https://beta.langbase.com/examples/chatbot"
-                target="_blank"
-                className="flex hover:text-indigo-400 flex items-center gap-2"
-              >
-                <IconArrowRight className="text-indigo-400" />
-                Langbase chatbot pipe used in this example
-              </Link>
-              <Link
-                href="https://langbase.com/docs/pipe/examples"
-                target="_blank"
-                className="flex hover:text-indigo-400 flex items-center gap-2"
-              >
-                <IconArrowRight className="text-indigo-400" />
-                Documentation
-              </Link>
+              <Dlink href="https://beta.langbase.com/examples/chatbot">
+                <span>1.</span>
+                <span>Check the AI Chatbot Pipe on ⌘ Langbase</span>
+              </Dlink>
+              <Dlink href="https://beta.langbase.com/examples/chatbot">
+                <span>2.</span>
+                <span>Read the source code on GitHub for this example</span>
+              </Dlink>
+
+              <Dlink href="https://langbase.com/docs/pipe/quickstart">
+                <span>3.</span>
+                <span>Go through Documentaion: Pipe Quick Start </span>
+              </Dlink>
+              <Dlink href="https://langbase.com/docs">
+                <span>4.</span>
+                <span>
+                  Learn more about Pipes & Memory features on ⌘ Langbase
+                </span>
+              </Dlink>
             </div>
           </div>
         </div>
@@ -75,26 +58,24 @@ export function Opening() {
   )
 }
 
-function DLink({
-  icon,
-  text,
+// Description Link
+function Dlink({
   href,
+  children,
   ...props
 }: {
-  icon: React.ReactNode
-  text: string
   href: string
+  children: React.ReactNode
   [key: string]: any
 }) {
   return (
     <Link
       href={href}
       target="_blank"
-      className="flex hover:text-indigo-400"
+      className="flex hover:text-indigo-400 flex items-center gap-2 [&>span:first-child]:text-indigo-400"
       {...props}
     >
-      <i className="mr-2 text-indigo-400" />
-      Code on GitHub
+      {children}
     </Link>
   )
 }
