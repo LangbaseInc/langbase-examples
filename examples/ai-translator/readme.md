@@ -59,7 +59,7 @@ Your app template should now be running on [localhost:3000][local].
 [lb]: https://langbase.com
 [pipe]: https://beta.langbase.com/examples/ai-translator
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-translator
-[cover]:public/ai-translator.jpg
+[cover]:https://raw.githubusercontent.com/LangbaseInc/langbase-examples/main/examples/ai-translator/public/ai-translator.jpg
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-translator
 [signup]: https://langbase.fyi/io
 [qs]:https://langbase.com/docs/pipe/quickstart
