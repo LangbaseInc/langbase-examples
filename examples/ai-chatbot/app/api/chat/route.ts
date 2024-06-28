@@ -1,3 +1,5 @@
+import { OpenAIStream, StreamingTextResponse } from 'ai'
+
 export const runtime = 'edge'
 
 /**
@@ -15,6 +17,7 @@ export async function POST(req: Request) {
     }
 
     const endpointUrl = 'https://api.langbase.com/beta/chat'
+
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_LB_PIPE_API_KEY}`
@@ -41,7 +44,10 @@ export async function POST(req: Request) {
       throw new Error(`Error ${res.error.status}: ${res.error.message}`)
     }
 
-    return new Response(response.body as ReadableStream<Uint8Array>, {
+    // Handle Langbase response, which is a stream in OpenAI format.
+    const stream = OpenAIStream(response)
+    // Respond with a text stream.
+    return new StreamingTextResponse(stream, {
       headers: response.headers
     })
   } catch (error: any) {
