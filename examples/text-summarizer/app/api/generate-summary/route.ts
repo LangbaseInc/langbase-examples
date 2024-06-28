@@ -1,4 +1,4 @@
-import { StreamingTextResponse } from 'ai';
+import { StreamingTextResponse, OpenAIStream } from 'ai';
 import zod from 'zod';
 
 export const runtime = 'edge';
@@ -50,9 +50,12 @@ export async function POST(req: Request) {
 			throw new Error(`Error ${res.error.status}: ${res.error.message}`);
 		}
 
-		return new StreamingTextResponse(
-			response.body as ReadableStream<Uint8Array>
-		);
+		// Handle Langbase response. It is in OpenAI streaming format.
+		const stream = OpenAIStream(response);
+		// Respond with a text stream
+		return new StreamingTextResponse(stream, {
+			headers: response.headers
+		});
 	} catch (error: any) {
 		console.error('API Error:', error);
 		return new Response(JSON.stringify(error), { status: 500 });
