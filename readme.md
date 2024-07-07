@@ -1,4 +1,4 @@
-![langbase](/assets/images/langbase.png)
+![logo](https://github.com/LangbaseInc/langbase-examples/assets/960133/38cbbe97-a6f4-4682-ba64-0f98ce2700c8)
 
 ## Langbase LLM AI Projects
 
