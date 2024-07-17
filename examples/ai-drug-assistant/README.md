@@ -32,17 +32,17 @@ To get started with Langbase, you'll need to [create a free personal account on 
 4. `cd` into the project directory and open it in your code editor.
 5. Duplicate the `.env.example` file in this project and rename it to `.env.local`.
 6. Add the following environment variables (.env.local):
-
+```
     # Replace `PIPE_API_KEY` with the copied API key.
     NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
-7. 
-```sh
+```    
+7. Issue the following in your CLI:
+```
+    # Install the dependencies using the following command:
+    npm install
 
-# Install the dependencies using the following command:
-npm install
-
-# Run the project using the following command:
-npm run dev
+    # Run the project using the following command:
+    npm run dev
 ```
 
 8. Your app template should now be running on [localhost:3000][local].
