@@ -1,6 +1,6 @@
 ![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
 
-## Build CEFR Level Assessment Bot with Pipes — ⌘ Langbase
+## Build English (CEFR) Level Assessment Bot with Pipes — ⌘ Langbase
 
 This chatbot is built by using an AI Pipe on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
 
@@ -31,20 +31,21 @@ To get started with Langbase, you'll need to [create a free personal account on 
 3. Download the example project folder from [here][download] or clone the reppository.
 4. `cd` into the project directory and open it in your code editor.
 5. Duplicate the `.env.example` file in this project and rename it to `.env.local`.
-6. Add the following environment variables:
-
+6. Add the following environment variables (.env.local):
+```
+    # Replace `PIPE_API_KEY` with the copied API key.
+    NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
+```    
+7. In your CLI issue the following:
 ```sh
-# Replace `PIPE_API_KEY` with the copied API key.
-NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
+    # Install the dependencies using the following command:
+    npm install
 
-# Install the dependencies using the following command:
-npm install
-
-# Run the project using the following command:
-npm run dev
+    # Run the project using the following command:
+    npm run dev
 ```
 
-Your app template should now be running on [localhost:3000][local].
+8. Your app template should now be running on [localhost:3000][local].
 
 > NOTE:
 > This is a Next.js project, so you can build and deploy it to any platform of your choice, like Vercel, Netlify, Cloudflare, etc.
@@ -55,8 +56,6 @@ Your app template should now be running on [localhost:3000][local].
 
 This project is created by [Langbase][lb] team members, with contributions from:
 
-- Ahmad Awais ([@MrAhmadAwais][xaa]) - Founder & CEO, [Langbase][lb]
-- Ahmad Bilal ([@AhmadBilalDev][xab]) - Founding Engineer, [Langbase][lb]
 - Muhammad-Ali Danish - Software Engineer, [Langbase][lb]
 
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
