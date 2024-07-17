@@ -45,7 +45,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
     npm run dev`
 ```
 
-Your app template should now be running on [localhost:3000][local].
+8. Your app template should now be running on [localhost:3000][local].
 
 > NOTE:
 > This is a Next.js project, so you can build and deploy it to any platform of your choice, like Vercel, Netlify, Cloudflare, etc.
@@ -54,7 +54,7 @@ Your app template should now be running on [localhost:3000][local].
 
 ## Authors
 
-8. This project is created by [Langbase][lb] team members, with contributions from:
+This project is created by [Langbase][lb] team members, with contributions from:
 
 - Muhammad-Ali Danish - Software Engineer, [Langbase][lb]
 
