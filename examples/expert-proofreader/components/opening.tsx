@@ -33,7 +33,7 @@ export function Opening() {
             <div className="flex flex-col gap-4 mt-2 text-sm">
               <Dlink href="https://beta.langbase.com/examples/expert-proofreader">
                 <span>1.</span>
-                <span>Fork this CEFR Level Assessment Bot Pipe on ⌘ Langbase</span>
+                <span>Fork this Expert Proofreader Bot Pipe on ⌘ Langbase</span>
               </Dlink>
               <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/expert-proofreader">
                 <span>2.</span>
