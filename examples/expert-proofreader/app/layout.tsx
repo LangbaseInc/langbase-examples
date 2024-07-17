@@ -8,9 +8,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'AI Chatbot - Langbase',
-  description: 'Build an AI Chatbot with ⌘ Langbase using any LLM model.',
-  keywords: ['AI', 'Chatbot', 'Langbase']
+  title: 'Expert Proofreader Bot - Langbase',
+  description: 'Build Expert Proofreader Bot with ⌘ Langbase using any LLM model.',
+  keywords: ['Expert Proofreader', 'Bot', 'Langbase']
 }
 
 export default function RootLayout({
