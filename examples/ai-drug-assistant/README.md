@@ -31,11 +31,12 @@ To get started with Langbase, you'll need to [create a free personal account on 
 3. Download the example project folder from [here][download] or clone the reppository.
 4. `cd` into the project directory and open it in your code editor.
 5. Duplicate the `.env.example` file in this project and rename it to `.env.local`.
-6. Add the following environment variables:
+6. Add the following environment variables (.env.local):
 
+    # Replace `PIPE_API_KEY` with the copied API key.
+    NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
+7. 
 ```sh
-# Replace `PIPE_API_KEY` with the copied API key.
-NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
 
 # Install the dependencies using the following command:
 npm install
@@ -44,7 +45,7 @@ npm install
 npm run dev
 ```
 
-Your app template should now be running on [localhost:3000][local].
+8. Your app template should now be running on [localhost:3000][local].
 
 > NOTE:
 > This is a Next.js project, so you can build and deploy it to any platform of your choice, like Vercel, Netlify, Cloudflare, etc.
