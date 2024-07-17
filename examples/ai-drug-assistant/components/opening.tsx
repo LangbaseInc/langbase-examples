@@ -37,7 +37,7 @@ export function Opening() {
               </Dlink>
               <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-drug-assistant">
                 <span>2.</span>
-                <span>Use LangUI.dev's open source code compnents</span>
+                <span>Use LangUI.dev's open source code components</span>
               </Dlink>
 
               <Dlink href="https://langbase.com/docs/pipe/quickstart">
