@@ -1,3 +1,5 @@
+![AI Drug Assistant by ⌘ Langbase][cover]
+
 ![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
 
 ## Build an AI Drug Assistant with Pipes — ⌘ Langbase
@@ -61,7 +63,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 - Muhammad-Ali Danish - Software Engineer, [Langbase][lb]
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
-
+[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ai-drug-assistant/ai-drug-assistant.png
 [demo]: https://ai-drug-assistant.langbase.dev
 [lb]: https://langbase.com
 [pipe]: https://beta.langbase.com/examples/ai-drug-assistant
