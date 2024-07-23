@@ -1,3 +1,5 @@
+![Web API Security Consultant Bot by ⌘ Langbase][cover]
+
 ![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
 
 ## Build Web API Security Consultant Bot (OWASP 2023) with Pipes — ⌘ Langbase
@@ -60,7 +62,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
-
+[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/api-sec-consultant/api-sec-consultant.png
 [demo]: https://api-sec-consultant.langbase.dev
 [lb]: https://langbase.com
 [pipe]: https://beta.langbase.com/examples/api-sec-consultant
