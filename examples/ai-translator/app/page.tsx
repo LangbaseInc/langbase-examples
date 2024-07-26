@@ -8,12 +8,11 @@ import { LanguageSelector } from './components/language';
 import Message from './components/message';
 
 export default function Home() {
-
 	const initialSentence = `Pipe is the fastest way to turn ideas into AI. Pipe is like an AI feature. It is a high-level layer to Large Language Models (LLMs) that creates a personalized AI assistant for your queries.`;
 
 	const [sentence, setSentence] = useState(initialSentence);
 	const [inputLanguage, setInputLanguage] = useState('english');
-	const [translationLanguage, setTranslationLanguage] = useState('french');
+	const [translationLanguage, setTranslationLanguage] = useState('urdu');
 
 	const [error, setError] = useState('');
 
@@ -36,11 +35,11 @@ export default function Home() {
 			},
 			{
 				name: 'inputLanguage',
-				value: inputLanguage
+				value: inputLanguage || 'english'
 			},
 			{
 				name: 'translationLanguage',
-				value: translationLanguage
+				value: translationLanguage || 'urdu'
 			}
 		]
 	};
@@ -132,25 +131,28 @@ export default function Home() {
 								/>
 								{messages.length > 0 &&
 									messages
-									.filter(m => m.role !== 'user')
-									.slice(-1)
-									.map((m, index) => (
-										<div className="relative" key={index}>
-											<Message
-												id="translation"
-												key={`translation-${index}`}
-												message={m.content}
-												tabIndex={2}
-												disabled
-											/>
-											<button
-												key={`copy-${index}`}
-												onClick={() => handleCopy()}
+										.filter(m => m.role !== 'user')
+										.slice(-1)
+										.map((m, index) => (
+											<div
+												className="relative"
+												key={index}
 											>
-												<IconCopy className="absolute top-2 right-2" />
-											</button>
-										</div>
-									))}
+												<Message
+													id="translation"
+													key={`translation-${index}`}
+													message={m.content}
+													tabIndex={2}
+													disabled
+												/>
+												<button
+													key={`copy-${index}`}
+													onClick={() => handleCopy()}
+												>
+													<IconCopy className="absolute top-2 right-2" />
+												</button>
+											</div>
+										))}
 								{isLoading &&
 									!error.length &&
 									messages.length < 2 && (
