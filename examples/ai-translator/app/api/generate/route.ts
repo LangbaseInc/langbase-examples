@@ -11,23 +11,29 @@ type RequestBody = {
 	variables: Variable[];
 };
 
-const requestBodySchema = zod.object({
-	messages: zod.array(
-		zod.object({
-			role: zod.string(),
-			content: zod.string()
-		})
-	),
-	variables: zod.array(
-		zod.object({
-			name: zod.string(),
-			value: zod.string()
-		})
-	)
-});
-
 export async function POST(req: Request) {
+	const requestBodySchema = zod.object({
+		messages: zod.array(
+			zod.object({
+				role: zod.string(),
+				content: zod.string()
+			})
+		),
+		variables: zod.array(
+			zod.object({
+				name: zod.string(),
+				value: zod.string()
+			})
+		)
+	});
+
 	try {
+		if (!process.env.NEXT_LB_PIPE_API_KEY) {
+			throw new Error(
+				'Please set NEXT_LB_PIPE_API_KEY in your environment variables.'
+			);
+		}
+
 		const endpointUrl = 'https://api.langbase.com/beta/generate';
 		const headers = {
 			'Content-Type': 'application/json',
@@ -35,7 +41,6 @@ export async function POST(req: Request) {
 		};
 
 		const body: RequestBody = await req.json();
-		console.log('Request body:', body);
 
 		// Validate request body
 		const { messages, variables } = requestBodySchema.parse(body);
@@ -44,7 +49,6 @@ export async function POST(req: Request) {
 			messages,
 			variables
 		};
-		console.log('API request body:', requestBody);
 
 		const response = await fetch(endpointUrl, {
 			method: 'POST',
@@ -64,7 +68,7 @@ export async function POST(req: Request) {
 			headers: response.headers
 		});
 	} catch (error: any) {
-		console.error('API Error:', error);
+		// console.error('API Error:', error);
 		return new Response(JSON.stringify(error), { status: 500 });
 	}
 }

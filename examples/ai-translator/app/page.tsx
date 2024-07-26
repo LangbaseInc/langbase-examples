@@ -69,7 +69,7 @@ export default function Home() {
 	};
 
 	const { messages, setMessages, isLoading, append } = useChat({
-		api: `/api/translator`,
+		api: `/api/generate`,
 		body,
 		onResponse: async (response: any) => {
 			// Error handling
