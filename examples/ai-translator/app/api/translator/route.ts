@@ -40,35 +40,9 @@ export async function POST(req: Request) {
 		// Validate request body
 		const { messages, variables } = requestBodySchema.parse(body);
 
-		// const sentence = variables.find(
-		// 	variable => variable.name === 'sentence'
-		// )?.value;
-
-		// const inputLanguage = variables.find(
-		// 	variable => variable.name === 'inputLanguage'
-		// )?.value;
-
-		// const translationLanguage = variables.find(
-		// 	variable => variable.name === 'translationLanguage'
-		// )?.value;
-
 		const requestBody = {
 			messages,
 			variables
-			// [
-			// 	{
-			// 		name: 'sentence',
-			// 		value: sentence
-			// 	},
-			// 	{
-			// 		name: 'inputLanguage',
-			// 		value: inputLanguage || 'english'
-			// 	},
-			// 	{
-			// 		name: 'translationLanguage',
-			// 		value: translationLanguage || 'urdu'
-			// 	}
-			// ]
 		};
 		console.log('API request body:', requestBody);
 
