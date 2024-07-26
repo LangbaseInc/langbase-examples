@@ -6,7 +6,7 @@
 
 A RAG Chatbot example to help you build and deploy a chatbot to talk to your documents. This chatbot is built by using an AI Pipe and Memory on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
 
-<!-- Check out the live demo [here][demo]. -->
+Check out the live demo [here][demo].
 
 ## Features
 
@@ -66,11 +66,11 @@ This project is created by [Langbase][lb] team members, with contributions from:
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
 
-<!-- [demo]: https://ai-chatbot.langbase.dev -->
+[demo]: https://rag-chatbot.langbase.dev
 [lb]: https://langbase.com
 [pipe]: https://beta.langbase.com/examples/rag-chatbot
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/rag-chatbot
-[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ai-chatbot/ai-chatbot-langbase.png
+[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/rag-chatbot/rag-chatbot.jpg
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/rag-chatbot
 [signup]: https://langbase.fyi/io
 [qs]:https://langbase.com/docs/pipe/quickstart
