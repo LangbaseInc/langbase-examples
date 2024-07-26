@@ -3050,7 +3050,7 @@ snapshots:
 
   debug@4.1.1:
     dependencies:
-      ms: 2.1.1
+      ms: 2.1.2
 
   debug@4.3.5:
     dependencies:
