@@ -3,18 +3,21 @@ import zod from 'zod';
 
 export const runtime = 'edge';
 
+type Message = { role: string; content: string };
+type Variable = { name: string; value: string };
+
 type RequestBody = {
-	// messages: { role: string; content: string }[];
-	variables: { name: string; value: string }[];
+	messages: Message[];
+	variables: Variable[];
 };
 
 const requestBodySchema = zod.object({
-	// messages: zod.array(
-	// 	zod.object({
-	// 		role: zod.string(),
-	// 		content: zod.string()
-	// 	})
-	// ),
+	messages: zod.array(
+		zod.object({
+			role: zod.string(),
+			content: zod.string()
+		})
+	),
 	variables: zod.array(
 		zod.object({
 			name: zod.string(),
@@ -32,38 +35,16 @@ export async function POST(req: Request) {
 		};
 
 		const body: RequestBody = await req.json();
+		console.log('Request body:', body);
 
 		// Validate request body
-		const { variables } = requestBodySchema.parse(body);
-
-		const sentence = variables.find(
-			variable => variable.name === 'sentence'
-		)?.value;
-
-		const inputLanguage = variables.find(
-			variable => variable.name === 'inputLanguage'
-		)?.value;
-
-		const translationLanguage = variables.find(
-			variable => variable.name === 'translationLanguage'
-		)?.value;
+		const { messages, variables } = requestBodySchema.parse(body);
 
 		const requestBody = {
-			variables: [
-				{
-					name: 'sentence',
-					value: sentence
-				},
-				{
-					name: 'inputLanguage',
-					value: inputLanguage || 'english'
-				},
-				{
-					name: 'translationLanguage',
-					value: translationLanguage || 'urdu'
-				}
-			]
+			messages,
+			variables
 		};
+		console.log('API request body:', requestBody);
 
 		const response = await fetch(endpointUrl, {
 			method: 'POST',
