@@ -2,10 +2,11 @@
 
 import { useChat } from 'ai/react';
 import { useEffect, useState } from 'react';
-import { IconCloseSmall } from './components/icon-close';
-import { IconCopy } from './components/icon-copy';
-import { LanguageSelector } from './components/language';
-import Message from './components/message';
+import { IconCloseSmall } from '@/components/icon-close';
+import { IconCopy } from '@/components/icon-copy';
+import { LanguageSelector } from '@/components/language';
+import Message from '@/components/message';
+import { Opening } from '@/components/opening';
 
 export default function Home() {
 	const initialSentence = `Pipe is the fastest way to turn ideas into AI. Pipe is like an AI feature. It is a high-level layer to Large Language Models (LLMs) that creates a personalized AI assistant for your queries.`;
@@ -89,18 +90,10 @@ export default function Home() {
 
 	return (
 		<main className="md:space-y-12">
-			<div className="md:grid md:grid-cols-1">
-				<div className="relative col-span-1 md:min-h-screen flex flex-col justify-between px-8 pt-16 md:p-20">
+			<div className="md:grid md:grid-cols-1 md:min-h-screen">
+				<div className="relative col-span-1 flex flex-col justify-between px-8 pt-16 md:p-8">
 					<div className="space-y-16">
-						<header className="flex flex-col justify-center space-y-4">
-							<h1 className="text-2xl font-bold leading-7 text-foreground sm:truncate sm:text-3xl sm:tracking-tight uppercase">
-								Translator AI
-							</h1>
-							<p className="text-muted-foreground">
-								Effortless translations with AI
-							</p>
-						</header>
-						<hr />
+						<Opening />
 						<div className="flex justify-center w-full">
 							<div className="w-[600px] mx-4">
 								<LanguageSelector
