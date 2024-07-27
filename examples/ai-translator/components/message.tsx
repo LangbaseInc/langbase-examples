@@ -6,7 +6,7 @@ const Message = ({
 	setMessage,
 	tabIndex,
 	autoFocus,
-	disabled,
+	disabled
 }: {
 	id: string;
 	message: string;
