@@ -11,7 +11,7 @@ export function Translator() {
 
 	const [sentence, setSentence] = useState(initialSentence);
 	const [inputLanguage, setInputLanguage] = useState('english');
-	const [translationLanguage, setTranslationLanguage] = useState('urdu');
+	const [translationLanguage, setTranslationLanguage] = useState('french');
 
 	const [error, setError] = useState('');
 
