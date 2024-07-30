@@ -2,6 +2,7 @@ import { cn } from 'mxcn';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
+import { Header } from '@/components/ui/header';
 
 const fontSans = FontSans({
 	subsets: ['latin'],
@@ -26,6 +27,7 @@ export default function RootLayout({
 					fontSans.variable,
 				)}
 			>
+				<Header />
 				{children}
 			</body>
 		</html>
