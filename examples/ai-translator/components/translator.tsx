@@ -1,90 +1,75 @@
-import { useChat } from 'ai/react';
 import { useEffect, useState } from 'react';
 import { IconCloseSmall } from '@/components/icon-close';
 import { IconCopy } from '@/components/icon-copy';
 import { LanguageSelector } from '@/components/language';
 import Message from '@/components/message';
 import { Opening } from '@/components/opening';
+import { fromReadableStream } from 'langbase';
 
 export function Translator() {
-	const initialSentence = `Pipe is the fastest way to turn ideas into AI. Pipe is like an AI feature. It is a high-level layer to Large Language Models (LLMs) that creates a personalized AI assistant for your queries.`;
-
-	const [sentence, setSentence] = useState(initialSentence);
+	const [sentence, setSentence] = useState(
+		`Pipe is the fastest way to turn ideas into AI. Pipe is like an AI feature. It is a high-level layer to Large Language Models (LLMs) that creates a personalized AI assistant for your queries.`
+	);
 	const [inputLanguage, setInputLanguage] = useState('english');
 	const [translationLanguage, setTranslationLanguage] = useState('french');
-
-	const [error, setError] = useState('');
+	const [completion, setCompletion] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const debounce = setTimeout(() => {
-			if (!sentence || sentence.length < 3) return;
+			if (!sentence || sentence.length < 3) {
+				resetApp();
+				return;
+			}
 			handleSubmitForm();
-		}, 300);
+		}, 1000);
 
 		return () => {
 			clearTimeout(debounce);
 		};
 	}, [sentence, inputLanguage, translationLanguage]);
 
-	const body = {
-		variables: [
-			{
-				name: 'sentence',
-				value: sentence
-			},
-			{
-				name: 'inputLanguage',
-				value: inputLanguage || 'english'
-			},
-			{
-				name: 'translationLanguage',
-				value: translationLanguage || 'urdu'
-			}
-		]
-	};
-
 	const handleSubmitForm = async () => {
-		setMessages([]);
-		setError('');
-		append({
-			role: 'user',
-			content: ''
-		});
+		setIsLoading(true);
+		setCompletion('');
+
+		try {
+			const response = await fetch(`/api/generate`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					prompt: sentence,
+					inputLanguage,
+					translationLanguage
+				})
+			});
+
+			if (response.body) {
+				const stream = fromReadableStream(response.body);
+
+				for await (const chunk of stream) {
+					const content = chunk?.choices[0]?.delta?.content;
+					content && setCompletion(prev => prev + content);
+				}
+			}
+		} catch (error: any) {
+			setIsLoading(false);
+			console.error('Error:', error);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	const handleCopy = () => {
-		const translation = messages
-			.filter(m => m.role !== 'user')
-			.slice(-1)
-			.map(m => m.content)
-			.join('');
-		navigator.clipboard.writeText(translation);
+		navigator.clipboard.writeText(completion);
 	};
 
 	const resetApp = () => {
 		setSentence('');
-		setMessages([]);
-		setError('');
+		setCompletion('');
 	};
-
-	const { messages, setMessages, isLoading, append } = useChat({
-		api: `/api/generate`,
-		body,
-		onResponse: async (response: any) => {
-			// Error handling
-			if (!response.ok) {
-				const res = await response.json();
-				// Set error state if error message exists
-				if (!res.success && res.error?.message) {
-					setError(res.error.message);
-				} else {
-					setError(
-						'Internal server error. Refresh to try again. Or contact support.'
-					);
-				}
-			}
-		}
-	});
 
 	return (
 		<main className="md:space-y-12">
@@ -120,41 +105,28 @@ export function Translator() {
 									language={translationLanguage}
 									setLanguage={setTranslationLanguage}
 								/>
-								{messages.length > 0 &&
-									messages
-										.filter(m => m.role !== 'user')
-										.slice(-1)
-										.map((m, index) => (
-											<div
-												className="relative"
-												key={index}
-											>
-												<Message
-													id="translation"
-													key={`translation-${index}`}
-													message={m.content}
-													tabIndex={2}
-													disabled
-												/>
-												<button
-													key={`copy-${index}`}
-													onClick={() => handleCopy()}
-												>
-													<IconCopy className="absolute top-2 right-2" />
-												</button>
-											</div>
-										))}
-								{isLoading &&
-									!error.length &&
-									messages.length < 2 && (
+								{completion.length > 0 && (
+									<div className="relative">
 										<Message
-											id="ai-thinking"
-											message={`AI is thinking...`}
+											id="translation"
+											message={completion}
 											tabIndex={2}
 											disabled
 										/>
-									)}
-								{messages.length === 0 && !error && (
+										<button onClick={() => handleCopy()}>
+											<IconCopy className="absolute top-2 right-2" />
+										</button>
+									</div>
+								)}
+								{isLoading && completion.length === 0 && (
+									<Message
+										id="ai-thinking"
+										message={`AI is thinking...`}
+										tabIndex={2}
+										disabled
+									/>
+								)}
+								{!isLoading && completion.length === 0 && (
 									<Message
 										id="placeholder"
 										message={`Translation`}
