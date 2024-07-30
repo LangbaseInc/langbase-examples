@@ -1,30 +1,13 @@
-import { OpenAIStream, StreamingTextResponse } from 'ai';
+import { Pipe } from 'langbase';
 import zod from 'zod';
 
 export const runtime = 'edge';
 
-type Message = { role: string; content: string };
-type Variable = { name: string; value: string };
-
-type RequestBody = {
-	messages: Message[];
-	variables: Variable[];
-};
-
 export async function POST(req: Request) {
 	const requestBodySchema = zod.object({
-		messages: zod.array(
-			zod.object({
-				role: zod.string(),
-				content: zod.string()
-			})
-		),
-		variables: zod.array(
-			zod.object({
-				name: zod.string(),
-				value: zod.string()
-			})
-		)
+		prompt: zod.string(),
+		inputLanguage: zod.string(),
+		translationLanguage: zod.string()
 	});
 
 	try {
@@ -34,39 +17,30 @@ export async function POST(req: Request) {
 			);
 		}
 
-		const endpointUrl = 'https://api.langbase.com/beta/generate';
-		const headers = {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${process.env.NEXT_LB_PIPE_API_KEY}`
-		};
+		// Initialize Pipe
+		const pipe = new Pipe({ apiKey: process.env.NEXT_LB_PIPE_API_KEY });
 
-		const body: RequestBody = await req.json();
+		// Parse request body
+		const body = await req.json();
 
 		// Validate request body
-		const { messages, variables } = requestBodySchema.parse(body);
+		const { prompt, inputLanguage, translationLanguage } =
+			requestBodySchema.parse(body);
 
-		const requestBody = {
-			messages,
-			variables
-		};
+		// User prompt message.
+		const userPrompt = `## Language Inputs:
+Input language: ${inputLanguage}
+Translated language: ${translationLanguage}
 
-		const response = await fetch(endpointUrl, {
-			method: 'POST',
-			headers,
-			body: JSON.stringify(requestBody)
+## Translation Sentence:
+${prompt}`;
+
+		// Stream completion
+		const stream = await pipe.streamText({
+			messages: [{ role: 'user', content: userPrompt }]
 		});
 
-		if (!response.ok) {
-			const res = await response.json();
-			throw new Error(`Error ${res.error.status}: ${res.error.message}`);
-		}
-
-		// Handle Langbase response. It is in OpenAI streaming format.
-		const stream = OpenAIStream(response);
-		// Respond with a text stream
-		return new StreamingTextResponse(stream, {
-			headers: response.headers
-		});
+		return new Response(stream.toReadableStream());
 	} catch (error: any) {
 		// console.error('API Error:', error);
 		return new Response(JSON.stringify(error), { status: 500 });
