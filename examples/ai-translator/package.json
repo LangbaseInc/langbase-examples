@@ -10,8 +10,8 @@
 	},
 	"dependencies": {
 		"@radix-ui/react-slot": "^1.1.0",
-		"ai": "3.0.16",
 		"class-variance-authority": "^0.7.0",
+		"langbase": "^0.2.5",
 		"mxcn": "^2.0.0",
 		"next": "14.2.1",
 		"react": "^18",
