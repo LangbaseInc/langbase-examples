@@ -1,5 +1,7 @@
 import DocsQnA from "@/components/langbase/docs-qna";
 
+export const runtime = 'edge';
+
 export default function Home() {
 	return (
 		<div className="flex min-h-screen flex-col items-center justify-between p-24">
