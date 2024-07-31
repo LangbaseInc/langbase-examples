@@ -1,6 +1,8 @@
 import { Pipe } from 'langbase';
 import { NextRequest } from 'next/server';
 
+export const runtime = 'edge';
+
 /**
  * Generate response and stream from Langbase Pipe.
  *
