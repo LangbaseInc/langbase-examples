@@ -1,6 +1,5 @@
 {
 	"name": "rag-ask-docs",
-	"description": "Starter template to build RAG apps using Langbase SDK",
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
@@ -15,8 +14,8 @@
 		"clsx": "^2.1.1",
 		"lucide-react": "^0.416.0",
 		"mxcn": "^2.0.0",
+		"langbase": "^0.2.5",
 		"next": "14.2.5",
-		"openai": "^4.53.0",
 		"react": "^18",
 		"react-dom": "^18",
 		"tailwind-merge": "^2.4.0",
