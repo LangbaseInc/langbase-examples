@@ -37,7 +37,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 ```
     # Replace `PIPE_API_KEY` with the copied API key.
     NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
-```    
+```
 7. Issue the following in your CLI:
 ```
     # Install the dependencies using the following command:
@@ -66,7 +66,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 [cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ai-drug-assistant/ai-drug-assistant.png
 [demo]: https://ai-drug-assistant.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/ai-drug-assistant
+[pipe]: https://langbase.com/examples/ai-drug-assistant
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-drug-assistant
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-drug-assistant
 [signup]: https://langbase.fyi/io

@@ -18,7 +18,7 @@ export function Opening() {
               <Link
                 target="_blank"
                 className="mb-2 underline hover:text-indigo-400"
-                href="https://beta.langbase.com/examples/rag-chatbot"
+                href="https://langbase.com/examples/rag-chatbot"
               >
                 <span className="font-bold">pipe and memory on ⌘ Langbase</span>
               </Link>
@@ -31,7 +31,7 @@ export function Opening() {
           <div className="mt-4 flex flex-col gap-4 text-sm [&>p]:my-0 [&>p]:py-0">
             <p>Learn more by checking out:</p>
             <div className="mt-2 flex flex-col gap-4 text-sm">
-              <Dlink href="https://beta.langbase.com/examples/rag-chatbot">
+              <Dlink href="https://langbase.com/examples/rag-chatbot">
                 <span>1.</span>
                 <span>Fork this RAG Chatbot Pipe on ⌘ Langbase</span>
               </Dlink>
@@ -49,7 +49,6 @@ export function Opening() {
                 <span>4.</span>
                 <span>Go through Documentation: Memory Quickstart </span>
               </Dlink>
-
             </div>
           </div>
         </div>

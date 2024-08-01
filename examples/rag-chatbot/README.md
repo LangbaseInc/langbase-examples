@@ -68,7 +68,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://rag-chatbot.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/rag-chatbot
+[pipe]: https://langbase.com/examples/rag-chatbot
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/rag-chatbot
 [cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/rag-chatbot/rag-chatbot.jpg
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/rag-chatbot

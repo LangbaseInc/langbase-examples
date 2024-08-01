@@ -35,7 +35,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 ```
     # Replace `PIPE_API_KEY` with the copied API key.
     NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
-```    
+```
 7. In your CLI issue the following:
 ```sh
     # Install the dependencies using the following command:
@@ -63,7 +63,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://cefr-level-assessment-bot.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/cefr-level-assessment-bot
+[pipe]: https://langbase.com/examples/cefr-level-assessment-bot
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/cefr-level-assessment-bot
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/cefr-level-assessment-bot
 [signup]: https://langbase.fyi/io

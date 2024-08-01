@@ -32,7 +32,7 @@ export async function Header() {
         </a>
         <a
           target="_blank"
-          href="https://beta.langbase.com/examples/cefr-level-assessment-bot"
+          href="https://langbase.com/examples/cefr-level-assessment-bot"
           rel="noopener noreferrer"
           className={cn(buttonVariants({ variant: 'default' }))}
         >

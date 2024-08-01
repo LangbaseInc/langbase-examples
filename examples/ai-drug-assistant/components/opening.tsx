@@ -18,7 +18,7 @@ export function Opening() {
               <Link
                 target="_blank"
                 className="underline hover:text-indigo-400 mb-2"
-                href="https://beta.langbase.com/examples/ai-drug-assistant"
+                href="https://langbase.com/examples/ai-drug-assistant"
               >
                 <span className="font-bold">pipe on ⌘ Langbase</span>
               </Link>
@@ -31,7 +31,7 @@ export function Opening() {
           <div className="mt-4 flex flex-col gap-4 text-sm [&>p]:my-0 [&>p]:py-0">
             <p>Learn more by checking out:</p>
             <div className="flex flex-col gap-4 mt-2 text-sm">
-              <Dlink href="https://beta.langbase.com/examples/ai-drug-assistant">
+              <Dlink href="https://langbase.com/examples/ai-drug-assistant">
                 <span>1.</span>
                 <span>Fork this AI Drug Assistant Pipe on ⌘ Langbase</span>
               </Dlink>

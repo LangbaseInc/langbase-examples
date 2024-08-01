@@ -63,7 +63,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://expert-proofreader.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/expert-proofreader
+[pipe]: https://langbase.com/examples/expert-proofreader
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/expert-proofreader
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/expert-proofreader
 [signup]: https://langbase.fyi/io

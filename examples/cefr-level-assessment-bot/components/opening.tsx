@@ -18,7 +18,7 @@ export function Opening() {
               <Link
                 target="_blank"
                 className="underline hover:text-indigo-400 mb-2"
-                href="https://beta.langbase.com/examples/cefr-level-assessment-bot"
+                href="https://langbase.com/examples/cefr-level-assessment-bot"
               >
                 <span className="font-bold">pipe on ⌘ Langbase</span>
               </Link>
@@ -33,7 +33,9 @@ export function Opening() {
             <div className="flex flex-col gap-4 mt-2 text-sm">
               <Dlink href="https://langbase.com/docs/api-reference/chat">
                 <span>1.</span>
-                <span>Fork this CEFR Level Assessment Bot Pipe on ⌘ Langbase</span>
+                <span>
+                  Fork this CEFR Level Assessment Bot Pipe on ⌘ Langbase
+                </span>
               </Dlink>
               <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/cefr-level-assessment-bot">
                 <span>2.</span>

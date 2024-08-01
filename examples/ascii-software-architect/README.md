@@ -64,7 +64,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://ascii-software-architect.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/ascii-software-architect
+[pipe]: https://langbase.com/examples/ascii-software-architect
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ascii-software-architect
 [cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ascii-software-architect/ascii-software-architect.png
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ascii-software-architect
