@@ -71,6 +71,18 @@ To get started with Langbase, you'll need to [create a free personal account on 
 > NOTE:
 > This project requires cloudflare account so that cloudflare CLI [Cloudflare CLI account and setup][cloudflare]
 
+13. To test the classification and function call you can the following test dataset:
+```
+Electronic Dept. Query:
+    I order 2 days ago a new Sony Bravia XR-65X90L, I did recieve confirmation that my order will be shipped shortly but I have not recieve any tracking number or any confirmation that the order has been disptachen. Please reply soon as I order because you guys ship fast and it should not take more then a week.  
+
+Travel Bags Dept. Query:
+    I have received Wenger backpack for 15 inch laptop two days ago, however it quite small for my use case. I want return and order new Wenger 30L for 16inch laptop. Let me know if it is in stock? 
+
+Sports Gear Dept. Query:
+    I bought Nike zoomx two days ago, although I received the order confirmation and the receipt but I have not received the tracking number. Please send the tracking number asap.
+```
+
 ## Authors
 
 This project is created by [Langbase][lb] team members, with contributions from:
