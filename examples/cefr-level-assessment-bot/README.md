@@ -1,3 +1,5 @@
+![English (CEFR) Level Assessment Bot by ⌘ Langbase][cover]
+
 ![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
 
 ## Build English (CEFR) Level Assessment Bot with Pipes — ⌘ Langbase
@@ -60,7 +62,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
-
+[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/cefr-level-assessment-bot/cefr-level-assessment-bot.png
 [demo]: https://cefr-level-assessment-bot.langbase.dev
 [lb]: https://langbase.com
 [pipe]: https://beta.langbase.com/examples/cefr-level-assessment-bot
