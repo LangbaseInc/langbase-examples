@@ -1,3 +1,5 @@
+![JavaScript Tutor Chatbot by ⌘ Langbase][cover]
+
 ![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
 
 ## Build JavaScript Tutor with Pipes — ⌘ Langbase
