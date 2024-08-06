@@ -13,7 +13,7 @@ Check out the live demo [here](https://ai-tech-blog-writer.langbase.dev/).
 
 ## Local Development
 
-1. Fork the [tech-blog-writer](https://beta.langbase.com/langbase/tech-blog-writer) Pipe on Langbase.
+1. Fork the [tech-blog-writer](https://langbase.com/langbase/tech-blog-writer) Pipe on Langbase.
 2. Copy the Pipe's API key.
 3. Duplicate the `.env.example` file and rename it to `.env.local`.
 4. Add the following environment variables:
