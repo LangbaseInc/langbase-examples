@@ -1,3 +1,4 @@
+
 ![Expert Proofreader Chatbot by ⌘ Langbase][cover]
 
 ![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
@@ -34,6 +35,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 4. `cd` into the project directory and open it in your code editor.
 5. Duplicate the `.env.example` file in this project and rename it to `.env.local`.
 6. Add the following environment variables (.env.local):
+
 ```
     # Replace `PIPE_API_KEY` with the copied API key.
     NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
@@ -62,10 +64,14 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
+
 [cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/expert-proofreader/expert-proofreader.png
 [demo]: https://expert-proofreader.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/expert-proofreader
+[pipe]: https://langbase.com/examples/expert-proofreader
+[demo]: https://expert-proofreader.langbase.dev
+[lb]: https://langbase.com
+[pipe]: https://langbase.com/examples/expert-proofreader
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/expert-proofreader
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/expert-proofreader
 [signup]: https://langbase.fyi/io
