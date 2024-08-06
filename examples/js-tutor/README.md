@@ -63,7 +63,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
-
+[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/js_tutor/js_tutor.png
 [demo]: https://js-tutor.langbase.dev
 [lb]: https://langbase.com
 [pipe]: https://langbase.com/examples/js-tutor
