@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { ChatInput } from './chat-input'
 import { Opening } from './opening'
+import { MemorySidebar } from './MemorySidebar'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
@@ -31,27 +32,29 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         setThreadId(lbThreadId)
       }
     })
-  return (
-    <div className="min-h-screen">
-      <div className={cn('pb-36 pt-4 md:pt-10', className)}>
-        {messages.length ? (
-          <>
-            <ChatList messages={messages} />
-          </>
-        ) : (
-          <Opening />
-        )}
+
+    return (
+      <div className="flex min-h-screen">
+        <MemorySidebar />
+        <div className="flex-grow">
+          <div className={cn('pb-36 pt-4 md:pt-10', className)}>
+            {messages.length ? (
+              <ChatList messages={messages} />
+            ) : (
+              <Opening />
+            )}
+          </div>
+          <ChatInput
+            id={id}
+            isLoading={isLoading}
+            stop={stop}
+            append={append}
+            reload={reload}
+            messages={messages}
+            input={input}
+            setInput={setInput}
+          />
+        </div>
       </div>
-      <ChatInput
-        id={id}
-        isLoading={isLoading}
-        stop={stop}
-        append={append}
-        reload={reload}
-        messages={messages}
-        input={input}
-        setInput={setInput}
-      />
-    </div>
-  )
-}
+    )
+  }
