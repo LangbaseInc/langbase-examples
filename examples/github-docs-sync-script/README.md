@@ -26,13 +26,23 @@ Using this script, you can keep your Langbase memory updated with the latest cha
 
 ## Usage
 
-### Prerequisites
+### Installation
 
-Before running the script, ensure you have the following:
+Make sure Node.js is installed in your system. Clone this example and navigate to its directory `cd github-docs-sync-script`.
 
-- **Node**: Make sure Node.js is installed in your system.
+ Then install the required packages:
 
-For a quick one time configuration, update the script with your specific details:
+```bash
+npm install
+```
+
+### Configuration
+
+Before running the script, select the mode:
+
+- **processAllFiles**: In the `script.js` file, set this to `true` if you want to upload all files in the repository. Set this to `false` if you want to upload only the changed files between two commits.
+
+For a quick one time configuration, open the `env.example` file, update the following variables and save it as `.env` file:
 
 - **Langbase API Key**: Replace langbaseApiKey in the script with your user or org Langbase key. Available upon signing up on the Langbase website.
 
@@ -42,26 +52,18 @@ For a quick one time configuration, update the script with your specific details
 
 - **GitHub Personal Access Token**: Required for authenticating GitHub API requests. You can create one from your GitHub account's developer settings. Add the token in the script.
 
-- **Commit SHAs**: The base and head commit SHAs between which you want to compare changes in your repository. Not needed if you are uploading all files. Add in baseCommitSha and headCommitSha variables in the script.
-
 - **Org/User Name**: Replace orgUserName with your Langbase organization or username.
 
-### Installation
-
-Clone the repository and navigate to the script's directory. Then install the required packages:
-
-```bash
-npm install
-```
+- **Commit SHAs** (Only for comparison mode): The base and head commit SHAs between which you want to compare changes in your repository. Not needed if you are in processAllFiles files mode and uploading all files. Add in baseCommitSha and headCommitSha variables in the script.
 
 ### STEP 1: Upload all Documentation files in the Repository
 
 Initially, we need to upload all documentation files in the repository to Langbase. This will help you create a baseline memory for your documentation.
 
-To upload all documentation files in the repository, change the `processAllFiles` option to `true` in the end of `script.js` where main runner function is called:
+To upload all documentation files in the repository, change the `processAllFiles` variable to `true` in the start of `script.js` file:
 
-```javascript:
-main({ processAllFiles: true });
+```javascript
+const processAllFiles = true;
 ```
 
 Then run the script:
@@ -80,10 +82,10 @@ Your Langbase memory should now be updated with all the documentation files in y
 
 After uploading all documentation files, you will want to keep your memory updated with the latest updates in your documentation.
 
-You can do it by uploading only the changed files between two commits. To do this, change the `processAllFiles` option to `false` in the end of `script.js` where main runner function is called:
+You can do it by uploading only the changed files between two commits. To do this, change the `processAllFiles` option to `false` in the start of `script.js` file:
 
 ```javascript
-main({ processAllFiles: false });
+const processAllFiles = false;
 ```
 
 Also update the `baseCommitSha` and `headCommitSha` variables with the respective commit SHAs between which you want to compare changes in your repository.
