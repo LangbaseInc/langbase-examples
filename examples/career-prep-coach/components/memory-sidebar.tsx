@@ -67,8 +67,8 @@ export function MemorySidebar() {
   };
 
   return (
-    <div className="w-64 bg-blend-normal p-4 flex flex-col space-y-2 fixed top-1/2 right-0 transform -translate-y-1/2 h-3/4 overflow-y-auto">
-      <h2 className="text-lg font-semibold">Memory Management</h2>
+    <div className="flex flex-col space-y-2">
+      <h2 className="text-lg font-semibold">Attach Memory</h2>
       <label htmlFor="memoryName">Memory Name</label>
       <input
         id="memoryName"
