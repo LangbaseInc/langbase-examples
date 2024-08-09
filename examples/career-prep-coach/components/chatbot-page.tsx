@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { ChatInput } from './chat-input'
 import { Opening } from './opening'
-import { MemorySidebar } from './MemorySidebar'
+import { MemorySidebar } from './memory-sidebar'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
