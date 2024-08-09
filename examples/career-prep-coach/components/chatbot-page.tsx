@@ -35,7 +35,6 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
 
     return (
       <div className="flex min-h-screen">
-        <MemorySidebar />
         <div className="flex-grow">
           <div className={cn('pb-36 pt-4 md:pt-10', className)}>
             {messages.length ? (
