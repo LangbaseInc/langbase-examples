@@ -103,10 +103,13 @@ export function MemorySidebar() {
         id="fileInput"
         ref={fileInputRef}
         type="file"
+        readOnly
         onChange={handleFileChange}
+        aria-label="Select file to upload"
         style={{ display: 'none' }}
+        title="Choose a file to upload"
       />
-      <Button onClick={handleFileSelect} variant="destructive-hover">
+      <Button onClick={handleFileSelect} variant="destructive-hover" aria-label="Select file" title="Click to select a file">
         Select File
       </Button>
       <Button onClick={handleFileUpload} variant="outline-background">
