@@ -95,7 +95,8 @@ async function handleFileUpload(req: Request) {
   const formData = await req.formData();
   const file = formData.get('fileName') as File;
   const memoryName = formData.get('memoryName') as string;
-  const ownerLogin = formData.get('ownerLogin') as string;
+  // const ownerLogin = formData.get('ownerLogin') as string;
+  const ownerLogin = process.env.LANGBASE_OWNER_LOGIN;
 
   console.log(`${file}, ${memoryName}, ${ownerLogin}`);
   if (!file || !memoryName) {
@@ -110,7 +111,7 @@ async function handleFileUpload(req: Request) {
     },
     body: JSON.stringify({
       memoryName: memoryName,
-      ownerLogin: ownerLogin, // You might need to adjust this
+      ownerLogin: ownerLogin?.toString(), // You might need to adjust this
       fileName: file.name,
     })
   });
