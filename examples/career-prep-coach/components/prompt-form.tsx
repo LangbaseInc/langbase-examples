@@ -72,8 +72,13 @@ export function PromptForm({
                     Memory
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-64 max-h-[600px] overflow-y-auto bg-black dark:bg-gray-950 border border-gray-200 dark:border-gray-700 shadow-lg" side="top" align="center">
-                  <MemorySidebar />
+                <PopoverContent className="w-80 p-4 overflow-y-auto bg-background border shadow-md">
+                  <div className="grid gap-4">
+                    <div className="space-y-2"/>
+                    <div className="grid gap-2">
+                      <MemorySidebar />
+                    </div>
+                  </div>
                 </PopoverContent>
               </Popover>
               <Button type="submit" disabled={isLoading || input === ''}>
