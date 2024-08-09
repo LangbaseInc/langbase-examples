@@ -38,12 +38,6 @@ export function MemorySidebar() {
       formData.append('fileName', file, file.name);
       formData.append('memoryName', memoryName);
 
-
-      // Log the FormData entries
-      for (let [key, value] of formData.entries()) {
-        console.log(`FormData entry - ${key}:`, value);
-      }
-
       const response = await fetch('/api/chat?action=uploadFile', {
         method: 'POST',
         body: formData
@@ -93,7 +87,7 @@ export function MemorySidebar() {
         onChange={(e) => setMemoryDescription(e.target.value)}
         className="w-full px-2 py-1 text-sm border rounded bg-slate-900"
       />
-      <Button onClick={handleCreateMemory} variant="default">
+      <Button onClick={handleCreateMemory} variant="outline-background">
         Create Memory
       </Button>
       <label htmlFor="selectedFile">Selected File</label>
@@ -106,15 +100,16 @@ export function MemorySidebar() {
         className="w-full px-2 py-1 text-sm border rounded bg-slate-900"
       />
       <input
+        id="fileInput"
         ref={fileInputRef}
         type="file"
         onChange={handleFileChange}
         style={{ display: 'none' }}
       />
-      <Button onClick={handleFileSelect} variant="outline-inverse">
+      <Button onClick={handleFileSelect} variant="destructive-hover">
         Select File
       </Button>
-      <Button onClick={handleFileUpload} variant="green">
+      <Button onClick={handleFileUpload} variant="outline-background">
         Upload File to Memory
       </Button>
     </div>
