@@ -95,10 +95,8 @@ async function handleFileUpload(req: Request) {
   const formData = await req.formData();
   const file = formData.get('fileName') as File;
   const memoryName = formData.get('memoryName') as string;
-  // const ownerLogin = formData.get('ownerLogin') as string;
   const ownerLogin = process.env.LANGBASE_OWNER_LOGIN;
 
-  console.log(`${file}, ${memoryName}, ${ownerLogin}`);
   if (!file || !memoryName) {
     return new Response(JSON.stringify({ error: 'Invalid file or memory name' }), { status: 400 });
   }
@@ -111,13 +109,12 @@ async function handleFileUpload(req: Request) {
     },
     body: JSON.stringify({
       memoryName: memoryName,
-      ownerLogin: ownerLogin?.toString(), // You might need to adjust this
+      ownerLogin: ownerLogin?.toString(), 
       fileName: file.name,
     })
   });
   
   const { signedUrl } = await signedUrlResponse.json();
-  console.log(`${signedUrl}`)
   // Now use the signed URL to upload the file
   const uploadResponse = await fetch(signedUrl, {
     method: 'PUT',
