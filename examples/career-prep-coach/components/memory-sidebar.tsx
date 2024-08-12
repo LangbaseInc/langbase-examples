@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { Button } from './ui/button';
-import { Textarea } from './ui/textarea';
 import { toast } from 'sonner';
 
 export function MemorySidebar() {
