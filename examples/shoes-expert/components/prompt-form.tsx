@@ -4,6 +4,8 @@ import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { UseChatHelpers } from 'ai/react'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
+import { Popover, PopoverTrigger, PopoverContent } from '@radix-ui/react-popover'
+import { MemorySidebar } from './memory-sidebar'
 
 export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
@@ -53,7 +55,6 @@ export function PromptForm({
             </div>
 
             <div className="flex items-center justify-center gap-2 md:justify-start">
-              {/* Reset chat */}
               <Button
                 variant="ghost"
                 className="max-w-xs"
@@ -64,7 +65,22 @@ export function PromptForm({
               >
                 Reset
               </Button>
-              {/* Send button */}
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button type="button" variant="outline-muted">
+                    <IconCommand className="size-4" />
+                    Memory
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80 p-4 overflow-y-auto bg-background border shadow-md">
+                  <div className="grid gap-4">
+                    <div className="space-y-2"/>
+                    <div className="grid gap-2">
+                      <MemorySidebar />
+                    </div>
+                  </div>
+                </PopoverContent>
+              </Popover>
               <Button type="submit" disabled={isLoading || input === ''}>
                 {isLoading ? (
                   <IconSpinner />
