@@ -147,11 +147,18 @@ async function processRawChoices(choice: Choice, env: Env, threadId: string): Pr
 
 function processSuccessfulCompletion(completion: any): ReadableStream {
     try {
-        const parsedCompletion = typeof completion === 'string' ? JSON.parse(completion) : completion;
-        const message = parsedCompletion.message || parsedCompletion.content || JSON.stringify(parsedCompletion);
+        let message: string;
+        if (completion === null || completion === undefined) {
+            message = "Sorry, I couldn't process your request at this time.";
+        } else if (typeof completion === 'string') {
+            const parsedCompletion = JSON.parse(completion);
+            message = parsedCompletion.response || parsedCompletion.message || parsedCompletion.content || parsedCompletion.greeting || JSON.stringify(parsedCompletion);
+        } else {
+            message = completion.response || completion.message || completion.content || JSON.stringify(completion);
+        }
         return createMessageStream(message);
     } catch (error) {
-        console.error('Error parsing completion:', error);
+        console.error('Error processing completion:', error);
         console.log('Raw completion:', completion);
         return createErrorStream('Error processing response');
     }
