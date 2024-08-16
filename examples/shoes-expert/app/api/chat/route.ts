@@ -28,8 +28,13 @@ export async function POST(req: Request) {
       return handleCreateMemory(req)
     } else if (action === 'uploadFile') {
       return handleFileUpload(req)
+    } else if (action === 'getMemorySets') {
+      return handleGetMemorySets()
+    } else if (action === 'updatePipe') {
+      const { memoryName } = await req.json()
+      const ownerLogin = process.env.LANGBASE_OWNER_LOGIN
+      return updatePipe(ownerLogin, memoryName)
     } else {
-
       const endpointUrl = 'https://api.langbase.com/beta/chat'
   
       const headers = {
@@ -144,26 +149,54 @@ async function handleFileUpload(req: Request) {
 
 async function updatePipe(ownerLogin: string | undefined, memoryName: string) {
   const url = `https://api.langbase.com/beta/pipes/${ownerLogin}/shoes-expert`;
-  const apiKey = process.env.LANGBASE_USER_API_KEY;
+  const apiKey = process.env.NEXT_LB_PIPE_API_KEY;
 
   const pipe = {
     name: 'shoes-expert',
     description: 'An AI-powered shoe expert that recommends Nike and Adidas footwear based on customer preferences and provides personalized shopping assistance.',
     status: 'private',
     config: {
-      memorysets:[memoryName]
+      memorysets: [memoryName]
     }
   };
 
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(pipe),
+    });
+
+    const updatedPipe = await response.json();
+    return new Response(JSON.stringify(updatedPipe), {
+      status: response.status,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  } catch (error) {
+    console.error('Error updating pipe:', error);
+    return new Response(JSON.stringify({ error: 'Failed to update pipe' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+};
+
+async function handleGetMemorySets() {
+  const url = 'https://api.langbase.com/beta/user/memorysets';
   const response = await fetch(url, {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify(pipe),
+      'Authorization': `Bearer ${process.env.LANGBASE_USER_API_KEY}`
+    }
   });
-  const updatedPipe = await response.json();
-  console.log(`update pipe: ${updatedPipe.success}`);
-  return updatedPipe;
+
+  const memorySetsList = await response.json();
+  console.log(`list: ${JSON.stringify(memorySetsList)}`);
+  return new Response(JSON.stringify(memorySetsList), {
+    headers: { 'Content-Type': 'application/json' }
+  });
 }
