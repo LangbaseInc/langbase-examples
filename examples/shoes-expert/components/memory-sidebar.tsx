@@ -78,7 +78,7 @@ export function MemorySidebar() {
         placeholder="Enter memory name"
         value={memoryName}
         onChange={(e) => setMemoryName(e.target.value)}
-        className="w-full px-2 py-1 text-sm border rounded  bg-slate-900"
+        className="w-full px-2 py-1 text-sm border rounded  bg-muted"
       />
       <label htmlFor="memoryDescription">Memory Description</label>
       <input
@@ -87,7 +87,7 @@ export function MemorySidebar() {
         placeholder="Enter memory description"
         value={memoryDescription}
         onChange={(e) => setMemoryDescription(e.target.value)}
-        className="w-full px-2 py-1 text-sm border rounded bg-slate-900"
+        className="w-full px-2 py-1 text-sm border rounded bg-muted"
       />
       <Button onClick={handleCreateMemory} variant="outline-background">
         Create Memory
@@ -99,7 +99,7 @@ export function MemorySidebar() {
         placeholder="No file selected"
         value={fileName}
         readOnly
-        className="w-full px-2 py-1 text-sm border rounded bg-slate-900"
+        className="w-full px-2 py-1 text-sm border rounded bg-muted"
       />
       <input
         id="fileInput"
