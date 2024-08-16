@@ -115,7 +115,6 @@ async function handleFileUpload(req: Request) {
   });
   
   const { signedUrl } = await signedUrlResponse.json();
-  // Now use the signed URL to upload the file
   const uploadResponse = await fetch(signedUrl, {
     method: 'PUT',
     headers: {
@@ -124,8 +123,47 @@ async function handleFileUpload(req: Request) {
     body: file,
   });
 
-  return new Response(JSON.stringify({ success: uploadResponse.ok }), {
+  if (uploadResponse.ok) {
+    const pipeUpdateResponse = await updatePipe(ownerLogin, memoryName);
+    
+    return new Response(JSON.stringify({ 
+      success: true, 
+      fileUpload: uploadResponse.ok,
+      pipeUpdate: pipeUpdateResponse 
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  return new Response(JSON.stringify({ success: false }), {
     status: uploadResponse.status,
     headers: { 'Content-Type': 'application/json' }
   });
+}
+
+async function updatePipe(ownerLogin: string | undefined, memoryName: string) {
+  const url = `https://api.langbase.com/beta/pipes/${ownerLogin}/shoes-expert`;
+  const apiKey = process.env.LANGBASE_USER_API_KEY;
+
+  const pipe = {
+    name: 'shoes-expert',
+    description: 'An AI-powered shoe expert that recommends Nike and Adidas footwear based on customer preferences and provides personalized shopping assistance.',
+    status: 'private',
+    config: {
+      memorysets:[memoryName]
+    }
+  };
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify(pipe),
+  });
+  const updatedPipe = await response.json();
+  console.log(`update pipe: ${updatedPipe.success}`);
+  return updatedPipe;
 }
