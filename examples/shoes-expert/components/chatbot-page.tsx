@@ -43,8 +43,8 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         })
         if (!response.ok) throw new Error('Failed to fetch memory sets')
         const data = await response.json()
-        console.log('Memory sets fetched:', data);
         setMemorySets(data.memorySets || [])
+        toast.success('Memory sets refreshed successfully')
       } catch (error) {
         console.error('Error fetching memory sets:', error)
         toast.error('Failed to fetch memory sets')
