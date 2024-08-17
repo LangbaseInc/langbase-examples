@@ -1,59 +1,6 @@
-interface LangbaseResponse {
-	completion: string;
-}
+import { Env, ApiResponse } from './types';
 
-interface ToolCall {
-	id: string;
-	type: string;
-	function: {
-		name: string;
-		arguments: string;
-	};
-}
-
-interface AssistantMessage {
-	role: string;
-	content: string | null;
-	tool_calls?: ToolCall[];
-}
-
-interface Choice {
-	index: number;
-	message: AssistantMessage;
-	logprobs: null;
-	finish_reason: string;
-}
-
-interface Usage {
-	prompt_tokens: number;
-	completion_tokens: number;
-	total_tokens: number;
-}
-
-interface RawResponse {
-	id: string;
-	object: string;
-	created: number;
-	model: string;
-	choices: Choice[];
-	usage: Usage;
-	system_fingerprint: null;
-}
-
-interface ApiResponse {
-	success: boolean;
-	completion: string;
-	raw: RawResponse;
-}
-
-export interface Env {
-    OPENAI_API_KEY: string;
-    LANGBASE_TRAVEL_PIPE_API_KEY: string,
-    LANGBASE_ELECTRONICS_PIPE_API_KEY: string,
-    LANGBASE_SPORTS_PIPE_API_KEY: string,
-    LANGBASE_ONLINE_STORE_CUSTOMER_SERVICE_API_KEY: string
-}
-
+const encoder = new TextEncoder();
 
 function getDepartmentKey(functionName: string): keyof Pick<Env, 'LANGBASE_SPORTS_PIPE_API_KEY' | 'LANGBASE_ELECTRONICS_PIPE_API_KEY' | 'LANGBASE_TRAVEL_PIPE_API_KEY'> | null {
     const departmentMap: { [key: string]: keyof Pick<Env, 'LANGBASE_SPORTS_PIPE_API_KEY' | 'LANGBASE_ELECTRONICS_PIPE_API_KEY' | 'LANGBASE_TRAVEL_PIPE_API_KEY'> } = {
@@ -64,23 +11,7 @@ function getDepartmentKey(functionName: string): keyof Pick<Env, 'LANGBASE_SPORT
     return departmentMap[functionName] || null;
 }
 
-
-function createMessageStream(content: string): ReadableStream {
-    return new ReadableStream({
-        start(controller) {
-            const encoder = new TextEncoder();
-            controller.enqueue(encoder.encode('data: ' + JSON.stringify({ choices: [{ delta: { content } }] }) + '\n\n'));
-            controller.close();
-        }
-    });
-}
-
-function createErrorStream(errorMessage: string): ReadableStream {
-    return createMessageStream(errorMessage);
-}
-
-async function callDepartment(deptKey: keyof Pick<Env, 'LANGBASE_SPORTS_PIPE_API_KEY' | 'LANGBASE_ELECTRONICS_PIPE_API_KEY' | 'LANGBASE_TRAVEL_PIPE_API_KEY'>, customerQuery: string, env: Env, threadId?: string): Promise<ReadableStream> {
-    console.log(`Calling ${deptKey} department with query:`, customerQuery);
+async function callDepartment(deptKey: keyof Pick<Env, 'LANGBASE_SPORTS_PIPE_API_KEY' | 'LANGBASE_ELECTRONICS_PIPE_API_KEY' | 'LANGBASE_TRAVEL_PIPE_API_KEY'>, customerQuery: string, env: Env, threadId?: string): Promise<ApiResponse> {
 
     const response = await fetch('https://api.langbase.com/beta/chat', {
         method: 'POST',
@@ -95,93 +26,117 @@ async function callDepartment(deptKey: keyof Pick<Env, 'LANGBASE_SPORTS_PIPE_API
     });
 
     if (!response.ok) {
-        return new ReadableStream({
-            start(controller) {
-                controller.enqueue(new TextEncoder().encode(`Error: ${response.status} ${response.statusText}`));
-                controller.close();
-            }
-        });
+        throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
 
+    return await response.json() as ApiResponse;
+}
+
+async function processMainChatbotResponse(response: Response, env: Env, threadId: string): Promise<ReadableStream> {
     const reader = response.body!.getReader();
     const decoder = new TextDecoder();
-    const encoder = new TextEncoder();
+
+    let accumulatedToolCall: any = null;
+    let accumulatedArguments = '';
 
     return new ReadableStream({
         async start(controller) {
+            let buffer = '';
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
 
-                const chunk = decoder.decode(value, { stream: true });
-                controller.enqueue(encoder.encode(chunk));
+                buffer += decoder.decode(value, { stream: true });
+                const lines = buffer.split('\n');
+                buffer = lines.pop() || '';
+
+                for (const line of lines) {
+                    const result = await processLine(line, controller, env, threadId, accumulatedToolCall, accumulatedArguments);
+                    accumulatedToolCall = result[0];
+                    accumulatedArguments = result[1];
+                }
             }
             controller.close();
         }
     });
 }
 
-
-async function processDepartmentCalls(toolCalls: ToolCall[], env: Env, threadId: string): Promise<ReadableStream> {
-    for (const toolCall of toolCalls) {
-        const functionName = toolCall.function.name;
-        const functionArgs = JSON.parse(toolCall.function.arguments);
-        const departmentKey = getDepartmentKey(functionName);
-        if (departmentKey) {
-            return await callDepartment(departmentKey, functionArgs.customerQuery, env, threadId);
-        }
+async function processLine(
+    line: string, 
+    controller: ReadableStreamDefaultController, 
+    env: Env, 
+    threadId: string, 
+    accumulatedToolCall: any, 
+    accumulatedArguments: string
+): Promise<[any, string]> {
+    if (line.trim() === 'data: [DONE]') {
+        controller.enqueue(encoder.encode('data: [DONE]\n\n'));
+        return [accumulatedToolCall, accumulatedArguments];
     }
-    return createErrorStream('No valid department call found');
-}
+    if (!line.startsWith('data: ')) return [accumulatedToolCall, accumulatedArguments];
 
-
-async function processRawChoices(choice: Choice, env: Env, threadId: string): Promise<ReadableStream> {
-    const assistantMessage = choice.message;
-    if (assistantMessage.tool_calls && assistantMessage.tool_calls.length > 0) {
-        return await processDepartmentCalls(assistantMessage.tool_calls, env, threadId);
-    } else {
-        const content = assistantMessage.content || 'Sorry, I couldn\'t process your request.';
-        return createMessageStream(content);
-    }
-}
-
-function processSuccessfulCompletion(completion: any): ReadableStream {
     try {
-        let message: string;
-        if (completion === null || completion === undefined) {
-            message = "Sorry, I couldn't process your request at this time.";
-        } else if (typeof completion === 'string') {
-            const parsedCompletion = JSON.parse(completion);
-            message = parsedCompletion.response || parsedCompletion.message || parsedCompletion.content || parsedCompletion.greeting || JSON.stringify(parsedCompletion);
-        } else {
-            message = completion.response || completion.message || completion.content || JSON.stringify(completion);
+        const data = JSON.parse(line.slice(6));
+        if (!data.choices || !data.choices[0].delta) return [accumulatedToolCall, accumulatedArguments];
+
+        const delta = data.choices[0].delta;
+        if (delta.content) {
+            enqueueContentChunk(controller, data, delta.content);
+        } else if (delta.tool_calls) {
+            if (!accumulatedToolCall) {
+                accumulatedToolCall = delta.tool_calls[0];
+                accumulatedArguments = delta.tool_calls[0].function.arguments || '';
+            } else {
+                accumulatedArguments += delta.tool_calls[0].function.arguments || '';
+            }
+
+            if (accumulatedToolCall.function.name && accumulatedArguments.endsWith('}')) {
+                const departmentKey = getDepartmentKey(accumulatedToolCall.function.name);
+                if (departmentKey) {
+                    const args = JSON.parse(accumulatedArguments);
+                    const departmentResponse = await callDepartment(departmentKey, args.customerQuery, env, threadId);
+                    let responseContent = formatDepartmentResponse(departmentResponse.completion);
+                    enqueueContentChunk(controller, data, responseContent);
+                }
+                accumulatedToolCall = null;
+                accumulatedArguments = '';
+            }
         }
-        return createMessageStream(message);
     } catch (error) {
-        console.error('Error processing completion:', error);
-        console.log('Raw completion:', completion);
-        return createErrorStream('Error processing response');
+        console.warn('Error processing chunk:', error, 'Line:', line);
+    }
+
+    return [accumulatedToolCall, accumulatedArguments];
+}
+
+function enqueueContentChunk(controller: ReadableStreamDefaultController, data: any, content: string) {
+    const chunk = {
+        id: data.id,
+        object: 'chat.completion.chunk',
+        created: data.created,
+        model: data.model,
+        choices: [{ index: 0, delta: { content }, finish_reason: null }]
+    };
+    controller.enqueue(encoder.encode(`data: ${JSON.stringify(chunk)}\n\n`));
+}
+
+function formatDepartmentResponse(response: string): string {
+    try {
+        const parsedResponse = JSON.parse(response);
+        const [key, value] = Object.entries(parsedResponse)[0];
+        return `${key} ${value}`;
+    } catch (parseError) {
+        console.warn('Error parsing department response:', parseError);
+        return response;
     }
 }
 
-
-async function processMainChatbotResponse(data: ApiResponse, env: Env, threadId: string): Promise<ReadableStream> {
-    if (data.success && data.completion) {
-        return processSuccessfulCompletion(data.completion);
-    } else if (data.raw && data.raw.choices && data.raw.choices.length > 0) {
-        return processRawChoices(data.raw.choices[0], env, threadId);
-    } else {
-        return createErrorStream('Unexpected response format');
-    }
-}
-
-
-async function callMainChatbot(query: string, threadId: string | undefined, env: Env): Promise<{ data: ApiResponse, threadId: string | undefined }> {
+async function callMainChatbot(query: string, threadId: string | undefined, env: Env): Promise<Response> {
     const userQuery = {
         threadId,
         messages: [{ role: 'user', content: query }],
     };
-    const response = await fetch('https://api.langbase.com/beta/chat', {
+    return fetch('https://api.langbase.com/beta/chat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -189,21 +144,17 @@ async function callMainChatbot(query: string, threadId: string | undefined, env:
         },
         body: JSON.stringify(userQuery),
     });
-
-    const data = await response.json() as ApiResponse;
-    return {
-        data,
-        threadId: response.headers.get('lb-thread-id') || threadId
-    };
 }
-
 
 export default {
     async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+        const isProduction = request.url.includes('workers.dev');
+        const allowedOrigin = isProduction ? 'https://online-cs.pages.dev' : 'http://localhost:3000';
+
         if (request.method === 'OPTIONS') {
             return new Response(null, {
                 headers: {
-                    'Access-Control-Allow-Origin': 'http://localhost:3000',
+                    'Access-Control-Allow-Origin': allowedOrigin,
                     'Access-Control-Allow-Methods': 'POST, OPTIONS',
                     'Access-Control-Allow-Headers': 'Content-Type',
                 },
@@ -211,7 +162,12 @@ export default {
         }
 
         if (request.method !== 'POST') {
-            return new Response('Method Not Allowed', { status: 405 });
+            return new Response('Method Not Allowed', { 
+                status: 405,
+                headers: {
+                    'Access-Control-Allow-Origin': allowedOrigin,
+                }
+            });
         }
 
         let incomingMessages;
@@ -230,23 +186,24 @@ export default {
                 status: 400,
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://localhost:3000',
+                    'Access-Control-Allow-Origin': allowedOrigin,
                 },
             });
         }
 
         const query = incomingMessages[incomingMessages.length - 1].content;
-        const { data, threadId: newThreadId } = await callMainChatbot(query, threadId, env);
-        threadId = newThreadId;
 
-        const responseStream = await processMainChatbotResponse(data, env, threadId || '');
+        const response = await callMainChatbot(query, threadId, env);
+        threadId = response.headers.get('lb-thread-id') || threadId;
+
+        const responseStream = await processMainChatbotResponse(response, env, threadId || '');
 
         return new Response(responseStream, {
             headers: {
                 'Content-Type': 'text/event-stream',
                 'Cache-Control': 'no-cache',
                 'Connection': 'keep-alive',
-                'Access-Control-Allow-Origin': 'http://localhost:3000',
+                'Access-Control-Allow-Origin': allowedOrigin,
                 'Access-Control-Allow-Methods': 'POST, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type, lb-thread-id',
                 'lb-thread-id': threadId || '',
@@ -254,5 +211,3 @@ export default {
         });
     },
 };
-
-
