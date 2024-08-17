@@ -149,12 +149,12 @@ async function handleFileUpload(req: Request) {
 
 async function updatePipe(ownerLogin: string | undefined, memoryName: string) {
   const url = `https://api.langbase.com/beta/pipes/${ownerLogin}/shoes-expert`;
-  const apiKey = process.env.NEXT_LB_PIPE_API_KEY;
+  const apiKey = process.env.LANGBASE_USER_API_KEY;
 
   const pipe = {
-    name: 'shoes-expert',
-    description: 'An AI-powered shoe expert that recommends Nike and Adidas footwear based on customer preferences and provides personalized shopping assistance.',
-    status: 'private',
+    name: "shoes-expert",
+    description: "An AI-powered shoe expert that recommends Nike and Adidas footwear based on customer preferences and provides personalized shopping assistance.",
+    status: "private",
     config: {
       memorysets: [memoryName]
     }
@@ -195,7 +195,6 @@ async function handleGetMemorySets() {
   });
 
   const memorySetsList = await response.json();
-  console.log(`list: ${JSON.stringify(memorySetsList)}`);
   return new Response(JSON.stringify(memorySetsList), {
     headers: { 'Content-Type': 'application/json' }
   });
