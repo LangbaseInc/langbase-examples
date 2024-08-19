@@ -2,6 +2,18 @@ import React, { useState, useRef } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Button } from './ui/button';
 import { toast } from 'sonner';
+import { z } from 'zod';
+
+const memorySchema = z.object({
+  name: z.string()
+    .min(1, "Memory name is required")
+    .regex(/^[a-zA-Z][a-zA-Z0-9_-]*$/, "Name must start with a letter and can only contain letters, numbers, underscores, and dashes"),
+  description: z.string()
+    .min(1, "Memory description is required")
+    .regex(/^[a-zA-Z][a-zA-Z0-9_-]*$/, "Description must start with a letter and can only contain letters, numbers, underscores, and dashes"),
+});
+
+
 
 interface MemorySidebarProps {
   memorySets: any[];
@@ -20,10 +32,12 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
 
   const handleCreateMemory = async () => {
     try {
+
+      const validatedData = memorySchema.parse({ name: memoryName, description: memoryDescription });
       const response = await fetch('/api/chat?action=createMemory', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: memoryName, description: memoryDescription })
+        body: JSON.stringify(validatedData)
       });
       if (!response.ok) throw new Error('Failed to create memory');
       const data = await response.json();
@@ -31,8 +45,12 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
       console.log('Memory created:', data);
       refreshMemorySets();
     } catch (error) {
-      toast.error('Error creating memory');
-      console.error('Error creating memory:', error);
+      if (error instanceof z.ZodError) {
+        toast.error(error.errors[0].message);
+      } else {
+        toast.error('Error creating memory');
+        console.error('Error creating memory:', error);
+      }
     }
   };
 
@@ -41,10 +59,16 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
       toast.error('Please select a file first');
       return;
     }
+    if (!memoryName.trim() || !memoryDescription.trim()) {
+      toast.error('Memory name and description are required');
+      return;
+    }
     try {
+      const validatedData = memorySchema.parse({ name: memoryName, description: memoryDescription });
       const formData = new FormData();
       formData.append('fileName', file, file.name);
-      formData.append('memoryName', memoryName);
+      formData.append('memoryName', validatedData.name);
+      formData.append('memoryDescription', validatedData.description);
 
       const response = await fetch('/api/chat?action=uploadFile', {
         method: 'POST',
@@ -56,11 +80,15 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
         console.error('Upload failed:', response.status, errorText);
         throw new Error(`Failed to upload file: ${response.status} ${errorText}`);
       }
-
+  
       toast.success('File uploaded successfully');
     } catch (error) {
-      toast.error('Error uploading file');
-      console.error('Error uploading file:', error);
+      if (error instanceof z.ZodError) {
+        toast.error(error.errors[0].message);
+      } else {
+        toast.error('Error uploading file');
+        console.error('Error uploading file:', error);
+      }
     }
   };
 
