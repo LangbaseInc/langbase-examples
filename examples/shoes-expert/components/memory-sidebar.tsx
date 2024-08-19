@@ -94,8 +94,14 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0] || null;
-    setFile(selectedFile);
-    setFileName(selectedFile ? selectedFile.name : '');
+    if (selectedFile && selectedFile.type === 'text/csv') {
+      setFile(selectedFile);
+      setFileName(selectedFile.name);
+    } else {
+      setFile(null);
+      setFileName('');
+      toast.error('Please select a CSV file');
+    }
   };
 
   const handleFileSelect = () => {
@@ -182,10 +188,11 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
         ref={fileInputRef}
         type="file"
         readOnly
+        accept=".csv"
         onChange={handleFileChange}
-        aria-label="Select file to upload"
+        aria-label="Select CSV file to upload"
         style={{ display: 'none' }}
-        title="Choose a file to upload"
+        title="Choose a CSV file to upload"
       />
       <Button onClick={handleFileSelect} variant="destructive-hover" aria-label="Select file" title="Click to select a file">
         Select File
