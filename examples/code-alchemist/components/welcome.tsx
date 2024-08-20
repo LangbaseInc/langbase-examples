@@ -11,6 +11,7 @@ import RecentChats from './recent-chats';
 import { RecentChat } from './alchemist-page';
 import BlurFade from './magicui/blur-fade';
 import { IconLangbase } from './ui/icon-langbase';
+import { Opening } from './opening';
 
 const Welcome = ({
 	prompt,
@@ -18,6 +19,7 @@ const Welcome = ({
 	isLoading,
 	setPrompt,
 	recentChats,
+	showOpening,
 	showWelcome,
 	handleOnClick,
 	showRecentChats
@@ -31,6 +33,7 @@ const Welcome = ({
 		prompt: string;
 	}) => Promise<void>;
 	isLoading: boolean;
+	showOpening: boolean;
 	showWelcome: boolean;
 	showRecentChats: boolean;
 	recentChats: RecentChat[];
@@ -55,7 +58,7 @@ const Welcome = ({
 		showWelcome && checkTimeOfDay();
 	}, []);
 
-	if (!showWelcome) return <></>;
+	if (!showWelcome) return <></>;;
 
 	return (
 		<BlurFade delay={0.15} className='w-full'>
@@ -76,6 +79,7 @@ const Welcome = ({
 						handleOnClick={handleOnClick}
 					/>
 				)}
+				<Opening showOpening={showOpening} />
 			</div>
 		</BlurFade>
 	);

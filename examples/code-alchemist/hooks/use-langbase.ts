@@ -74,7 +74,6 @@ const useLangbase = () => {
 			}
 			setShowRecentChats(false);
 
-
 			// lastRanPipe !== 'code-alchemist' && setShowWelcome(false);
 
 			let localCompletion = '';
@@ -168,11 +167,22 @@ const useLangbase = () => {
 		setShowRecentChats(true);
 	}, []);
 
-	// show sandbox if welcome is not shown and the last ran pipe is not code-alchemist
+	// show sandbox if
+	// 1. the welcome screen is not shown
+	// 2. the last ran pipe is anything other than code-alchemist
 	const showSandbox = !showWelcome && lastRanPipe !== 'code-alchemist';
 
-	// show app preview if the last ran pipe is react-copilot and the run has finished
+	// show app preview if
+	// 1. the last ran pipe is react-copilot
+	// 2. the run has finished
 	const showPreview = lastRanPipe === 'react-copilot' && hasFinishedRun;
+
+	// Show the opening if
+	// 1. The welcome screen is shown
+	// 2. The recent chats are not shown
+	// 3. The completion is empty
+	// 4. The loading state is false
+	const showOpening = showWelcome && !showRecentChats && !completion.length && !loading;
 
 	return {
 		prompt,
@@ -186,6 +196,7 @@ const useLangbase = () => {
 		showWelcome,
 		improveCode,
 		showPreview,
+		showOpening,
 		hasFinishedRun,
 		showRecentChats,
 		setShowRecentChats,

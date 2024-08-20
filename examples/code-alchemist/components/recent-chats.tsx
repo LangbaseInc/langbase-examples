@@ -10,9 +10,6 @@ const RecentChats = ({
 	recentChats: RecentChat[];
 	handleOnClick: (chat: RecentChat) => void;
 }) => {
-	if (!recentChats.length) {
-		return <></>;
-	}
 
 	/**
 	 * Calculates the time difference between the given timestamp and the current time.
