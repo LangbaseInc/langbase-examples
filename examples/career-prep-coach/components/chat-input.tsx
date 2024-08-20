@@ -21,7 +21,10 @@ export interface ChatInputProps
   selectedMemory: string
   onMemorySelect: (memoryUrl: string) => void
   userApiKey: string; 
-  setUserApiKey: (apiKey: string) => void; 
+  setUserApiKey: (apiKey: string) => void;
+  ownerLogin: string; 
+  setOwnerLogin: (login: string) => void;
+   
 }
 
 export function ChatInput({
@@ -38,7 +41,9 @@ export function ChatInput({
   selectedMemory,
   onMemorySelect,
   userApiKey, 
-  setUserApiKey 
+  setUserApiKey,
+  ownerLogin, 
+  setOwnerLogin 
 }: ChatInputProps) {
   return (
     <div className="fixed inset-x-0 bottom-0">
@@ -84,7 +89,9 @@ export function ChatInput({
             selectedMemory={selectedMemory}
             onMemorySelect={onMemorySelect}
             userApiKey={userApiKey} 
-            setUserApiKey={setUserApiKey} 
+            setUserApiKey={setUserApiKey}
+            ownerLogin={ownerLogin} 
+            setOwnerLogin={setOwnerLogin} 
           />
         </div>
       </div>
