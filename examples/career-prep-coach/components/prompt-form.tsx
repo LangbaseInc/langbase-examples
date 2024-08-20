@@ -11,13 +11,23 @@ export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
   onSubmit: (value: string) => Promise<void>
   isLoading: boolean
+  memorySets: any[] // Add this line
+  selectedMemory: string // Add this line if not already present
+  refreshMemorySets: () => Promise<void> // Add this line
+  onMemorySelect: (memoryUrl: string) => void // Add this line
 }
+
+
 
 export function PromptForm({
   onSubmit,
   input,
   setInput,
-  isLoading
+  isLoading,
+  memorySets,
+  selectedMemory,
+  refreshMemorySets,
+  onMemorySelect
 }: PromptProps) {
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
@@ -76,7 +86,12 @@ export function PromptForm({
                   <div className="grid gap-4">
                     <div className="space-y-2"/>
                     <div className="grid gap-2">
-                      <MemorySidebar />
+                    <MemorySidebar 
+                      memorySets={memorySets} 
+                      selectedMemory={selectedMemory}
+                      refreshMemorySets={refreshMemorySets}
+                      onMemorySelect={onMemorySelect}
+                      />
                     </div>
                   </div>
                 </PopoverContent>
