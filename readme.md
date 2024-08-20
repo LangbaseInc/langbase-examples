@@ -6,8 +6,8 @@ Langbase helps developers ship composable AI agents with hyper-personalized memo
 
 Langbase is the composable AI infrastructure and developer experience to build, collaborate, and deploy any AI agents (AI features). Our mission is to make AI accessible to everyone, any developer not just AI/ML experts. We are the only [composable AI infrastructure][composable]. That's all we do.
 
-1. Start by building AI agents [Pipes](/pipe/overview)
-2. Then create managed semantic [memory (RAG)](/memory/overview), so your AI can talk to your data
+1. Start by building AI agents [Pipes][pipe]
+2. Then create managed semantic [memory (RAG)][memory], so your AI can talk to your data
 
 
 > [!NOTE]  
