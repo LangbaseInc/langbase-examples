@@ -18,7 +18,7 @@ export function Opening() {
               <Link
                 target="_blank"
                 className="underline hover:text-indigo-400 mb-2"
-                href="https://beta.langbase.com/examples/shoes-expert"
+                href="https://langbase.com/examples/shoes-expert"
               >
                 <span className="font-bold">pipe on ⌘ Langbase</span>
               </Link>
@@ -31,21 +31,25 @@ export function Opening() {
           <div className="mt-4 flex flex-col gap-4 text-sm [&>p]:my-0 [&>p]:py-0">
             <p>Learn more by checking out:</p>
             <div className="flex flex-col gap-4 mt-2 text-sm">
-              <Dlink href="https://beta.langbase.com/examples/shoes-expert">
+              <Dlink href="https://langbase.com/examples/shoes-expert">
                 <span>1.</span>
                 <span>Fork this Shoes Expert Chatbot Pipe on ⌘ Langbase</span>
               </Dlink>
-              <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/shoes-expert">
+              <Dlink href="https://langbase.com/memorysets/examples/shoes-expert">
                 <span>2.</span>
+                <span>Attach the example memory (dataset) for the Shoes Expert Recommender Chatbot</span>
+              </Dlink>
+              <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/shoes-expert">
+                <span>3.</span>
                 <span>Use LangUI.dev's open source code components</span>
               </Dlink>
 
               <Dlink href="https://langbase.com/docs/pipe/quickstart">
-                <span>3.</span>
+                <span>4.</span>
                 <span>Go through Documentaion: Pipe Quickstart </span>
               </Dlink>
               <Dlink href="https://langbase.com/docs">
-                <span>4.</span>
+                <span>5.</span>
                 <span>
                   Learn more about Pipes & Memory features on ⌘ Langbase
                 </span>
