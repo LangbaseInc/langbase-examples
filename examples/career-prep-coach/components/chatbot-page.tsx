@@ -17,6 +17,7 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
   const [threadId, setThreadId] = useState<null | string>(null)
   const [memorySets, setMemorySets] = useState<any[]>([])
   const [selectedMemory, setSelectedMemory] = useState('')
+  const [userApiKey, setUserApiKey] = useState<string>('');
 
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
@@ -40,6 +41,7 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
       try {
         const response = await fetch('/api/chat?action=getMemorySets', {
           method: 'POST',
+          body: JSON.stringify({ userApiKey })
         })
         if (!response.ok) throw new Error('Failed to fetch memory sets')
         const data = await response.json()
@@ -49,7 +51,7 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         console.error('Error fetching memory sets:', error)
         toast.error('Failed to fetch memory sets')
       }
-    }, [])
+    }, [userApiKey])
     
     
 
@@ -80,6 +82,8 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
             selectedMemory={selectedMemory}
             refreshMemorySets={fetchMemorySets}
             onMemorySelect={handleMemorySelect}
+            userApiKey={userApiKey} 
+            setUserApiKey={setUserApiKey} 
           />
         </div>
       </div>
