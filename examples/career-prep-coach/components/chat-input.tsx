@@ -20,6 +20,8 @@ export interface ChatInputProps
   refreshMemorySets: () => Promise<void>
   selectedMemory: string
   onMemorySelect: (memoryUrl: string) => void
+  userApiKey: string; 
+  setUserApiKey: (apiKey: string) => void; 
 }
 
 export function ChatInput({
@@ -34,7 +36,9 @@ export function ChatInput({
   memorySets,
   refreshMemorySets,
   selectedMemory,
-  onMemorySelect
+  onMemorySelect,
+  userApiKey, 
+  setUserApiKey 
 }: ChatInputProps) {
   return (
     <div className="fixed inset-x-0 bottom-0">
@@ -79,6 +83,8 @@ export function ChatInput({
             refreshMemorySets={refreshMemorySets}
             selectedMemory={selectedMemory}
             onMemorySelect={onMemorySelect}
+            userApiKey={userApiKey} 
+            setUserApiKey={setUserApiKey} 
           />
         </div>
       </div>
