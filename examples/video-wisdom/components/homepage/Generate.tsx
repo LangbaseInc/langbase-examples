@@ -1,0 +1,65 @@
+import React from 'react'
+import { Input } from '../ui/input'
+import { Button } from '../ui/button'
+import { toast } from 'sonner'
+
+export default function Generate({
+    transcript,
+    setAIResponse,
+}: {
+    transcript: string,
+    setAIResponse: (response: string) => void,
+}) {
+    const [prompt, setPrompt] = React.useState('')
+    const [loading, setLoading] = React.useState(false)
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        // Prevent form submission
+        e.preventDefault()
+
+        // Prevent empty prompt
+        if (!prompt.trim() || loading) return
+
+        // Set loading state and clear previous response
+        setLoading(true)
+        setAIResponse("")
+
+        try {
+            // Fetch response from the server
+            const response = await fetch('/api/langbase/wisdom', {
+                method: 'POST',
+                body: JSON.stringify({ prompt, transcript, type: "generate" }),
+                headers: { 'Content-Type': 'text/plain' },
+            });
+
+            // Parse the response
+            const data = await response.json()
+            console.log(data.completion)
+            setAIResponse(data.completion)
+
+        } catch (error) {
+            toast.error("Failed to generate response")
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    return (
+        <form
+            onSubmit={handleSubmit}
+            className="flex flex-col w-full items-center gap-2"
+        >
+            <Input
+                type="text"
+                placeholder="Enter prompt message here"
+                value={prompt}
+                onChange={e => setPrompt(e.target.value)}
+                required
+            />
+
+            <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? 'AI is thinking...' : 'Ask AI'}
+            </Button>
+        </form>
+    )
+}
