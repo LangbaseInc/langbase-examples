@@ -5,11 +5,14 @@ import { RecentChat } from './alchemist-page';
 
 const RecentChats = ({
 	recentChats,
-	handleOnClick
+	handleOnClick,
+	showRecentChats
 }: {
+	showRecentChats: boolean;
 	recentChats: RecentChat[];
 	handleOnClick: (chat: RecentChat) => void;
 }) => {
+	if (!showRecentChats) return <></>;
 
 	/**
 	 * Calculates the time difference between the given timestamp and the current time.

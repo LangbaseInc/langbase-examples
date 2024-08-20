@@ -58,10 +58,10 @@ const Welcome = ({
 		showWelcome && checkTimeOfDay();
 	}, []);
 
-	if (!showWelcome) return <></>;;
+	if (!showWelcome) return <></>;
 
 	return (
-		<BlurFade delay={0.15} className='w-full'>
+		<BlurFade delay={0.15} className="w-full">
 			<div className="w-full flex flex-col items-center gap-y-8 pt-16 sm:pt-10">
 				<h2 className="text-2xl sm:text-5xl font-semibold flex">
 					<IconLangbase className="size-8 sm:size-12 mr-2 select-none" />
@@ -73,12 +73,11 @@ const Welcome = ({
 					isLoading={isLoading}
 					setPrompt={setPrompt}
 				/>
-				{showRecentChats && (
-					<RecentChats
-						recentChats={recentChats}
-						handleOnClick={handleOnClick}
-					/>
-				)}
+				<RecentChats
+					recentChats={recentChats}
+					handleOnClick={handleOnClick}
+					showRecentChats={showRecentChats}
+				/>
 				<Opening showOpening={showOpening} />
 			</div>
 		</BlurFade>
