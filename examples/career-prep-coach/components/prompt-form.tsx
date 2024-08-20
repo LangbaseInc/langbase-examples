@@ -16,7 +16,9 @@ export interface PromptProps
   refreshMemorySets: () => Promise<void> 
   onMemorySelect: (memoryUrl: string) => void 
   userApiKey: string; 
-  setUserApiKey: (apiKey: string) => void; 
+  setUserApiKey: (apiKey: string) => void;
+  ownerLogin: string 
+  setOwnerLogin: (login: string) => void 
 }
 
 
@@ -31,7 +33,10 @@ export function PromptForm({
   refreshMemorySets,
   onMemorySelect,
   userApiKey, 
-  setUserApiKey 
+  setUserApiKey,
+  ownerLogin,
+  setOwnerLogin 
+
 }: PromptProps) {
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
@@ -96,7 +101,9 @@ export function PromptForm({
                       refreshMemorySets={refreshMemorySets}
                       onMemorySelect={onMemorySelect}
                       userApiKey={userApiKey} 
-                      setUserApiKey={setUserApiKey} 
+                      setUserApiKey={setUserApiKey}
+                      ownerLogin={ownerLogin} // Add this line
+                      setOwnerLogin={setOwnerLogin} // Add this line 
                       />
                     </div>
                   </div>
