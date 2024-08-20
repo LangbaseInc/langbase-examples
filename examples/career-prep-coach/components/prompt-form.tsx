@@ -11,10 +11,12 @@ export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
   onSubmit: (value: string) => Promise<void>
   isLoading: boolean
-  memorySets: any[] // Add this line
-  selectedMemory: string // Add this line if not already present
-  refreshMemorySets: () => Promise<void> // Add this line
-  onMemorySelect: (memoryUrl: string) => void // Add this line
+  memorySets: any[] 
+  selectedMemory: string 
+  refreshMemorySets: () => Promise<void> 
+  onMemorySelect: (memoryUrl: string) => void 
+  userApiKey: string; 
+  setUserApiKey: (apiKey: string) => void; 
 }
 
 
@@ -27,7 +29,9 @@ export function PromptForm({
   memorySets,
   selectedMemory,
   refreshMemorySets,
-  onMemorySelect
+  onMemorySelect,
+  userApiKey, 
+  setUserApiKey 
 }: PromptProps) {
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
@@ -91,6 +95,8 @@ export function PromptForm({
                       selectedMemory={selectedMemory}
                       refreshMemorySets={refreshMemorySets}
                       onMemorySelect={onMemorySelect}
+                      userApiKey={userApiKey} 
+                      setUserApiKey={setUserApiKey} 
                       />
                     </div>
                   </div>
