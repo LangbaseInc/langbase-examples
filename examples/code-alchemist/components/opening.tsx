@@ -59,7 +59,7 @@ export function Opening({ showOpening }: { showOpening: boolean }) {
 										href="https://langbase.com/examples/database-architect"
 										className="mt-2"
 									>
-										<span>b.</span>
+										<span>c.</span>
 										<span>Database Architect</span>
 									</Dlink>
 								</span>
