@@ -58,7 +58,7 @@ const Welcome = ({
 	if (!showWelcome) return <></>;
 
 	return (
-		<BlurFade delay={0.15}>
+		<BlurFade delay={0.15} className='w-full'>
 			<div className="w-full flex flex-col items-center gap-y-8 pt-16 sm:pt-10">
 				<h2 className="text-2xl sm:text-5xl font-semibold flex">
 					<IconLangbase className="size-8 sm:size-12 mr-2 select-none" />
