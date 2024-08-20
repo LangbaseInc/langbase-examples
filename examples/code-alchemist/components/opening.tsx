@@ -5,7 +5,7 @@ export function Opening({ showOpening }: { showOpening: boolean }) {
 	if (!showOpening) return <></>;
 
 	return (
-		<div className="px-2 sm:px-0 w-full md:w-[650px]">
+		<div className="w-full md:w-[650px]">
 			<div className="light:ring-ring:ring-border ring-ring/10 relative mb-7 rounded-lg py-3.5 pl-[1.625rem] pr-4 ring-1 ring-inset [--callout-border:theme(colors.indigo.400)] [--callout-icon:theme(colors.indigo.400)] [--callout-title:theme(colors.indigo.400)] dark:[--callout-border:theme(colors.indigo.400)] dark:[--callout-icon:theme(colors.indigo.400)] dark:[--callout-title:theme(colors.indigo.400)] [&>*]:my-0 [&>*]:py-0">
 				<div className="absolute inset-y-2 left-2 w-0.5 rounded-full bg-[--callout-border]"></div>
 				<div className="mb-2 mt-0 flex items-center justify-start gap-1">
