@@ -32,7 +32,7 @@ export async function Header() {
         </a>
         <a
           target="_blank"
-          href="https://beta.langbase.com/examples/shoes-expert"
+          href="https://langbase.com/examples/shoes-expert"
           rel="noopener noreferrer"
           className={cn(buttonVariants({ variant: 'default' }))}
         >
