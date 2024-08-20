@@ -16,24 +16,26 @@ export async function POST(req: Request) {
       )
     }
 
-    if (!process.env.LANGBASE_USER_API_KEY) {
-      throw new Error(
-        'Please set LANGBASE_USER_API_KEY in your environment variables.'
-      )
+    const { searchParams } = new URL(req.url);
+    const action = searchParams.get('action');
+    const body = await req.json();
+    const userApiKey = body.userApiKey;
+    
+    if (!userApiKey) {
+      throw new Error('User API Key is missing');
     }
-    const { searchParams } = new URL(req.url)
-    const action = searchParams.get('action')
+    console.log(`Action: ${action}, User API Key: ${userApiKey}`);
 
     if (action === 'createMemory') {
-      return handleCreateMemory(req)
+      return handleCreateMemory(req, userApiKey)
     } else if (action === 'uploadFile') {
-      return handleFileUpload(req)
+      return handleFileUpload(req, userApiKey)
     } else if (action === 'getMemorySets') {
-      return handleGetMemorySets()
+      return handleGetMemorySets(userApiKey)
     } else if (action === 'updatePipe') {
       const { memoryName } = await req.json()
       const ownerLogin = process.env.LANGBASE_OWNER_LOGIN
-      return updatePipe(ownerLogin, memoryName)
+      return updatePipe(ownerLogin, memoryName, userApiKey)
     } else {
       const endpointUrl = 'https://api.langbase.com/beta/chat'
   
@@ -43,7 +45,6 @@ export async function POST(req: Request) {
       }
   
       // Get chat prompt messages and threadId from the client.
-      const body = await req.json()
       const { messages, threadId } = body
   
       const requestBody = {
@@ -78,13 +79,13 @@ export async function POST(req: Request) {
   }
 }
 
-async function handleCreateMemory(req: Request) {
+async function handleCreateMemory(req: Request, userApiKey: string) {
   const { name, description } = await req.json()
   const response = await fetch('https://api.langbase.com/beta/user/memorysets', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.LANGBASE_USER_API_KEY}`
+      'Authorization': `Bearer ${userApiKey}`
     },
     body: JSON.stringify({ name, description })
   })
@@ -96,7 +97,7 @@ async function handleCreateMemory(req: Request) {
   })
 }
 
-async function handleFileUpload(req: Request) {
+async function handleFileUpload(req: Request, userApiKey: string) {
   const formData = await req.formData();
   const file = formData.get('fileName') as File;
   const memoryName = formData.get('memoryName') as string;
@@ -110,7 +111,7 @@ async function handleFileUpload(req: Request) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.LANGBASE_USER_API_KEY}`
+      'Authorization': `Bearer ${userApiKey}`
     },
     body: JSON.stringify({
       memoryName: memoryName,
@@ -129,7 +130,7 @@ async function handleFileUpload(req: Request) {
   });
 
   if (uploadResponse.ok) {
-    const pipeUpdateResponse = await updatePipe(ownerLogin, memoryName);
+    const pipeUpdateResponse = await updatePipe(ownerLogin, memoryName, userApiKey);
     
     return new Response(JSON.stringify({ 
       success: true, 
@@ -147,9 +148,8 @@ async function handleFileUpload(req: Request) {
   });
 }
 
-async function updatePipe(ownerLogin: string | undefined, memoryName: string) {
+async function updatePipe(ownerLogin: string | undefined, memoryName: string, userApiKey: string) {
   const url = `https://api.langbase.com/beta/pipes/${ownerLogin}/shoes-expert`;
-  const apiKey = process.env.LANGBASE_USER_API_KEY;
 
   const pipe = {
     name: "shoes-expert",
@@ -165,7 +165,7 @@ async function updatePipe(ownerLogin: string | undefined, memoryName: string) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${userApiKey}`,
       },
       body: JSON.stringify(pipe),
     });
@@ -184,13 +184,13 @@ async function updatePipe(ownerLogin: string | undefined, memoryName: string) {
   }
 };
 
-async function handleGetMemorySets() {
+async function handleGetMemorySets(userApiKey: string) {
   const url = 'https://api.langbase.com/beta/user/memorysets';
   const response = await fetch(url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.LANGBASE_USER_API_KEY}`
+      'Authorization': `Bearer ${userApiKey}`
     }
   });
 
