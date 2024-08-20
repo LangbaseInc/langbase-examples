@@ -11,7 +11,7 @@ type RequestBody = {
 };
 
 // Enum for type.
-export enum GenerationType {
+enum GenerationType {
   Generate = "generate",
   Summarize = "summarize",
   Quotes = "quotes",

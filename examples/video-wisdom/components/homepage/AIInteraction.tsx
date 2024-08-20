@@ -190,36 +190,6 @@ export function AIInteraction({
                                     h6({ children }) {
                                         return <h6 className="text-xs font-normal">{children}</h6>
                                     },
-                                    code({ node, inline, className, children, ...props }) {
-                                        if (children.length) {
-                                            if (children[0] == '▍') {
-                                                return (
-                                                    <span className="mt-1 animate-pulse cursor-default">▍</span>
-                                                )
-                                            }
-
-                                            children[0] = (children[0] as string).replace('`▍`', '▍')
-                                        }
-
-                                        const match = /language-(\w+)/.exec(className || '')
-
-                                        if (inline) {
-                                            return (
-                                                <code className={className} {...props}>
-                                                    {children}
-                                                </code>
-                                            )
-                                        }
-
-                                        return (
-                                            <CodeBlock
-                                                key={Math.random()}
-                                                language={(match && match[1]) || ''}
-                                                value={String(children).replace(/\n$/, '')}
-                                                {...props}
-                                            />
-                                        )
-                                    }
                                 }}
                             >
                                 {aiResponse}
