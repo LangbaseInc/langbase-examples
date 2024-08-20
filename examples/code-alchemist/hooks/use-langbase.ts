@@ -28,10 +28,10 @@ const useLangbase = () => {
 		originalPrompt
 	}: {
 		prompt: string;
-		e: FormEvent<HTMLFormElement>;
+		e?: FormEvent<HTMLFormElement>;
 		originalPrompt?: string;
 	}) {
-		e.preventDefault();
+		e && e.preventDefault();
 
 		// if the prompt is empty, return
 		if (!prompt.trim()) {

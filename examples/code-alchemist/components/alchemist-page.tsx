@@ -21,7 +21,6 @@ const AlchemistPage = () => {
 		setPrompt,
 		completion,
 		showWelcome,
-		showOpening,
 		recentChats,
 		showSandbox,
 		showPreview,
@@ -42,7 +41,6 @@ const AlchemistPage = () => {
 				isLoading={loading}
 				onSubmit={callLLMs}
 				setPrompt={setPrompt}
-				showOpening={showOpening}
 				recentChats={recentChats}
 				showWelcome={showWelcome}
 				showRecentChats={showRecentChats}

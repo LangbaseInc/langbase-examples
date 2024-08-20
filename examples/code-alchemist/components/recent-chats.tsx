@@ -40,7 +40,6 @@ const RecentChats = ({
 
 	return (
 		<div className="md:w-[640px] space-y-4 text-sm">
-			<p className="font-semibold">Your recent chats</p>
 			<div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
 				{recentChats.map((chat, i) => {
 					return (

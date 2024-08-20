@@ -3,7 +3,6 @@ import { Button } from './ui/button';
 import { Spinner } from './ui/spinner';
 import { Textarea } from './ui/textarea';
 import { IconChat } from './ui/iconists/icon-chat';
-import { IconCommand } from './ui/iconists/icon-command';
 import { Dispatch, FormEvent, SetStateAction, useEffect } from 'react';
 
 export default function PromptForm({
@@ -69,9 +68,6 @@ export default function PromptForm({
 						<div className="flex items-center justify-center gap-2 md:justify-start">
 							{/* Send button */}
 							<Button type="submit" disabled={isLoading}>
-								{!isLoading && (
-									<IconCommand className="size-4" />
-								)}
 								<Spinner
 									className="size-4"
 									loading={isLoading}
@@ -89,6 +85,7 @@ export default function PromptForm({
 					value={prompt}
 					maxLength={500}
 					spellCheck={false}
+					disabled={isLoading}
 					placeholder={placeholder}
 					onChange={e => setPrompt(e.target.value)}
 					className={cn(
