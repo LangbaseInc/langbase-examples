@@ -85,7 +85,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 - Saad Irfan ([@MSaadDev][xsi]) - Founding Engineer, [Langbase][lb]
 
-**_Built by ⌘ [Langbase.com][lb] — Ship composable AI agents with hyper-personalized memory (RAG)!_**
+**_Built by ⌘ [Langbase.com][lb] — Ship composable AI pipe agents with hyper-personalized memory (RAG)!_**
 
 
 [demo]: https://code-alchemist.langbase.dev
@@ -94,7 +94,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 [reactcopilot]: https://langbase.com/examples/react-copilot
 [databasearchitect]: https://langbase.com/examples/database-architect
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/code-alchemist
-[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/code-alchemist/code-alchemist-langbase.jpg
+[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/code-alchemist/cover-1.jpg
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/code-alchemist
 [signup]: https://langbase.fyi/io
 [qs]:https://langbase.com/docs/pipe/quickstart
