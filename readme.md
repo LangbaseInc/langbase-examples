@@ -10,7 +10,7 @@ Langbase is the composable AI infrastructure and developer experience to build, 
 2. Then create managed semantic [memory (RAG)](/memory/overview), so your AI can talk to your data
 
 
-> [!IMPORTANT]  
+> [!NOTE]  
 > **Langbase is free for anyone to [get started][signup]**.
 > We process billions of AI message tokens daily, used by thousands of developers. [Tweet][x] us — what will you ship with Langbase?
 > It all [started][start] with a developer thinking … GPT is amazing, I want it everywhere, that's what ⌘ Langbase does for me.
