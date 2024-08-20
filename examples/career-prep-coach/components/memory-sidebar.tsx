@@ -21,15 +21,28 @@ interface MemorySidebarProps {
   selectedMemory: string;
   refreshMemorySets: () => Promise<void>;
   onMemorySelect: (memoryUrl: string) => void;
+  userApiKey: string; // Add this line
+  setUserApiKey: (apiKey: string) => void; // Add this line
 }
 
-export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, onMemorySelect }: MemorySidebarProps) {
+export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, onMemorySelect, userApiKey, setUserApiKey}: MemorySidebarProps) {
   const [memoryName, setMemoryName] = useState('');
   const [memoryDescription, setMemoryDescription] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState('');
-
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  const [apiKeyInput, setApiKeyInput] = useState(userApiKey);
+
+  const handleApiKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setApiKeyInput(e.target.value);
+  };
+
+  const handleSaveApiKey = () => {
+    setUserApiKey(apiKeyInput);
+    toast.success('API Key saved successfully');
+  };
 
   const handleCreateMemory = async () => {
     try {
@@ -38,7 +51,7 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
       const response = await fetch('/api/chat?action=createMemory', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(validatedData)
+        body: JSON.stringify({ ...validatedData, userApiKey })
       });
       if (!response.ok) throw new Error('Failed to create memory');
       const data = await response.json();
@@ -70,6 +83,7 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
       formData.append('fileName', file, file.name);
       formData.append('memoryName', validatedData.name);
       formData.append('memoryDescription', validatedData.description);
+      formData.append('userApiKey', userApiKey); 
 
       const response = await fetch('/api/chat?action=uploadFile', {
         method: 'POST',
@@ -122,7 +136,7 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
         const response = await fetch('/api/chat?action=updatePipe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ memoryName: selectedSet.name })
+          body: JSON.stringify({ memoryName: selectedSet.name, userApiKey }) // Pass userApiKey here
         });
         if (!response.ok) throw new Error('Failed to update pipe');
         const data = await response.json();
@@ -205,6 +219,18 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
       </Button>
       <Button onClick={handleFileUpload} variant="outline-background">
         Upload File to Memory
+      </Button>
+      <label htmlFor="apiKeyInput">User API Key</label>
+      <input
+        id="apiKeyInput"
+        type="text"
+        placeholder="Enter your API key"
+        value={apiKeyInput}
+        onChange={handleApiKeyChange}
+        className="w-full px-2 py-1 text-sm border rounded bg-muted"
+      />
+      <Button onClick={handleSaveApiKey} variant="outline-background">
+        Save API Key
       </Button>
     </div>
   );
