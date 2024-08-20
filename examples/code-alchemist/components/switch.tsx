@@ -6,13 +6,13 @@ import RecentChats from './recent-chats';
 
 export default function Switch({
 	onSubmit,
-	isLoading,
+	showSwitch,
 	setPrompt,
 	recentChats,
 	handleOnClick,
 	showRecentChats
 }: {
-	isLoading: boolean;
+	showSwitch: boolean;
 	showRecentChats: boolean;
 	onSubmit: ({
 		e,
@@ -27,7 +27,7 @@ export default function Switch({
 }) {
 	const [showUsecase, setShowUsecase] = useState(true);
 
-	if (isLoading) return <></>;
+	if (!showSwitch) return <></>;
 
 	return (
 		<div className="w-full md:w-[650px] flex flex-col gap-8">

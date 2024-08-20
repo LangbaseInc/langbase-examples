@@ -9,6 +9,7 @@ const Welcome = ({
 	onSubmit,
 	isLoading,
 	setPrompt,
+	showSwitch,
 	recentChats,
 	showWelcome,
 	handleOnClick,
@@ -23,6 +24,7 @@ const Welcome = ({
 		prompt: string;
 	}) => Promise<void>;
 	isLoading: boolean;
+	showSwitch: boolean;
 	showWelcome: boolean;
 	showRecentChats: boolean;
 	recentChats: RecentChat[];
@@ -53,7 +55,7 @@ const Welcome = ({
 				<Switch
 					onSubmit={onSubmit}
 					setPrompt={setPrompt}
-					isLoading={isLoading}
+					showSwitch={showSwitch}
 					recentChats={recentChats}
 					handleOnClick={handleOnClick}
 					showRecentChats={showRecentChats}
