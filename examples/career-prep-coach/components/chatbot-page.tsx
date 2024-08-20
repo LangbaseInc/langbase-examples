@@ -3,11 +3,10 @@
 import { ChatList } from '@/components/chat-list'
 import { useChat, type Message } from 'ai/react'
 import cn from 'mxcn'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { toast } from 'sonner'
 import { ChatInput } from './chat-input'
 import { Opening } from './opening'
-import { MemorySidebar } from './memory-sidebar'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
@@ -16,6 +15,9 @@ export interface ChatProps extends React.ComponentProps<'div'> {
 
 export function Chatbot({ id, initialMessages, className }: ChatProps) {
   const [threadId, setThreadId] = useState<null | string>(null)
+  const [memorySets, setMemorySets] = useState<any[]>([])
+  const [selectedMemory, setSelectedMemory] = useState('')
+
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
       api: '/api/chat',
@@ -32,17 +34,39 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         setThreadId(lbThreadId)
       }
     })
+  
+    const fetchMemorySets = useCallback(async () => {
+      console.log('Fetching memory sets...');
+      try {
+        const response = await fetch('/api/chat?action=getMemorySets', {
+          method: 'POST',
+        })
+        if (!response.ok) throw new Error('Failed to fetch memory sets')
+        const data = await response.json()
+        setMemorySets(data.memorySets || [])
+        toast.success('Memory sets refreshed successfully')
+      } catch (error) {
+        console.error('Error fetching memory sets:', error)
+        toast.error('Failed to fetch memory sets')
+      }
+    }, [])
+    
+    
 
+    const handleMemorySelect = useCallback((memoryUrl: string) => {
+      setSelectedMemory(memoryUrl)
+    }, [])
+  
     return (
-      <div className="flex min-h-screen">
-        <div className="flex-grow">
-          <div className={cn('pb-36 pt-4 md:pt-10', className)}>
-            {messages.length ? (
+      <div className="min-h-screen">
+        <div className={cn('pb-36 pt-4 md:pt-10', className)}>
+          {messages.length ? (
+            <>
               <ChatList messages={messages} />
-            ) : (
-              <Opening />
-            )}
-          </div>
+            </>
+          ) : (
+            <Opening />
+          )}
           <ChatInput
             id={id}
             isLoading={isLoading}
@@ -52,6 +76,10 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
             messages={messages}
             input={input}
             setInput={setInput}
+            memorySets={memorySets}
+            selectedMemory={selectedMemory}
+            refreshMemorySets={fetchMemorySets}
+            onMemorySelect={handleMemorySelect}
           />
         </div>
       </div>
