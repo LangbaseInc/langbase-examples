@@ -21,19 +21,20 @@ interface MemorySidebarProps {
   selectedMemory: string;
   refreshMemorySets: () => Promise<void>;
   onMemorySelect: (memoryUrl: string) => void;
-  userApiKey: string; // Add this line
-  setUserApiKey: (apiKey: string) => void; // Add this line
+  userApiKey: string; 
+  setUserApiKey: (apiKey: string) => void;
+  ownerLogin: string;
+  setOwnerLogin: (login: string) => void; 
 }
 
-export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, onMemorySelect, userApiKey, setUserApiKey}: MemorySidebarProps) {
+export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, onMemorySelect, userApiKey, setUserApiKey, ownerLogin, setOwnerLogin}: MemorySidebarProps) {
   const [memoryName, setMemoryName] = useState('');
   const [memoryDescription, setMemoryDescription] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState('');
-  
   const fileInputRef = useRef<HTMLInputElement>(null);
-  
   const [apiKeyInput, setApiKeyInput] = useState(userApiKey);
+  const [ownerLoginInput, setOwnerLoginInput] = useState(ownerLogin);
 
   const handleApiKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setApiKeyInput(e.target.value);
@@ -42,6 +43,15 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
   const handleSaveApiKey = () => {
     setUserApiKey(apiKeyInput);
     toast.success('API Key saved successfully');
+  };
+
+  const handleOwnerLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => { 
+    setOwnerLoginInput(e.target.value);
+  };
+
+  const handleSaveOwnerLogin = () => { 
+    setOwnerLogin(ownerLoginInput);
+    toast.success('Owner Login saved successfully');
   };
 
   const handleCreateMemory = async () => {
@@ -56,7 +66,6 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
       if (!response.ok) throw new Error('Failed to create memory');
       const data = await response.json();
       toast.success('Memory created successfully');
-      console.log('Memory created:', data);
       refreshMemorySets();
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -83,7 +92,8 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
       formData.append('fileName', file, file.name);
       formData.append('memoryName', validatedData.name);
       formData.append('memoryDescription', validatedData.description);
-      formData.append('userApiKey', userApiKey); 
+      formData.append('userApiKey', userApiKey);
+      formData.append('ownerLogin', ownerLogin); 
 
       const response = await fetch('/api/chat?action=uploadFile', {
         method: 'POST',
@@ -136,7 +146,7 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
         const response = await fetch('/api/chat?action=updatePipe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ memoryName: selectedSet.name, userApiKey }) // Pass userApiKey here
+          body: JSON.stringify({ memoryName: selectedSet.name, userApiKey, ownerLogin }) // Pass userApiKey here
         });
         if (!response.ok) throw new Error('Failed to update pipe');
         const data = await response.json();
@@ -152,15 +162,36 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
   return (
     <div className="flex flex-col space-y-2">
       <h2 className="text-lg font-semibold">Attach Memory</h2>
-      <p className="text-sm text-muted-foreground">
-        Manage your memory and upload files.
-      </p>
+      <label htmlFor="apiKeyInput">User API Key</label>
+      <input
+        id="apiKeyInput"
+        type="text"
+        placeholder="Enter your API key"
+        value={apiKeyInput}
+        onChange={handleApiKeyChange}
+        className="w-full px-2 py-1 text-sm border rounded bg-muted"
+      />
+      <Button onClick={handleSaveApiKey} variant="outline-background">
+        Save API Key
+      </Button>
+      <label htmlFor="ownerLoginInput">Owner Login</label> {/* Add this input */}
+      <input
+        id="ownerLoginInput"
+        type="text"
+        placeholder="Enter owner login"
+        value={ownerLoginInput}
+        onChange={handleOwnerLoginChange}
+        className="w-full px-2 py-1 text-sm border rounded bg-muted"
+      />
+      <Button onClick={handleSaveOwnerLogin} variant="outline-background">
+        Save Owner Login
+      </Button>
       <Button onClick={() => {
-        console.log('Refresh button clicked');
         refreshMemorySets();
       }} variant="outline">
         Refresh Memory Sets
       </Button>
+      <p className='text-sm text-muted-foreground'> Select Memory after refresh</p>
       <Select onValueChange={handleMemorySelect} value={selectedMemory}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select a memory" />
@@ -219,18 +250,6 @@ export function MemorySidebar({ memorySets, selectedMemory, refreshMemorySets, o
       </Button>
       <Button onClick={handleFileUpload} variant="outline-background">
         Upload File to Memory
-      </Button>
-      <label htmlFor="apiKeyInput">User API Key</label>
-      <input
-        id="apiKeyInput"
-        type="text"
-        placeholder="Enter your API key"
-        value={apiKeyInput}
-        onChange={handleApiKeyChange}
-        className="w-full px-2 py-1 text-sm border rounded bg-muted"
-      />
-      <Button onClick={handleSaveApiKey} variant="outline-background">
-        Save API Key
       </Button>
     </div>
   );
