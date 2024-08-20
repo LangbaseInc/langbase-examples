@@ -85,7 +85,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 - Saad Irfan ([@MSaadDev][xsi]) - Founding Engineer, [Langbase][lb]
 
-**_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
+**_Built by ⌘ [Langbase.com][lb] — Ship composable AI agents with hyper-personalized memory (RAG)!_**
 
 
 [demo]: https://code-alchemist.langbase.dev

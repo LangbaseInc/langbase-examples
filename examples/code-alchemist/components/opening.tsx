@@ -29,7 +29,7 @@ export function Opening({ showOpening }: { showOpening: boolean }) {
 							</Link>
 						</h4>
 						<h5 className="text-sm text-muted-foreground">
-							Ship composable AI assistants with memory.
+							Ship composable AI agents with memory.
 						</h5>
 					</header>
 
