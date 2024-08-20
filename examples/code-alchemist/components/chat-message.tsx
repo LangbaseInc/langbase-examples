@@ -18,7 +18,7 @@ export function ChatMessage({
 	if (showSandbox || !message.length) return <></>;
 
 	return (
-		<div className="w-[550px]">
+		<div className="w-full md:w-[550px]">
 			<div
 				className={cn('group relative mb-4 flex items-start md:-ml-12')}
 				{...props}
