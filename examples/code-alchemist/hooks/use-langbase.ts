@@ -182,7 +182,7 @@ const useLangbase = () => {
 	// 2. The recent chats are not shown
 	// 3. The completion is empty
 	// 4. The loading state is false
-	const showSwitch = showWelcome && showRecentChats && !completion.length && !loading;
+	const showSwitch = showWelcome && !completion.length && !loading;
 
 	return {
 		prompt,
