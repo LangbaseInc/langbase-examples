@@ -16,11 +16,11 @@ export function Opening({ showOpening }: { showOpening: boolean }) {
 
 				<div className="mt-2">
 					<header className="mb-8">
-						<h4 className="text-foreground text-sm sm:text-base mt-4 flex gap-1 tracking-wide">
-							<span>CodeAlchemist by muliple</span>
+						<h4 className="text-foreground text-sm sm:text-base mt-4 mb-2">
+							CodeAlchemist by multiple
 							<Link
 								target="_blank"
-								className="underline hover:text-indigo-400 mb-2"
+								className="underline hover:text-indigo-400 mb-2 ml-1"
 								href="https://langbase.com/examples/code-alchemist"
 							>
 								<span className="font-bold">
