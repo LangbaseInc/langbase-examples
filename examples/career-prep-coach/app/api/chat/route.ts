@@ -9,32 +9,37 @@ export const runtime = 'edge'
  * @returns
  */
 export async function POST(req: Request) {
+
   try {
+    const { searchParams } = new URL(req.url);
+    const action = searchParams.get('action');
+    const body = await req.json();
+    const userApiKey = body.userApiKey;
+    const ownerLogin = body.ownerLogin;
+
+    if (action !== null && !userApiKey) {
+      throw new Error('User API Key is missing');
+    }
+
+    if (action !== null && !ownerLogin) {
+      throw new Error('Owner Login is missing');
+    }
+
+    
     if (!process.env.NEXT_LB_PIPE_API_KEY) {
       throw new Error(
         'Please set NEXT_LB_PIPE_API_KEY in your environment variables.'
       )
     }
 
-    const { searchParams } = new URL(req.url);
-    const action = searchParams.get('action');
-    const body = await req.json();
-    const userApiKey = body.userApiKey;
-    
-    if (!userApiKey) {
-      throw new Error('User API Key is missing');
-    }
-    console.log(`Action: ${action}, User API Key: ${userApiKey}`);
-
     if (action === 'createMemory') {
       return handleCreateMemory(req, userApiKey)
     } else if (action === 'uploadFile') {
-      return handleFileUpload(req, userApiKey)
+      return handleFileUpload(req, userApiKey, ownerLogin)
     } else if (action === 'getMemorySets') {
       return handleGetMemorySets(userApiKey)
     } else if (action === 'updatePipe') {
       const { memoryName } = await req.json()
-      const ownerLogin = process.env.LANGBASE_OWNER_LOGIN
       return updatePipe(ownerLogin, memoryName, userApiKey)
     } else {
       const endpointUrl = 'https://api.langbase.com/beta/chat'
@@ -97,11 +102,10 @@ async function handleCreateMemory(req: Request, userApiKey: string) {
   })
 }
 
-async function handleFileUpload(req: Request, userApiKey: string) {
+async function handleFileUpload(req: Request, userApiKey: string, ownerLogin: string) {
   const formData = await req.formData();
   const file = formData.get('fileName') as File;
   const memoryName = formData.get('memoryName') as string;
-  const ownerLogin = process.env.LANGBASE_OWNER_LOGIN;
 
   if (!file || !memoryName) {
     return new Response(JSON.stringify({ error: 'Invalid file or memory name' }), { status: 400 });
@@ -115,7 +119,7 @@ async function handleFileUpload(req: Request, userApiKey: string) {
     },
     body: JSON.stringify({
       memoryName: memoryName,
-      ownerLogin: ownerLogin?.toString(), 
+      ownerLogin: ownerLogin, 
       fileName: file.name,
     })
   });
@@ -193,6 +197,23 @@ async function handleGetMemorySets(userApiKey: string) {
       'Authorization': `Bearer ${userApiKey}`
     }
   });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('Error fetching memory sets:', response.status, errorText);
+    return new Response(JSON.stringify({
+      success: false,
+      error: {
+        code: 'BAD_REQUEST',
+        status: response.status,
+        message: errorText,
+        docs: 'https://langbase.com/docs/api-reference/errors/bad_request'
+      }
+    }), {
+      status: response.status,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
 
   const memorySetsList = await response.json();
   return new Response(JSON.stringify(memorySetsList), {
