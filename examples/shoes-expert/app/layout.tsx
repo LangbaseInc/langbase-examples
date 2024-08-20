@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Shoes Expert Chatbot - Langbase',
-  description: 'Build a Shoes Expert Chatbot with ⌘ Langbase using any LLM model.',
+  description: 'Build a Shoes Expert Recommender Chatbot with ⌘ Langbase using any LLM model.',
   keywords: ['Shoes Expert', 'Chatbot', 'Langbase']
 }
 
