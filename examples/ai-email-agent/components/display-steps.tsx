@@ -4,22 +4,26 @@ import { IconSpinner } from './ui/icons';
 
 export const DisplaySteps = ({
 	email,
-	completedSteps
+	completedSteps,
+	emailReply
 }: {
 	email: string;
 	completedSteps: any;
+	emailReply: string;
 }) => {
 	return (
-		<div className="max-w-4xl mx-auto">
+		<div className="flex flex-col items-end max-w-4xl mx-auto">
 			{completedSteps?.email && (
 				<StepEmail email={completedSteps.email.content} />
 			)}
-			{completedSteps?.sentiment && (
-				<StepSentiment sentiment={completedSteps.sentiment} />
-			)}
-			{completedSteps?.summary && (
-				<StepSummary summary={completedSteps.summary} />
-			)}
+			<div className="flex justify-between w-full">
+				{completedSteps?.sentiment && (
+					<StepSentiment sentiment={completedSteps.sentiment} />
+				)}
+				{completedSteps?.summary && (
+					<StepSummary summary={completedSteps.summary} />
+				)}
+			</div>
 			{completedSteps?.respond && (
 				<StepDecision respond={completedSteps.respond} />
 			)}
@@ -27,7 +31,10 @@ export const DisplaySteps = ({
 				<StepEmailWriter tone={completedSteps.tone} />
 			)}
 			{completedSteps?.emailReply && (
-				<StepEmailReply emailReply={completedSteps.emailReply} />
+				<StepEmailReply
+					step={completedSteps.emailReply}
+					reply={emailReply}
+				/>
 			)}
 		</div>
 	);
@@ -35,14 +42,14 @@ export const DisplaySteps = ({
 
 const StepEmail = ({ email }: { email: string }) => {
 	return (
-		<div className="relative pb-10">
+		<div className="relative pb-10 w-1/2">
 			<div
 				aria-hidden="true"
-				className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
+				className="absolute left-0 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
 			/>
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600">
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
 						<CheckIcon
 							aria-hidden="true"
 							className="h-5 w-5 text-white"
@@ -51,7 +58,9 @@ const StepEmail = ({ email }: { email: string }) => {
 				</span>
 				<span className="ml-4 flex min-w-0 flex-col">
 					<span className="text-sm font-medium">Incoming Email</span>
-					<span className="text-sm text-gray-500 mt-2">{email}</span>
+					<span className="text-sm text-gray-500 mt-2">
+						{displayContent(email)}
+					</span>
 				</span>
 			</span>
 		</div>
@@ -60,13 +69,21 @@ const StepEmail = ({ email }: { email: string }) => {
 
 const StepSentiment = ({ sentiment }: { sentiment: any }) => {
 	return (
-		<div className="relative pb-10">
-			<div
+		<div className="relative pb-10 w-1/2">
+			{/* <div
+				aria-hidden="true"
+				className="absolute left-4 top-0 -ml-px mt-0.5 h-0.5 w-full bg-indigo-600"
+			/> */}
+			{/* <div
 				aria-hidden="true"
 				className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
-			/>
-			<span className="group relative flex items-start">
-				<span className="flex h-9 items-center">
+			/> */}
+			{/* <div
+				aria-hidden="true"
+				className="absolute left-4 bottom-4 -ml-px mt-0.5 h-0.5 w-full bg-indigo-600"
+			/> */}
+			<span className="group relative flex items-start justify-end">
+				{/* <span className="flex h-9 items-center">
 					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600">
 						{sentiment.status === 'complete' && (
 							<CheckIcon
@@ -81,8 +98,8 @@ const StepSentiment = ({ sentiment }: { sentiment: any }) => {
 							/>
 						)}
 					</span>
-				</span>
-				<span className="ml-4 flex min-w-0 flex-col">
+				</span> */}
+				<span className="mr-8 flex min-w-0 flex-col text-right">
 					<span className="text-sm font-medium">
 						Sentiment Analysis
 					</span>
@@ -97,14 +114,16 @@ const StepSentiment = ({ sentiment }: { sentiment: any }) => {
 
 const StepSummary = ({ summary }: { summary: any }) => {
 	return (
-		<div className="relative pb-10">
-			<div
-				aria-hidden="true"
-				className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
-			/>
+		<div className="relative pb-10 w-1/2">
+			{summary?.content && (
+				<div
+					aria-hidden="true"
+					className="absolute left-0 top-0 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
+				/>
+			)}
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600">
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
 						{summary.status === 'complete' && (
 							<CheckIcon
 								aria-hidden="true"
@@ -132,16 +151,16 @@ const StepSummary = ({ summary }: { summary: any }) => {
 
 const StepDecision = ({ respond }: { respond: any }) => {
 	return (
-		<div className="relative pb-10">
-			{respond?.content?.respond !== false && (
+		<div className="relative pb-10 w-1/2">
+			{respond?.content?.respond && (
 				<div
 					aria-hidden="true"
-					className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
+					className="absolute left-0 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
 				/>
 			)}
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600">
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
 						{respond.status === 'complete' && (
 							<CheckIcon
 								aria-hidden="true"
@@ -177,14 +196,14 @@ const StepDecision = ({ respond }: { respond: any }) => {
 
 const StepEmailWriter = ({ tone }: { tone: any }) => {
 	return (
-		<div className="relative pb-10">
+		<div className="relative pb-10 w-1/2">
 			<div
 				aria-hidden="true"
-				className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
+				className="absolute left-0 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
 			/>
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600">
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
 						{tone.status === 'complete' && (
 							<CheckIcon
 								aria-hidden="true"
@@ -211,19 +230,19 @@ const StepEmailWriter = ({ tone }: { tone: any }) => {
 	);
 };
 
-const StepEmailReply = ({ emailReply }: { emailReply: any }) => {
+const StepEmailReply = ({ step, reply }: { step: any; reply: string }) => {
 	return (
-		<div className="relative pb-10">
+		<div className="relative pb-10 w-1/2">
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600">
-						{emailReply.status === 'complete' && (
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
+						{step.status === 'complete' && (
 							<CheckIcon
 								aria-hidden="true"
 								className="h-5 w-5 text-white"
 							/>
 						)}
-						{emailReply.status === 'current' && (
+						{step.status === 'current' && (
 							<IconSpinner
 								aria-hidden="true"
 								className="h-5 w-5 text-white"
@@ -234,10 +253,28 @@ const StepEmailReply = ({ emailReply }: { emailReply: any }) => {
 				<span className="ml-4 flex min-w-0 flex-col">
 					<span className="text-sm font-medium">Email Reply</span>
 					<span className="text-sm text-gray-500 mt-2">
-						{emailReply?.content}
+						{!reply && step?.content}
+						{reply && displayContent(reply)}
+						{/* {emailReply?.content
+							.split('\n')
+							.map((line: string, index: number) => (
+								<React.Fragment key={index}>
+									{line}
+									<br />
+								</React.Fragment>
+							))} */}
 					</span>
 				</span>
 			</span>
 		</div>
 	);
+};
+
+const displayContent = (content: string) => {
+	return content.split('\n').map((line, index) => (
+		<React.Fragment key={index}>
+			{line}
+			<br />
+		</React.Fragment>
+	));
 };

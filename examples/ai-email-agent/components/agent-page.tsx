@@ -5,11 +5,14 @@ import { EmailInput } from './email-input';
 import { Opening } from './opening';
 import { useState } from 'react';
 import { DisplaySteps } from './display-steps';
+import { toast } from 'sonner';
+import { fromReadableStream } from 'langbase';
 
 export function AgentPage({ className }: React.ComponentProps<'div'>) {
 	const [inputEmail, setInputEmail] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [completedSteps, setCompletedSteps] = useState({});
+	const [emailReply, setEmailReply] = useState('');
 
 	// Demo data
 	// const [summary, setSummary] =
@@ -112,9 +115,24 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 			body: JSON.stringify({ writer, emailSummary })
 		});
 
-		const data = await response.json();
-		console.log('Email Reply:', data);
-		return data;
+		if (!response.ok) {
+			const error = await response.json();
+			toast.error(error);
+			return;
+		}
+
+		if (response.body) {
+			const stream = fromReadableStream(response.body);
+
+			for await (const chunk of stream) {
+				const content = chunk?.choices[0]?.delta?.content || '';
+				content && setEmailReply(prev => prev + content);
+			}
+		}
+
+		// const data = await response.json();
+		// console.log('Email Reply:', data);
+		return emailReply;
 	};
 
 	const sendEmail = async (email: string) => {
@@ -213,12 +231,12 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 		}));
 
 		// Generate email reply
-		const { emailReply } = await generateEmailReply(tone, summary);
+		const reply = await generateEmailReply(tone, summary);
 
 		setCompletedSteps(prev => ({
 			...prev,
 			emailReply: {
-				content: emailReply,
+				content: reply,
 				status: 'complete'
 			}
 		}));
@@ -240,6 +258,7 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 					<DisplaySteps
 						email={inputEmail}
 						completedSteps={completedSteps}
+						emailReply={emailReply}
 					/>
 				)}
 			</div>

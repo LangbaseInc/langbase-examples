@@ -28,45 +28,6 @@ export const EmailInput = ({
 	return (
 		<div className="">
 			<form onSubmit={handleSubmit} ref={formRef}>
-				{/* <div className="mx-auto py-4 w-full max-w-3xl rounded-lg">
-					<div className="rounded-lg rounded-b-none border px-2 py-2">
-						<label htmlFor="prompt-input" className="sr-only">
-							Enter your email
-						</label>
-						<textarea
-							id="prompt-input"
-							rows={4}
-							className="w-full border-0 px-0 text-base dark:bg-transparent focus:shadow-transparent"
-							placeholder="Enter your email"
-							required
-							value={email}
-							onChange={e => setEmail(e.target.value)}
-						></textarea>
-					</div>
-					<div className="flex items-center justify-end px-2 py-2">
-						<Button type="submit">
-							Send Email
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="h-4 w-4"
-								viewBox="0 0 24 24"
-								strokeWidth="2"
-								stroke="currentColor"
-								fill="none"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							>
-								<path
-									stroke="none"
-									d="M0 0h24v24H0z"
-									fill="none"
-								></path>
-								<path d="M10 14l11 -11"></path>
-								<path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"></path>
-							</svg>
-						</Button>
-					</div>
-				</div> */}
 				<div className="max-w-3xl sm:max-w-4xl mx-auto py-4">
 					<div className="bg-background relative flex max-h-60 w-full grow flex-col overflow-hidden px-2 pb-2 sm:rounded-2xl sm:border">
 						<div className="flex w-full flex-col">
@@ -79,7 +40,7 @@ export const EmailInput = ({
 										className="text-muted-foreground/50 h-5 w-5"
 										aria-hidden="true"
 									/>
-									<h3>Email Agent</h3>
+									<h3>Email</h3>
 								</div>
 
 								<div className="flex items-center justify-center gap-2 md:justify-start">

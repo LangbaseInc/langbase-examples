@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 			apiKey: process.env.NEXT_LB_EMAIL_WRITER_PIPE_API_KEY
 		});
 
-		const result = await pipe.generateText({
+		const result = await pipe.streamText({
 			variables: [
 				{
 					name: 'writer',
@@ -31,14 +31,11 @@ export async function POST(req: Request) {
 			]
 		});
 
+		// result.toReadableStream;
+
 		// console.log(result.completion);
 
-		return new Response(
-			JSON.stringify({
-				emailReply: result.completion
-			}),
-			{ status: 200 }
-		);
+		return new Response(result.toReadableStream(), { status: 200 });
 
 		// Handle Langbase response, which is a stream in OpenAI format.
 		// const stream = OpenAIStream(response)
