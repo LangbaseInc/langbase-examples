@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { Button } from './ui/button';
 import Textarea from 'react-textarea-autosize';
 import { IconChat } from './ui/iconists/icon-chat';
-import { IconCommand, IconSpinner } from './ui/icons';
+import { IconSpinner } from './ui/icons';
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit';
 
 export const EmailInput = ({
@@ -44,27 +43,12 @@ export const EmailInput = ({
 								</div>
 
 								<div className="flex items-center justify-center gap-2 md:justify-start">
-									{/* Reset chat */}
-									<Button
-										variant="ghost"
-										className="max-w-xs"
-										onClick={e => {
-											e.preventDefault();
-											location.reload();
-										}}
-									>
-										Reset
-									</Button>
 									{/* Send button */}
 									<Button
 										type="submit"
 										disabled={isLoading || email === ''}
 									>
-										{isLoading ? (
-											<IconSpinner />
-										) : (
-											<IconCommand className="size-4" />
-										)}
+										{isLoading && <IconSpinner />}
 										Send Email
 										<span className="sr-only">
 											Send message
@@ -74,7 +58,6 @@ export const EmailInput = ({
 							</label>
 						</div>
 						<Textarea
-							//   ref={inputRef}
 							tabIndex={0}
 							onKeyDown={onKeyDown}
 							rows={1}

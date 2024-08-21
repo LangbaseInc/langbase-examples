@@ -2,11 +2,12 @@
 
 import cn from 'mxcn';
 import { EmailInput } from './email-input';
-import { Opening } from './opening';
 import { useState } from 'react';
 import { DisplaySteps } from './display-steps';
 import { toast } from 'sonner';
 import { fromReadableStream } from 'langbase';
+import { Welcome } from './welcome';
+import { UseCases } from './use-cases';
 
 export function AgentPage({ className }: React.ComponentProps<'div'>) {
 	const [inputEmail, setInputEmail] = useState('');
@@ -246,6 +247,7 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 
 	return (
 		<div className="min-h-screen">
+			<Welcome />
 			<EmailInput
 				email={inputEmail}
 				setEmail={setInputEmail}
@@ -253,7 +255,9 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 				sendEmail={sendEmail}
 			/>
 			<div className={cn('pb-36 pt-4 md:pt-10', className)}>
-				{!isLoading && isEmptyObject(completedSteps) && <Opening />}
+				{!isLoading && isEmptyObject(completedSteps) && (
+					<UseCases sendEmail={sendEmail} />
+				)}
 				{!isEmptyObject(completedSteps) && (
 					<DisplaySteps
 						email={inputEmail}

@@ -2,8 +2,6 @@ import { buttonVariants } from '@/components/ui/button';
 import cn from 'mxcn';
 import Link from 'next/link';
 import { IconFork, IconGitHub } from './ui/icons';
-// import { IconGitHub } from './ui/iconists/icon-github';
-// import { IconFork } from './ui/iconists/icon-fork';
 
 export async function Header() {
 	return (
@@ -11,13 +9,13 @@ export async function Header() {
 			<div className="flex h-16 shrink-0 items-center">
 				<h1>
 					<Link href="/" className="font-bold">
-						{/* <span
+						<span
 							aria-hidden="true"
 							className="border-muted-foreground/10 bg-muted mr-1 select-none rounded-lg border px-[0.2rem] py-[0.1rem] text-sm font-bold shadow-2xl"
 						>
 							⌘
-						</span> */}
-						AI Email Agent
+						</span>
+						Langbase
 					</Link>
 				</h1>
 			</div>

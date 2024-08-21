@@ -7,7 +7,7 @@ export function Opening() {
 				<div className="absolute inset-y-2 left-2 w-0.5 rounded-full bg-[--callout-border]"></div>
 				<div className="mb-2 mt-0 flex items-center justify-start gap-1">
 					<span className="text-xs font-medium text-[--callout-title]">
-						Agent Example
+						AI Email Agent Example
 					</span>
 				</div>
 
@@ -15,7 +15,8 @@ export function Opening() {
 					<header className="mb-8">
 						<h4 className="text-foreground text-sm sm:text-base mt-4 flex gap-1 tracking-wide">
 							<span className="mb-2">
-								AI Email Agent by using pipes on ⌘ Langbase
+								AI Email Agent by using multiple pipes on ⌘
+								Langbase
 							</span>
 							{/* <Link
 								target="_blank"
@@ -28,7 +29,8 @@ export function Opening() {
 							</Link> */}
 						</h4>
 						<h5 className="text-sm text-muted-foreground">
-							Ship hyper-personalized AI assistants with memory.
+							Ship composable AI pipe agents with
+							hyper-personalized memory (RAG)!
 						</h5>
 					</header>
 
@@ -38,7 +40,8 @@ export function Opening() {
 							<Dlink href="https://langbase.com/examples/ai-chatbot">
 								<span>1.</span>
 								<span>
-									Fork this AI Chatbot Pipe on ⌘ Langbase
+									Fork all pipes that power AI Email Agent on
+									⌘ Langbase:
 								</span>
 							</Dlink>
 							<Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot">
@@ -83,7 +86,7 @@ function Dlink({
 		<Link
 			href={href}
 			target="_blank"
-			className="flex hover:text-indigo-400 flex items-center gap-2 [&>span:first-child]:text-indigo-400"
+			className="flex hover:text-indigo-400 items-center gap-2 [&>span:first-child]:text-indigo-400"
 			{...props}
 		>
 			{children}
