@@ -16,25 +16,21 @@ export async function POST(req: Request) {
 			apiKey: process.env.NEXT_LB_SUMMARIZER_PIPE_API_KEY
 		});
 
-		const result = await pipe.generateText({
-			messages: [{ role: 'user', content: email }]
+		const summary = await pipe.generateText({
+			variables: [
+				{
+					name: 'content',
+					value: email
+				}
+			]
 		});
-
-		console.log(result.completion);
 
 		return new Response(
 			JSON.stringify({
-				summary: result.completion
+				summary: summary.completion
 			}),
 			{ status: 200 }
 		);
-
-		// Handle Langbase response, which is a stream in OpenAI format.
-		// const stream = OpenAIStream(response)
-		// Respond with a text stream.
-		// return new StreamingTextResponse(stream, {
-		//   headers: response.headers
-		// })
 	} catch (error: any) {
 		console.error('Uncaught API Error:', error);
 		return new Response(JSON.stringify(error), { status: 500 });

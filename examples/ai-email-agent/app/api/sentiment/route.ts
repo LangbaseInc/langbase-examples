@@ -16,22 +16,19 @@ export async function POST(req: Request) {
 			apiKey: process.env.NEXT_LB_SENTIMENT_PIPE_API_KEY
 		});
 
-		const result = await pipe.generateText({
-			messages: [{ role: 'user', content: email }]
+		const sentiment = await pipe.generateText({
+			variables: [
+				{
+					name: 'email',
+					value: email
+				}
+			]
 		});
 
 		// Parse JSON response from Langbase
-		const response: JSON = JSON.parse(result.completion);
-		console.log(response);
+		const response: JSON = JSON.parse(sentiment.completion);
 
 		return Response.json(response);
-
-		// Handle Langbase response, which is a stream in OpenAI format.
-		// const stream = OpenAIStream(response)
-		// Respond with a text stream.
-		// return new StreamingTextResponse(stream, {
-		//   headers: response.headers
-		// })
 	} catch (error: any) {
 		console.error('Uncaught API Error:', error);
 		return new Response(JSON.stringify(error), { status: 500 });

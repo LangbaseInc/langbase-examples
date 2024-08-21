@@ -11,14 +11,12 @@ export async function POST(req: Request) {
 		// Get chat prompt messages and threadId from the client.
 		const body = await req.json();
 		const { summary, sentiment } = body;
-		// console.log('Summary:', summary);
-		// console.log('Sentiment:', sentiment);
 
 		const pipe = new Pipe({
 			apiKey: process.env.NEXT_LB_PICK_EMAIL_WRITER_PIPE_API_KEY
 		});
 
-		const result = await pipe.generateText({
+		const writer = await pipe.generateText({
 			variables: [
 				{
 					name: 'summary',
@@ -31,20 +29,10 @@ export async function POST(req: Request) {
 			]
 		});
 
-		// console.log(result.completion);
-
 		// Parse JSON response from Langbase
-		const decision: JSON = JSON.parse(result.completion);
-		console.log(decision);
+		const decision: JSON = JSON.parse(writer.completion);
 
 		return Response.json(decision);
-
-		// Handle Langbase response, which is a stream in OpenAI format.
-		// const stream = OpenAIStream(response)
-		// Respond with a text stream.
-		// return new StreamingTextResponse(stream, {
-		//   headers: response.headers
-		// })
 	} catch (error: any) {
 		console.error('Uncaught API Error:', error);
 		return new Response(JSON.stringify(error), { status: 500 });
