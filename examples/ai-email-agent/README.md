@@ -4,26 +4,24 @@
 
 ## Build an AI Email Agent with Pipes — ⌘ Langbase
 
-An AI powered email agent to help you analyze sentiment, summarize
-content, decides whether a response is needed or not, and generates replies for your
-emails. This agent is built by using multiple AI Pipes on Langbase which work with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
+An AI powered email agent to help you analyze sentiment, summarize content, decides whether a response is needed or not, and generates replies for your emails. This agent is built by using multiple AI Pipes on Langbase which work with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
 
 Check out the live demo [here][demo].
 
 ## Features
 
 -   📧 AI Email Agent — Built with multiple AI Pipes on ⌘ Langbase
-    -   [Email Sentiment][] – An agent to analyze the sentiment of the incoming email
-    -   [Summarizer][] – Summarizes the content of the email and make it less wordy for you
-    -   [Email Decision Maker][] – An agent that decides whether the email needs a response or not, and also the category and priority of the response
-    -   [Pick Email Writer][] - A pipe that picks the tone for writing an email
-    -   [Email Writer][] - A pipe that writes a response email as a reply to your email
+    -   [Email Sentiment][email-sentiment] – An agent to analyze the sentiment of the incoming email
+    -   [Summarizer][summarizer] – Summarizes the content of the email and make it less wordy for you
+    -   [Email Decision Maker][decision-maker] – An agent that decides whether the email needs a response or not, and also the category and priority of the response
+    -   [Pick Email Writer][pick-email-writer] – A pipe that picks the tone for writing an email
+    -   [Email Writer][email-writer] – A pipe that writes a response email as a reply to your email
 -   ⚡️ Streaming — Real-time experience with streamed responses
 -   🔋 Responsive and open source — Works on all devices and platforms
 
 ## Learn more
 
-1. Check the [CodeAlchemist Pipe on ⌘ Langbase][codealchemist]
+1. Check the [AI Email Agent Pipe on ⌘ Langbase][codealchemist]
 2. Read the [source code on GitHub][gh] for this example
 3. Go through Documentaion: [Pipe Quick Start][qs]
 4. Learn more about [Pipes & Memory features on ⌘ Langbase][docs]
@@ -34,10 +32,12 @@ Let's get started with the project:
 
 To get started with Langbase, you'll need to [create a free personal account on Langbase.com][signup] and verify your email address. _Done? Cool, cool!_
 
-1. Fork the the following Pipes on ⌘ Langbase.
-    1. [Code Alchemist Pipe][codealchemist]
-    2. [React Copilot Pipe][reactcopilot]
-    3. [Database Architect Pipe][databasearchitect]
+1. Fork the following pipes on ⌘ Langbase.
+    1. [Email Sentiment][email-sentiment]
+    2. [Summarizer][summarizer]
+    3. [Email Decision Maker][decision-maker]
+    4. [Pick Email Writer][pick-email-writer]
+    5. [Email Writer][email-writer]
 2. Go to the API tab of each Pipe to copy the Pipe's API key (to be used on server-side only).
 3. Download the example project folder from [here][download] or clone the repository.
 4. `cd` into the project directory and open it in your code editor.
@@ -45,17 +45,25 @@ To get started with Langbase, you'll need to [create a free personal account on 
 6. Add the following environment variables:
 
 ```sh
-# Fork https://langbase.com/examples/code-alchemist pipe to get the API key
+# Fork https://langbase.com/examples/email-sentiment pipe to get the API key
 # Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-NEXT_LB_CODE_ALCHEMY_PIPE_API_KEY="PIPE_API_KEY"
+NEXT_LB_SENTIMENT_PIPE_API_KEY="PIPE_API_KEY"
 
-# Fork https://langbase.com/examples/react-copilot pipe to get the API key
-# Replace `PIPE_API_KEY` with the copied API key of React Copilot Pipe.
-NEXT_LB_REACT_COPILOT_PIPE_API_KEY="PIPE_API_KEY"
+# Fork https://langbase.com/examples/summarizer pipe to get the API key
+# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
+NEXT_LB_SUMMARIZER_PIPE_API_KEY="PIPE_API_KEY"
 
-# Fork https://langbase.com/examples/database-architect pipe to get the API key
-# Replace `PIPE_API_KEY` with the copied API key of Database Architect Pipe.
-NEXT_LB_DATABASE_ARCHITECT_PIPE_API_KEY="PIPE_API_KEY"
+# Fork https://langbase.com/examples/decision-maker pipe to get the API key
+# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
+NEXT_LB_DECISION_MAKER_PIPE_API_KEY="PIPE_API_KEY"
+
+# Fork https://langbase.com/examples/pick-email-writer pipe to get the API key
+# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
+NEXT_LB_PICK_EMAIL_WRITER_PIPE_API_KEY="PIPE_API_KEY"
+
+# Fork https://langbase.com/examples/email-writer pipe to get the API key
+# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
+NEXT_LB_EMAIL_WRITER_PIPE_API_KEY="PIPE_API_KEY"
 ```
 
 7. Now execute the following commands in your terminal to run the project:
@@ -82,22 +90,24 @@ Your app template should now be running on [localhost:3000][local].
 
 This project is created by [Langbase][lb] team members, with contributions from:
 
--   Saad Irfan ([@MSaadDev][xsi]) - Founding Engineer, [Langbase][lb]
+-   Ashar Irfan ([@MrAsharIrfan][xai]) - Founding Engineer, [Langbase][lb]
 
 **_Built by ⌘ [Langbase.com][lb] — Ship composable AI agents with hyper-personalized memory (RAG)!_**
 
 [demo]: https://code-alchemist.langbase.dev
 [lb]: https://langbase.com
-[codealchemist]: https://langbase.com/examples/code-alchemist
-[reactcopilot]: https://langbase.com/examples/react-copilot
-[databasearchitect]: https://langbase.com/examples/database-architect
+[email-sentiment]: https://langbase.com/examples/email-sentiment
+[summarizer]: https://langbase.com/examples/summarizer
+[decision-maker]: https://langbase.com/examples/decision-maker
+[pick-email-writer]: https://langbase.com/examples/pick-email-writer
+[email-writer]: https://langbase.com/examples/email-writer
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/code-alchemist
 [cover]: https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/code-alchemist/code-alchemist-langbase.jpg
 [download]: https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/code-alchemist
 [signup]: https://langbase.fyi/io
 [qs]: https://langbase.com/docs/pipe/quickstart
 [docs]: https://langbase.com/docs
-[xsi]: https://x.com/MSaaddev
+[xai]: https://x.com/MrAsharIrfan
 [local]: http://localhost:3000
 [mit]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&color=%23000000
 [fork]: https://img.shields.io/badge/FORK%20ON-%E2%8C%98%20Langbase-000000.svg?style=for-the-badge&logo=%E2%8C%98%20Langbase&logoColor=000000
