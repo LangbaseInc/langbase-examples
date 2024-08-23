@@ -2,6 +2,8 @@
 
 # ⌘ Langbase Examples — Open source AI Agents Pipes
 
+>[Explore all Langbase Examples here](https://github.com/LangbaseInc/langbase/tree/main/examples).
+
 Langbase helps developers ship composable AI agents with hyper-personalized memory (RAG).
 
 Langbase is the composable AI infrastructure and developer experience to build, collaborate, and deploy any AI agents (AI features). Our mission is to make AI accessible to everyone, any developer not just AI/ML experts. We are the only [composable AI infrastructure][composable]. That's all we do.
