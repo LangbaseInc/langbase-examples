@@ -21,7 +21,7 @@ export function Opening() {
 							{/* <Link
 								target="_blank"
 								className="underline hover:text-indigo-400 mb-2"
-								href="https://langbase.com/examples/ai-chatbot"
+								href="https://langbase.com/examples?q=label:ai-email-agent"
 							>
 								<span className="font-bold">
 									pipe on ⌘ Langbase
@@ -37,14 +37,14 @@ export function Opening() {
 					<div className="mt-4 flex flex-col gap-4 text-sm [&>p]:my-0 [&>p]:py-0">
 						<p>Learn more by checking out:</p>
 						<div className="flex flex-col gap-4 mt-2 text-sm">
-							<Dlink href="https://langbase.com/examples/ai-chatbot">
+							<Dlink href="https://langbase.com/examples?q=label:ai-email-agent">
 								<span>1.</span>
 								<span>
 									Fork all pipes that power AI Email Agent on
 									⌘ Langbase:
 								</span>
 							</Dlink>
-							<Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot">
+							<Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-email-agent">
 								<span>2.</span>
 								<span>
 									Use LangUI.dev's open source code components

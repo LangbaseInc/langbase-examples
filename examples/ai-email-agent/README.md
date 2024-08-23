@@ -1,6 +1,6 @@
 ![AI Email Agent by ⌘ Langbase][cover]
 
-![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][agentPipes]
+![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][agent-pipes]
 
 ## Build an AI Email Agent with Pipes — ⌘ Langbase
 
@@ -21,7 +21,7 @@ Check out the live demo [here][demo].
 
 ## Learn more
 
-1. Check the [AI Email Agent Pipes on ⌘ Langbase][agentPipes]
+1. Check the [AI Email Agent Pipes on ⌘ Langbase][agent-pipes]
 2. Read the [source code on GitHub][gh] for this example
 3. Go through Documentaion: [Pipe Quick Start][qs]
 4. Learn more about [Pipes & Memory features on ⌘ Langbase][docs]
@@ -96,7 +96,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://ai-email-agent.langbase.dev
 [lb]: https://langbase.com
-[agentPipes]: https://langbase.com/examples/
+[agent-pipes]: https://langbase.com/examples?q=label:ai-email-agent
 [email-sentiment]: https://langbase.com/examples/email-sentiment
 [summarizer]: https://langbase.com/examples/summarizer
 [decision-maker]: https://langbase.com/examples/decision-maker
