@@ -1,5 +1,7 @@
 import { Pipe } from 'langbase';
 
+export const runtime = 'edge';
+
 export async function POST(req: Request) {
 	try {
 		if (!process.env.NEXT_LB_DECISION_MAKER_PIPE_API_KEY) {
