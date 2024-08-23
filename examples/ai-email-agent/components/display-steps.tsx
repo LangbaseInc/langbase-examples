@@ -70,35 +70,7 @@ const StepEmail = ({ email }: { email: string }) => {
 const StepSentiment = ({ sentiment }: { sentiment: any }) => {
 	return (
 		<div className="relative pb-10 w-1/2">
-			{/* <div
-				aria-hidden="true"
-				className="absolute left-4 top-0 -ml-px mt-0.5 h-0.5 w-full bg-indigo-600"
-			/> */}
-			{/* <div
-				aria-hidden="true"
-				className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
-			/> */}
-			{/* <div
-				aria-hidden="true"
-				className="absolute left-4 bottom-4 -ml-px mt-0.5 h-0.5 w-full bg-indigo-600"
-			/> */}
 			<span className="group relative flex items-start justify-end">
-				{/* <span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600">
-						{sentiment.status === 'complete' && (
-							<CheckIcon
-								aria-hidden="true"
-								className="h-5 w-5 text-white"
-							/>
-						)}
-						{sentiment.status === 'current' && (
-							<IconSpinner
-								aria-hidden="true"
-								className="h-5 w-5 text-white"
-							/>
-						)}
-					</span>
-				</span> */}
 				<span className="mr-8 flex min-w-0 flex-col text-right">
 					<span className="text-sm font-medium">
 						Sentiment Analysis
@@ -255,14 +227,6 @@ const StepEmailReply = ({ step, reply }: { step: any; reply: string }) => {
 					<span className="text-sm text-gray-500 mt-2">
 						{!reply && step?.content}
 						{reply && displayContent(reply)}
-						{/* {emailReply?.content
-							.split('\n')
-							.map((line: string, index: number) => (
-								<React.Fragment key={index}>
-									{line}
-									<br />
-								</React.Fragment>
-							))} */}
 					</span>
 				</span>
 			</span>

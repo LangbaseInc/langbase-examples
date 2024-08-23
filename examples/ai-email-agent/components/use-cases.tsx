@@ -1,6 +1,5 @@
 import cn from 'mxcn';
-import { IconCross } from './ui/iconists/icon-cross';
-import { IconChat } from './ui/iconists/icon-chat';
+import { IconChat, IconClose } from './ui/icons';
 
 const useCases = [
 	{
@@ -11,12 +10,12 @@ const useCases = [
 	{
 		title: `Congratulations! You have been selected as the winner of a $100 million lottery!`,
 		prompt: `Congratulations! You have been selected as the winner of a $100 million lottery!`,
-		icon: IconCross
+		icon: IconClose
 	},
 	{
 		title: `Ahoy! I be Captain No Beard, and I need yer help finding me lost treasure. All I need is yer bank details to fund the expedition. Yarrr!`,
 		prompt: `Ahoy! I be Captain No Beard, and I need yer help finding me lost treasure. All I need is yer bank details to fund the expedition. Yarrr!`,
-		icon: IconCross
+		icon: IconClose
 	},
 	{
 		title: `I'm really disappointed with the service I received yesterday. The product was faulty and customer support was unhelpful.`,
@@ -31,7 +30,7 @@ const useCases = [
 	{
 		title: `For a limited time only, purchase our brand-new invisible car! It's fast, sleek, and totally see-through. Send $5,000 to claim yours today!`,
 		prompt: `For a limited time only, purchase our brand-new invisible car! It's fast, sleek, and totally see-through. Send $5,000 to claim yours today!`,
-		icon: IconCross
+		icon: IconClose
 	}
 ];
 

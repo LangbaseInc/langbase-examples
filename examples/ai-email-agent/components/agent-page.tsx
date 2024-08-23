@@ -15,23 +15,7 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 	const [completedSteps, setCompletedSteps] = useState({});
 	const [emailReply, setEmailReply] = useState('');
 
-	// Demo data
-	// const [summary, setSummary] =
-	// 	useState(`Congratulations! You've won a $1,000 Gift Card. Claim it now by clicking the link below, but hurry—this offer is limited!
-	// Best,
-	// The Rewards Team
-	// support@rewards.com`);
-	// const [sentiment, setSentiment] = useState('happy');
-	// const [decision, setDecision] = useState({
-	// 	byWhen: null,
-	// 	category: 'spam',
-	// 	priority: null,
-	// 	respond: false
-	// });
-
 	const analyzeSentiment = async (email: string) => {
-		// return { sentiment };
-
 		const response = await fetch('/api/sentiment', {
 			method: 'POST',
 			headers: {
@@ -46,8 +30,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 	};
 
 	const summarizeEmail = async (email: string) => {
-		// return { summary };
-
 		// Wait for just over a second due to rate limiting
 		await new Promise(resolve => setTimeout(resolve, 1500));
 
@@ -65,8 +47,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 	};
 
 	const shouldRespondToEmail = async (summary: string, sentiment: string) => {
-		// return { decision };
-
 		// Wait for just over a second due to rate limiting
 		await new Promise(resolve => setTimeout(resolve, 1500));
 
@@ -84,8 +64,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 	};
 
 	const pickEmailWriter = async (summary: string, sentiment: string) => {
-		// return { tone };
-
 		// Wait for just over a second due to rate limiting
 		await new Promise(resolve => setTimeout(resolve, 1500));
 
@@ -103,8 +81,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 	};
 
 	const generateEmailReply = async (writer: string, emailSummary: string) => {
-		// return { emailReply };
-
 		// Wait for just over a second due to rate limiting
 		await new Promise(resolve => setTimeout(resolve, 1500));
 
@@ -131,8 +107,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 			}
 		}
 
-		// const data = await response.json();
-		// console.log('Email Reply:', data);
 		return emailReply;
 	};
 
@@ -164,9 +138,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 		]);
 		const { sentiment } = sentimentAnalysis;
 		const { summary } = emailSummary;
-		console.log('Sentiment:', sentiment);
-		console.log('Summary:', summary);
-		// return;
 
 		setCompletedSteps(prev => ({
 			...prev,
@@ -183,9 +154,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 				status: 'current'
 			}
 		}));
-
-		// Wait for 2 seconds
-		// await new Promise(resolve => setTimeout(resolve, 2000));
 
 		// Make a decision if we should respond to email or not
 		const { respond, category, byWhen, priority } =

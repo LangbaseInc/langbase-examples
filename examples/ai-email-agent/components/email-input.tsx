@@ -2,8 +2,7 @@
 
 import { Button } from './ui/button';
 import Textarea from 'react-textarea-autosize';
-import { IconChat } from './ui/iconists/icon-chat';
-import { IconSpinner } from './ui/icons';
+import { IconChat, IconSpinner } from './ui/icons';
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit';
 
 export const EmailInput = ({
