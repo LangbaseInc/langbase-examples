@@ -1,4 +1,4 @@
-name = "ask-langbase-docs-discord"
+name = "langbase-discord-bot-example"
 main = "./src/index.ts"
 compatibility_date="2023-05-18"
 
