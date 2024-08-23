@@ -25,14 +25,6 @@ export default {
     const signature = request.headers.get('x-signature-ed25519');
     const timestamp = request.headers.get('x-signature-timestamp');
     if (!signature || !timestamp) {
-      // return Discord.generateResponse(
-      //   {
-      //     error: 'Unauthorized',
-      //   },
-      //   {
-      //     status: 401,
-      //   },
-      // );
       return new Response('Unauthorized', { status: 401 });
     }
     const body = await request.clone().arrayBuffer();
@@ -43,14 +35,6 @@ export default {
       env.DISCORD_PUBLIC_KEY,
     );
     if (!isValidRequest) {
-      // return Discord.generateResponse(
-      //   {
-      //     error: 'Unauthorized',
-      //   },
-      //   {
-      //     status: 401,
-      //   },
-      // );
       return new Response('Unauthorized', { status: 401 });
     }
 
@@ -60,9 +44,6 @@ export default {
 
     if (message.type === InteractionType.PING) {
       console.log('== ✨ Ping Command received');
-      // return Discord.generateResponse({
-      //   type: InteractionResponseType.PONG,
-      // });
       return new Response(
         JSON.stringify({ type: InteractionResponseType.PONG }),
         {
