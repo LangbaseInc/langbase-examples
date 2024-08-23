@@ -25,7 +25,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 		});
 
 		const data = await response.json();
-		// console.log('Sentiment:', data);
 		return data;
 	};
 
@@ -42,7 +41,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 		});
 
 		const data = await response.json();
-		// console.log('Summary:', data);
 		return data;
 	};
 
@@ -59,7 +57,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 		});
 
 		const data = await response.json();
-		console.log('Response:', data);
 		return data;
 	};
 
@@ -76,7 +73,6 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 		});
 
 		const data = await response.json();
-		console.log('Tone:', data);
 		return data;
 	};
 

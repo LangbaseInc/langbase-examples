@@ -31,7 +31,6 @@ export async function POST(req: Request) {
 
 		// Parse JSON response from Langbase
 		const decision: JSON = JSON.parse(shouldRespond.completion);
-		console.log(decision);
 
 		return Response.json(decision);
 	} catch (error: any) {
