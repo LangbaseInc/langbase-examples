@@ -1,6 +1,6 @@
 ![AI Email Agent by ⌘ Langbase][cover]
 
-![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][codealchemist]
+![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][agentPipes]
 
 ## Build an AI Email Agent with Pipes — ⌘ Langbase
 
@@ -11,9 +11,9 @@ Check out the live demo [here][demo].
 ## Features
 
 -   📧 AI Email Agent — Built with multiple AI Pipes on ⌘ Langbase
-    -   [Email Sentiment][email-sentiment] – An agent to analyze the sentiment of the incoming email
+    -   [Email Sentiment][email-sentiment] – A pipe to analyze the sentiment of the incoming email
     -   [Summarizer][summarizer] – Summarizes the content of the email and make it less wordy for you
-    -   [Email Decision Maker][decision-maker] – An agent that decides whether the email needs a response or not, and also the category and priority of the response
+    -   [Email Decision Maker][decision-maker] – A pipe that decides whether the email needs a response or not, and also the category and priority of the response
     -   [Pick Email Writer][pick-email-writer] – A pipe that picks the tone for writing an email
     -   [Email Writer][email-writer] – A pipe that writes a response email as a reply to your email
 -   ⚡️ Streaming — Real-time experience with streamed responses
@@ -21,7 +21,7 @@ Check out the live demo [here][demo].
 
 ## Learn more
 
-1. Check the [AI Email Agent Pipe on ⌘ Langbase][codealchemist]
+1. Check the [AI Email Agent Pipes on ⌘ Langbase][agentPipes]
 2. Read the [source code on GitHub][gh] for this example
 3. Go through Documentaion: [Pipe Quick Start][qs]
 4. Learn more about [Pipes & Memory features on ⌘ Langbase][docs]
@@ -38,7 +38,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
     3. [Email Decision Maker][decision-maker]
     4. [Pick Email Writer][pick-email-writer]
     5. [Email Writer][email-writer]
-2. Go to the API tab of each Pipe to copy the Pipe's API key (to be used on server-side only).
+2. Go to the API tab of each pipe to copy the pipe's API key (to be used on server-side only).
 3. Download the example project folder from [here][download] or clone the repository.
 4. `cd` into the project directory and open it in your code editor.
 5. Duplicate the `.env.example` file in this project and rename it to `.env.local`.
@@ -79,7 +79,7 @@ npm install
 npm run dev
 ```
 
-Your app template should now be running on [localhost:3000][local].
+Your app template should now be running on [localhost:3000][local]
 
 > NOTE:
 > This is a Next.js project, so you can build and deploy it to any platform of your choice, like Vercel, Netlify, Cloudflare, etc.
@@ -94,16 +94,17 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 **_Built by ⌘ [Langbase.com][lb] — Ship composable AI agents with hyper-personalized memory (RAG)!_**
 
-[demo]: https://code-alchemist.langbase.dev
+[demo]: https://ai-email-agent.langbase.dev
 [lb]: https://langbase.com
+[agentPipes]: https://langbase.com/examples/
 [email-sentiment]: https://langbase.com/examples/email-sentiment
 [summarizer]: https://langbase.com/examples/summarizer
 [decision-maker]: https://langbase.com/examples/decision-maker
 [pick-email-writer]: https://langbase.com/examples/pick-email-writer
 [email-writer]: https://langbase.com/examples/email-writer
-[gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/code-alchemist
-[cover]: https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/code-alchemist/code-alchemist-langbase.jpg
-[download]: https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/code-alchemist
+[gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-email-agent
+[cover]: https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ai-email-agent/ai-email-agent.jpg
+[download]: https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-email-agent
 [signup]: https://langbase.fyi/io
 [qs]: https://langbase.com/docs/pipe/quickstart
 [docs]: https://langbase.com/docs
