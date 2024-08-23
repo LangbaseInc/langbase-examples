@@ -46,6 +46,8 @@ const Sandbox = ({
 					options={{
 						autorun: true,
 						autoReload: true,
+						recompileDelay: 1000,
+						recompileMode: 'delayed',
 						externalResources: ['https://cdn.tailwindcss.com']
 					}}
 				>
