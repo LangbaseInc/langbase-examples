@@ -1,6 +1,7 @@
 import { CheckIcon } from '@radix-ui/react-icons';
 import React from 'react';
 import { IconSpinner } from './ui/icons';
+import Link from 'next/link';
 
 export const DisplaySteps = ({
 	email,
@@ -45,11 +46,11 @@ const StepEmail = ({ email }: { email: string }) => {
 		<div className="relative pb-10 w-1/2">
 			<div
 				aria-hidden="true"
-				className="absolute left-0 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
+				className="absolute left-0 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-500"
 			/>
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500 -ml-4">
 						<CheckIcon
 							aria-hidden="true"
 							className="h-5 w-5 text-white"
@@ -78,6 +79,10 @@ const StepSentiment = ({ sentiment }: { sentiment: any }) => {
 					<span className="text-sm text-gray-500 mt-2">
 						{sentiment?.content}
 					</span>
+					<PipeLink
+						href="https://langbase.com/examples/email-sentiment"
+						text="email-sentiment"
+					/>
 				</span>
 			</span>
 		</div>
@@ -90,12 +95,12 @@ const StepSummary = ({ summary }: { summary: any }) => {
 			{summary?.content && (
 				<div
 					aria-hidden="true"
-					className="absolute left-0 top-0 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
+					className="absolute left-0 top-0 -ml-px mt-0.5 h-full w-0.5 bg-indigo-500"
 				/>
 			)}
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500 -ml-4">
 						{summary.status === 'complete' && (
 							<CheckIcon
 								aria-hidden="true"
@@ -115,6 +120,10 @@ const StepSummary = ({ summary }: { summary: any }) => {
 					<span className="text-sm text-gray-500 mt-2">
 						{summary?.content}
 					</span>
+					<PipeLink
+						href="https://langbase.com/examples/summarizer"
+						text="summarizer"
+					/>
 				</span>
 			</span>
 		</div>
@@ -127,12 +136,12 @@ const StepDecision = ({ respond }: { respond: any }) => {
 			{respond?.content?.respond && (
 				<div
 					aria-hidden="true"
-					className="absolute left-0 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
+					className="absolute left-0 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-500"
 				/>
 			)}
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500 -ml-4">
 						{respond.status === 'complete' && (
 							<CheckIcon
 								aria-hidden="true"
@@ -153,13 +162,16 @@ const StepDecision = ({ respond }: { respond: any }) => {
 						{!respond.content && 'Making a decision...'}
 						{respond.content && (
 							<>
-								Decision:{' '}
-								{respond.content.respond ? 'Yes' : 'No'}
+								Reply: {respond.content.respond ? 'Yes' : 'No'}
 								<br />
 								Category: {respond.content.category}
 							</>
 						)}
 					</span>
+					<PipeLink
+						href="https://langbase.com/examples/decision-maker"
+						text="decision-maker"
+					/>
 				</span>
 			</span>
 		</div>
@@ -171,11 +183,11 @@ const StepEmailWriter = ({ tone }: { tone: any }) => {
 		<div className="relative pb-10 w-1/2">
 			<div
 				aria-hidden="true"
-				className="absolute left-0 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-600"
+				className="absolute left-0 top-4 -ml-px mt-0.5 h-full w-0.5 bg-indigo-500"
 			/>
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500 -ml-4">
 						{tone.status === 'complete' && (
 							<CheckIcon
 								aria-hidden="true"
@@ -192,9 +204,12 @@ const StepEmailWriter = ({ tone }: { tone: any }) => {
 				</span>
 				<span className="ml-4 flex min-w-0 flex-col">
 					<span className="text-sm font-medium">Email Writer</span>
-					<span
-						className="text-sm text-gray-500 mt-2"
-						dangerouslySetInnerHTML={{ __html: tone?.content }}
+					<span className="text-sm text-gray-500 mt-2">
+						{tone?.content}
+					</span>
+					<PipeLink
+						href="https://langbase.com/examples/pick-email-writer"
+						text="pick-email-writer"
 					/>
 				</span>
 			</span>
@@ -207,7 +222,7 @@ const StepEmailReply = ({ step, reply }: { step: any; reply: string }) => {
 		<div className="relative pb-10 w-1/2">
 			<span className="group relative flex items-start">
 				<span className="flex h-9 items-center">
-					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 -ml-4">
+					<span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500 -ml-4">
 						{step.status === 'complete' && (
 							<CheckIcon
 								aria-hidden="true"
@@ -228,6 +243,10 @@ const StepEmailReply = ({ step, reply }: { step: any; reply: string }) => {
 						{!reply && step?.content}
 						{reply && displayContent(reply)}
 					</span>
+					<PipeLink
+						href="https://langbase.com/examples/email-writer"
+						text="email-writer"
+					/>
 				</span>
 			</span>
 		</div>
@@ -241,4 +260,19 @@ const displayContent = (content: string) => {
 			<br />
 		</React.Fragment>
 	));
+};
+
+const PipeLink = ({ href, text }: { href: string; text: string }) => {
+	return (
+		<span className="text-sm text-gray-500 mt-2">
+			Pipe:{' '}
+			<Link
+				href={href}
+				target="_blank"
+				className="text-indigo-400 hover:underline "
+			>
+				{text}
+			</Link>
+		</span>
+	);
 };
