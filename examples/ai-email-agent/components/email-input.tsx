@@ -9,18 +9,25 @@ export const EmailInput = ({
 	email,
 	setEmail,
 	isLoading,
-	sendEmail
+	sendEmail,
+	resetAgent
 }: {
 	email: string;
 	setEmail: React.Dispatch<React.SetStateAction<string>>;
 	isLoading: boolean;
 	sendEmail: (email: string) => void;
+	resetAgent: () => void;
 }) => {
 	const { formRef, onKeyDown } = useEnterSubmit();
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		await sendEmail(email);
+	};
+
+	const handleReset = () => {
+		resetAgent();
+		setEmail('');
 	};
 
 	return (
@@ -42,6 +49,17 @@ export const EmailInput = ({
 								</div>
 
 								<div className="flex items-center justify-center gap-2 md:justify-start">
+									{/* Reset agent */}
+									<Button
+										variant="ghost"
+										className="max-w-xs"
+										onClick={e => {
+											e.preventDefault();
+											handleReset();
+										}}
+									>
+										Reset
+									</Button>
 									{/* Send button */}
 									<Button
 										type="submit"

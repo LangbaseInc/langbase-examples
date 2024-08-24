@@ -209,6 +209,12 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 		setIsLoading(false);
 	};
 
+	const resetAgent = () => {
+		setInputEmail('');
+		setCompletedSteps({});
+		setEmailReply('');
+	};
+
 	return (
 		<div className="min-h-screen">
 			<Welcome />
@@ -217,6 +223,7 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 				setEmail={setInputEmail}
 				isLoading={isLoading}
 				sendEmail={sendEmail}
+				resetAgent={resetAgent}
 			/>
 			<div className={cn('pb-36 pt-4 md:pt-10', className)}>
 				{!isLoading && isEmptyObject(completedSteps) && (
