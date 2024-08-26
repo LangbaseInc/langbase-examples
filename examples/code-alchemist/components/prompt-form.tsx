@@ -49,7 +49,7 @@ export default function PromptForm({
 
 	return (
 		<form
-			className={cn('w-full md:w-[650px]', className)}
+			className={cn('w-full', className)}
 			onSubmit={e => onSubmit({ e, prompt })}
 		>
 			<div className="bg-background relative flex w-full grow flex-col overflow-hidden px-2 pb-2 rounded-2xl border">

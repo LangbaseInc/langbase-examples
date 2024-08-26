@@ -1,8 +1,9 @@
-import React, { Dispatch, SetStateAction, FormEvent, useState } from 'react';
+import React, { Dispatch, SetStateAction, FormEvent } from 'react';
 import PromptForm from './prompt-form';
 import { RecentChat } from './alchemist-page';
 import BlurFade from './magicui/blur-fade';
 import Switch from './switch';
+import Loading from './loading';
 
 const Welcome = ({
 	prompt,
@@ -34,13 +35,13 @@ const Welcome = ({
 	if (!showWelcome) return <></>;
 
 	return (
-		<BlurFade delay={0.15} className="w-full">
-			<div className="w-full flex flex-col items-center gap-y-8 pt-16 sm:pt-10">
-				<div className="flex flex-col items-center gap-y-4">
+		<BlurFade delay={0.15} className="w-full flex flex-col items-center">
+			<div className="w-full md:w-[650px] flex flex-col items-center gap-y-8 pt-16 sm:pt-10">
+				<div className="flex flex-col items-center gap-y-4 w-full">
 					<h2 className="text-2xl sm:text-5xl font-semibold flex">
 						Code Alchemist
 					</h2>
-					<span className="w-full sm:w-2/3 text-center text-muted-foreground leading-7">
+					<span className="w-full sm:w-[90%] text-center text-muted-foreground leading-7">
 						An AI powered coding agent to generate optimized
 						database schemas, SQL queries and fully functional code
 						snippets
@@ -60,6 +61,7 @@ const Welcome = ({
 					handleOnClick={handleOnClick}
 					showRecentChats={showRecentChats}
 				/>
+				<Loading isLoading={isLoading} />
 			</div>
 		</BlurFade>
 	);

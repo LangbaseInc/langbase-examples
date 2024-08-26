@@ -37,7 +37,7 @@ export function Header() {
 				</a>
 				<a
 					target="_blank"
-					href="https://langbase.com/examples/code-alchemist"
+					href="https://langbase.com/examples?q=label%3Acode-alchemist"
 					rel="noopener noreferrer"
 					className={cn(buttonVariants({ variant: 'default' }))}
 				>

@@ -30,7 +30,7 @@ export default function Switch({
 	if (!showSwitch) return <></>;
 
 	return (
-		<div className="w-full md:w-[650px] flex flex-col gap-8">
+		<div className="w-full flex flex-col gap-8">
 			{showRecentChats && (
 				<span className="w-full grid grid-cols-2 rounded-md shadow-sm">
 					<button
