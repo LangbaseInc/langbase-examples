@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { Providers } from './provider';
 import cn from 'mxcn';
 import { Header } from '@/components/header';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,6 +22,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<head>
+				<GoogleAnalytics gaId="G-PNLDS4WV3X" />
+			</head>
 			<body className={cn(inter.className, 'dark bg-background')}>
 				<Providers>
 					<div className="flex min-h-screen flex-col px-3 pr-0 pt-6">
