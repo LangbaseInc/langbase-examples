@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { toast } from 'sonner'
+import { fromReadableStream } from 'langbase'
 
 export default function Generate({
     transcript,
     setAIResponse,
 }: {
     transcript: string,
-    setAIResponse: (response: string) => void,
+    setAIResponse: Dispatch<SetStateAction<string>>,
 }) {
     const [prompt, setPrompt] = React.useState('')
     const [loading, setLoading] = React.useState(false)
@@ -25,6 +26,7 @@ export default function Generate({
         setAIResponse("")
 
         try {
+
             // Fetch response from the server
             const response = await fetch('/api/langbase/wisdom', {
                 method: 'POST',
@@ -32,10 +34,21 @@ export default function Generate({
                 headers: { 'Content-Type': 'text/plain' },
             });
 
+            // If response is not successful, throw an error
+            if (response.status !== 200) {
+                const errorData = await response.text();
+                toast.error(errorData);
+                return;
+            }
+
             // Parse the response
-            const data = await response.json()
-            console.log(data.completion)
-            setAIResponse(data.completion)
+            if (response.body) {
+                const stream = fromReadableStream(response.body);
+                for await (const chunk of stream) {
+                    const content = chunk?.choices[0]?.delta?.content;
+                    content && setAIResponse((prev: string) => (prev + content));
+                }
+            }
 
         } catch (error) {
             toast.error("Failed to generate response")
