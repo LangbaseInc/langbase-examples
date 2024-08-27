@@ -17,8 +17,8 @@ const useLangbase = () => {
 			body: JSON.stringify({ email })
 		});
 
-		const data = await response.json();
-		return data;
+		const sentimentAnalysis = await response.json();
+		return sentimentAnalysis;
 	};
 
 	const summarizeEmail = async (email: string) => {
@@ -30,8 +30,8 @@ const useLangbase = () => {
 			body: JSON.stringify({ email })
 		});
 
-		const data = await response.json();
-		return data;
+		const summarizedEmail = await response.json();
+		return summarizedEmail;
 	};
 
 	const shouldRespondToEmail = async (summary: string, sentiment: string) => {
@@ -43,8 +43,8 @@ const useLangbase = () => {
 			body: JSON.stringify({ summary, sentiment })
 		});
 
-		const data = await response.json();
-		return data;
+		const shouldRespond = await response.json();
+		return shouldRespond;
 	};
 
 	const pickEmailWriter = async (summary: string, sentiment: string) => {
@@ -56,8 +56,8 @@ const useLangbase = () => {
 			body: JSON.stringify({ summary, sentiment })
 		});
 
-		const data = await response.json();
-		return data;
+		const writer = await response.json();
+		return writer;
 	};
 
 	const generateEmailReply = async (writer: string, emailSummary: string) => {
@@ -87,7 +87,7 @@ const useLangbase = () => {
 		return emailReply;
 	};
 
-	const sendEmail = async (email: string) => {
+	const sendEmailToAgent = async (email: string) => {
 		setInputEmail('');
 		setIsLoading(true);
 
@@ -202,7 +202,7 @@ const useLangbase = () => {
 		setCompletedSteps,
 		emailReply,
 		setEmailReply,
-		sendEmail,
+		sendEmailToAgent,
 		resetAgent
 	};
 };

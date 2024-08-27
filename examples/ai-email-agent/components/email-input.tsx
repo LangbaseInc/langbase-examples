@@ -9,20 +9,20 @@ export const EmailInput = ({
 	email,
 	setEmail,
 	isLoading,
-	sendEmail,
+	sendEmailToAgent,
 	resetAgent
 }: {
 	email: string;
 	setEmail: React.Dispatch<React.SetStateAction<string>>;
 	isLoading: boolean;
-	sendEmail: (email: string) => void;
+	sendEmailToAgent: (email: string) => void;
 	resetAgent: () => void;
 }) => {
 	const { formRef, onKeyDown } = useEnterSubmit();
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		await sendEmail(email);
+		await sendEmailToAgent(email);
 	};
 
 	const handleReset = () => {

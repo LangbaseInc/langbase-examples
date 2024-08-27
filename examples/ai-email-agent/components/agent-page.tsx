@@ -15,7 +15,7 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 		isLoading,
 		completedSteps,
 		emailReply,
-		sendEmail,
+		sendEmailToAgent,
 		resetAgent
 	} = useLangbase();
 
@@ -26,12 +26,12 @@ export function AgentPage({ className }: React.ComponentProps<'div'>) {
 				email={inputEmail}
 				setEmail={setInputEmail}
 				isLoading={isLoading}
-				sendEmail={sendEmail}
+				sendEmailToAgent={sendEmailToAgent}
 				resetAgent={resetAgent}
 			/>
 			<div className={cn('pb-36 pt-4 md:pt-10', className)}>
 				{!isLoading && isEmptyObject(completedSteps) && (
-					<UseCases sendEmail={sendEmail} />
+					<UseCases sendEmailToAgent={sendEmailToAgent} />
 				)}
 				{!isEmptyObject(completedSteps) && (
 					<DisplaySteps

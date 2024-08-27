@@ -35,12 +35,12 @@ const useCases = [
 ];
 
 export const UseCases = ({
-	sendEmail
+	sendEmailToAgent
 }: {
-	sendEmail: (email: string) => void;
+	sendEmailToAgent: (email: string) => void;
 }) => {
 	const handleClick = (prompt: string) => {
-		sendEmail(prompt);
+		sendEmailToAgent(prompt);
 	};
 
 	return (
