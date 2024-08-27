@@ -14,7 +14,7 @@ export default function YTLinkInput({
     // Handle the button click
     const handleButtonClick = () => {
         // Check if the link is empty
-        if (!ytLink || !ytLink.includes("youtube.com")) {
+        if (!ytLink || (!ytLink.includes("youtube.com") && !ytLink.includes("youtu.be"))) {
             toast.error("Please enter a valid YouTube link");
             return;
         }

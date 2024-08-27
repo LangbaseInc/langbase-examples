@@ -8,7 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"pages:build": "npx @cloudflare/next-on-pages",
-		"deploy": "npm run pages:build && wrangler pages deploy"
+		"deploy": "pnpm run pages:build && wrangler pages deploy"
 	},
 	"dependencies": {
 		"@headlessui/tailwindcss": "^0.2.1",

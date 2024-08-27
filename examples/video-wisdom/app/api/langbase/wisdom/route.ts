@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { Pipe, StreamOptions } from 'langbase';
 import z from 'zod';
 
-export const runtime = 'edge'
+export const runtime = 'edge';
 
 type RequestBody = {
 	messages: { role: string; content: string }[];
@@ -150,7 +150,6 @@ export async function POST(req: NextRequest) {
 // 	const data = await response.json();
 // 	return new Response(JSON.stringify(data));
 // }
-
 
 /**
  * Generates a response by initiating a Pipe, constructing the input for the stream,

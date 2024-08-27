@@ -55,7 +55,13 @@ export default function VideoInput({
         setVideoEmbedData(data);
 
         // Extract videoId from the YouTube link
-        const videoId = ytLink.split('v=')[1]?.split('&')[0];
+        let videoId = null;
+
+        if (ytLink.includes('youtube.com')) {
+            videoId = ytLink.split('v=')[1]?.split('&')[0];
+        } else if (ytLink.includes('youtu.be')) {
+            videoId = ytLink.split('youtu.be/')[1]?.split('?')[0];
+        }
 
         // Check if the link is valid
         if (!videoId) {
