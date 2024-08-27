@@ -34,7 +34,7 @@ export async function callPipes({ keys, prompt }: Params) {
 		apiKey: keys.CODE_ALCHEMY_PIPE_API_KEY
 	});
 
-	const stream = await codeAlchemistPipe.streamText({
+	const { stream } = await codeAlchemistPipe.streamText({
 		messages: [{ role: 'user', content: prompt }]
 	});
 
@@ -94,7 +94,7 @@ async function runPairProgrammer({ prompt, keys }: Params) {
 		apiKey: keys.REACT_COPILOT_PIPE_API_KEY
 	});
 
-	const stream = await reactCopilotPipe.streamText({
+	const { stream } = await reactCopilotPipe.streamText({
 		messages: [
 			{
 				role: 'user',
@@ -128,7 +128,7 @@ async function runDatabaseArchitect({ prompt, keys }: Params) {
 		apiKey: keys.DATABASE_ARCHITECT_PIPE_API_KEY
 	});
 
-	const stream = await databaseArchitectPipe.streamText({
+	const { stream } = await databaseArchitectPipe.streamText({
 		messages: [
 			{
 				role: 'user',

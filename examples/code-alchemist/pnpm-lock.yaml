@@ -30,8 +30,8 @@ importers:
         specifier: ^11.3.28
         version: 11.3.28(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       langbase:
-        specifier: ^0.6.0
-        version: 0.6.0
+        specifier: ^1.1.0
+        version: 1.1.0
       mxcn:
         specifier: ^2.0.0
         version: 2.0.0
@@ -1660,8 +1660,8 @@ packages:
     resolution: {integrity: sha512-RQrI8rlHY92OLf3rho/Ts8i/XvjgguEjOkO1BEXcU3N8BqPpSzBNwV/G0Ukr+P/l3ivvJUE/Fa/CwbS6HesGNQ==}
     hasBin: true
 
-  langbase@0.6.0:
-    resolution: {integrity: sha512-jd1T1KUJk6hQatbPBJxjg6Oxapg6xBVbiAi2jbPTHw35jsPPNnBxctlD8ow7sU3lGuKnjqIyBHbsLerh4OT2PA==}
+  langbase@1.1.0:
+    resolution: {integrity: sha512-Fe5sNgsMMEjKGs8Itb4mVUPwZwH1GXJYAKiyF6kZMpCrarzGdzff64JXVqYSMTDy5p7cWGClka+6ycOpiSaf4A==}
     engines: {node: '>=18'}
 
   lilconfig@2.1.0:
@@ -4306,7 +4306,7 @@ snapshots:
     dependencies:
       commander: 8.3.0
 
-  langbase@0.6.0:
+  langbase@1.1.0:
     dependencies:
       dotenv: 16.4.5
       openai: 4.56.0(zod@3.23.8)
