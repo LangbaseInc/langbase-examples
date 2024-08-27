@@ -22,7 +22,9 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<GoogleAnalytics gaId={process.env.GA_ID || ''} />
+				{process.env.GA_ID && (
+					<GoogleAnalytics gaId={process.env.GA_ID} />
+				)}
 			</head>
 			<body className={inter.className}>
 				<Providers>
