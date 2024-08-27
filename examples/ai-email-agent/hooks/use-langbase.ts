@@ -106,6 +106,7 @@ const useLangbase = () => {
 			}
 		});
 
+		// Analyze sentiment and summarize email in parallel
 		const [sentimentAnalysis, emailSummary] = await Promise.all([
 			analyzeSentiment(email),
 			summarizeEmail(email)
@@ -129,11 +130,12 @@ const useLangbase = () => {
 			}
 		}));
 
-		// Make a decision if we should respond to email or not
+		// Make a decision about the email response
 		const { respond, category, byWhen, priority } =
 			await shouldRespondToEmail(summary, sentiment);
 
 		if (!respond) {
+			// If no, then stop the pipeline
 			setCompletedSteps(prev => ({
 				...prev,
 				respond: {
@@ -173,7 +175,7 @@ const useLangbase = () => {
 			}
 		}));
 
-		// Generate email reply
+		// Generate the email response
 		const reply = await generateEmailReply(tone, summary);
 
 		setCompletedSteps(prev => ({
