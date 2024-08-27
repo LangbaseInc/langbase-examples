@@ -14,9 +14,9 @@ import 'server-only';
  */
 export function getPipeApiKeys() {
 	const requiredKeys = [
-		'NEXT_LB_REACT_COPILOT_PIPE_API_KEY',
-		'NEXT_LB_CODE_ALCHEMY_PIPE_API_KEY',
-		'NEXT_LB_DATABASE_ARCHITECT_PIPE_API_KEY'
+		'LANGBASE_REACT_COPILOT_PIPE_API_KEY',
+		'LANGBASE_CODE_ALCHEMY_PIPE_API_KEY',
+		'LANGBASE_DATABASE_ARCHITECT_PIPE_API_KEY'
 	];
 
 	// Check if all required keys are set in the environment variables.
@@ -28,10 +28,10 @@ export function getPipeApiKeys() {
 
 	return {
 		REACT_COPILOT_PIPE_API_KEY: process.env
-			.NEXT_LB_REACT_COPILOT_PIPE_API_KEY as string,
+			.LANGBASE_REACT_COPILOT_PIPE_API_KEY as string,
 		CODE_ALCHEMY_PIPE_API_KEY: process.env
-			.NEXT_LB_CODE_ALCHEMY_PIPE_API_KEY as string,
+			.LANGBASE_CODE_ALCHEMY_PIPE_API_KEY as string,
 		DATABASE_ARCHITECT_PIPE_API_KEY: process.env
-			.NEXT_LB_DATABASE_ARCHITECT_PIPE_API_KEY as string
+			.LANGBASE_DATABASE_ARCHITECT_PIPE_API_KEY as string
 	};
 }

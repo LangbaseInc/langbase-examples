@@ -48,15 +48,15 @@ To get started with Langbase, you'll need to [create a free personal account on 
 ```sh
 # Fork https://langbase.com/examples/code-alchemist pipe to get the API key
 # Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-NEXT_LB_CODE_ALCHEMY_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_CODE_ALCHEMY_PIPE_API_KEY="PIPE_API_KEY"
 
 # Fork https://langbase.com/examples/react-copilot pipe to get the API key
 # Replace `PIPE_API_KEY` with the copied API key of React Copilot Pipe.
-NEXT_LB_REACT_COPILOT_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_REACT_COPILOT_PIPE_API_KEY="PIPE_API_KEY"
 
 # Fork https://langbase.com/examples/database-architect pipe to get the API key
 # Replace `PIPE_API_KEY` with the copied API key of Database Architect Pipe.
-NEXT_LB_DATABASE_ARCHITECT_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_DATABASE_ARCHITECT_PIPE_API_KEY="PIPE_API_KEY"
 ```
 
 7. Now execute the following commands in your terminal to run the project:
