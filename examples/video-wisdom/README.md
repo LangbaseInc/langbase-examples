@@ -1,4 +1,4 @@
-![VideoWisdom by ⌘ Langbase][cover]
+![VideoWisdom by ⌘ Langbase](https://github.com/user-attachments/assets/45925d09-2eaf-4e14-a090-9b7ae2a57ee6)
 
 ![License: MIT][mit] 
 
