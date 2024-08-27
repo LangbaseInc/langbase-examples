@@ -47,23 +47,23 @@ To get started with Langbase, you'll need to [create a free personal account on 
 ```sh
 # Fork https://langbase.com/examples/email-sentiment pipe to get the API key
 # Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-NEXT_LB_SENTIMENT_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_AI_PIPE_SENTIMENT_API_KEY="PIPE_API_KEY"
 
 # Fork https://langbase.com/examples/summarizer pipe to get the API key
 # Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-NEXT_LB_SUMMARIZER_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_AI_PIPE_SUMMARIZER_API_KEY="PIPE_API_KEY"
 
 # Fork https://langbase.com/examples/decision-maker pipe to get the API key
 # Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-NEXT_LB_DECISION_MAKER_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_AI_PIPE_DECISION_MAKER_API_KEY="PIPE_API_KEY"
 
 # Fork https://langbase.com/examples/pick-email-writer pipe to get the API key
 # Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-NEXT_LB_PICK_EMAIL_WRITER_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_AI_PIPE_PICK_EMAIL_WRITER_API_KEY="PIPE_API_KEY"
 
 # Fork https://langbase.com/examples/email-writer pipe to get the API key
 # Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-NEXT_LB_EMAIL_WRITER_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_AI_PIPE_EMAIL_WRITER_API_KEY="PIPE_API_KEY"
 ```
 
 7. Now execute the following commands in your terminal to run the project:

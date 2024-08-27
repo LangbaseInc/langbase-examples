@@ -4,9 +4,9 @@ export const runtime = 'edge';
 
 export async function POST(req: Request) {
 	try {
-		if (!process.env.NEXT_LB_SENTIMENT_PIPE_API_KEY) {
+		if (!process.env.LANGBASE_AI_PIPE_SENTIMENT_API_KEY) {
 			throw new Error(
-				'Please set NEXT_LB_SENTIMENT_PIPE_API_KEY in your environment variables.'
+				'Please set LANGBASE_AI_PIPE_SENTIMENT_API_KEY in your environment variables.'
 			);
 		}
 
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 		const { email } = body;
 
 		const pipe = new Pipe({
-			apiKey: process.env.NEXT_LB_SENTIMENT_PIPE_API_KEY
+			apiKey: process.env.LANGBASE_AI_PIPE_SENTIMENT_API_KEY
 		});
 
 		const sentiment = await pipe.generateText({
