@@ -23,7 +23,9 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<GoogleAnalytics gaId={process.env.LANGBASE_GA_ID!} />
+				{process.env.LANGBASE_GA_ID && (
+					<GoogleAnalytics gaId={process.env.LANGBASE_GA_ID} />
+				)}
 			</head>
 			<body className={cn(inter.className, 'dark bg-background')}>
 				<Providers>
