@@ -1,4 +1,4 @@
-# Langbase AI Dicord Bot Example
+# Langbase AI Discord Bot Example
 
 Langbase AI Discord Bot is a discord bot that brings the power of Langbase Pipes straight to your Discord server.
 
