@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/sonner';
 import { Providers } from './provider';
 import { Header } from '@/components/header';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<head>
+				<GoogleAnalytics gaId={process.env.GA_ID || ''} />
+			</head>
 			<body className={inter.className}>
 				<Providers>
 					<Toaster />

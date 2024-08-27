@@ -12,6 +12,7 @@
     "@codemirror/lang-sql": "^6.7.0",
     "@codesandbox/sandpack-react": "^2.18.2",
     "@headlessui/tailwindcss": "^0.2.1",
+    "@next/third-parties": "^14.2.7",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "dayjs": "^1.11.12",
