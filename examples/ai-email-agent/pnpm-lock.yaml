@@ -69,8 +69,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       langbase:
-        specifier: ^0.6.0
-        version: 0.6.0
+        specifier: ^1.1.0
+        version: 1.1.0
       mxcn:
         specifier: ^2.0.0
         version: 2.0.0
@@ -2100,8 +2100,8 @@ packages:
   jsonfile@6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
 
-  langbase@0.6.0:
-    resolution: {integrity: sha512-jd1T1KUJk6hQatbPBJxjg6Oxapg6xBVbiAi2jbPTHw35jsPPNnBxctlD8ow7sU3lGuKnjqIyBHbsLerh4OT2PA==}
+  langbase@1.1.0:
+    resolution: {integrity: sha512-Fe5sNgsMMEjKGs8Itb4mVUPwZwH1GXJYAKiyF6kZMpCrarzGdzff64JXVqYSMTDy5p7cWGClka+6ycOpiSaf4A==}
     engines: {node: '>=18'}
 
   lilconfig@2.1.0:
@@ -4960,7 +4960,7 @@ snapshots:
     optionalDependencies:
       graceful-fs: 4.2.11
 
-  langbase@0.6.0:
+  langbase@1.1.0:
     dependencies:
       dotenv: 16.4.5
       openai: 4.55.7(zod@3.23.8)

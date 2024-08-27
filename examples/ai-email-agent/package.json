@@ -31,7 +31,7 @@
 		"@radix-ui/react-tooltip": "^1.0.7",
 		"class-variance-authority": "^0.7.0",
 		"cmdk": "^1.0.0",
-		"langbase": "^0.6.0",
+		"langbase": "^1.1.0",
 		"mxcn": "^2.0.0",
 		"next": "14.2.5",
 		"next-themes": "^0.3.0",

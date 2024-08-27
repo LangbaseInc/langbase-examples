@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 			apiKey: process.env.NEXT_LB_EMAIL_WRITER_PIPE_API_KEY
 		});
 
-		const emailReply = await pipe.streamText({
+		const { stream: emailReply } = await pipe.streamText({
 			variables: [
 				{
 					name: 'writer',
