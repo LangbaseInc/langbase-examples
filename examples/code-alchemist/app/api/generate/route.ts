@@ -1,4 +1,4 @@
-import { langbase } from '@/utils/langbase';
+import { callPipes } from '@/utils/call-pipes';
 import { getPipeApiKeys } from '@/utils/get-pipe-api-keys';
 import { validateRequestBody } from '@/utils/validate-request-body';
 
@@ -12,15 +12,15 @@ export const runtime = 'edge';
  */
 export async function POST(req: Request) {
 	try {
-		const keys = getPipeApiKeys();
-
 		const { prompt, error } = await validateRequestBody(req);
 
 		if (error || !prompt) {
 			return new Response(JSON.stringify(error), { status: 400 });
 		}
 
-		const { stream, pipe } = await langbase({
+		const keys = getPipeApiKeys();
+
+		const { stream, pipe } = await callPipes({
 			keys,
 			prompt
 		});

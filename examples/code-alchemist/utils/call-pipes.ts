@@ -29,7 +29,7 @@ type ToolCall = {
  * @param {string} params.prompt - The prompt to be processed.
  * @returns {Promise<{ stream: Stream, pipe: string } | unknown>} - A promise that resolves to an object containing the processed stream and the pipe used, or an unknown value if the tool is called.
  */
-export async function langbase({ keys, prompt }: Params) {
+export async function callPipes({ keys, prompt }: Params) {
 	const codeAlchemistPipe = new Pipe({
 		apiKey: keys.CODE_ALCHEMY_PIPE_API_KEY
 	});
