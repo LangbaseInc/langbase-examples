@@ -1,5 +1,13 @@
 import { Env, ApiResponse } from './types';
 
+export interface InternalMessage {
+    entity: 'main' | 'internal';
+    responseStream: ReadableStream;
+    toolCallDetected: boolean;
+    customerQuery?: string;
+    threaId: string;
+}
+  
 const encoder = new TextEncoder();
 
 function getDepartmentKey(functionName: string): keyof Pick<Env, 'LANGBASE_SPORTS_PIPE_API_KEY' | 'LANGBASE_ELECTRONICS_PIPE_API_KEY' | 'LANGBASE_TRAVEL_PIPE_API_KEY'> | null {
@@ -12,7 +20,7 @@ function getDepartmentKey(functionName: string): keyof Pick<Env, 'LANGBASE_SPORT
 }
 
 async function callDepartment(deptKey: keyof Pick<Env, 'LANGBASE_SPORTS_PIPE_API_KEY' | 'LANGBASE_ELECTRONICS_PIPE_API_KEY' | 'LANGBASE_TRAVEL_PIPE_API_KEY'>, customerQuery: string, env: Env, threadId?: string): Promise<ApiResponse> {
-
+ 
     const response = await fetch('https://api.langbase.com/beta/chat', {
         method: 'POST',
         headers: {
@@ -32,33 +40,54 @@ async function callDepartment(deptKey: keyof Pick<Env, 'LANGBASE_SPORTS_PIPE_API
     return await response.json() as ApiResponse;
 }
 
-async function processMainChatbotResponse(response: Response, env: Env, threadId: string): Promise<ReadableStream> {
+
+  async function processMainChatbotResponse(response: Response, env: Env, threadId: string, initialState: { entity: 'main' | 'internal', toolCallDetected: boolean }): Promise<InternalMessage> {
     const reader = response.body!.getReader();
     const decoder = new TextDecoder();
 
     let accumulatedToolCall: any = null;
     let accumulatedArguments = '';
+    const sharedState = { 
+        toolCallDetected: initialState.toolCallDetected,
+        entity: initialState.entity
+      };
 
-    return new ReadableStream({
-        async start(controller) {
-            let buffer = '';
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
+    const [processStream, responseStream] = new ReadableStream({
+        async start(controller: ReadableStreamDefaultController) {
+            try {
+                let buffer = '';
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
 
-                buffer += decoder.decode(value, { stream: true });
-                const lines = buffer.split('\n');
-                buffer = lines.pop() || '';
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split('\n');
+                    buffer = lines.pop() || '';
 
-                for (const line of lines) {
-                    const result = await processLine(line, controller, env, threadId, accumulatedToolCall, accumulatedArguments);
+                    for (const line of lines) {
+                    const result = await processLine(line, controller, env, threadId, accumulatedToolCall, accumulatedArguments, sharedState);
                     accumulatedToolCall = result[0];
                     accumulatedArguments = result[1];
                 }
             }
-            controller.close();
+            } catch (error) {
+                console.error('Error in stream processing:', error);
+            } finally {
+                controller.close();
+
+            }
         }
-    });
+    }).tee();
+
+    await processStream.pipeTo(new WritableStream());
+
+    return {
+        entity: sharedState.toolCallDetected ? 'internal' : 'main',
+        responseStream: responseStream,
+        toolCallDetected: sharedState.toolCallDetected,
+        customerQuery: '',
+        threadId: threadId
+    };
 }
 
 async function processLine(
@@ -67,7 +96,8 @@ async function processLine(
     env: Env, 
     threadId: string, 
     accumulatedToolCall: any, 
-    accumulatedArguments: string
+    accumulatedArguments: string,
+    sharedState: { toolCallDetected: boolean }
 ): Promise<[any, string]> {
     if (line.trim() === 'data: [DONE]') {
         controller.enqueue(encoder.encode('data: [DONE]\n\n'));
@@ -83,6 +113,7 @@ async function processLine(
         if (delta.content) {
             enqueueContentChunk(controller, data, delta.content);
         } else if (delta.tool_calls) {
+            sharedState.toolCallDetected = true;
             if (!accumulatedToolCall) {
                 accumulatedToolCall = delta.tool_calls[0];
                 accumulatedArguments = delta.tool_calls[0].function.arguments || '';
@@ -96,6 +127,7 @@ async function processLine(
                     const args = JSON.parse(accumulatedArguments);
                     const departmentResponse = await callDepartment(departmentKey, args.customerQuery, env, threadId);
                     let responseContent = formatDepartmentResponse(departmentResponse.completion);
+                    console.log(`Dept response: ${responseContent}`);
                     enqueueContentChunk(controller, data, responseContent);
                 }
                 accumulatedToolCall = null;
@@ -112,7 +144,7 @@ async function processLine(
 function enqueueContentChunk(controller: ReadableStreamDefaultController, data: any, content: string) {
     const chunk = {
         id: data.id,
-        object: 'chat.completion.chunk',
+        object: data.object,
         created: data.created,
         model: data.model,
         choices: [{ index: 0, delta: { content }, finish_reason: null }]
@@ -191,14 +223,33 @@ export default {
             });
         }
 
-        const query = incomingMessages[incomingMessages.length - 1].content;
+        let internalMessage: InternalMessage;
+        let query = incomingMessages[incomingMessages.length - 1].content;
+    
+        do {
+          const response = await callMainChatbot(query, threadId, env);
+          threadId = response.headers.get('lb-thread-id') || threadId;
+    
+          if (!response.body) {
+            console.error('No readable stream found in response body');
+            return new Response('Internal Server Error', { status: 500 });
+          }
+    
+          internalMessage = await processMainChatbotResponse(response, env, threadId || '', { entity: 'main', toolCallDetected: false });
+          if (internalMessage.entity === 'internal') {
+            const response = await callMainChatbot('summarize the current status for the customer', threadId, env);
+            threadId = response.headers.get('lb-thread-id') || threadId;
+    
+            if (!response.body) {
+              console.error('No readable stream found in response body');
+              return new Response('Internal Server Error', { status: 500 });
+            }
+            
+            internalMessage = await processMainChatbotResponse(response, env, threadId || '', { entity: 'main', toolCallDetected: false });
+          }
+        } while (internalMessage.entity === 'internal');
 
-        const response = await callMainChatbot(query, threadId, env);
-        threadId = response.headers.get('lb-thread-id') || threadId;
-
-        const responseStream = await processMainChatbotResponse(response, env, threadId || '');
-
-        return new Response(responseStream, {
+        return new Response(internalMessage.responseStream, {
             headers: {
                 'Content-Type': 'text/event-stream',
                 'Cache-Control': 'no-cache',
