@@ -36,7 +36,7 @@ export function Opening() {
 							<Dlink href="https://langbase.com/examples/ai-translator">
 								<span>1.</span>
 								<span>
-									Fork this AI Chatbot Pipe on ⌘ Langbase
+									Fork this AI Translator Pipe on ⌘ Langbase
 								</span>
 							</Dlink>
 							<Dlink href="https://github.com/LangbaseInc/langbase/tree/main/examples/ai-translator">
