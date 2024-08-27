@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 			);
 		}
 
-		// Get chat prompt messages and threadId from the client.
+		// Get email summary and sentiment from the client.
 		const body = await req.json();
 		const { summary, sentiment } = body;
 
