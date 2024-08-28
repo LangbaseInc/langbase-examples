@@ -6,7 +6,7 @@ export default function Home() {
 			<div className="flex flex-col items-center justify-between gap-10 max-w-lg w-full">
 				<div className="flex flex-col gap-1 w-full items-center">
 					<h2 className="text-2xl font-bold tracking-tight">
-						⌘ Langbase Ask Docs RAG App
+						⌘ Langbase Documents QnA RAG App
 					</h2>
 					<p className="text-muted-foreground">
 						RAG App for docs QnA with Langbase Pipe and Memory.
