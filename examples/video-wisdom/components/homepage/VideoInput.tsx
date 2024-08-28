@@ -7,7 +7,7 @@ import { YouTubeOEmbedData } from './YoutTubeEmbed';
 import YouTubeEmbedSkeleton from './YouTubeEmbedSkeleton';
 import VideoInfoAndControls from './VideoInfoAndControl';
 import { AIInteraction } from './AIInteraction';
-import { getKeyFromLocalStorage, isKeyInLocalStorage, setKeyInLocalStorage } from '@/lib/utils';
+import { extractVideoId, getKeyFromLocalStorage, isKeyInLocalStorage, setKeyInLocalStorage } from '@/lib/utils';
 
 export default function VideoInput({
     transcript,
@@ -55,13 +55,7 @@ export default function VideoInput({
         setVideoEmbedData(data);
 
         // Extract videoId from the YouTube link
-        let videoId = null;
-
-        if (ytLink.includes('youtube.com')) {
-            videoId = ytLink.split('v=')[1]?.split('&')[0];
-        } else if (ytLink.includes('youtu.be')) {
-            videoId = ytLink.split('youtu.be/')[1]?.split('?')[0];
-        }
+        const videoId = extractVideoId(ytLink);
 
         // Check if the link is valid
         if (!videoId) {

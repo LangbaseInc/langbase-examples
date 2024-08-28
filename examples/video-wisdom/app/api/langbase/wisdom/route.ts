@@ -69,87 +69,32 @@ const getEnvVar = (type: GenerationType) => {
  */
 export async function POST(req: NextRequest) {
 	try {
-		console.log('Request received');
-
 		// Extract the prompt from the request body
 		const reqBody: RequestBody = await req.json();
 		const parsedReqBody = requestBodySchema.safeParse(reqBody);
 
+		// If the request body is not valid
 		if (!parsedReqBody.success || !parsedReqBody.data) {
 			throw new Error(parsedReqBody.error.message);
 		}
-		const { prompt, transcript, type } = parsedReqBody.data;
 
-		console.log(type);
+		// Extract the prompt from the request body
+		const { prompt, transcript, type } = parsedReqBody.data;
 
 		// Get the environment variable based on type.
 		const pipeKey = getEnvVar(type);
 
+		// If the Pipe API key is not found, throw an error.
 		if (!pipeKey) {
 			throw new Error('Pipe API key not found');
 		}
 
-		// If type is generate.
-		// if (type === GenerationType.Generate) {
+		// Generate the response and stream from Langbase Pipe.
 		return await generateResponse({ prompt, transcript, pipeKey });
-		// } else {
-		// 	return await preDefinedPipeResponse({
-		// 		pipeKey,
-		// 		prompt,
-		// 		transcript
-		// 	});
-		// }
 	} catch (error: any) {
 		return new Response(error.message, { status: 500 });
 	}
 }
-
-// /**
-//  * Generate response from Langbase Pipe.
-//  *
-//  * @param prompt
-//  * @param transcript
-//  * @param envVar
-//  * @returns
-//  */
-// async function generateResponse({
-// 	prompt,
-// 	transcript,
-// 	pipeKey
-// }: {
-// 	prompt: string;
-// 	transcript: string;
-// 	pipeKey: string;
-// }) {
-// 	// 1. Set up the endpoint and headers
-// 	const endpointUrl = 'https://api.langbase.com/beta/generate';
-// 	const headers = {
-// 		'Content-Type': 'application/json',
-// 		Authorization: `Bearer ${pipeKey}`
-// 	};
-
-// 	// 2. Build request body
-// 	const body = {
-// 		messages: [{ role: 'user', content: prompt }],
-// 		variables: [{ name: 'transcript', value: transcript }]
-// 	};
-
-// 	// 3. Make the request
-// 	const response = await fetch(endpointUrl, {
-// 		method: 'POST',
-// 		headers,
-// 		body: JSON.stringify(body)
-// 	});
-
-// 	if (!response.ok) {
-// 		const res = await response.json();
-// 		throw new Error(`Error ${res.error.status}: ${res.error.message}`);
-// 	}
-
-// 	// 4. Return the response
-// 	const data = await response.json();
-// 	return new Response(JSON.stringify(data));
-// }
 
 /**
  * Generates a response by initiating a Pipe, constructing the input for the stream,
