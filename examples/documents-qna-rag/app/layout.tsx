@@ -10,7 +10,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-	title: '⌘ Langbase Starter for Ask Docs RAG App',
+	title: '⌘ Langbase Starter for Documents QnA RAG App',
 	description: 'A starter for creating a docs QnA app with Langbase.',
 };
 
