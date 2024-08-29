@@ -342,6 +342,7 @@ function IconDocs(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
+
 export {
 	IconArrowRight,
 	IconCheck,

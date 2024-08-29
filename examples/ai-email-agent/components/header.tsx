@@ -2,6 +2,7 @@ import { buttonVariants } from '@/components/ui/button';
 import cn from 'mxcn';
 import Link from 'next/link';
 import { IconDocs, IconFork, IconGitHub } from './ui/icons';
+import { Anchor } from './ui/anchor';
 
 export async function Header() {
 	return (
@@ -21,15 +22,15 @@ export async function Header() {
 			</div>
 
 			<div className="flex items-center justify-end space-x-2">
-				<a
-					target="_blank"
+				<Anchor
+					variant="ghost"
+					className="font-normal text-sm text-muted-foreground flex items-center"
 					href="https://langbase.com/docs/guides/ai-email-agent"
-					rel="noopener noreferrer"
-					className={cn(buttonVariants({ variant: 'ghost' }))}
+					target="_blank"
 				>
-					<IconDocs className="text-muted-foreground/30" />
-					<span className="hidden md:flex">Read guide</span>
-				</a>
+					<IconDocs className="size-4 text-muted-foreground/40" />
+					<span className='hidden sm:flex'>Read How-To guide</span>
+				</Anchor>
 				<a
 					target="_blank"
 					href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-email-agent"
