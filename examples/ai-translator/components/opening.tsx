@@ -26,7 +26,8 @@ export function Opening() {
 							</Link>
 						</h4>
 						<h5 className="text-sm text-muted-foreground">
-							Ship hyper-personalized AI assistants with memory.
+							Ship composable AI agents with hyper-personalized
+							memory (RAG)!
 						</h5>
 					</header>
 

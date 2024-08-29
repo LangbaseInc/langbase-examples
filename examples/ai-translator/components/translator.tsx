@@ -46,6 +46,13 @@ export function Translator() {
 				})
 			});
 
+			if (!response.ok) {
+				const error = await response.json();
+				console.error('Error:', error);
+				setIsLoading(false);
+				return;
+			}
+
 			if (response.body) {
 				const stream = fromReadableStream(response.body);
 
