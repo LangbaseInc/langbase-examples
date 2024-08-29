@@ -70,7 +70,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 [lb]: https://langbase.com
 [pipe]: https://langbase.com/examples/ask-my-docs
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ask-docs-rag
-[cover]:/public/chatbot.jpg
+[cover]: https://github.com/LangbaseInc/langbase/blob/main/examples/ask-docs-rag/public/chatbot.jpg
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ask-docs-rag
 [signup]: https://langbase.fyi/io
 [qs]:https://langbase.com/docs/pipe/quickstart
