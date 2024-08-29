@@ -11,14 +11,11 @@ export async function POST(req: Request) {
 	});
 
 	try {
-		if (!process.env.NEXT_LB_PIPE_API_KEY) {
+		if (!process.env.LANGBASE_AI_PIPE_API_KEY) {
 			throw new Error(
-				'Please set NEXT_LB_PIPE_API_KEY in your environment variables.'
+				'Please set LANGBASE_AI_PIPE_API_KEY in your environment variables.'
 			);
 		}
-
-		// Initialize Pipe
-		const pipe = new Pipe({ apiKey: process.env.NEXT_LB_PIPE_API_KEY });
 
 		// Parse request body
 		const body = await req.json();
@@ -27,20 +24,20 @@ export async function POST(req: Request) {
 		const { prompt, inputLanguage, translationLanguage } =
 			requestBodySchema.parse(body);
 
-		// User prompt message.
-		const userPrompt = `## Language Inputs:
-Input language: ${inputLanguage}
-Translated language: ${translationLanguage}
-
-## Translation Sentence:
-${prompt}`;
+		// Initialize the `ai-translator` pipe
+		const pipe = new Pipe({ apiKey: process.env.LANGBASE_AI_PIPE_API_KEY });
 
 		// Stream completion
-		const stream = await pipe.streamText({
-			messages: [{ role: 'user', content: userPrompt }]
+		const { stream: translation } = await pipe.streamText({
+			messages: [{ role: 'user', content: '' }],
+			variables: [
+				{ name: 'sentence', value: prompt },
+				{ name: 'inputLanguage', value: inputLanguage },
+				{ name: 'translationLanguage', value: translationLanguage }
+			]
 		});
 
-		return new Response(stream.toReadableStream());
+		return new Response(translation.toReadableStream(), { status: 200 });
 	} catch (error: any) {
 		// console.error('API Error:', error);
 		return new Response(JSON.stringify(error), { status: 500 });
