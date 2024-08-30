@@ -1,25 +1,14 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { YouTubeOEmbedData } from '@/lib/utils';
 
-export interface YouTubeOEmbedData {
-    author_name: string;
-    author_url: string;
-    height: number;
-    html: string;
-    provider_name: string;
-    provider_url: string;
-    thumbnail_height: number;
-    thumbnail_url: string;
-    thumbnail_width: number;
-    title: string;
-    type: string;
-    version: string;
-    width: number;
-}
-
-const YouTubeEmbed: React.FC<YouTubeOEmbedData> = (oEmbedData) => {
+export default function YouTubeEmbed({
+    oEmbedData
+}: {
+    oEmbedData: YouTubeOEmbedData
+}) {
     return (
-        <div className="flex justify-center gap-2 sm:w-[500px] flex-col">
+        <div className="flex justify-center gap-2 sm:w-[450px] flex-col">
             <Card className="max-w-full mx-auto shadow-md flex bg-muted">
                 <CardHeader className="p-4">
                     <CardTitle className="text-sm font-sm">{oEmbedData.title}</CardTitle>
@@ -44,5 +33,3 @@ const YouTubeEmbed: React.FC<YouTubeOEmbedData> = (oEmbedData) => {
         </div>
     );
 };
-
-export default YouTubeEmbed;

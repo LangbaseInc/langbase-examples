@@ -19,6 +19,7 @@ import { CodeBlock } from "../common/codeblock";
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { IconCheck } from "../ui/iconists/icon-check";
 import { IconCopy } from "../ui/iconists/icon-copy";
+import { videosData } from "@/lib/utils";
 
 export interface AIPipeI {
     title: string;
@@ -48,10 +49,11 @@ export enum GenerationType {
 };
 
 export function AIInteraction({
-    transcript,
+    currentVideoId,
 }: {
-    transcript: string;
+    currentVideoId: number;
 }) {
+    const transcript = videosData[currentVideoId].transcript;
     const [aiResponse, setAiResponse] = useState<string>("");
     const [selectedPipe, setSelectedPipe] = useState<AIPipeI | null>(null);
     const [loading, setLoading] = useState<boolean>(false);

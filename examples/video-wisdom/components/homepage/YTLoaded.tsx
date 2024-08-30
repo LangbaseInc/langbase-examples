@@ -1,15 +1,16 @@
-import YouTubeEmbed, { YouTubeOEmbedData } from "./YoutTubeEmbed";
-import YouTubeEmbedSkeleton from "./YouTubeEmbedSkeleton";
+import { videosData, YouTubeOEmbedData } from "@/lib/utils";
+import YouTubeEmbed from "./YoutTubeEmbed";
 
 export default function YTLoaded({
-    oEmbedData,
+    currentVideoId,
 }: {
-    oEmbedData: YouTubeOEmbedData | null;
+    currentVideoId: number;
 }) {
+    const oEmbedData = videosData[currentVideoId]?.oEmbed;
 
     return (
         <>
-            {oEmbedData && <YouTubeEmbed {...oEmbedData} />}
+            {oEmbedData && <YouTubeEmbed oEmbedData={oEmbedData} />}
         </>
     )
 }
