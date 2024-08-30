@@ -14,7 +14,7 @@ export default function Home() {
 						RAG App for docs QnA with Langbase Pipe and Memory.
 					</p>
 					<p className="text-muted-foreground text-center text-sm">
-						For this demo memory contains data of <a href="https://ahmadawais.com">AhmadAwais.com</a>.
+						For this demo memory contains data of <a href="https://en.wikipedia.org/wiki/Claude_(language_model)">Claude Wikipedia Page</a>.
 					</p>
 					<p className="text-muted-foreground text-center text-sm">
 						Ask your questions in the input field below.
