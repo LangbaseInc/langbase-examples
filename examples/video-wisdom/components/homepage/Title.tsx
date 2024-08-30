@@ -7,7 +7,7 @@ export default function Title() {
                 Video Wisdom 🧠
             </h1>
             <p className="text-center font-light text-zinc-300 tracking-wide">
-                Transform YouTube videos into insights in just minutes with AI!
+                Transform YouTube videos into insights in a few seconds with AI!
             </p>
         </div>
     )
