@@ -8,6 +8,7 @@ import {
 import PromptForm from './prompt-form';
 import { Dispatch, FormEvent, SetStateAction } from 'react';
 import BlurFade from './magicui/blur-fade';
+import Loading from './loading';
 
 const Sandbox = ({
 	prompt,
@@ -71,11 +72,7 @@ const Sandbox = ({
 					onSubmit={improveCode}
 					className="mt-6 md:w-full"
 					title="Ask follow up questions"
-					placeholder={
-						loading
-							? 'AI is thinking'
-							: 'Improve the code or schema...'
-					}
+					placeholder="Improve the code or schema"
 				/>
 			</div>
 		</BlurFade>
