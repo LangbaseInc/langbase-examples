@@ -80,7 +80,7 @@ Your app template should now be running on [localhost:3000][local].
 
 This project is created by [Langbase][lb] team members, with contributions from:
 
-- Saad Irfan ([@MSaadDev][xsi]) - Founding Engineer, [Langbase][lb]
+- Saad Irfan ([@MrSaadIrfan][xsi]) - Founding Engineer, [Langbase][lb]
 
 **_Built by ⌘ [Langbase.com][lb] — Ship composable AI pipe agents with hyper-personalized memory (RAG)!_**
 
@@ -96,7 +96,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 [signup]: https://langbase.fyi/io
 [qs]:https://langbase.com/docs/pipe/quickstart
 [docs]:https://langbase.com/docs
-[xsi]:https://x.com/MSaaddev
+[xsi]:https://x.com/mrsaadirfan
 [local]:http://localhost:3000
 [mit]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&color=%23000000
 [fork]: https://img.shields.io/badge/FORK%20ON-%E2%8C%98%20Langbase-000000.svg?style=for-the-badge&logo=%E2%8C%98%20Langbase&logoColor=000000
