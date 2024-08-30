@@ -70,6 +70,7 @@ const Sandbox = ({
 					setPrompt={setPrompt}
 					onSubmit={improveCode}
 					className="mt-6 md:w-full"
+					title="Ask follow up questions"
 					placeholder="Improve the code or schema..."
 				/>
 			</div>

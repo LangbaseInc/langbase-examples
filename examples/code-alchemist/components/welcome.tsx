@@ -48,6 +48,7 @@ const Welcome = ({
 					</span>
 				</div>
 				<PromptForm
+					title="Prompt"
 					prompt={prompt}
 					onSubmit={onSubmit}
 					isLoading={isLoading}

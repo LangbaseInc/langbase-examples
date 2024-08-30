@@ -6,6 +6,7 @@ import { IconChat } from './ui/iconists/icon-chat';
 import { Dispatch, FormEvent, SetStateAction, useEffect } from 'react';
 
 export default function PromptForm({
+	title,
 	prompt,
 	onSubmit,
 	setPrompt,
@@ -13,6 +14,7 @@ export default function PromptForm({
 	className,
 	placeholder = 'Write db schema for a calendar app or build a calendar app...'
 }: {
+	title: string;
 	prompt: string;
 	isLoading: boolean;
 	className?: string;
@@ -63,7 +65,7 @@ export default function PromptForm({
 								aria-hidden="true"
 								className="text-muted-foreground/50 h-5 w-5"
 							/>
-							<h3>Prompt</h3>
+							<h3>{title}</h3>
 						</div>
 						<div className="flex items-center justify-center gap-2 md:justify-start">
 							{/* Send button */}
