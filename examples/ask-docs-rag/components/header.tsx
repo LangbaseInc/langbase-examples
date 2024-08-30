@@ -1,7 +1,7 @@
 import { buttonVariants } from '@/components/ui/button'
 import cn from 'mxcn'
 import Link from 'next/link'
-import { IconFork, IconGitHub } from './ui/icons'
+import { IconDocs, IconFork, IconGitHub } from './ui/icons'
 
 export async function Header() {
   return (
@@ -21,6 +21,14 @@ export async function Header() {
       </div>
 
       <div className="flex items-center justify-end space-x-2">
+        <a
+          href="https://langbase.com/docs/guides/rag-on-docs"
+          target="_blank"
+          className={cn(buttonVariants({ variant: 'ghost' }))}
+        >
+          <IconDocs className="text-muted-foreground size-4" />
+          <span className="hidden sm:flex">Guide: Build yourself</span>
+        </a>
         <a
           target="_blank"
           href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ask-docs-rag"
