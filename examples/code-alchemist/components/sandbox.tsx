@@ -71,7 +71,11 @@ const Sandbox = ({
 					onSubmit={improveCode}
 					className="mt-6 md:w-full"
 					title="Ask follow up questions"
-					placeholder="Improve the code or schema..."
+					placeholder={
+						loading
+							? 'AI is thinking'
+							: 'Improve the code or schema...'
+					}
 				/>
 			</div>
 		</BlurFade>
