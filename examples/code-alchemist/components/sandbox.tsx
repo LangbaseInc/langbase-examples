@@ -41,7 +41,7 @@ const Sandbox = ({
 					theme="auto"
 					template="react"
 					files={{
-						'/App.js': completion
+						'/App.jsx': completion,
 					}}
 					options={{
 						autorun: true,
