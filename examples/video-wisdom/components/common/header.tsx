@@ -32,7 +32,7 @@ export async function Header() {
                     target="_blank"
                 >
                     <IconDocs className="size-4 text-muted-foreground/40" />
-                    <span className='hidden sm:flex'>Read How-To guide</span>
+                    <span className='hidden sm:flex'>Guide: Build yourself</span>
                 </Anchor>
 
 
