@@ -1,4 +1,4 @@
-![Ask Documents QnA RAG by ⌘ Langbase](https://github.com/user-attachments/assets/45a71523-bd01-4d49-a7c7-36ade9d5de96)
+![Ask Documents QnA RAG by ⌘ Langbase](https://github.com/user-attachments/assets/b1ee5e56-1e86-4cc8-825f-ad4e78208c2d)
 
 ![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
 
