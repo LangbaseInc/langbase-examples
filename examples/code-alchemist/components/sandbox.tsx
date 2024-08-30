@@ -39,9 +39,9 @@ const Sandbox = ({
 			<div className="w-full">
 				<SandpackProvider
 					theme="auto"
-					template="react"
+					template="react-ts"
 					files={{
-						'/App.jsx': completion,
+						'/App.tsx': completion
 					}}
 					options={{
 						autorun: true,
