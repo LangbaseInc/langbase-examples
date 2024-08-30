@@ -63,7 +63,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://documents-qna-rag.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://langbase.com/examples/documents-qna-rag
+[pipe]: https://langbase.com/examples/rag-wikipedia
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/documents-qna-rag
 [download]: https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/documents-qna-rag
 [signup]: https://langbase.fyi/io
