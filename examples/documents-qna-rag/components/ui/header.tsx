@@ -23,7 +23,7 @@ export async function Header() {
 			<div className="flex items-center justify-end space-x-2">
 				<a
 					target="_blank"
-					href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/rag-ask-docs"
+					href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/documents-qna-rag"
 					rel="noopener noreferrer"
 					className={cn(buttonVariants({ variant: 'outline' }))}
 				>
@@ -32,7 +32,7 @@ export async function Header() {
 				</a>
 				<a
 					target="_blank"
-					href="https://langbase.com/examples/rag-ask-docs"
+					href="https://langbase.com/examples/documents-qna-rag"
 					rel="noopener noreferrer"
 					className={cn(buttonVariants({ variant: 'default' }))}
 				>
