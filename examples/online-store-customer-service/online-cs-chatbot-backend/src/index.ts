@@ -183,6 +183,10 @@ export default {
         const isProduction = request.url.includes('workers.dev');
         const allowedOrigin = isProduction ? 'https://online-cs.pages.dev' : 'http://localhost:3000';
 
+        const MAX_USERS = 5;
+        const MAX_CONVERSATIONS = 3;
+        const EXPIRATION_TTL = 300; // 5 min test
+
         if (request.method === 'OPTIONS') {
             return new Response(null, {
                 headers: {
@@ -202,8 +206,22 @@ export default {
             });
         }
 
-        let incomingMessages;
         let threadId = request.headers.get('lb-thread-id') || undefined;
+
+        // Rate limiting
+        const activeUsersJson = await env.CACHE.get('active_users');
+        const activeUsers = activeUsersJson ? JSON.parse(activeUsersJson) : {};
+        const currentTime = Date.now();
+
+        if (threadId && activeUsers[threadId]) {
+            if (activeUsers[threadId].count >= MAX_CONVERSATIONS) {
+                return new Response('You have reached the maximum number of conversations', { status: 429 });
+            }
+        } else if (Object.keys(activeUsers).length >= MAX_USERS) {
+            return new Response('Maximum number of concurrent users reached', { status: 429 });
+        }
+
+        let incomingMessages;
         try {
             const body = await request.json() as { messages: any[], threadId?: string };
             incomingMessages = body.messages;
@@ -249,6 +267,29 @@ export default {
           }
         } while (internalMessage.entity === 'internal');
 
+
+        // Update rate limiting data
+        if (threadId) {
+            if (!activeUsers[threadId]) {
+                activeUsers[threadId] = { count: 0, lastAccess: currentTime };
+            }
+            activeUsers[threadId].count++;
+            activeUsers[threadId].lastAccess = currentTime;
+
+            await env.CACHE.put('active_users', JSON.stringify(activeUsers), { expirationTtl: EXPIRATION_TTL });
+
+            // Log KV contents
+            const value = await env.CACHE.list();
+            console.log(`CACHE KVs: ${JSON.stringify(value.keys)}`);
+            for (const key of value.keys) {
+                const keyValue = await env.CACHE.get(key.name);
+                console.log(`Key: ${key.name}, Value: ${keyValue}`);
+            }
+
+            // Cleanup expired users
+            ctx.waitUntil(cleanupExpiredUsers(env, MAX_USERS, MAX_CONVERSATIONS, EXPIRATION_TTL));
+        }
+
         return new Response(internalMessage.responseStream, {
             headers: {
                 'Content-Type': 'text/event-stream',
@@ -262,3 +303,21 @@ export default {
         });
     },
 };
+
+
+async function cleanupExpiredUsers(env: Env, MAX_USERS: number, MAX_CONVERSATIONS: number, EXPIRATION_TTL: number) {
+    const activeUsersJson = await env.CACHE.get('active_users');
+    if (!activeUsersJson) return;
+
+    const activeUsers = JSON.parse(activeUsersJson);
+    const currentTime = Date.now();
+    const oneHourAgo = currentTime - EXPIRATION_TTL * 1000;
+
+    for (const [threadId, userData] of Object.entries(activeUsers)) {
+        if (userData.lastAccess < oneHourAgo) {
+            delete activeUsers[threadId];
+        }
+    }
+
+    await env.CACHE.put('active_users', JSON.stringify(activeUsers), { expirationTtl: EXPIRATION_TTL });
+}
