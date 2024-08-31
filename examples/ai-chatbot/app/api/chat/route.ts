@@ -1,4 +1,4 @@
-import { OpenAIStream, StreamingTextResponse } from 'ai'
+import { Pipe } from 'langbase'
 
 export const runtime = 'edge'
 
@@ -16,39 +16,25 @@ export async function POST(req: Request) {
       )
     }
 
-    const endpointUrl = 'https://api.langbase.com/beta/chat'
-
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.NEXT_LB_PIPE_API_KEY}`
-    }
-
     // Get chat prompt messages and threadId from the client.
     const body = await req.json()
     const { messages, threadId } = body
 
-    const requestBody = {
+    const chatBotPipe = new Pipe({ apiKey: process.env.NEXT_LB_PIPE_API_KEY })
+
+    const streamOptions = {
       messages,
-      ...(threadId && { threadId }) // Only include threadId if it exists
+      chat: true,
+      ...(threadId && { threadId }) // Only include threadId if it exists,
     }
 
-    // Send the request to Langbase API.
-    const response = await fetch(endpointUrl, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(requestBody)
-    })
+    const { stream: response, threadId: lbThreadId } =
+      await chatBotPipe.streamText(streamOptions)
 
-    if (!response.ok) {
-      const res = await response.json()
-      throw new Error(`Error ${res.error.status}: ${res.error.message}`)
-    }
-
-    // Handle Langbase response, which is a stream in OpenAI format.
-    const stream = OpenAIStream(response)
-    // Respond with a text stream.
-    return new StreamingTextResponse(stream, {
-      headers: response.headers
+    return new Response(response.toReadableStream(), {
+      headers: {
+        'lb-thread-id': lbThreadId || ''
+      }
     })
   } catch (error: any) {
     console.error('Uncaught API Error:', error)
