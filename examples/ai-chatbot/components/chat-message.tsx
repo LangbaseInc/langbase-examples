@@ -1,4 +1,3 @@
-import { Message } from 'ai'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
@@ -7,6 +6,7 @@ import { MemoizedReactMarkdown } from '@/components/markdown'
 import { CodeBlock } from '@/components/ui/codeblock'
 import { IconSparkles, IconUser } from '@/components/ui/icons'
 import cn from 'mxcn'
+import { Message } from 'langbase'
 
 export interface ChatMessageProps {
   message: Message

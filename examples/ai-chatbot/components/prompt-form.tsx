@@ -2,21 +2,21 @@ import { Button } from '@/components/ui/button'
 import { IconChat, IconCommand, IconSpinner } from '@/components/ui/icons'
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { UseChatHelpers } from 'ai/react'
+import { Message } from 'langbase'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
-
-export interface PromptProps
-  extends Pick<UseChatHelpers, 'input' | 'setInput'> {
-  onSubmit: (value: string) => Promise<void>
-  isLoading: boolean
-}
 
 export function PromptForm({
   onSubmit,
   input,
   setInput,
   isLoading
-}: PromptProps) {
+}: {
+  onSubmit: (value: Message) => void
+  input: string
+  setInput: (value: string) => void
+  isLoading: boolean
+}) {
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
 
@@ -34,7 +34,7 @@ export function PromptForm({
           return
         }
         setInput('')
-        await onSubmit(input)
+        await onSubmit({ role: 'user', content: input })
       }}
       ref={formRef}
     >

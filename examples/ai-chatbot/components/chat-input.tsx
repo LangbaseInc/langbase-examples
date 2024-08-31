@@ -1,33 +1,23 @@
-import { type UseChatHelpers } from 'ai/react'
-
 import { PromptForm } from '@/components/prompt-form'
 import { Button } from '@/components/ui/button'
 import { IconRegenerate, IconStop } from '@/components/ui/icons'
-
-export interface ChatInputProps
-  extends Pick<
-    UseChatHelpers,
-    | 'append'
-    | 'isLoading'
-    | 'reload'
-    | 'messages'
-    | 'stop'
-    | 'input'
-    | 'setInput'
-  > {
-  id?: string
-}
+import { Message } from 'langbase'
 
 export function ChatInput({
-  id,
   isLoading,
-  stop,
-  append,
-  reload,
+  // stop,
+  // reload,
   input,
   setInput,
-  messages
-}: ChatInputProps) {
+  messages,
+  sendMessage
+}: {
+  isLoading: boolean
+  input: string
+  setInput: (value: string) => void
+  messages: any
+  sendMessage: (message: Message) => void
+}) {
   return (
     <div className="fixed inset-x-0 bottom-0">
       <div className="xbg-muted mx-auto max-w-3xl sm:max-w-4xl">
@@ -35,7 +25,7 @@ export function ChatInput({
           {isLoading ? (
             <Button
               variant="outline"
-              onClick={() => stop()}
+              // onClick={() => stop()}
               className="bg-background"
               size={'sm'}
             >
@@ -46,11 +36,11 @@ export function ChatInput({
             messages?.length > 0 && (
               <Button
                 variant="outline"
-                onClick={() => reload()}
+                // onClick={() => reload()}
                 className="bg-background"
                 size={'sm'}
               >
-                <IconRegenerate className="size-4 text-muted-foreground/50 group-hover:text-background" />
+                <IconRegenerate className="text-muted-foreground/50 group-hover:text-background size-4" />
                 Regenerate response
               </Button>
             )
@@ -58,12 +48,7 @@ export function ChatInput({
         </div>
         <div className="space-y-4 py-2 md:pb-4 md:pt-2">
           <PromptForm
-            onSubmit={async value => {
-              await append({
-                content: value,
-                role: 'user'
-              })
-            }}
+            onSubmit={sendMessage}
             input={input}
             setInput={setInput}
             isLoading={isLoading}
