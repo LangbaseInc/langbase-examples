@@ -23,6 +23,22 @@ export async function POST(req: Request) {
       body: JSON.stringify({ messages: messages })
     })
 
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      const status = response.status;
+      const errorResponse = {
+        error: status === 429 ? 'Rate limit exceeded' : 'Backend request failed',
+        details: errorMessage,
+        status: status
+      };
+      return new Response(JSON.stringify(errorResponse), {
+        status: status,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    }
+
     // Create a stream from the response
     const stream = OpenAIStream(response)
 
