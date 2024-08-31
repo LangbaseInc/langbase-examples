@@ -15,6 +15,7 @@
     "@radix-ui/react-switch": "^1.0.3",
     "ai": "3.0.16",
     "class-variance-authority": "^0.7.0",
+    "langbase": "^1.1.0",
     "mxcn": "^2.0.0",
     "next": "14.0.4",
     "react": "^18.2.0",
