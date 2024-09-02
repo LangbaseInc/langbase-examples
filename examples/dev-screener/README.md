@@ -34,19 +34,21 @@ To get started with Langbase, you'll need to [create a free personal account on 
 4. `cd` into the project directory and open it in your code editor.
 5. Duplicate the `.env.example` file in this project and rename it to `.env.local`.
 6. Add the following environment variables (.env.local):
+
 ```
     # Replace `PIPE_API_KEY` with the copied API key.
     NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
-```    
+```
 
-7. Issue the following in your CLI:
+7. Run the following commands in your CLI:
+
 ```sh
     # Install the dependencies using the following command:
     npm install
 
     # Run the project using the following command:
     npm run dev
-``` 
+```
 
 8. Your app template should now be running on [localhost:3000][local].
 
@@ -62,10 +64,9 @@ This project is created by [Langbase][lb] team members, with contributions from:
 - Muhammad-Ali Danish - Software Engineer, [Langbase][lb] <br>
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
-
 [demo]: https://dev-screener.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/dev-screener
+[pipe]: https://langbase.com/examples/dev-screener
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/dev-screener
 [cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/dev-screener/dev-screener.png
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/dev-screener
