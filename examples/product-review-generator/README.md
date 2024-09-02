@@ -37,7 +37,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 ```
     # Replace `PIPE_API_KEY` with the copied API key.
     NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
-```    
+```
 
 7. Issue the following in your CLI:
 ```sh
@@ -46,7 +46,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 
     # Run the project using the following command:
     npm run dev
-``` 
+```
 
 8. Your app template should now be running on [localhost:3000][local].
 
@@ -65,7 +65,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://product-review-generator.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/product-review-generator
+[pipe]: https://langbase.com/examples/product-review-generator
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/product-review-generator
 [cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/product-review-generator/product-review-generator.png
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/product-review-generator

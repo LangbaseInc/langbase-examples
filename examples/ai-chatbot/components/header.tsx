@@ -23,7 +23,7 @@ export async function Header() {
       <div className="flex items-center justify-end space-x-2">
         <a
           target="_blank"
-          href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot"
+          href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/product-review-generator"
           rel="noopener noreferrer"
           className={cn(buttonVariants({ variant: 'outline' }))}
         >
@@ -32,12 +32,12 @@ export async function Header() {
         </a>
         <a
           target="_blank"
-          href="https://langbase.com/examples/ai-chatbot"
+          href="https://langbase.com/examples/product-review-generator"
           rel="noopener noreferrer"
           className={cn(buttonVariants({ variant: 'default' }))}
         >
           <IconFork />
-          <span className="hidden md:flex gap-1">
+          <span className="hidden gap-1 md:flex">
             Fork on <span className="font-bold">Langbase</span>
           </span>
         </a>
