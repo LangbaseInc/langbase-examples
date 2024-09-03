@@ -49,7 +49,7 @@ export function PromptForm({
                 className="text-muted-foreground/50 h-5 w-5"
                 aria-hidden="true"
               />
-              <h3>Chat</h3>
+              <h3>Ask</h3>
             </div>
 
             <div className="flex items-center justify-center gap-2 md:justify-start">
