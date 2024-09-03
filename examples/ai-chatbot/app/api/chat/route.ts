@@ -1,4 +1,4 @@
-import { Pipe } from 'langbase'
+import { Message, Pipe } from 'langbase'
 
 export const runtime = 'edge'
 
@@ -18,12 +18,20 @@ export async function POST(req: Request) {
 
     // Get chat prompt messages and threadId from the client.
     const body = await req.json()
-    const { messages, threadId } = body
+    const {
+      messages,
+      threadId
+    }: {
+      messages: Message[]
+      threadId?: string
+    } = body
+    const latestMessage = messages[messages.length - 1]
 
+    // Create AI Chatbot pipe instance with the API key.
     const chatBotPipe = new Pipe({ apiKey: process.env.NEXT_LB_PIPE_API_KEY })
 
     const streamOptions = {
-      messages,
+      messages: [latestMessage],
       chat: true,
       ...(threadId && { threadId }) // Only include threadId if it exists,
     }
