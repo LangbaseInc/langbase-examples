@@ -44,9 +44,9 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
           <AccordionItem value="item-1">
             <AccordionTrigger>How to use this chatbot and what to expect?</AccordionTrigger>
             <AccordionContent>
-              <li>Simply say <b>Hello</b> to start a guided conversation with the Web API Security Consultant Bot. The chatbot will present a series of Yes/No multiple-choice questions to assess the security posture of your API implementation. Please answer each question as accurately as possible based on your current API implementation status.</li>
-              <li>You can always ask the chabot to clarify a specific question in the section before you can answer.</li>
-              <li>After completing the 10th section, the chatbot will calculate an overall security posture score for your API implementation. Keep in mind that this score is a rough estimate, designed to help you identify potential vulnerabilities in your web API based on the OWASP API Security Checklist (2023).</li> 
+              <li>Say Hello to start a guided conversation with the Web API Security Consultant Bot. Answer the Yes/No questions accurately to assess your API's security posture.</li>
+              <li>If needed, ask the bot to clarify any question before answering.</li>
+              <li>After the 10th section, the bot will provide an overall security score, offering a rough estimate of potential vulnerabilities based on the OWASP API Security Checklist (2023).</li> 
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
