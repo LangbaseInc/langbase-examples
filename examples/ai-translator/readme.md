@@ -10,9 +10,9 @@ Check out the live demo [here][demo].
 
 ## Features
 
-- 💬 [AI Translator][demo] — Built with an [AI Pipe on ⌘ Langbase][pipe]
-- ⚡️ Streaming — Real-time streamed translations
-- 🔋 Responsive and open source — Works on all devices and platforms
+-   💬 [AI Translator][demo] — Built with an [AI Pipe on ⌘ Langbase][pipe]
+-   ⚡️ Streaming — Real-time streamed translations
+-   🔋 Responsive and open source — Works on all devices and platforms
 
 ## Learn more
 
@@ -36,7 +36,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 
 ```sh
 # Replace `PIPE_API_KEY` with the copied API key.
-NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_AI_PIPE_API_KEY="PIPE_API_KEY"
 
 # Install the dependencies using the following command:
 npm install
@@ -54,16 +54,15 @@ Your app template should now be running on [localhost:3000][local].
 
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
-
 [demo]: https://ai-translator.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/ai-translator
+[pipe]: https://langbase.com/examples/ai-translator
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-translator
-[cover]:https://raw.githubusercontent.com/LangbaseInc/langbase-examples/main/examples/ai-translator/public/ai-translator.jpg
-[download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-translator
+[cover]: https://raw.githubusercontent.com/LangbaseInc/langbase-examples/main/examples/ai-translator/public/ai-translator.jpg
+[download]: https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-translator
 [signup]: https://langbase.fyi/io
-[qs]:https://langbase.com/docs/pipe/quickstart
-[docs]:https://langbase.com/docs
-[local]:http://localhost:3000
+[qs]: https://langbase.com/docs/pipe/quickstart
+[docs]: https://langbase.com/docs
+[local]: http://localhost:3000
 [mit]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&color=%23000000
 [fork]: https://img.shields.io/badge/FORK%20ON-%E2%8C%98%20Langbase-000000.svg?style=for-the-badge&logo=%E2%8C%98%20Langbase&logoColor=000000

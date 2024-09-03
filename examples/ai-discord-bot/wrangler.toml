@@ -1,0 +1,6 @@
+name = "langbase-discord-bot-example"
+main = "./src/index.ts"
+compatibility_date="2023-05-18"
+
+[dev]
+port = 8888

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useChat } from 'ai/react';
 import Message from './components/message';
+import { LearnMore } from './components/learn-more';
 
 export default function Home() {
 	const [topic, setTopic] = useState('How to call REST API in JavaScript?');
@@ -60,7 +61,7 @@ export default function Home() {
 	return (
 		<main className="md:space-y-12">
 			<div className="md:grid md:grid-cols-3">
-				<div className="relative col-span-1 md:min-h-screen flex flex-col justify-between px-8 pt-16 md:p-20">
+				<div className="relative col-span-1 md:min-h-screen flex flex-col justify-between px-6 pt-16 md:p-12 md:pt-20">
 					<div className="space-y-16">
 						<header className="flex flex-col justify-center space-y-4">
 							<h1 className="text-2xl font-bold leading-7 text-foreground sm:truncate sm:text-3xl sm:tracking-tight uppercase">
@@ -70,6 +71,7 @@ export default function Home() {
 								Craft Your Tech Guides Effortlessly with AI
 							</p>
 						</header>
+
 						<div className="flex flex-col justify-center space-y-4">
 							<form
 								onSubmit={handleSubmitForm}
@@ -174,19 +176,8 @@ export default function Home() {
 								</div>
 							</form>
 						</div>
+						<LearnMore />
 					</div>
-					<footer className="mt-12 hidden md:block">
-						<p className="text-xs text-muted-foreground uppercase">
-							Powered by{' '}
-							<a
-								href="https://langbase.com/"
-								className="underline"
-							>
-								Langbase
-							</a>
-							, Next.js and Tailwind CSS
-						</p>
-					</footer>
 				</div>
 				<div className="col-span-2">
 					<div className="h-[calc(100vh-20px)] flex flex-col border mt-5 p-1 pr-0 border-r-0 rounded-tl-[calc(var(--radius)+2px)] rounded-bl-[calc(var(--radius)+2px)]">
