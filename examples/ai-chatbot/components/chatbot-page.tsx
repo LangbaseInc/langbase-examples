@@ -8,7 +8,7 @@ import { ChatInput } from './chat-input'
 import { Opening } from './opening'
 import { fromReadableStream, Message } from 'langbase'
 
-export function Chatbot() {
+export function Chatbot({ className }: { className?: string }) {
   const [threadId, setThreadId] = useState<null | string>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const [isLoading, setIsLoading] = useState(false)
@@ -43,8 +43,9 @@ export function Chatbot() {
             setMessages(prev => {
               // Check if the last message is from the user
               const lastMessage = prev[prev.length - 1]
+              const isMessageFromUser = lastMessage.role === 'user'
 
-              if (lastMessage.role === 'user') {
+              if (isMessageFromUser) {
                 return [...prev, { role: 'assistant', content }]
               }
 
