@@ -29,38 +29,32 @@ export function Chatbot({ className }: { className?: string }) {
         body: JSON.stringify({ messages: newMessages, threadId })
       })
 
-      if (!response.ok) {
-        const res = await response.json()
-        // throw new Error(`Error ${res.error.status}: ${res.error.message}`)
+      if (response.status !== 200) {
+        console.log('✨ ~ response:', response)
+        toast.error(response.statusText)
       }
 
       if (response.body) {
         const stream = fromReadableStream(response.body)
+        let assistantMessage: Message = { role: 'assistant', content: '' }
 
         for await (const chunk of stream) {
           const content = chunk?.choices[0]?.delta?.content || ''
-          content &&
+          if (content) {
+            assistantMessage.content += content
             setMessages(prev => {
-              // Check if the last message is from the user
               const lastMessage = prev[prev.length - 1]
-              const isMessageFromUser = lastMessage.role === 'user'
-
-              if (isMessageFromUser) {
-                return [...prev, { role: 'assistant', content }]
-              }
-
-              // If the last message is from the assistant, append the content to the last message
-              const newMessages = [...prev]
-              newMessages[prev.length - 1].content += content
-              return newMessages
+              if (lastMessage.role === 'assistant')
+                return [...prev.slice(0, -1), assistantMessage]
+              return [...prev, assistantMessage]
             })
+          }
         }
       }
 
+      // Set chat threadId
       const lbThreadId = response.headers.get('lb-thread-id')
-      if (lbThreadId) {
-        setThreadId(lbThreadId)
-      }
+      if (lbThreadId) setThreadId(lbThreadId)
     } catch (error) {
       console.error(error)
       setIsLoading(false)
