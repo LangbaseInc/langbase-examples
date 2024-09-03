@@ -13,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Suggestions } from './suggestions'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
@@ -37,6 +38,11 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         setThreadId(lbThreadId)
       }
     })
+
+    const sendSuggestedPrompt = (prompt: string) => {
+      setInput(prompt)
+    }
+
   return (
     <div className="min-h-screen">
       <div className="fixed left-5 top-1/2 transform -translate-y-1/2 w-64 p-4 bg-inherit shadow-lg rounded-r-lg z-10">
@@ -74,7 +80,10 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
             <ChatList messages={messages} />
           </>
         ) : (
-          <Opening />
+          <>
+            <Opening />
+            <Suggestions sendSuggestedPrompt={sendSuggestedPrompt} />
+          </>
         )}
       </div>
       <ChatInput
