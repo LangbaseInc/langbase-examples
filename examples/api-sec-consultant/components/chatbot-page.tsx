@@ -88,7 +88,6 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
             <Opening />
             <Suggestions sendSuggestedPrompt={sendSuggestedPrompt} />
           </>
-          <Opening />
         )}
       </div>
       <ChatInput
@@ -102,5 +101,6 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         setInput={setInput}
       />
     </div>
+  </div>  
   )
 }
