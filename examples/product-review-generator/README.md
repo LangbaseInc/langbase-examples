@@ -65,7 +65,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://product-review-generator.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/product-review-generator
+[pipe]: https://langbase.com/examples/product-review-generator
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/product-review-generator
 [cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/product-review-generator/product-review-generator.png
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/product-review-generator

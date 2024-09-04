@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/accordion"
 import { Suggestions } from './suggestions'
 
-
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
   initialMessages?: Message[] // Optional: Messages to pre-populate the chat from DB
@@ -40,7 +39,6 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         setThreadId(lbThreadId)
       }
     })
-
 
     const sendSuggestedPrompt = (prompt: string) => {
       setInput(prompt)
@@ -102,3 +100,4 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
   </div>  
   )
 }
+

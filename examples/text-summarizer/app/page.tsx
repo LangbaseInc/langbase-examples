@@ -119,7 +119,7 @@ export default function Home() {
 						<p className="text-xs text-muted-foreground uppercase">
 							Powered by{' '}
 							<a
-								href="https://beta.langbase.com/langbase/text-summarizer"
+								href="https://langbase.com/langbase/text-summarizer"
 								className="underline"
 							>
 								Langbase
