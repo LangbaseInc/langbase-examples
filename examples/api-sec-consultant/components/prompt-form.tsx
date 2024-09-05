@@ -4,6 +4,7 @@ import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { UseChatHelpers } from 'ai/react'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hovercard'
 
 export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
@@ -50,6 +51,18 @@ export function PromptForm({
                 aria-hidden="true"
               />
               <h3>Ask</h3>
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <Button variant="link" size="lg" className="text-inherit">@conversation tips</Button>
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  <ul className="list-disc pl-4">
+                    <li>Say Hello to start a guided conversation with the Web API Security Consultant Bot. Answer the Yes/No questions accurately to assess your API's security posture.</li>
+                    <li>If needed, ask the bot to clarify any question before answering.</li>
+                    <li>After the 10th section, the bot will provide an overall security score, offering a rough estimate of potential vulnerabilities based on the OWASP API Security Checklist (2023).</li> 
+                  </ul>
+                </HoverCardContent>
+              </HoverCard>
             </div>
 
             <div className="flex items-center justify-center gap-2 md:justify-start">
