@@ -8,12 +8,6 @@ import { toast } from 'sonner'
 import { ChatInput } from './chat-input'
 import { Opening } from './opening'
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 import { Suggestions } from './suggestions'
 
 
