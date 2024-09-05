@@ -22,8 +22,11 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
       body: { threadId },
       onResponse(response) {
         if (response.status !== 200) {
-          console.log('✨ ~ response:', response)
-          toast.error(response.statusText)
+          response.json().then(data => {
+            toast.error(data.error || response.statusText)
+          }).catch(() => {
+            toast.error(response.statusText)
+          })
         }
 
         // Get Thread ID from response header
