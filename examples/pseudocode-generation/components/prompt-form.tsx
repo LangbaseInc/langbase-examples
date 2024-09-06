@@ -4,6 +4,7 @@ import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { UseChatHelpers } from 'ai/react'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hovercard'
 
 export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
@@ -49,7 +50,19 @@ export function PromptForm({
                 className="text-muted-foreground/50 h-5 w-5"
                 aria-hidden="true"
               />
-              <h3>Chat</h3>
+              <h3>Ask</h3>
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <Button variant="link" size="lg" className="text-inherit">@conversation tips</Button>
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  <ul className="list-disc pl-4">
+                    <li>Say Hello to start a conversation.</li>
+                    <li>You can provide a detailed description of the problem to generate pseudocode, or a brief description of the algorithm, such as "search a number in a 2D matrix."</li>
+                    <li>The pseudocode generator chatbot not only generates pseudocode (python format) but also provides an explanation of the data structures used, thought process and the time complexity of the algorithm.</li>
+                  </ul>
+                </HoverCardContent>
+              </HoverCard>
             </div>
 
             <div className="flex items-center justify-center gap-2 md:justify-start">
