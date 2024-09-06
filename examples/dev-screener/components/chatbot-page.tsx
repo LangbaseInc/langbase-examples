@@ -36,6 +36,7 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
     const sendSuggestedPrompt = (prompt: string) => {
       setInput(prompt)
     }
+
   return (
     <div className="min-h-screen">
       <div className={cn('pb-36 pt-4 md:pt-10', className)}>
