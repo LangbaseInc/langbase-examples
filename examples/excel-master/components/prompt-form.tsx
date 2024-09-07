@@ -6,6 +6,7 @@ import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hovercard'
 
+
 export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
   onSubmit: (value: string) => Promise<void>

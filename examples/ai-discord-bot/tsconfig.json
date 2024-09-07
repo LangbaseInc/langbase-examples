@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": true,
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "skipLibCheck": true,
+    "types": ["@cloudflare/workers-types"],
+    "allowJs": true,
+    "outDir": "./dist"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules/**", "dist/"]
+}
