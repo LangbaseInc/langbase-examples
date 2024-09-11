@@ -14,7 +14,7 @@ export function Opening() {
         <div className="mt-2">
           <header className="mb-8">
             <h4 className="text-foreground text-sm sm:text-base mt-4 flex gap-1 tracking-wide">
-              <span>Online Store (TechBay) Customer Service Chatbot by a</span>
+              <span>Online Store (TechBay) Customer Service AI Agent by a</span>
               <Link
                 target="_blank"
                 className="underline hover:text-indigo-400 mb-2"
@@ -33,15 +33,15 @@ export function Opening() {
             <div className="flex flex-col gap-4 mt-2 text-sm">
               <Dlink href="https://beta.langbase.com/examples/online-store-electronics-dept">
                 <span>1.</span>
-                <span>Fork ticket resolution ChatBot for electronics section Pipe on ⌘ Langbase</span>
+                <span>Fork ticket resolution AI Agent for electronics section Pipe on ⌘ Langbase</span>
               </Dlink>
               <Dlink href="https://beta.langbase.com/examples/online-store-sports-gear-dept">
                 <span>2.</span>
-                <span>Fork ticket resolution ChatBot for sports gear section Pipe on ⌘ Langbase</span>
+                <span>Fork ticket resolution AI Agent for sports gear section Pipe on ⌘ Langbase</span>
               </Dlink>
               <Dlink href="https://beta.langbase.com/examples/online-store-travel-bags-dept">
                 <span>3.</span>
-                <span>Fork ticket resolution ChatBot for travel bags section Pipe on ⌘ Langbase</span>
+                <span>Fork ticket resolution AI Agent for travel bags section Pipe on ⌘ Langbase</span>
               </Dlink>
               <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/online-store-customer-service">
                 <span>4.</span>
