@@ -8,7 +8,7 @@ const suggestions = [
     prompt: `Hello`
   },
   {
-    title: `Demo CS Electronics Section: Tracking number for Sony Bravia XR-65X90L not yet received.`,
+    title: `Demo CS Electronics Section: Tracking number for LED TV not yet received.`,
     prompt: `I order 2 days ago a new Sony Bravia XR-65X90L, I did recieve confirmation that my order will be shipped shortly but I have not recieve any tracking number or any confirmation that the order has been disptachen. Please reply soon as I order because you guys ship fast and it should not take more then a week. `
   },
   {
@@ -16,7 +16,7 @@ const suggestions = [
     prompt: `I have received the Wenger backpack for a 15-inch laptop two days ago, however, it is quite small for my use case. I would like to return it and order the Wenger 30L backpack for a 16-inch laptop. Can you confirm if it's currently in stock?`
   },
   {
-    title: `Demo CS Sports Gear Section: Nike ZoomX Order missing dispatch tracking information`,
+    title: `Demo CS Sports Gear Section: Order missing dispatch tracking information`,
     prompt: `I bought the Nike ZoomX two days ago. Although I received the order confirmation and the receipt, I have not yet received the tracking number. Please send the tracking number as soon as possible.`
   },
 ]
