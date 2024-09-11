@@ -183,7 +183,7 @@ export default {
         const isProduction = request.url.includes('workers.dev');
         const allowedOrigin = isProduction ? 'https://online-cs.pages.dev' : 'http://localhost:3000';
 
-        const MAX_USERS = 5;
+        const MAX_USERS = 2; // MAX_USERS also represents different conversation thread for the same user (reset case)
         const MAX_CONVERSATIONS = 3;
         const EXPIRATION_TTL = 300; // 5 min test
 
