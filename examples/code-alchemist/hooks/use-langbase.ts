@@ -77,20 +77,23 @@ const useLangbase = () => {
 			// lastRanPipe !== 'code-alchemist' && setShowWelcome(false);
 
 			let localCompletion = '';
+			const res = await response.text();
 
 			// get the response body as a stream
-			if (response.body) {
-				const stream = fromReadableStream(response.body);
+			// if (response.body) {
+			// 	const stream = fromReadableStream(response.body);
 
-				for await (const chunk of stream) {
-					const content = chunk?.choices[0]?.delta?.content || '';
-					content && setCompletion(prev => prev + content);
-					content && (localCompletion += content);
-				}
-			}
+			// 	for await (const chunk of stream) {
+			// 		const content = chunk?.choices[0]?.delta?.content || '';
+			// 		content && setCompletion(prev => prev + content);
+			// 		content && (localCompletion += content);
+			// 	}
+			// }
 
 			// save the completion to local storage
 			const saveCompletion = lastRanPipe !== 'code-alchemist';
+
+			setCompletion(res);
 
 			if (saveCompletion) {
 				const history = JSON.parse(

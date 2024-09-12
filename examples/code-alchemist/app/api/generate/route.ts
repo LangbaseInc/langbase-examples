@@ -26,7 +26,7 @@ export async function POST(req: Request) {
 		});
 
 		if (stream) {
-			return new Response(stream.toReadableStream(), {
+			return new Response(stream, {
 				headers: {
 					pipe
 				}

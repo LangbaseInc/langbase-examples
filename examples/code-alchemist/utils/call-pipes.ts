@@ -94,7 +94,7 @@ async function runPairProgrammer({ prompt, keys }: Params) {
 		apiKey: keys.REACT_COPILOT_PIPE_API_KEY
 	});
 
-	const { stream } = await reactCopilotPipe.streamText({
+	const text = await reactCopilotPipe.generateText({
 		messages: [
 			{
 				role: 'user',
@@ -110,7 +110,7 @@ async function runPairProgrammer({ prompt, keys }: Params) {
 	});
 
 	return {
-		stream,
+		stream: text.completion,
 		pipe: 'react-copilot'
 	};
 }
@@ -128,7 +128,7 @@ async function runDatabaseArchitect({ prompt, keys }: Params) {
 		apiKey: keys.DATABASE_ARCHITECT_PIPE_API_KEY
 	});
 
-	const { stream } = await databaseArchitectPipe.streamText({
+	const text = await databaseArchitectPipe.generateText({
 		messages: [
 			{
 				role: 'user',
@@ -138,7 +138,7 @@ async function runDatabaseArchitect({ prompt, keys }: Params) {
 	});
 
 	return {
-		stream,
+		stream: text.completion,
 		pipe: 'database-architect'
 	};
 }
