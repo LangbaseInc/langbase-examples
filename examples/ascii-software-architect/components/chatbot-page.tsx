@@ -9,6 +9,7 @@ import { ChatInput } from './chat-input'
 import { Opening } from './opening'
 import { Suggestions } from './suggestions'
 
+
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
   initialMessages?: Message[] // Optional: Messages to pre-populate the chat from DB
@@ -32,10 +33,10 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         setThreadId(lbThreadId)
       }
     })
-
     const sendSuggestedPrompt = (prompt: string) => {
       setInput(prompt)
     }
+
   return (
     <div className="min-h-screen">
       <div className={cn('pb-36 pt-4 md:pt-10', className)}>

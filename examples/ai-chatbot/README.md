@@ -65,7 +65,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://ai-chatbot.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/ai-chatbot
+[pipe]: https://langbase.com/examples/ai-chatbot
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot
 [cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ai-chatbot/ai-chatbot-langbase.png
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot

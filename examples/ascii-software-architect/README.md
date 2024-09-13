@@ -4,11 +4,13 @@
 
 ## Build an ASCII Software Architect AI Agent with a Pipe — ⌘ Langbase
 
-This chatbot is built by using an Agent (pipe) on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
+This chatbot is built by using an AI Agent (pipe) on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
+
 
 Check out the live demo [here][demo].
 
 ## Features
+
 
 - 💬 [ASCII Software Architect AI Agent][demo] — Built with an [Pipe on ⌘ Langbase][pipe]
 - ⚡️ Streaming — Real-time chat experience with streamed responses
@@ -16,6 +18,7 @@ Check out the live demo [here][demo].
 - 🔋 Responsive and open source — Works on all devices and platforms
 
 ## Learn more
+
 
 1. Check the [ASCII Software Architect AI Agent Pipe on ⌘ Langbase][pipe]
 2. Read the [source code on GitHub][gh] for this example
@@ -27,6 +30,7 @@ Check out the live demo [here][demo].
 Let's get started with the project:
 
 To get started with Langbase, you'll need to [create a free personal account on Langbase.com][signup] and verify your email address. _Done? Cool, cool!_
+
 
 1. Fork the [ASCII Software Architect AI Agent][pipe] Pipe on ⌘ Langbase.
 2. Go to the API tab to copy the Pipe's API key (to be used on server-side only).
