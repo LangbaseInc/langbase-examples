@@ -7,7 +7,7 @@ export function Opening() {
         <div className="absolute inset-y-2 left-2 w-0.5 rounded-full bg-[--callout-border]"></div>
         <div className="mb-2 mt-0 flex items-center justify-start gap-1">
           <span className="text-xs font-medium text-[--callout-title]">
-            Chatbot Example
+            AI Agent Example
           </span>
         </div>
 
@@ -18,7 +18,7 @@ export function Opening() {
               <Link
                 target="_blank"
                 className="underline hover:text-indigo-400 mb-2"
-                href="https://beta.langbase.com/examples/ascii-software-architect"
+                href="https://langbase.com/examples/ascii-software-architect"
               >
                 <span className="font-bold">pipe on ⌘ Langbase</span>
               </Link>
@@ -31,9 +31,9 @@ export function Opening() {
           <div className="mt-4 flex flex-col gap-4 text-sm [&>p]:my-0 [&>p]:py-0">
             <p>Learn more by checking out:</p>
             <div className="flex flex-col gap-4 mt-2 text-sm">
-              <Dlink href="https://beta.langbase.com/examples/ascii-software-architect">
+              <Dlink href="https://langbase.com/examples/ascii-software-architect">
                 <span>1.</span>
-                <span>Fork this ASCII Software Architect Chatbot Pipe on ⌘ Langbase</span>
+                <span>Fork this ASCII Software Architect AI Agent Pipe on ⌘ Langbase</span>
               </Dlink>
               <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ascii-software-architect">
                 <span>2.</span>
