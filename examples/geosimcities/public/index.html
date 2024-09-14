@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoCities Browser</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        #browser {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        #address-bar {
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+        #address-input {
+            width: 100%;
+            padding: 5px;
+        }
+        #content {
+            flex-grow: 1;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="browser">
+        <div id="address-bar">
+            <input type="text" id="address-input" placeholder="Enter URL">
+        </div>
+        <iframe id="content" src="/geocities?url=https%3A%2F%2Fmathias-biilmann.geocities.com"></iframe>
+    </div>
+
+    <script>
+        const addressInput = document.getElementById('address-input');
+        const content = document.getElementById('content');
+        const url = new URL(window.location.href).searchParams.get('url');
+
+        addressInput.value = url ? decodeURIComponent(url) : 'https://mathias-biilmann.geocities.com';
+        if (url) {
+            content.src = `/geocities?url=${url}`;
+        }
+
+        addressInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const url = encodeURIComponent(this.value);
+                content.src = `/geocities?url=${url}`;
+            }
+        });
+
+        content.addEventListener('load', function() {
+            console.log("Hello")
+            const iframeUrl = new URL(this.contentWindow.location.href);
+            const originalUrl = decodeURIComponent(iframeUrl.searchParams.get('url'));
+            
+            document.title = this.contentDocument.title;
+            addressInput.value = originalUrl;
+            history.pushState({}, document.title, `/?url=${encodeURIComponent(originalUrl)}`);
+        });
+    </script>
+</body>
+</html>
