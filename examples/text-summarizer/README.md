@@ -13,7 +13,7 @@ Check out the live demo [here](https://ai-pipe-summarizer.langbase.dev/).
 
 ## Local Development
 
-1. Fork the [text-summarizer](https://beta.langbase.com/langbase/text-summarizer) Pipe on Langbase.
+1. Fork the [text-summarizer](https://langbase.com/langbase/text-summarizer) Pipe on Langbase.
 2. Copy the Pipe's API key.
 3. Duplicate the `.env.example` file and rename it to `.env.local`.
 4. Add the following environment variables:

@@ -18,7 +18,7 @@ export function Opening() {
               <Link
                 target="_blank"
                 className="underline hover:text-indigo-400 mb-2"
-                href="https://beta.langbase.com/examples/expert-proofreader"
+                href="https://langbase.com/examples/expert-proofreader"
               >
                 <span className="font-bold">pipe on ⌘ Langbase</span>
               </Link>
