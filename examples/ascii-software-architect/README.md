@@ -1,10 +1,10 @@
-![ASCII Software Architect AI Agent by ⌘ Langbase][cover]
+![ASCII Software Architect Chatbot by ⌘ Langbase][cover]
 
 ![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
 
-## Build an ASCII Software Architect AI Agent with a Pipe — ⌘ Langbase
+## Build an ASCII Software Architect Chatbot with a Pipe — ⌘ Langbase
 
-This chatbot is built by using an AI Agent (pipe) on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
+This chatbot is built by using an agentic pipe on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
 
 
 Check out the live demo [here][demo].
@@ -12,7 +12,7 @@ Check out the live demo [here][demo].
 ## Features
 
 
-- 💬 [ASCII Software Architect AI Agent][demo] — Built with an [Pipe on ⌘ Langbase][pipe]
+- 💬 [ASCII Software Architect Chatbot][demo] — Built with an [Pipe on ⌘ Langbase][pipe]
 - ⚡️ Streaming — Real-time chat experience with streamed responses
 - 🗣️ Q/A — Ask questions and get pre-defined answers with your preferred AI model and tone
 - 🔋 Responsive and open source — Works on all devices and platforms
@@ -20,7 +20,7 @@ Check out the live demo [here][demo].
 ## Learn more
 
 
-1. Check the [ASCII Software Architect AI Agent Pipe on ⌘ Langbase][pipe]
+1. Check the [ASCII Software Architect Chatbot Pipe on ⌘ Langbase][pipe]
 2. Read the [source code on GitHub][gh] for this example
 3. Go through Documentaion: [Pipe Quick Start][qs]
 4. Learn more about [Pipes & Memory features on ⌘ Langbase][docs]
@@ -32,7 +32,7 @@ Let's get started with the project:
 To get started with Langbase, you'll need to [create a free personal account on Langbase.com][signup] and verify your email address. _Done? Cool, cool!_
 
 
-1. Fork the [ASCII Software Architect AI Agent][pipe] Pipe on ⌘ Langbase.
+1. Fork the [ASCII Software Architect Chatbot][pipe] Pipe on ⌘ Langbase.
 2. Go to the API tab to copy the Pipe's API key (to be used on server-side only).
 3. Download the example project folder from [here][download] or clone the reppository.
 4. `cd` into the project directory and open it in your code editor.
@@ -70,7 +70,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 [lb]: https://langbase.com
 [pipe]: https://langbase.com/examples/ascii-software-architect
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ascii-software-architect
-[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ascii-software-architect/ascii-software-architect-agent.png
+[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ascii-software-architect/ascii-software-architect-chatbot.png
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ascii-software-architect
 [signup]: https://langbase.fyi/io
 [qs]:https://langbase.com/docs/pipe/quickstart
