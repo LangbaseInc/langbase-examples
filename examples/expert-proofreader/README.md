@@ -2,22 +2,22 @@
 
 ![License: MIT][mit] [![Fork to ⌘ Langbase][fork]][pipe]
 
-## Build Expert Proofreader with Pipes — ⌘ Langbase
+## Build Expert Proofreader with a Pipe — ⌘ Langbase
 
-This chatbot is built by using an AI Pipe on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
+This chatbot is built by using an agentic Pipe on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
 
 Check out the live demo [here][demo].
 
 ## Features
 
-- 💬 [Expert Proofreader Bot][demo] — Built with an [AI Pipe on ⌘ Langbase][pipe]
+- 💬 [Expert Proofreader Chatbot][demo] — Built with an [AI Pipe on ⌘ Langbase][pipe]
 - ⚡️ Streaming — Real-time chat experience with streamed responses
 - 🗣️ Q/A — Ask questions and get pre-defined answers with your preferred AI model and tone
 - 🔋 Responsive and open source — Works on all devices and platforms
 
 ## Learn more
 
-1. Check the [Expert Proofreader Bot on ⌘ Langbase][pipe]
+1. Check the [Expert Proofreader Chatbot on ⌘ Langbase][pipe]
 2. Read the [source code on GitHub][gh] for this example
 3. Go through Documentaion: [Pipe Quick Start][qs]
 4. Learn more about [Pipes & Memory features on ⌘ Langbase][docs]
@@ -28,7 +28,7 @@ Let's get started with the project:
 
 To get started with Langbase, you'll need to [create a free personal account on Langbase.com][signup] and verify your email address. _Done? Cool, cool!_
 
-1. Fork the [Expert Proofreader Bot][pipe] Pipe on ⌘ Langbase.
+1. Fork the [Expert Proofreader Chatbot][pipe] Pipe on ⌘ Langbase.
 2. Go to the API tab to copy the Pipe's API key (to be used on server-side only).
 3. Download the example project folder from [here][download] or clone the reppository.
 4. `cd` into the project directory and open it in your code editor.
@@ -36,10 +36,10 @@ To get started with Langbase, you'll need to [create a free personal account on 
 6. Add the following environment variables (.env.local):
 ```
     # Replace `PIPE_API_KEY` with the copied API key.
-    NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
+    LB_PIPE_API_KEY="PIPE_API_KEY"
 ```
 7. In your CLI issue the following
-```
+```sh
     # Install the dependencies using the following command:
     npm install
 
@@ -62,10 +62,10 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
-[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/expert-proofreader/expert-proofreader.png
+[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/expert-proofreader/expert-proofreader-chatbot.png
 [demo]: https://expert-proofreader.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/expert-proofreader
+[pipe]: https://langbase.com/examples/expert-proofreader
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/expert-proofreader
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/expert-proofreader
 [signup]: https://langbase.fyi/io
