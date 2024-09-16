@@ -1,7 +1,8 @@
 import {Pipe} from 'langbase';
+import { Context } from "@netlify/functions";
 
 const pipe = new Pipe({
-    apiKey: Netlify.env.get("LANGBASE_API_KEY") || "",
+    apiKey: process.env.LANGBASE_API_KEY!,
 });
 
 export default async (request: Request, context: Context) => {
