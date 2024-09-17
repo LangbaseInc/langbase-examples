@@ -1,0 +1,9 @@
+[build]
+    publish = "public"
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/geocities"
+  to = "/.netlify/functions/geocities"
+  status = 200
