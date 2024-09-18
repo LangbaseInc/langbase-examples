@@ -2,28 +2,21 @@ import https from 'https';
 import fs from 'fs';
 import fetch from 'node-fetch';
 import path from 'path';
+import dotenv from 'dotenv';
 
-// Replace <YOUR_ACCESS_TOKEN> with your GitHub personal access token
-const accessToken = '<YOUR_ACCESS_TOKEN>';
+// Load environment variables
+dotenv.config();
+const accessToken = process.env.GITHUB_ACCESS_TOKEN;
+const owner = process.env.GITHUB_OWNER;
+const repo = process.env.GITHUB_REPO;
+const baseCommitSha = process.env.BASE_COMMIT_SHA;
+const headCommitSha = process.env.HEAD_COMMIT_SHA;
+const langbaseApiKey = process.env.LANGBASE_API_KEY;
+const langbaseMemoryName = process.env.LANGBASE_MEMORY_NAME;
+const orgUserName = process.env.LANGBASE_ORG_USER_NAME;
 
-// Replace <OWNER> and <REPO> with the owner and repository name
-const owner = '<OWNER>';
-const repo = '<REPO>';
-
-// For commit comparison mode:
-// Base commit: commit upto which docs are deployed
-// Head commit: the newer commit until which you want to get changed files and deploy them to Langbase
-const baseCommitSha = '<BASE_COMMIT_SHA>';
-const headCommitSha = '<HEAD_COMMIT_SHA>';
-
-// Your Langbase Org/User key. Org key if working in an org, otherwise user key.
-const langbaseApiKey = '';
-
-// The memory name on Langbase, in which want to upload the documents to. Eg: langbase-docs
-const langbaseMemoryName = '';
-
-// Your Langbase Org/User name. Case sensitive. Eg: 'langbase' or 'langbase-123'
-const orgUserName = '';
+// Flag to process all files or only changed files b/w two commits
+const processAllFiles = false;
 
 /**
  * Makes an API request to the GitHub API and fetch data.
@@ -43,8 +36,8 @@ function makeGitHubApiRequest(path, method = 'GET', data) {
 		headers: {
 			'User-Agent': 'Node.js Script',
 			Authorization: `token ${accessToken}`,
-			Accept: 'application/vnd.github.v3+json',
-		},
+			Accept: 'application/vnd.github.v3+json'
+		}
 	};
 
 	return new Promise((resolve, reject) => {
@@ -59,7 +52,11 @@ function makeGitHubApiRequest(path, method = 'GET', data) {
 				if (res.statusCode >= 200 && res.statusCode < 300) {
 					resolve(JSON.parse(responseBody));
 				} else {
-					reject(new Error(`Request failed with status code ${res.statusCode}: ${responseBody}`));
+					reject(
+						new Error(
+							`Request failed with status code ${res.statusCode}: ${responseBody}`
+						)
+					);
 				}
 			});
 		});
@@ -84,10 +81,14 @@ function makeGitHubApiRequest(path, method = 'GET', data) {
  * @returns {Promise<string[]>} - A promise that resolves to an array of changed documentation file names.
  */
 async function getChangedDocsFiles(baseSha, headSha) {
-	const compareResult = await makeGitHubApiRequest(`/compare/${baseSha}...${headSha}`);
+	const compareResult = await makeGitHubApiRequest(
+		`/compare/${baseSha}...${headSha}`
+	);
 	return compareResult.files
 		.map(file => file.filename)
-		.filter(filename => filename.endsWith('.md') || filename.endsWith('.mdx'));
+		.filter(
+			filename => filename.endsWith('.md') || filename.endsWith('.mdx')
+		);
 }
 
 /**
@@ -101,7 +102,10 @@ async function getAllDocsFiles(path = '') {
 	let files = [];
 
 	for (const item of result) {
-		if (item.type === 'file' && (item.name.endsWith('.md') || item.name.endsWith('.mdx'))) {
+		if (
+			item.type === 'file' &&
+			(item.name.endsWith('.md') || item.name.endsWith('.mdx'))
+		) {
 			files.push(item.path);
 		} else if (item.type === 'dir') {
 			files = files.concat(await getAllDocsFiles(item.path));
@@ -117,7 +121,9 @@ async function getAllDocsFiles(path = '') {
  */
 async function downloadFile(filePath) {
 	const content = await makeGitHubApiRequest(`/contents/${filePath}`);
-	const decodedContent = Buffer.from(content.content, 'base64').toString('utf-8');
+	const decodedContent = Buffer.from(content.content, 'base64').toString(
+		'utf-8'
+	);
 	const localPath = path.join('temp', filePath);
 	fs.mkdirSync(path.dirname(localPath), { recursive: true });
 	fs.writeFileSync(localPath, decodedContent);
@@ -155,7 +161,7 @@ async function getSignedUploadUrl(fileName) {
 	const newDoc = {
 		memoryName: langbaseMemoryName,
 		ownerLogin: orgUserName,
-		fileName,
+		fileName
 	};
 
 	try {
@@ -163,9 +169,9 @@ async function getSignedUploadUrl(fileName) {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${langbaseApiKey}`,
+				Authorization: `Bearer ${langbaseApiKey}`
 			},
-			body: JSON.stringify(newDoc),
+			body: JSON.stringify(newDoc)
 		});
 
 		if (!response.ok) {
@@ -173,7 +179,7 @@ async function getSignedUploadUrl(fileName) {
 			throw {
 				message: `HTTP error! status: ${response.status}`,
 				status: response.status,
-				error: errorBody,
+				error: errorBody
 			};
 		}
 
@@ -182,11 +188,16 @@ async function getSignedUploadUrl(fileName) {
 		console.log('Signed URL:', signedUrl);
 
 		if (!signedUrl || typeof signedUrl !== 'string')
-			throw new Error(`Invalid signed URL received from Langbase API: ${signedUrl}`);
+			throw new Error(
+				`Invalid signed URL received from Langbase API: ${signedUrl}`
+			);
 
 		return signedUrl;
 	} catch (error) {
-		console.error(`Failed to get signed upload URL for ${fileName}:`, error);
+		console.error(
+			`Failed to get signed upload URL for ${fileName}:`,
+			error
+		);
 		throw error;
 	}
 }
@@ -221,9 +232,9 @@ async function uploadDocument(signedUrl, filePath) {
 		const response = await fetch(signedUrl, {
 			method: 'PUT',
 			headers: {
-				'Content-Type': contentType,
+				'Content-Type': contentType
 			},
-			body: file,
+			body: file
 		});
 
 		if (!response.ok) {
@@ -231,7 +242,7 @@ async function uploadDocument(signedUrl, filePath) {
 			throw {
 				message: `HTTP error! status: ${response.status}`,
 				status: response.status,
-				error: errorBody,
+				error: errorBody
 			};
 		}
 
@@ -260,15 +271,42 @@ function sleep(ms) {
  * @param {boolean} options.processAllFiles - Flag indicating whether to process all files or only changed files.
  * @returns {Promise<void>} - A promise that resolves when all files have been processed.
  */
-async function main({ processAllFiles = false }) {
+async function main({ processAllFiles }) {
+	// Check if all required environment variables are set
+	if (
+		!accessToken ||
+		!owner ||
+		!repo ||
+		!langbaseApiKey ||
+		!langbaseMemoryName ||
+		!orgUserName
+	) {
+		console.error(
+			'Missing required environment variables. Please check your .env file.'
+		);
+		return;
+	}
+
+	if (!processAllFiles && (!baseCommitSha || !headCommitSha)) {
+		console.error(
+			'Missing required environment variables for base and head commits. Please check your .env file.'
+		);
+		return;
+	}
+
 	try {
 		let filesToProcess;
-
 		if (processAllFiles) {
 			filesToProcess = await getAllDocsFiles();
-			console.log('All Markdown files in the repository:', filesToProcess);
+			console.log(
+				'All Markdown files in the repository:',
+				filesToProcess
+			);
 		} else {
-			filesToProcess = await getChangedFiles(baseCommitSha, headCommitSha);
+			filesToProcess = await getChangedDocsFiles(
+				baseCommitSha,
+				headCommitSha
+			);
 			console.log('Changed Markdown files:', filesToProcess);
 		}
 
@@ -286,7 +324,10 @@ async function main({ processAllFiles = false }) {
 				const signedUrl = await getSignedUploadUrl(modifiedFileName);
 				console.log(`Got signed URL for upload`);
 
-				const uploadResponse = await uploadDocument(signedUrl, localPath);
+				const uploadResponse = await uploadDocument(
+					signedUrl,
+					localPath
+				);
 				console.log(`Upload response: ${uploadResponse.statusText}`);
 				console.log(`Upload response status: ${uploadResponse.status}`);
 
@@ -306,4 +347,4 @@ async function main({ processAllFiles = false }) {
 	}
 }
 
-main({ processAllFiles: true });
+main({ processAllFiles });

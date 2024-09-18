@@ -37,7 +37,7 @@ export async function Header() {
           className={cn(buttonVariants({ variant: 'default' }))}
         >
           <IconFork />
-          <span className="hidden md:flex gap-1">
+          <span className="hidden gap-1 md:flex">
             Fork on <span className="font-bold">Langbase</span>
           </span>
         </a>

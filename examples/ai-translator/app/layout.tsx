@@ -7,8 +7,8 @@ import { Header } from '@/components/header';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Translator AI - Langbase',
-	description: 'Effortless translations with AI',
+	title: 'AI Translator - Langbase',
+	description: 'Effortless translations with AI pipes on Langbase',
 	keywords: ['AI', 'Translator', 'tranlation', 'langbase']
 };
 
@@ -17,13 +17,6 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	// return (
-	// 	<html lang="en">
-	// 		<body className={cn(inter.className, 'dark bg-background')}>
-	// 			{children}
-	// 		</body>
-	// 	</html>
-	// );
 	return (
 		<html lang="en">
 			<body className={cn(inter.className, 'dark bg-background')}>
