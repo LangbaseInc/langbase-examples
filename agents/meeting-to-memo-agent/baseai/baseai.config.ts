@@ -2,7 +2,7 @@ import type { BaseAIConfig } from 'baseai';
 
 export const config: BaseAIConfig = {
 	log: {
-		isEnabled: true,
+		isEnabled: false,
 		logSensitiveData: false,
 		pipe: true,
 		'pipe.completion': true,
