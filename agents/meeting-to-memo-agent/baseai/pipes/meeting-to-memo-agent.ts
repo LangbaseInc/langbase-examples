@@ -7,7 +7,7 @@ const pipeMeetingToMemoAgent = (): PipeI => ({
 	name: `meeting-to-memo-agent`,
 	description: `Turn business and technical discussion summary into memo format, insights, actions and schedules`,
 	status: `private`,
-	model: `groq:llama-3.1-70b-versatile`,
+	model: `openai:gpt-4o-mini`,
 	stream: true,
 	json: false,
 	store: true,
