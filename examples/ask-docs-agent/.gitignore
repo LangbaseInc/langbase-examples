@@ -52,3 +52,5 @@ xxseed.sql
 package-lock.json
 yarn.lock
 dist
+
+pnpm-lock.yaml
