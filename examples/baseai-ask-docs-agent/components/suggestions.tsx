@@ -8,8 +8,8 @@ const suggestions = [
     prompt: `Give a concise summary of the attached document in the CONTEXT`
   },
   {
-    title: `Top 10 keyword in the attached document`,
-    prompt: `Extract top 10 keywords in the attached document from the CONTEXT`
+    title: `Top 10 most important keywords`,
+    prompt: `Extract top 10 most important keywords in the attached document from the CONTEXT that are essential for insights`
   },
   {
     title: `Insights from the attached document`,
