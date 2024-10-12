@@ -52,3 +52,7 @@ xxseed.sql
 package-lock.json
 yarn.lock
 dist
+# baseai
+**/.baseai/
+# env file
+.env
