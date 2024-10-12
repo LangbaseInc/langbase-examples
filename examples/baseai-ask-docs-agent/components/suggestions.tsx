@@ -4,8 +4,8 @@ import { IconSparkles } from './ui/icons'
 // Prompt suggestions – Change these to match your use-case/company
 const suggestions = [
   {
-    title: `What is the attached document about?`,
-    prompt: `Give a concise summary of the attached document in the CONTEXT`
+    title: `Concise summary of the attached document`,
+    prompt: `Give a concise summary of the document in the CONTEXT`
   },
   {
     title: `Top 10 most important keywords`,
