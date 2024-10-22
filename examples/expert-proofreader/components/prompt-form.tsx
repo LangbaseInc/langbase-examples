@@ -4,6 +4,7 @@ import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { UseChatHelpers } from 'ai/react'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hovercard'
 
 export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
@@ -50,6 +51,17 @@ export function PromptForm({
                 aria-hidden="true"
               />
               <h3>Chat</h3>
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <Button variant="link" size="lg" className="text-inherit">@conversation tips</Button>
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  <ul className="list-disc pl-4">
+                    <li>Say Hello to start a conversation, or simply enter the text you want to be proofread by the Expert Proofreader chatbot.</li>
+                    <li>For more nuanced proofreading, you can choose state-of-the-art LLMs such as Claude 3.5, GPT-4 Turbo, or GPT-4o. With the Langbase agentic pipeline, this can be done easily with just a few clicks.</li>
+                  </ul>
+                </HoverCardContent>
+              </HoverCard>
             </div>
 
             <div className="flex items-center justify-center gap-2 md:justify-start">
