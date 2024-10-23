@@ -39,6 +39,7 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
     })
   
     const fetchMemorySets = useCallback(async () => {
+
       if (!userApiKey || !ownerLogin) {
         toast.error('Please set both API Key and Owner Login first');
         return;
@@ -77,6 +78,7 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
     const sendSuggestedPrompt = (prompt: string) => {
       setInput(prompt)
     }
+
   
     return (
       <div className="min-h-screen">

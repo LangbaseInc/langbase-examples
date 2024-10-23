@@ -1,0 +1,38 @@
+{
+  "name": "ask-langbase-docs-discord-bot",
+  "version": "1.0.0",
+  "description": "The discord bot for Ask Langbase Docs Discord",
+  "type": "module",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "wrangler dev",
+    "dev": "wrangler dev",
+    "ngrok": "ngrok http 8787",
+    "fix": "eslint --fix '**/*.js'",
+    "lint": "eslint '**/*.js'",
+    "register": "node src/register.js",
+    "publish": "wrangler deploy"
+  },
+  "keywords": [],
+  "dependencies": {
+    "discord-interactions": "^3.3.0",
+    "itty-router": "^5.0.9",
+    "langbase": "^0.6.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240815.0",
+    "@eslint/js": "^9.1.1",
+    "c8": "^10.1.2",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "globals": "^15.0.0",
+    "ngrok": "^5.0.0-beta.2",
+    "prettier": "^3.2.5",
+    "sinon": "^18.0.0",
+    "typescript": "^5.5.4",
+    "wrangler": "^3.0.1"
+  }
+}

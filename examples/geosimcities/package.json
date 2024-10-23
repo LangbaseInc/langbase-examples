@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@netlify/edge-functions": "^2.10.0",
+    "@netlify/functions": "^2.8.1",
+    "langbase": "^0.2.5",
+    "openai": "^4.54.0"
+  }
+}
