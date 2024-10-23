@@ -6,6 +6,7 @@ import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
 import { Popover, PopoverTrigger, PopoverContent } from '@radix-ui/react-popover'
 import { MemorySidebar } from './memory-sidebar'
+import { HoverCard, HoverCardTrigger, HoverCardContent } from 'components/ui/hovercard'
 
 export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
@@ -71,6 +72,24 @@ export function PromptForm({
                 aria-hidden="true"
               />
               <h3>Chat</h3>
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <Button variant="link" size="lg" className="text-inherit">@conversation tips</Button>
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  <ul className="list-disc pl-4">
+                  <li>
+                      You can use Langbase memory with this chatbot to upload your resume, and for that you need a&nbsp;
+                       <a href="https://langbase.com/docs/api-reference/api-keys#step-1-go-to-profile-settings" target="_blank" rel="noopener noreferrer" className="underline">
+                        user API key and your login name.
+                      </a>.
+                    </li>
+                    <li>
+                      Once the user API key and owner login are entered, please make sure to save and then refresh to select the memory directly from the Langbase memory. This action will attach the memory to the current pipe.
+                    </li>
+                  </ul>
+                </HoverCardContent>
+              </HoverCard>
             </div>
 
             <div className="flex items-center justify-center gap-2 md:justify-start">
