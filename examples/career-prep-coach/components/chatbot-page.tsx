@@ -7,6 +7,7 @@ import { useState, useCallback } from 'react'
 import { toast } from 'sonner'
 import { ChatInput } from './chat-input'
 import { Opening } from './opening'
+import { Suggestions } from './suggestions'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
@@ -38,10 +39,23 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
     })
   
     const fetchMemorySets = useCallback(async () => {
+      if (!userApiKey || !ownerLogin) {
+        toast.error('Please set both API Key and Owner Login first');
+        return;
+      }
       try {
         const response = await fetch('/api/chat?action=getMemorySets', {
           method: 'POST',
-          body: JSON.stringify({ userApiKey, ownerLogin })
+          body: JSON.stringify({ userApiKey, ownerLogin,
+            pipe: {
+              name: "career-prep-coach",
+              description: "Your AI-powered personal interview coach",
+              status: "private",
+              config: {
+                memorysets: []  // This will be populated when memory is selected
+              },
+            }
+           })
         })
         if (!response.ok) throw new Error('Failed to fetch memory sets')
         const data = await response.json()
@@ -59,6 +73,10 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
     const handleMemorySelect = useCallback((memoryUrl: string) => {
       setSelectedMemory(memoryUrl)
     }, [])
+
+    const sendSuggestedPrompt = (prompt: string) => {
+      setInput(prompt)
+    }
   
     return (
       <div className="min-h-screen">
@@ -68,7 +86,10 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
               <ChatList messages={messages} />
             </>
           ) : (
+            <>
             <Opening />
+            <Suggestions sendSuggestedPrompt={sendSuggestedPrompt} />
+          </>
           )}
           <ChatInput
             id={id}
