@@ -26,9 +26,9 @@ export async function POST(req: Request) {
     }
 
     
-    if (!process.env.NEXT_LB_PIPE_API_KEY) {
+    if (!process.env.LANGBASE_PIPE_API_KEY) {
       throw new Error(
-        'Please set NEXT_LB_PIPE_API_KEY in your environment variables.'
+        'Please set LANGBASE_PIPE_API_KEY in your environment variables.'
       )
     }
 
@@ -39,14 +39,14 @@ export async function POST(req: Request) {
     } else if (action === 'getMemorySets') {
       return handleGetMemorySets(userApiKey)
     } else if (action === 'updatePipe') {
-      const { memoryName } = await req.json()
+      const { memoryName } = body;
       return updatePipe(ownerLogin, memoryName, userApiKey)
     } else {
       const endpointUrl = 'https://api.langbase.com/beta/chat'
   
       const headers = {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.NEXT_LB_PIPE_API_KEY}`
+        Authorization: `Bearer ${process.env.LANGBASE_PIPE_API_KEY}`
       }
   
       // Get chat prompt messages and threadId from the client.
@@ -153,11 +153,18 @@ async function handleFileUpload(req: Request, userApiKey: string, ownerLogin: st
 }
 
 async function updatePipe(ownerLogin: string | undefined, memoryName: string, userApiKey: string) {
-  const url = `https://api.langbase.com/beta/pipes/${ownerLogin}/shoes-expert`;
+  
+  if (!ownerLogin || !memoryName || !userApiKey) {
+    return new Response(JSON.stringify({ error: 'Missing required parameters' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+  const url = `https://api.langbase.com/beta/pipes/${ownerLogin}/career-prep-coach`;
 
   const pipe = {
-    name: "shoes-expert",
-    description: "An AI-powered shoe expert that recommends Nike and Adidas footwear based on customer preferences and provides personalized shopping assistance.",
+    name: "career-prep-coach",
+    description: "Your AI-powered personal interview coach, expertly preparing you for success using proven techniques and tailored feedback.",
     status: "private",
     config: {
       memorysets: [memoryName]

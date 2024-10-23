@@ -36,7 +36,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 6. Add the following environment variables (.env.local):
 ```
     # Replace `PIPE_API_KEY` with the copied API key.
-    NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
+    LANGBASE_PIPE_API_KEY="PIPE_API_KEY"
 ```    
 
 7. Issue the following in your CLI:
@@ -65,7 +65,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://career-prep-coach.langbase.dev
 [lb]: https://langbase.com
-[pipe]: https://beta.langbase.com/examples/career-prep-coach
+[pipe]: https://langbase.com/examples/career-prep-coach
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/career-prep-coach
 [cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/career-prep-coach/career-prep-coach.png
 [download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/career-prep-coach
