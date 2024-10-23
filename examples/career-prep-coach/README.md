@@ -36,7 +36,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 6. Add the following environment variables (.env.local):
 ```
     # Replace `PIPE_API_KEY` with the copied API key.
-    NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
+    LANGBASE_PIPE_API_KEY="PIPE_API_KEY"
 ```    
 
 7. Issue the following in your CLI:
