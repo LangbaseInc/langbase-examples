@@ -16,7 +16,7 @@ export async function POST(req: Request) {
       )
     }
 
-    const endpointUrl = 'https://api.langbase.com/beta/chat'
+    const endpointUrl = 'https://api.langbase.com/v1/pipes/run'
 
     const headers = {
       'Content-Type': 'application/json',

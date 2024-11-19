@@ -157,7 +157,7 @@ function modifyFileName(originalPath) {
  * @throws {Error} If an error occurs while retrieving the signed upload URL.
  */
 async function getSignedUploadUrl(fileName) {
-	const url = `https://api.langbase.com/beta/org/${orgUserName}/memorysets/documents`;
+	const url = `https://api.langbase.com/v1/memory/documents`;
 	const newDoc = {
 		memoryName: langbaseMemoryName,
 		ownerLogin: orgUserName,

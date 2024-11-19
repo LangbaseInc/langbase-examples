@@ -1,21 +1,21 @@
 'use server';
 
 export async function generateCompletion(topic: string) {
-	const url = 'https://api.langbase.com/beta/generate';
+	const url = 'https://api.langbase.com/v1/pipes/run';
 	const apiKey = process.env.NEXT_LB_PIPE_API_KEY;
 
 	const data = {
 		messages: [{ role: 'user', content: 'Hello!' }],
-		variables: [{ name: 'topic', value: topic }],
+		variables: [{ name: 'topic', value: topic }]
 	};
 
 	const response = await fetch(url, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${apiKey}`,
+			Authorization: `Bearer ${apiKey}`
 		},
-		body: JSON.stringify(data),
+		body: JSON.stringify(data)
 	});
 
 	const resText = await response.text();
