@@ -6,7 +6,9 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"cf-build": "pnpm exec next-on-pages",
+		"deploy": "pnpm run cf-build && pnpm exec wrangler pages deploy .vercel/output/static"
 	},
 	"dependencies": {
 		"ai": "3.0.16",
@@ -30,6 +32,7 @@
 		"@types/react-syntax-highlighter": "^15.5.11",
 		"postcss": "^8",
 		"tailwindcss": "^3.4.1",
-		"typescript": "^5"
+		"typescript": "^5",
+		"wrangler": "^3.88.0"
 	}
 }

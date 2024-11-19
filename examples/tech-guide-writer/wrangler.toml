@@ -1,2 +1,2 @@
-name="lb-ai-tech-guide-writer"
+name = "example-ai-tech-guide-writer"
 compatibility_flags = ['nodejs_compat']
