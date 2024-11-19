@@ -25,7 +25,7 @@ const requestBodySchema = zod.object({
 
 export async function POST(req: Request) {
 	try {
-		const endpointUrl = 'https://api.langbase.com/beta/generate';
+		const endpointUrl = 'https://api.langbase.com/v1/pipes/run';
 		const headers = {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${process.env.NEXT_LB_PIPE_API_KEY}`
