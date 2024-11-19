@@ -17,8 +17,8 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
   const [threadId, setThreadId] = useState<null | string>(null)
   const [memorySets, setMemorySets] = useState<any[]>([])
   const [selectedMemory, setSelectedMemory] = useState('')
-  const [userApiKey, setUserApiKey] = useState<string>('');
-  const [ownerLogin, setOwnerLogin] = useState<string>('');
+  const [userApiKey, setUserApiKey] = useState<string>('')
+  const [ownerLogin, setOwnerLogin] = useState<string>('')
 
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
@@ -36,59 +36,57 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         setThreadId(lbThreadId)
       }
     })
-  
-    const fetchMemorySets = useCallback(async () => {
-      try {
-        const response = await fetch('/api/chat?action=getMemorySets', {
-          method: 'POST',
-          body: JSON.stringify({ userApiKey, ownerLogin })
-        })
-        if (!response.ok) throw new Error('Failed to fetch memory sets')
-        const data = await response.json()
 
-        setMemorySets(data.memorySets || [])
-        toast.success('Memory sets refreshed successfully')
-      } catch (error) {
-        console.error('Error fetching memory sets:', error)
-        toast.error('Failed to fetch memory sets')
-      }
-    }, [userApiKey, ownerLogin])
-    
-    
+  const fetchMemorySets = useCallback(async () => {
+    try {
+      const response = await fetch('/api/chat?action=getMemorySets', {
+        method: 'POST',
+        body: JSON.stringify({ userApiKey, ownerLogin })
+      })
+      if (!response.ok) throw new Error('Failed to fetch memory sets')
+      const data = await response.json()
 
-    const handleMemorySelect = useCallback((memoryUrl: string) => {
-      setSelectedMemory(memoryUrl)
-    }, [])
-  
-    return (
-      <div className="min-h-screen">
-        <div className={cn('pb-36 pt-4 md:pt-10', className)}>
-          {messages.length ? (
-            <>
-              <ChatList messages={messages} />
-            </>
-          ) : (
-            <Opening />
-          )}
-          <ChatInput
-            id={id}
-            isLoading={isLoading}
-            stop={stop}
-            append={append}
-            reload={reload}
-            messages={messages}
-            input={input}
-            setInput={setInput}
-            memorySets={memorySets}
-            selectedMemory={selectedMemory}
-            refreshMemorySets={fetchMemorySets}
-            onMemorySelect={handleMemorySelect}
-            userApiKey={userApiKey} 
-            setUserApiKey={setUserApiKey}
-            ownerLogin={ownerLogin} 
-            setOwnerLogin={setOwnerLogin} 
-          />
-        </div>
+      setMemorySets(data || [])
+      toast.success('Memory sets refreshed successfully')
+    } catch (error) {
+      console.error('Error fetching memory sets:', error)
+      toast.error('Failed to fetch memory sets')
+    }
+  }, [userApiKey, ownerLogin])
+
+  const handleMemorySelect = useCallback((memoryUrl: string) => {
+    setSelectedMemory(memoryUrl)
+  }, [])
+
+  return (
+    <div className="min-h-screen">
+      <div className={cn('pb-36 pt-4 md:pt-10', className)}>
+        {messages.length ? (
+          <>
+            <ChatList messages={messages} />
+          </>
+        ) : (
+          <Opening />
+        )}
+        <ChatInput
+          id={id}
+          isLoading={isLoading}
+          stop={stop}
+          append={append}
+          reload={reload}
+          messages={messages}
+          input={input}
+          setInput={setInput}
+          memorySets={memorySets}
+          selectedMemory={selectedMemory}
+          refreshMemorySets={fetchMemorySets}
+          onMemorySelect={handleMemorySelect}
+          userApiKey={userApiKey}
+          setUserApiKey={setUserApiKey}
+          ownerLogin={ownerLogin}
+          setOwnerLogin={setOwnerLogin}
+        />
       </div>
-    )
-  }
+    </div>
+  )
+}
