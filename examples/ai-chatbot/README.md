@@ -37,7 +37,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 
 ```sh
 # Replace `PIPE_API_KEY` with the copied API key.
-NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
+LANGBASE_API_KEY="PIPE_API_KEY"
 
 # Install the dependencies using the following command:
 npm install
@@ -62,18 +62,17 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
-
 [demo]: https://ai-chatbot.langbase.dev
 [lb]: https://langbase.com
 [pipe]: https://langbase.com/examples/ai-chatbot
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot
-[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ai-chatbot/ai-chatbot-langbase.png
-[download]:https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot
+[cover]: https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/ai-chatbot/ai-chatbot-langbase.png
+[download]: https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ai-chatbot
 [signup]: https://langbase.fyi/io
-[qs]:https://langbase.com/docs/pipe/quickstart
-[docs]:https://langbase.com/docs
-[xaa]:https://x.com/MrAhmadAwais
-[xab]:https://x.com/AhmadBilalDev
-[local]:http://localhost:3000
+[qs]: https://langbase.com/docs/pipe/quickstart
+[docs]: https://langbase.com/docs
+[xaa]: https://x.com/MrAhmadAwais
+[xab]: https://x.com/AhmadBilalDev
+[local]: http://localhost:3000
 [mit]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&color=%23000000
 [fork]: https://img.shields.io/badge/FORK%20ON-%E2%8C%98%20Langbase-000000.svg?style=for-the-badge&logo=%E2%8C%98%20Langbase&logoColor=000000
