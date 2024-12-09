@@ -1,7 +1,6 @@
 'use client'
 
-import { type Message } from 'ai'
-
+import { Message } from '@baseai/core'
 import { Button } from '@/components/ui/button'
 import { IconCheck, IconCopy } from '@/components/ui/icons'
 import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard'
@@ -20,7 +19,7 @@ export function ChatMessageActions({
 
   const onCopy = () => {
     if (isCopied) return
-    copyToClipboard(message.content)
+    copyToClipboard(message.content || '')
   }
 
   return (

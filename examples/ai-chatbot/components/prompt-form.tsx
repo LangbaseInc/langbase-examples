@@ -1,20 +1,22 @@
 import { Button } from '@/components/ui/button'
 import { IconChat, IconCommand, IconSpinner } from '@/components/ui/icons'
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
-import { UseChatHelpers } from 'ai/react'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
 
-export interface PromptProps
-  extends Pick<UseChatHelpers, 'input' | 'setInput'> {
-  onSubmit: (value: string) => Promise<void>
+export interface PromptProps {
+  handleSubmit: () => void
   isLoading: boolean
+  input: string
+  handleInputChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void
 }
 
 export function PromptForm({
-  onSubmit,
+  handleSubmit,
   input,
-  setInput,
+  handleInputChange,
   isLoading
 }: PromptProps) {
   const { formRef, onKeyDown } = useEnterSubmit()
@@ -28,13 +30,9 @@ export function PromptForm({
 
   return (
     <form
-      onSubmit={async e => {
+      onSubmit={e => {
         e.preventDefault()
-        if (!input?.trim()) {
-          return
-        }
-        setInput('')
-        await onSubmit(input)
+        handleSubmit()
       }}
       ref={formRef}
     >
@@ -46,7 +44,7 @@ export function PromptForm({
           >
             <div className="flex items-center gap-x-2">
               <IconChat
-                className="text-muted-foreground/50 h-5 w-5"
+                className="text-muted-foreground/50 size-5"
                 aria-hidden="true"
               />
               <h3>Chat</h3>
@@ -84,7 +82,7 @@ export function PromptForm({
           rows={1}
           maxRows={10}
           value={input}
-          onChange={e => setInput(e.target.value)}
+          onChange={e => handleInputChange(e)}
           placeholder="Enter your prompt message..."
           spellCheck={false}
           className="bg-muted min-h-[60px] w-full resize-none rounded-lg px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
