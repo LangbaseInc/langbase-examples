@@ -20,12 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, 'dark bg-background')}>
+      <body className={cn(inter.className, 'bg-background dark')}>
         <div className="flex min-h-screen flex-col px-3 pr-0 pt-6">
           <div className="rounded-l-[calc(var(--radius)+2px)] border border-r-0 pb-1 pl-1">
             <Toaster />
             <Header />
-            <main className="rounded-l-[calc(var(--radius)+2px)] bg-muted">
+            <main className="bg-muted rounded-l-[calc(var(--radius)+2px)]">
               {children}
             </main>
           </div>
