@@ -1,7 +1,7 @@
 import { PromptForm } from '@/components/prompt-form'
 import { Button } from '@/components/ui/button'
 import { IconRegenerate, IconStop } from '@/components/ui/icons'
-import { Message } from '@baseai/core'
+import { type Message } from '@baseai/core'
 import { ChangeEvent } from 'react'
 
 export interface ChatInputProps {

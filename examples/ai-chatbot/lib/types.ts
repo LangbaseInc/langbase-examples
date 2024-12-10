@@ -1,4 +1,4 @@
-import { Message } from '@baseai/core'
+import { type Message } from '@baseai/core'
 
 export interface Chat extends Record<string, any> {
   id: string

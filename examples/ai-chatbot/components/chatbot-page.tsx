@@ -7,7 +7,7 @@ import { toast } from 'sonner'
 import { ChatInput } from './chat-input'
 import { Opening } from './opening'
 import { usePipe } from '@baseai/core/react'
-import { Message } from '@baseai/core'
+import { type Message } from '@baseai/core'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
