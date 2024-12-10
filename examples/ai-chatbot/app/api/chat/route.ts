@@ -10,9 +10,9 @@ export const runtime = 'edge'
  */
 export async function POST(req: Request) {
   try {
-    if (!process.env.LANGBASE_PIPE_API_KEY) {
+    if (!process.env.LANGBASE_API_KEY) {
       throw new Error(
-        'Please set LANGBASE_PIPE_API_KEY in your environment variables.'
+        'Please set LANGBASE_API_KEY in your environment variables.'
       )
     }
 
@@ -20,11 +20,12 @@ export async function POST(req: Request) {
     const options = await req.json()
 
     const langbase = new Langbase({
-      apiKey: process.env.LANGBASE_PIPE_API_KEY
+      apiKey: process.env.LANGBASE_API_KEY
     })
 
     const { stream, threadId } = await langbase.pipe.run({
-      ...options
+      ...options,
+      name: 'ai-chatbot'
     })
 
     return new Response(stream, {
