@@ -29,15 +29,15 @@ Let's get started with the project:
 To get started with Langbase, you'll need to [create a free personal account on Langbase.com][signup] and verify your email address. _Done? Cool, cool!_
 
 1. Fork the [AI Chatbot][pipe] Pipe on ⌘ Langbase.
-2. Go to the API tab to copy the Pipe's API key (to be used on server-side only).
+2. Go to Langbase API keys page and [generate an API key][api-key] (to be used on server-side only).
 3. Download the example project folder from [here][download] or clone the reppository.
 4. `cd` into the project directory and open it in your code editor.
 5. Duplicate the `.env.example` file in this project and rename it to `.env.local`.
 6. Add the following environment variables:
 
 ```sh
-# Replace `PIPE_API_KEY` with the copied API key.
-LANGBASE_PIPE_API_KEY="PIPE_API_KEY"
+# Replace `USER/ORG-API-KEY` with the generated API key.
+LANGBASE_API_KEY="USER/ORG-API-KEY"
 
 # Install the dependencies using the following command:
 npm install
@@ -76,3 +76,4 @@ This project is created by [Langbase][lb] team members, with contributions from:
 [local]: http://localhost:3000
 [mit]: https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&color=%23000000
 [fork]: https://img.shields.io/badge/FORK%20ON-%E2%8C%98%20Langbase-000000.svg?style=for-the-badge&logo=%E2%8C%98%20Langbase&logoColor=000000
+[api-key]: https://langbase.com/docs/api-reference/api-keys
