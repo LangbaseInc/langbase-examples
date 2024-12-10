@@ -37,7 +37,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 
 ```sh
 # Replace `PIPE_API_KEY` with the copied API key.
-LANGBASE_API_KEY="PIPE_API_KEY"
+LANGBASE_PIPE_API_KEY="PIPE_API_KEY"
 
 # Install the dependencies using the following command:
 npm install
