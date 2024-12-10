@@ -1,31 +1,30 @@
-import { type UseChatHelpers } from 'ai/react'
-
 import { PromptForm } from '@/components/prompt-form'
 import { Button } from '@/components/ui/button'
 import { IconRegenerate, IconStop } from '@/components/ui/icons'
+import { type Message } from '@baseai/core'
+import { ChangeEvent } from 'react'
 
-export interface ChatInputProps
-  extends Pick<
-    UseChatHelpers,
-    | 'append'
-    | 'isLoading'
-    | 'reload'
-    | 'messages'
-    | 'stop'
-    | 'input'
-    | 'setInput'
-  > {
+export interface ChatInputProps {
   id?: string
+  isLoading: boolean
+  stop: () => void
+  input?: string
+  handleInputChange: (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void
+  handleSubmit: any
+  regenerate: () => void
+  messages?: Message[]
 }
 
 export function ChatInput({
   id,
   isLoading,
   stop,
-  append,
-  reload,
   input,
-  setInput,
+  handleInputChange,
+  handleSubmit,
+  regenerate,
   messages
 }: ChatInputProps) {
   return (
@@ -43,14 +42,15 @@ export function ChatInput({
               Stop generating
             </Button>
           ) : (
+            messages &&
             messages?.length > 0 && (
               <Button
                 variant="outline"
-                onClick={() => reload()}
+                onClick={() => regenerate()}
                 className="bg-background"
                 size={'sm'}
               >
-                <IconRegenerate className="size-4 text-muted-foreground/50 group-hover:text-background" />
+                <IconRegenerate className="text-muted-foreground/50 group-hover:text-background size-4" />
                 Regenerate response
               </Button>
             )
@@ -58,14 +58,9 @@ export function ChatInput({
         </div>
         <div className="space-y-4 py-2 md:pb-4 md:pt-2">
           <PromptForm
-            onSubmit={async value => {
-              await append({
-                content: value,
-                role: 'user'
-              })
-            }}
-            input={input}
-            setInput={setInput}
+            handleSubmit={handleSubmit}
+            input={input || ''}
+            handleInputChange={handleInputChange}
             isLoading={isLoading}
           />
         </div>

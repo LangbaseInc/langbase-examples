@@ -1,4 +1,4 @@
-import { Message } from 'ai'
+import { Message } from '@baseai/core'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
@@ -20,7 +20,7 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
     >
       <div
         className={cn(
-          'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-xl border shadow',
+          'flex size-8 shrink-0 select-none items-center justify-center rounded-xl border shadow',
           message.role === 'user'
             ? 'bg-background'
             : 'bg-primary text-primary-foreground'
@@ -30,7 +30,7 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
       </div>
       <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
         <MemoizedReactMarkdown
-          className="prose rounded-xl dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 break-words prose-pre:rounded-xl"
+          className="prose dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 prose-pre:rounded-xl break-words rounded-xl"
           remarkPlugins={[remarkGfm, remarkMath]}
           components={{
             p({ children }) {
@@ -68,7 +68,7 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
             }
           }}
         >
-          {message.content}
+          {message.content || ''}
         </MemoizedReactMarkdown>
         <ChatMessageActions message={message} />
       </div>
