@@ -3,7 +3,7 @@ import cn from 'mxcn'
 import Link from 'next/link'
 import { IconFork, IconGitHub } from './ui/icons'
 
-export function Header() {
+export default function Header() {
   return (
     <header className="bg-background sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between px-4">
       <div className="flex h-16 shrink-0 items-center">

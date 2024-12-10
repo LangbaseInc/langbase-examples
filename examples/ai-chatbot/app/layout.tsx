@@ -1,4 +1,4 @@
-import { Header } from '@/components/header'
+import Header from '@/components/header'
 import cn from 'mxcn'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
