@@ -7,6 +7,9 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { ChatInput } from './chat-input'
 import { Opening } from './opening'
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hovercard'
+import { Suggestions } from './suggestions'
+import { Button } from './ui/button'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
@@ -31,27 +34,37 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         setThreadId(lbThreadId)
       }
     })
+
+    const sendSuggestedPrompt = (prompt: string) => {
+      setInput(prompt)
+    }
+
   return (
     <div className="min-h-screen">
-      <div className={cn('pb-36 pt-4 md:pt-10', className)}>
-        {messages.length ? (
-          <>
-            <ChatList messages={messages} />
-          </>
-        ) : (
-          <Opening />
-        )}
+      <div className="min-h-screen">
+        <div className={cn('pb-36 pt-4 md:pt-10', className)}>
+          {messages.length ? (
+            <>
+              <ChatList messages={messages} />
+            </>
+          ) : (
+            <>
+              <Opening />
+              <Suggestions sendSuggestedPrompt={sendSuggestedPrompt} />
+            </>
+          )}
+        </div>
+        <ChatInput
+          id={id}
+          isLoading={isLoading}
+          stop={stop}
+          append={append}
+          reload={reload}
+          messages={messages}
+          input={input}
+          setInput={setInput}
+        />
       </div>
-      <ChatInput
-        id={id}
-        isLoading={isLoading}
-        stop={stop}
-        append={append}
-        reload={reload}
-        messages={messages}
-        input={input}
-        setInput={setInput}
-      />
-    </div>
+    </div>  
   )
 }
