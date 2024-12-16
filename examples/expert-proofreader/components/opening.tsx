@@ -14,7 +14,7 @@ export function Opening() {
         <div className="mt-2">
           <header className="mb-8">
             <h4 className="text-foreground text-sm sm:text-base mt-4 flex gap-1 tracking-wide">
-              <span>Expert Proofreader Bot by a</span>
+              <span>Expert Proofreader Chatbot by a</span>
               <Link
                 target="_blank"
                 className="underline hover:text-indigo-400 mb-2"
@@ -33,7 +33,7 @@ export function Opening() {
             <div className="flex flex-col gap-4 mt-2 text-sm">
               <Dlink href="https://langbase.com/examples/expert-proofreader">
                 <span>1.</span>
-                <span>Fork this Expert Proofreader Bot Pipe on ⌘ Langbase</span>
+                <span>Fork this Expert Proofreader Chatbot Pipe on ⌘ Langbase</span>
               </Dlink>
               <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/expert-proofreader">
                 <span>2.</span>
