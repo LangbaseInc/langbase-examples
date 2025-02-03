@@ -1,4 +1,4 @@
-import { Pipe } from 'langbase';
+import { Langbase } from 'langbase';
 
 export const runtime = 'edge';
 
@@ -14,11 +14,12 @@ export async function POST(req: Request) {
 		const body = await req.json();
 		const { writer, emailSummary } = body;
 
-		const pipe = new Pipe({
-			apiKey: process.env.LANGBASE_AI_PIPE_EMAIL_WRITER_API_KEY
-		});
+		const langbase = new Langbase();
 
-		const { stream: emailReply } = await pipe.streamText({
+		const { stream: emailReply } = await langbase.pipe.run({
+			stream: true,
+			apiKey: process.env.LANGBASE_AI_PIPE_EMAIL_WRITER_API_KEY,
+			messages: [],
 			variables: [
 				{
 					name: 'writer',
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
 			]
 		});
 
-		return new Response(emailReply.toReadableStream(), { status: 200 });
+		return new Response(emailReply, { status: 200 });
 	} catch (error: any) {
 		console.error('Uncaught API Error:', error);
 		return new Response(JSON.stringify(error), { status: 500 });

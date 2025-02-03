@@ -1,4 +1,4 @@
-import { Pipe } from 'langbase';
+import { Langbase } from 'langbase';
 
 export const runtime = 'edge';
 
@@ -14,11 +14,11 @@ export async function POST(req: Request) {
 		const body = await req.json();
 		const { summary, sentiment } = body;
 
-		const pipe = new Pipe({
-			apiKey: process.env.LANGBASE_AI_PIPE_DECISION_MAKER_API_KEY
-		});
+		const langbase = new Langbase();
 
-		const shouldRespond = await pipe.generateText({
+		const shouldRespond = await langbase.pipe.run({
+			apiKey: process.env.LANGBASE_AI_PIPE_DECISION_MAKER_API_KEY,
+			messages: [],
 			variables: [
 				{
 					name: 'summary',

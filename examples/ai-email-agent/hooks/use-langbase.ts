@@ -1,4 +1,4 @@
-import { fromReadableStream } from 'langbase';
+import { getRunner } from 'langbase';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -76,7 +76,7 @@ const useLangbase = () => {
 		}
 
 		if (response.body) {
-			const stream = fromReadableStream(response.body);
+			const stream = getRunner(response.body);
 
 			for await (const chunk of stream) {
 				const content = chunk?.choices[0]?.delta?.content || '';
