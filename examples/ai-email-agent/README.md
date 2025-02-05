@@ -57,25 +57,9 @@ cd example-composable-email-agent
 3. Add the values of these environment variables to the `.env.local` file:
 
 ```sh
-# Fork https://langbase.com/examples/email-sentiment pipe to get the API key
-# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-LANGBASE_AI_PIPE_SENTIMENT_API_KEY="PIPE_API_KEY"
-
-# Fork https://langbase.com/examples/summarizer pipe to get the API key
-# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-LANGBASE_AI_PIPE_SUMMARIZER_API_KEY="PIPE_API_KEY"
-
-# Fork https://langbase.com/examples/decision-maker pipe to get the API key
-# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-LANGBASE_AI_PIPE_DECISION_MAKER_API_KEY="PIPE_API_KEY"
-
-# Fork https://langbase.com/examples/pick-email-writer pipe to get the API key
-# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-LANGBASE_AI_PIPE_PICK_EMAIL_WRITER_API_KEY="PIPE_API_KEY"
-
-# Fork https://langbase.com/examples/email-writer pipe to get the API key
-# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-LANGBASE_AI_PIPE_EMAIL_WRITER_API_KEY="PIPE_API_KEY"
+# Get your org or user API key that can be used to access everything with Langbase.
+# https://langbase.com/docs/api-reference/api-keys
+LANGBASE_API_KEY="USER_OR_ORG_API_KEY"
 ```
 
 7. Now execute the following commands in your terminal to run the project:
@@ -84,7 +68,7 @@ LANGBASE_AI_PIPE_EMAIL_WRITER_API_KEY="PIPE_API_KEY"
 # Install the dependencies using the following command:
 pnpm install
 
-# OR if you are using npm, run the following command:
+# OR
 npm install
 
 # Run the project using the following command:
