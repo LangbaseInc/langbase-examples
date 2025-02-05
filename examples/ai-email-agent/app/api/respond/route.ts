@@ -4,20 +4,16 @@ export const runtime = 'edge';
 
 export async function POST(req: Request) {
 	try {
-		if (!process.env.LANGBASE_AI_PIPE_DECISION_MAKER_API_KEY) {
-			throw new Error(
-				'Please set LANGBASE_AI_PIPE_DECISION_MAKER_API_KEY in your environment variables.'
-			);
-		}
-
 		// Get email summary and sentiment from the client.
 		const body = await req.json();
 		const { summary, sentiment } = body;
 
-		const langbase = new Langbase();
+		const langbase = new Langbase({
+			apiKey: process.env.LANGBASE_API_KEY!
+		});
 
 		const shouldRespond = await langbase.pipe.run({
-			apiKey: process.env.LANGBASE_AI_PIPE_DECISION_MAKER_API_KEY,
+			name: 'decision-maker',
 			messages: [],
 			variables: [
 				{

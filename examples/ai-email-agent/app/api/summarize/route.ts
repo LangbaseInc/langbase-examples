@@ -4,20 +4,16 @@ export const runtime = 'edge';
 
 export async function POST(req: Request) {
 	try {
-		if (!process.env.LANGBASE_AI_PIPE_SUMMARIZER_API_KEY) {
-			throw new Error(
-				'Please set LANGBASE_AI_PIPE_SUMMARIZER_API_KEY in your environment variables.'
-			);
-		}
-
 		// Get email from the client.
 		const body = await req.json();
 		const { email } = body;
 
-		const langbase = new Langbase();
+		const langbase = new Langbase({
+			apiKey: process.env.LANGBASE_API_KEY!
+		});
 
 		const summary = await langbase.pipe.run({
-			apiKey: process.env.LANGBASE_AI_PIPE_SUMMARIZER_API_KEY,
+			name: 'summarizer',
 			messages: [],
 			variables: [
 				{
