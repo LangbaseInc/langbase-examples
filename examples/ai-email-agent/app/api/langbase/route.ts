@@ -23,6 +23,8 @@ export async function POST(req: Request) {
 		}
 
 		// NOT STREAMING!
+		// @ts-ignore - Property 'completion' does exist on type 'RunResponseStream'.
+		// Reported the issue to the Langbase team.
 		const { completion } = await langbase.pipe.run(body);
 
 		// Parse JSON response from Langbase
