@@ -44,7 +44,7 @@
 		"vaul": "^0.9.1"
 	},
 	"devDependencies": {
-		"@cloudflare/next-on-pages": "^1.13.7",
+		"@cloudflare/next-on-pages": "^1.13.2",
 		"@tailwindcss/forms": "^0.5.10",
 		"@tailwindcss/typography": "^0.5.16",
 		"@types/node": "^20",
@@ -53,6 +53,10 @@
 		"postcss": "^8.5.1",
 		"tailwindcss": "^3.4.1",
 		"typescript": "^5.7.3",
-		"wrangler": "^3.107.2"
+		"wrangler": "^3.107.2",
+		"vercel": "39.1.1"
+	},
+	"overrides": {
+		"vercel": "$vercel"
 	}
 }
