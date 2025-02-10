@@ -4,27 +4,29 @@ export const runtime = 'edge';
 
 export async function POST(req: Request) {
 	try {
-		// Get email from the client.
+		// Get request body from the client.
 		const body = await req.json();
-		const { email } = body;
+		const { stream } = body;
 
 		const langbase = new Langbase({
 			apiKey: process.env.LANGBASE_API_KEY!
 		});
 
-		const sentiment = await langbase.pipe.run({
-			name: 'email-sentiment',
-			messages: [],
-			variables: [
-				{
-					name: 'email',
-					value: email
-				}
-			]
-		});
+		// STREAM!
+		if (stream) {
+			const { stream } = await langbase.pipe.run({
+				...body,
+				stream: true
+			});
+
+			return new Response(stream, { status: 200 });
+		}
+
+		// NOT STREAMING!
+		const { completion } = await langbase.pipe.run(body);
 
 		// Parse JSON response from Langbase
-		const response: JSON = JSON.parse(sentiment.completion);
+		const response: JSON = JSON.parse(completion);
 
 		return Response.json(response);
 	} catch (error: any) {

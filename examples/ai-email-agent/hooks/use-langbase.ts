@@ -9,12 +9,22 @@ const useLangbase = () => {
 	const [emailReply, setEmailReply] = useState('');
 
 	const analyzeSentiment = async (email: string) => {
-		const response = await fetch('/api/sentiment', {
+		const response = await fetch('/api/langbase', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ email })
+			body: JSON.stringify({
+				name: 'email-sentiment',
+				messages: [],
+				variables: [
+					{
+						name: 'email',
+						value: email
+					}
+				],
+				stream: false
+			})
 		});
 
 		const sentimentAnalysis = await response.json();
@@ -22,12 +32,22 @@ const useLangbase = () => {
 	};
 
 	const summarizeEmail = async (email: string) => {
-		const response = await fetch('/api/summarize', {
+		const response = await fetch('/api/langbase', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ email })
+			body: JSON.stringify({
+				name: 'summarizer',
+				messages: [],
+				variables: [
+					{
+						name: 'content',
+						value: email
+					}
+				],
+				stream: false
+			})
 		});
 
 		const summarizedEmail = await response.json();
@@ -35,12 +55,26 @@ const useLangbase = () => {
 	};
 
 	const shouldRespondToEmail = async (summary: string, sentiment: string) => {
-		const response = await fetch('/api/respond', {
+		const response = await fetch('/api/langbase', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ summary, sentiment })
+			body: JSON.stringify({
+				name: 'decision-maker',
+				messages: [],
+				variables: [
+					{
+						name: 'summary',
+						value: summary
+					},
+					{
+						name: 'sentiment',
+						value: sentiment
+					}
+				],
+				stream: false
+			})
 		});
 
 		const shouldRespond = await response.json();
@@ -48,12 +82,26 @@ const useLangbase = () => {
 	};
 
 	const pickEmailWriter = async (summary: string, sentiment: string) => {
-		const response = await fetch('/api/pick-email-writer', {
+		const response = await fetch('/api/langbase', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ summary, sentiment })
+			body: JSON.stringify({
+				name: 'pick-email-writer',
+				messages: [],
+				variables: [
+					{
+						name: 'summary',
+						value: summary
+					},
+					{
+						name: 'sentiment',
+						value: sentiment
+					}
+				],
+				stream: false
+			})
 		});
 
 		const writer = await response.json();
@@ -61,12 +109,26 @@ const useLangbase = () => {
 	};
 
 	const generateEmailReply = async (writer: string, emailSummary: string) => {
-		const response = await fetch('/api/email-writer', {
+		const response = await fetch('/api/langbase', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ writer, emailSummary })
+			body: JSON.stringify({
+				name: 'email-writer',
+				stream: true,
+				messages: [],
+				variables: [
+					{
+						name: 'writer',
+						value: writer
+					},
+					{
+						name: 'user_email_summary',
+						value: emailSummary
+					}
+				]
+			})
 		});
 
 		if (!response.ok) {
