@@ -119,7 +119,7 @@ async function main() {
 	};
 
 	// Email agent
-	const emailAgent = async (email: string) => {
+	const runEmailAgent = async (email: string) => {
 		logResult('Email:', email);
 
 		const [sentiment, summary] = await Promise.all([
@@ -161,8 +161,8 @@ async function main() {
 	const userEmail = `I'm really disappointed with the service I received yesterday. The product was faulty and customer support was unhelpful.`;
 	const spamEmail = `Congratulations! You have been selected as the winner of a $100 million lottery!`;
 
-	const response = await emailAgent(userEmail);
+	const response = await runEmailAgent(userEmail);
 	// console.log(response);
 }
 
-main().catch(console.error);
+main();

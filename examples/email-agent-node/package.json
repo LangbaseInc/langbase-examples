@@ -1,5 +1,5 @@
 {
-	"name": "email-agent",
+	"name": "email-agent-node",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",

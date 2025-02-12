@@ -1,6 +1,6 @@
 # Composable Email Agent
 
-An AI-powered composable email agent that analyzes emails and generates appropriate responses using the following agent architectures:
+An AI-powered composable email agent built in Node.js that analyzes emails and generates appropriate responses using the following agent architectures:
 
 -   Parallelization
 -   Prompt chaining
@@ -40,7 +40,9 @@ npx degit LangbaseInc/langbase-examples/examples/email-agent example-composable-
 2. Add your Langbase API key to `.env`:
 
 ```sh
-LANGBASE_API_KEY="your_api_key_here"
+# Get your org or user API key that can be used to access everything with Langbase.
+# https://langbase.com/docs/api-reference/api-keys
+LANGBASE_API_KEY="USER_OR_ORG_API_KEY"
 ```
 
 3. Install dependencies:
@@ -56,6 +58,9 @@ npm install
 
 ```sh
 pnpm run agent
+
+# OR
+npm run agent
 ```
 
 [email-sentiment]: https://langbase.com/examples/email-sentiment
