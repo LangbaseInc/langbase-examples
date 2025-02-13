@@ -11,7 +11,7 @@ load_dotenv()
 API_KEY = os.getenv('LANGBASE_API_KEY')
 API_URL = 'https://api.langbase.com/v1/pipes/run'
 
-async def call_langbase_api(session, pipe_name, variables):
+async def run_langbase_pipe(session, pipe_name, variables):
     headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {API_KEY}'
@@ -36,7 +36,7 @@ async def get_email_sentiment(session, email):
         }
     ]
 
-    response = await call_langbase_api(session, 'email-sentiment', variables)
+    response = await run_langbase_pipe(session, 'email-sentiment', variables)
     completion = json.loads(response['completion'])
     return completion.get('sentiment', 'neutral')
 
@@ -48,7 +48,7 @@ async def get_email_summary(session, email):
         }
     ]
 
-    response = await call_langbase_api(session, 'email-summarizer', variables)
+    response = await run_langbase_pipe(session, 'email-summarizer', variables)
     completion = json.loads(response['completion'])
     return completion.get('summary', '')
 
@@ -64,7 +64,7 @@ async def should_respond_to_email(session, summary, sentiment):
         }
     ]
 
-    response = await call_langbase_api(session, 'email-decision-maker', variables)
+    response = await run_langbase_pipe(session, 'email-decision-maker', variables)
     completion = json.loads(response['completion'])
     return completion.get('respond', True)
 
@@ -80,7 +80,7 @@ async def pick_email_writer(session, summary, sentiment):
         }
     ]
 
-    response = await call_langbase_api(session, 'pick-email-writer', variables)
+    response = await run_langbase_pipe(session, 'pick-email-writer', variables)
     completion = json.loads(response['completion'])
     return completion.get('tone', 'professional')
 
@@ -96,7 +96,7 @@ async def generate_email_response(session, writer, summary):
         }
     ]
 
-    response = await call_langbase_api(session, 'email-writer', variables)
+    response = await run_langbase_pipe(session, 'email-writer', variables)
     return response['completion']
 
 def log_result(key, value):
