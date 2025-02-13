@@ -11,6 +11,7 @@ load_dotenv()
 API_KEY = os.getenv('LANGBASE_API_KEY')
 API_URL = 'https://api.langbase.com/v1/pipes/run'
 
+# Run Langbase pipe
 async def run_langbase_pipe(session, pipe_name, variables):
     headers = {
         'Content-Type': 'application/json',
@@ -28,6 +29,7 @@ async def run_langbase_pipe(session, pipe_name, variables):
         response.raise_for_status()
         return await response.json()
 
+# Email sentiment analysis
 async def get_email_sentiment(session, email):
     variables = [
         {
@@ -40,6 +42,7 @@ async def get_email_sentiment(session, email):
     completion = json.loads(response['completion'])
     return completion.get('sentiment', 'neutral')
 
+# Summarize email
 async def get_email_summary(session, email):
     variables = [
         {
@@ -52,6 +55,7 @@ async def get_email_summary(session, email):
     completion = json.loads(response['completion'])
     return completion.get('summary', '')
 
+# Check if email needs a response
 async def should_respond_to_email(session, summary, sentiment):
     variables = [
         {
@@ -68,6 +72,7 @@ async def should_respond_to_email(session, summary, sentiment):
     completion = json.loads(response['completion'])
     return completion.get('respond', True)
 
+# Pick email writer based on sentiment and summary
 async def pick_email_writer(session, summary, sentiment):
     variables = [
         {
@@ -84,6 +89,7 @@ async def pick_email_writer(session, summary, sentiment):
     completion = json.loads(response['completion'])
     return completion.get('tone', 'professional')
 
+# Generate email response
 async def generate_email_response(session, writer, summary):
     variables = [
         {
@@ -104,6 +110,7 @@ def log_result(key, value):
     print(key, value)
     print('=============================')
 
+# Run email agent
 async def run_email_agent(email):
     log_result('Email:', email)
 
