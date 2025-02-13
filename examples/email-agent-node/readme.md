@@ -66,7 +66,7 @@ npm run agent
 ## Project Structure
 
 ```
-email-agent-python/
+email-agent-node/
 ├── .env.example   # Environment variables example
 ├── .gitignore     # Git ignore
 ├── index.ts       # Email agent implementation
