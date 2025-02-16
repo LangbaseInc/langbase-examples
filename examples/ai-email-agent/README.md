@@ -43,10 +43,11 @@ To get started with Langbase, you'll need to [create a free personal account on 
 ### Download and run the project
 
 The following command
-a. Downloads the example project folder from [here][download]
-b. Renames the folder to `example-composable-email-agent`
-c. Copies the `.env.example` file to `.env.local` in the project folder
-d. Changes the directory to the project folder
+
+1. Downloads the example project folder from [here][download]
+2. Renames the folder to `example-composable-email-agent`
+3. Copies the `.env.example` file to `.env.local` in the project folder
+4. Changes the directory to the project folder
 
 ```sh
 npx degit LangbaseInc/langbase-examples/examples/ai-email-agent example-composable-email-agent

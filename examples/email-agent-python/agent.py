@@ -30,7 +30,7 @@ async def run_langbase_pipe(session, pipe_name, variables):
         return await response.json()
 
 # Email sentiment analysis
-async def get_email_sentiment(session, email):
+async def email_sentiment_agent(session, email):
     variables = [
         {
             'name': 'email',
@@ -43,7 +43,7 @@ async def get_email_sentiment(session, email):
     return completion.get('sentiment', 'neutral')
 
 # Summarize email
-async def get_email_summary(session, email):
+async def email_summary_agent(session, email):
     variables = [
         {
             'name': 'content',
@@ -56,7 +56,7 @@ async def get_email_summary(session, email):
     return completion.get('summary', '')
 
 # Check if email needs a response
-async def should_respond_to_email(session, summary, sentiment):
+async def should_respond_to_email_agent(session, summary, sentiment):
     variables = [
         {
             'name': 'summary',
@@ -73,7 +73,7 @@ async def should_respond_to_email(session, summary, sentiment):
     return completion.get('respond', True)
 
 # Pick email writer based on sentiment and summary
-async def pick_email_writer(session, summary, sentiment):
+async def pick_email_writer_agent(session, summary, sentiment):
     variables = [
         {
             'name': 'summary',
@@ -90,7 +90,7 @@ async def pick_email_writer(session, summary, sentiment):
     return completion.get('tone', 'professional')
 
 # Generate email response
-async def generate_email_response(session, writer, summary):
+async def email_response_agent(session, writer, summary):
     variables = [
         {
             'name': 'writer',
@@ -105,36 +105,32 @@ async def generate_email_response(session, writer, summary):
     response = await run_langbase_pipe(session, 'email-writer', variables)
     return response['completion']
 
-def log_result(key, value):
-    """Log results with formatting."""
-    print(key, value)
-    print('=============================')
-
 # Run email agent
-async def run_email_agent(email):
-    log_result('Email:', email)
+async def workflow(emailContent):
+    print('Email:', emailContent)
 
     try:
         async with aiohttp.ClientSession() as session:
             # Run sentiment and summary analysis in parallel
-            sentiment, summary = await asyncio.gather(
-                get_email_sentiment(session, email),
-                get_email_summary(session, email)
+            emailSentiment, emailSummary = await asyncio.gather(
+                email_sentiment_agent(session, emailContent),
+                email_summary_agent(session, emailContent)
             )
 
-            log_result('Sentiment:', sentiment)
-            log_result('Summary:', summary)
+            print('Sentiment:', emailSentiment)
+            print('Summary:', emailSummary)
 
-            respond = await should_respond_to_email(session, summary, sentiment)
-            log_result('Respond:', str(respond))
+            respond = await should_respond_to_email_agent(session, emailSummary, emailSentiment)
+            print('Respond:', str(respond))
 
             if not respond:
-                return 'No response needed for this email.'
+                print('No response needed for this email.')
+                return
 
-            writer = await pick_email_writer(session, summary, sentiment)
-            log_result('Writer:', writer)
+            writer = await pick_email_writer_agent(session, emailSummary, emailSentiment)
+            print('Writer:', writer)
 
-            email_response = await generate_email_response(session, writer, summary)
+            email_response = await email_response_agent(session, writer, emailSummary)
             return email_response
 
     except Exception as e:
@@ -150,7 +146,7 @@ async def main():
     spam_email = "Congratulations! You have been selected as the winner of a $100 million lottery!"
 
     # Run email agent
-    response = await run_email_agent(user_email)
+    response = await workflow(user_email)
     print(response)
 
 if __name__ == "__main__":

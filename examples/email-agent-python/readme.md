@@ -38,17 +38,38 @@ To get started with Langbase, you'll need to [create a free personal account on 
 
 2. Download and setup the project
 
+The following command
+
+1. Downloads the example project folder from [here][download]
+2. Renames the folder to `example-composable-email-agent-python`
+3. Changes the directory to the project folder
+4. Copies the `.env.example` file to `.env` in the project folder
+
 ```sh
-npx degit LangbaseInc/langbase-examples/examples/email-agent-python example-composable-email-agent-python && cp .env.example .env && cd example-composable-email-agent
+npx degit LangbaseInc/langbase-examples/examples/email-agent-python example-composable-email-agent-python
+cd example-composable-email-agent
+cp .env.example .env
 ```
 
-3. Install the required packages:
+1. Create virtual environment:
+
+Open a terminal and run the following commands:
+
+```sh
+# Create a virtual environment
+python3 -m venv ./venv
+
+# Activate the virtual environment
+source ./venv/bin/activate
+```
+
+4. Install the required packages:
 
 ```sh
 pip3 install python-dotenv aiohttp
 ```
 
-4. Create a `.env` file with your Langbase API key:
+1. Add the values of these environment variables to the `.env` file:
 
 ```sh
 # Get your org or user API key that can be used to access everything with Langbase.
@@ -56,7 +77,7 @@ pip3 install python-dotenv aiohttp
 LANGBASE_API_KEY="USER_OR_ORG_API_KEY"
 ```
 
-5. Run the email agent:
+6. Run the email agent:
 
 ```sh
 python3 agent.py
@@ -87,3 +108,4 @@ email-agent-python/
 [decision-maker]: https://langbase.com/examples/decision-maker
 [pick-email-writer]: https://langbase.com/examples/pick-email-writer
 [email-writer]: https://langbase.com/examples/email-writer
+[download]: https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/email-agent-python
