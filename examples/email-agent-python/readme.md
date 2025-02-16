@@ -69,7 +69,7 @@ source ./venv/bin/activate
 pip3 install python-dotenv aiohttp
 ```
 
-1. Add the values of these environment variables to the `.env` file:
+5. Add the values of these environment variables to the `.env` file:
 
 ```sh
 # Get your org or user API key that can be used to access everything with Langbase.

@@ -32,12 +32,20 @@ To get started with Langbase, you'll need to [create a free personal account on 
     5. [Email Writer][email-writer]
 
 2. Download and setup the project
+The following command
+
+   1. Downloads the example project folder from [here][download]
+   2. Renames the folder to `example-composable-email-agent-node`
+   3. Changes the directory to the project folder
+   4. Copies the `.env.example` file to `.env` in the project folder
 
 ```sh
-npx degit LangbaseInc/langbase-examples/examples/email-agent-node example-composable-email-agent && cp .env.example .env && cd example-composable-email-agent
+npx degit LangbaseInc/langbase-examples/examples/email-agent-node example-composable-email-agent-node
+cd example-composable-email-agent-node
+cp .env.example .env
 ```
 
-2. Add your Langbase API key to `.env`:
+3. Add the values of these environment variables to the `.env` file:
 
 ```sh
 # Get your org or user API key that can be used to access everything with Langbase.
@@ -45,7 +53,7 @@ npx degit LangbaseInc/langbase-examples/examples/email-agent-node example-compos
 LANGBASE_API_KEY="USER_OR_ORG_API_KEY"
 ```
 
-3. Install dependencies:
+4. Install dependencies:
 
 ```sh
 pnpm install
@@ -54,7 +62,7 @@ pnpm install
 npm install
 ```
 
-4. Run the email agent:
+5. Run the email agent:
 
 ```sh
 pnpm run agent
@@ -79,3 +87,4 @@ email-agent-node/
 [decision-maker]: https://langbase.com/examples/decision-maker
 [pick-email-writer]: https://langbase.com/examples/pick-email-writer
 [email-writer]: https://langbase.com/examples/email-writer
+[download]: https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/email-agent-node
