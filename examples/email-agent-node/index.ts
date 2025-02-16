@@ -25,7 +25,8 @@ const workflow = async (emailContent: string) => {
 	console.log('Respond:', respond);
 
 	if (!respond) {
-		return 'No response needed for this email.';
+		console.log('No response needed for this email.');
+		return;
 	}
 
 	const writer = await pickEmailWriterAgent(emailSummary, emailSentiment);
