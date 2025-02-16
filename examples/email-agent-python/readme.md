@@ -47,7 +47,7 @@ The following command
 
 ```sh
 npx degit LangbaseInc/langbase-examples/examples/email-agent-python example-composable-email-agent-python
-cd example-composable-email-agent
+cd example-composable-email-agent-python
 cp .env.example .env
 ```
 
