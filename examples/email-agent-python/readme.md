@@ -40,10 +40,10 @@ To get started with Langbase, you'll need to [create a free personal account on 
 
 The following command
 
-1. Downloads the example project folder from [here][download]
-2. Renames the folder to `example-composable-email-agent-python`
-3. Changes the directory to the project folder
-4. Copies the `.env.example` file to `.env` in the project folder
+   1. Downloads the example project folder from [here][download]
+   2. Renames the folder to `example-composable-email-agent-python`
+   3. Changes the directory to the project folder
+   4. Copies the `.env.example` file to `.env` in the project folder
 
 ```sh
 npx degit LangbaseInc/langbase-examples/examples/email-agent-python example-composable-email-agent-python
@@ -51,7 +51,7 @@ cd example-composable-email-agent-python
 cp .env.example .env
 ```
 
-1. Create virtual environment:
+3. Create virtual environment:
 
 Open a terminal and run the following commands:
 

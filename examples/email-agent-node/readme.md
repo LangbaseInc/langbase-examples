@@ -32,6 +32,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
     5. [Email Writer][email-writer]
 
 2. Download and setup the project
+
 The following command
 
    1. Downloads the example project folder from [here][download]

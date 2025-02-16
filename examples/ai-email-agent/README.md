@@ -38,7 +38,6 @@ To get started with Langbase, you'll need to [create a free personal account on 
     3. [Email Decision Maker][decision-maker]
     4. [Pick Email Writer][pick-email-writer]
     5. [Email Writer][email-writer]
-2. Go to the API tab of each pipe to copy the pipe's API key (to be used on server-side only).
 
 ### Download and run the project
 
@@ -46,13 +45,13 @@ The following command
 
 1. Downloads the example project folder from [here][download]
 2. Renames the folder to `example-composable-email-agent`
-3. Copies the `.env.example` file to `.env.local` in the project folder
-4. Changes the directory to the project folder
+3. Changes the directory to the project folder
+4. Copies the `.env.example` file to `.env.local` in the project folder
 
 ```sh
 npx degit LangbaseInc/langbase-examples/examples/ai-email-agent example-composable-email-agent
-cp .env.example .env.local
 cd example-composable-email-agent
+cp .env.example .env.local
 ```
 
 3. Add the values of these environment variables to the `.env.local` file:
@@ -63,7 +62,7 @@ cd example-composable-email-agent
 LANGBASE_API_KEY="USER_OR_ORG_API_KEY"
 ```
 
-7. Now execute the following commands in your terminal to run the project:
+4. Now execute the following commands in your terminal to run the project:
 
 ```sh
 # Install the dependencies using the following command:
