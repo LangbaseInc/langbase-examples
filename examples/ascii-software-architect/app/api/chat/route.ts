@@ -10,9 +10,9 @@ export const runtime = 'edge'
  */
 export async function POST(req: Request) {
   try {
-    if (!process.env.NEXT_LB_PIPE_API_KEY) {
+    if (!process.env.LB_ASCII_SW_ARCH_API_KEY) {
       throw new Error(
-        'Please set NEXT_LB_PIPE_API_KEY in your environment variables.'
+        'Please set LB_ASCII_SW_ARCH_API_KEY in your environment variables.'
       )
     }
 
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
     const headers = {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.NEXT_LB_PIPE_API_KEY}`
+      Authorization: `Bearer ${process.env.LB_ASCII_SW_ARCH_API_KEY}`
     }
 
     // Get chat prompt messages and threadId from the client.
