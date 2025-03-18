@@ -1,5 +1,5 @@
 import { RecentChat } from '@/components/alchemist-page';
-import { fromReadableStream } from 'langbase';
+import { getRunner } from 'langbase';
 import { FormEvent, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
@@ -7,7 +7,7 @@ const useLangbase = () => {
 	const [prompt, setPrompt] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [completion, setCompletion] = useState('');
-	const [lastRanPipe, setLastRanPipe] = useState('');
+	const [lastRanPipeAgent, setLastRanPipeAgent] = useState('');
 	const [showWelcome, setShowWelcome] = useState(true);
 	const [hasFinishedRun, setHasFinishedRun] = useState(false);
 	const [showRecentChats, setShowRecentChats] = useState(false);
@@ -22,7 +22,7 @@ const useLangbase = () => {
 	 * @param {string} [options.originalPrompt] - The original prompt before any modifications.
 	 * @returns {void}
 	 */
-	async function callLLMs({
+	async function runCodeAlchemistAgent({
 		e,
 		prompt,
 		originalPrompt
@@ -41,7 +41,7 @@ const useLangbase = () => {
 
 		try {
 			setLoading(true);
-			setLastRanPipe('');
+			setLastRanPipeAgent('');
 			setHasFinishedRun(false);
 			setShowRecentChats(false);
 
@@ -63,7 +63,7 @@ const useLangbase = () => {
 
 			// get the last called pipe from the response headers
 			const lastRanPipe = response.headers.get('pipe') || '';
-			setLastRanPipe(lastRanPipe);
+			setLastRanPipeAgent(lastRanPipe);
 
 			setPrompt('');
 			setCompletion('');
@@ -74,19 +74,17 @@ const useLangbase = () => {
 			}
 			setShowRecentChats(false);
 
-			// lastRanPipe !== 'code-alchemist' && setShowWelcome(false);
 
 			let localCompletion = '';
 
 			// get the response body as a stream
 			if (response.body) {
-				const stream = fromReadableStream(response.body);
-
-				for await (const chunk of stream) {
-					const content = chunk?.choices[0]?.delta?.content || '';
+				const runner = getRunner(response.body);
+				// const stream = fromReadableStream(response.body);
+				runner.on('content', (content) => {
 					content && setCompletion(prev => prev + content);
 					content && (localCompletion += content);
-				}
+				});
 			}
 
 			// save the completion to local storage
@@ -136,7 +134,7 @@ const useLangbase = () => {
 			return;
 		}
 
-		await callLLMs({
+		await runCodeAlchemistAgent({
 			e,
 			originalPrompt: prompt,
 			prompt: `${completion}\n\n${prompt}` // add the completion to the prompt
@@ -152,7 +150,7 @@ const useLangbase = () => {
 		setShowWelcome(false);
 		setHasFinishedRun(true);
 		setShowRecentChats(false);
-		setLastRanPipe(chat.pipe);
+		setLastRanPipeAgent(chat.pipe);
 		setCompletion(chat.completion);
 	}
 
@@ -170,12 +168,12 @@ const useLangbase = () => {
 	// show sandbox if
 	// 1. the welcome screen is not shown
 	// 2. the last ran pipe is anything other than code-alchemist
-	const showSandbox = !showWelcome && lastRanPipe !== 'code-alchemist';
+	const showSandbox = !showWelcome && lastRanPipeAgent !== 'code-alchemist';
 
 	// show app preview if
 	// 1. the last ran pipe is react-copilot
 	// 2. the run has finished
-	const showPreview = lastRanPipe === 'react-copilot' && hasFinishedRun;
+	const showPreview = lastRanPipeAgent === 'react-copilot' && hasFinishedRun;
 
 	// Show the opening if
 	// 1. The welcome screen is shown
@@ -187,20 +185,20 @@ const useLangbase = () => {
 	return {
 		prompt,
 		loading,
-		callLLMs,
 		setPrompt,
 		completion,
 		recentChats,
 		showSandbox,
-		lastRanPipe,
 		showWelcome,
 		improveCode,
 		showPreview,
 		showSwitch,
 		hasFinishedRun,
 		showRecentChats,
+		lastRanPipeAgent,
 		setShowRecentChats,
-		handleRecentChatClick
+		handleRecentChatClick,
+		runCodeAlchemistAgent
 	};
 };
 

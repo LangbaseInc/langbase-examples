@@ -39,33 +39,44 @@ To get started with Langbase, you'll need to [create a free personal account on 
    1. [Code Alchemist Pipe][codealchemist]
    2. [React Copilot Pipe][reactcopilot]
    3. [Database Architect Pipe][databasearchitect]
-2. Go to the API tab of each Pipe to copy the Pipe's API key (to be used on server-side only).
-3. Download the example project folder from [here][download] or clone the repository.
-4. `cd` into the project directory and open it in your code editor.
-5. Duplicate the `.env.example` file in this project and rename it to `.env.local`.
-6. Add the following environment variables:
+2. Download and setup the project
+
+The following command
+
+   1. Downloads the example project folder from [here][download]
+   2. Renames the folder to `example-composable-email-agent-node`
+   3. Changes the directory to the project folder
+   4. Copies the `.env.example` file to `.env` in the project folder
 
 ```sh
-# Replace `PIPE_API_KEY` with the copied API key of Code Alchemist Pipe.
-LANGBASE_CODE_ALCHEMY_PIPE_API_KEY="PIPE_API_KEY"
-
-# Replace `PIPE_API_KEY` with the copied API key of React Copilot Pipe.
-LANGBASE_REACT_COPILOT_PIPE_API_KEY="PIPE_API_KEY"
-
-# Replace `PIPE_API_KEY` with the copied API key of Database Architect Pipe.
-LANGBASE_DATABASE_ARCHITECT_PIPE_API_KEY="PIPE_API_KEY"
+npx degit LangbaseInc/langbase-examples/examples/code-alchemist code-alchemist &&
+cd code-alchemist &&
+cp .env.example .env
 ```
 
-7. Now execute the following commands in your terminal to run the project:
+3. Add the values of these environment variables to the `.env` file:
 
 ```sh
-# Install the dependencies using the following command:
+# Get your org or user API key that can be used to access everything with Langbase.
+# https://langbase.com/docs/api-reference/api-keys
+LANGBASE_API_KEY="USER_OR_ORG_API_KEY"
+```
+
+4. Install dependencies:
+
+```sh
 pnpm install
 
-# OR if you are using npm, run the following command:
+# OR
 npm install
+```
 
-# Run the project using the following command:
+5. Now execute the following commands in your terminal to run the project:
+
+```sh
+pnpm run dev
+
+# OR
 npm run dev
 ```
 

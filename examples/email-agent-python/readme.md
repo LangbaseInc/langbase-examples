@@ -46,8 +46,8 @@ The following command
    4. Copies the `.env.example` file to `.env` in the project folder
 
 ```sh
-npx degit LangbaseInc/langbase-examples/examples/email-agent-python example-composable-email-agent-python
-cd example-composable-email-agent-python
+npx degit LangbaseInc/langbase-examples/examples/email-agent-python example-composable-email-agent-python &&
+cd example-composable-email-agent-python &&
 cp .env.example .env
 ```
 

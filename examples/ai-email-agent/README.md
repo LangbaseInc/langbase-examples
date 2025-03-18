@@ -49,8 +49,8 @@ The following command
 4. Copies the `.env.example` file to `.env.local` in the project folder
 
 ```sh
-npx degit LangbaseInc/langbase-examples/examples/ai-email-agent example-composable-email-agent
-cd example-composable-email-agent
+npx degit LangbaseInc/langbase-examples/examples/ai-email-agent example-composable-email-agent &&
+cd example-composable-email-agent &&
 cp .env.example .env.local
 ```
 

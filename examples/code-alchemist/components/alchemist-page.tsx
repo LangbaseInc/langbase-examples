@@ -17,7 +17,6 @@ export type RecentChat = {
 const AlchemistPage = () => {
 	const {
 		prompt,
-		callLLMs,
 		loading,
 		setPrompt,
 		completion,
@@ -28,6 +27,7 @@ const AlchemistPage = () => {
 		showPreview,
 		improveCode,
 		showRecentChats,
+		runCodeAlchemistAgent,
 		handleRecentChatClick
 	} = useLangbase();
 
@@ -42,11 +42,11 @@ const AlchemistPage = () => {
 				<Welcome
 					prompt={prompt}
 					isLoading={loading}
-					onSubmit={callLLMs}
 					setPrompt={setPrompt}
 					showSwitch={showSwitch}
 					recentChats={recentChats}
 					showWelcome={showWelcome}
+					onSubmit={runCodeAlchemistAgent}
 					showRecentChats={showRecentChats}
 					handleOnClick={handleRecentChatClick}
 				/>

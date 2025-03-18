@@ -17,7 +17,7 @@
     "class-variance-authority": "^0.7.0",
     "dayjs": "^1.11.12",
     "framer-motion": "^11.3.28",
-    "langbase": "^1.1.0",
+    "langbase": "^1.1.45",
     "mxcn": "^2.0.0",
     "next": "14.2.5",
     "next-themes": "^0.3.0",

@@ -1,5 +1,4 @@
-import { callPipes } from '@/utils/call-pipes';
-import { getPipeApiKeys } from '@/utils/get-pipe-api-keys';
+import { runCodeGenerationAgent } from '@/utils/run-agents';
 import { validateRequestBody } from '@/utils/validate-request-body';
 
 export const runtime = 'edge';
@@ -18,15 +17,10 @@ export async function POST(req: Request) {
 			return new Response(JSON.stringify(error), { status: 400 });
 		}
 
-		const keys = getPipeApiKeys();
-
-		const { stream, pipe } = await callPipes({
-			keys,
-			prompt
-		});
+		const { stream, pipe } = await runCodeGenerationAgent(prompt);
 
 		if (stream) {
-			return new Response(stream.toReadableStream(), {
+			return new Response(stream, {
 				headers: {
 					pipe
 				}
