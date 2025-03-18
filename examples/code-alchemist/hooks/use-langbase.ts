@@ -14,13 +14,16 @@ const useLangbase = () => {
 	const [recentChats, setRecentChats] = useState<RecentChat[]>([]);
 
 	/**
-	 * Calls the Language Model Microservices (LLMs) API to generate completions based on the provided prompt.
+	 * Executes the Code Alchemist agent with the provided prompt and handles the response stream.
 	 *
-	 * @param {Object} options - The options for the API call.
-	 * @param {string} options.prompt - The prompt for generating completions.
-	 * @param {FormEvent<HTMLFormElement>} options.e - The form event triggered by the form submission.
-	 * @param {string} [options.originalPrompt] - The original prompt before any modifications.
-	 * @returns {void}
+	 * @param {Object} params - The parameters for running the Code Alchemist agent
+	 * @param {FormEvent<HTMLFormElement>} [params.e] - Optional form event to prevent default behavior
+	 * @param {string} params.prompt - The prompt to send to the Code Alchemist agent
+	 * @param {string} [params.originalPrompt] - Optional original prompt text
+	 *
+	 * @throws {Error} When the API request fails or returns an error response
+	 *
+	 * @returns {Promise<void>}
 	 */
 	async function runCodeAlchemistAgent({
 		e,
