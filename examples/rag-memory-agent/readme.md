@@ -3,6 +3,7 @@
 A Retrieval-Augmented Generation (RAG) system built with TypeScript and Langbase. This project demonstrates how to create a memory-based agent that can answer questions based on uploaded documents.
 
 ## How It Works
+
 - Memory Creation: Create a memory instance to store your documents.
 - Data Upload: Upload documents to the memory.
 - Retrieval: When a query is received, the system retrieves relevant chunks from the memory.
@@ -102,5 +103,13 @@ This triggers the full RAG workflow:
 ├── package.json            # Project dependencies
 └── README.md               # This file
 ```
+
+## Further Reading
+
+- [Langbase Documentation](https://langbase.com/docs)
+- [Langbase Memory Agents](https://langbase.com/docs/memory)
+- [Langbase SDK](https://langbase.com/docs/sdk)
+- [Langbase API Reference](https://langbase.com/docs/api-reference)
+
 ## License
 MIT - Copyright (c) Langbase, Ahmad Awais.
