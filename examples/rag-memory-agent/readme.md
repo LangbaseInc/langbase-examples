@@ -18,12 +18,18 @@ A Retrieval-Augmented Generation (RAG) system built with TypeScript and Langbase
 
 ## Setup
 
-1. Clone this repository
-2. Install dependencies:
+1. Clone this repository and navigate to the project directory:
+
+The following command only downloads this example as a new directory called `rag-memory-agent`:
+```bash
+npx degit LangbaseInc/langbase-examples/examples/rag-memory-agent rag-memory-agent
+```
+
+1. Install dependencies:
    ```bash
    pnpm install
    ```
-3. Copy the `.env.example` file to `.env` and add your Langbase API key:
+2. Copy the `.env.example` file to `.env` and add your Langbase API key:
 ```bash
 cp .env.example .env
 ```
