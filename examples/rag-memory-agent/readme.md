@@ -20,7 +20,8 @@ A Retrieval-Augmented Generation (RAG) system built with TypeScript and Langbase
 
 1. Clone this repository and navigate to the project directory:
 
-The following command only downloads this example as a new directory called `rag-memory-agent`:
+This command only downloads this example as a new directory called `rag-memory-agent`:
+
 ```bash
 npx degit LangbaseInc/langbase-examples/examples/rag-memory-agent rag-memory-agent
 ```
