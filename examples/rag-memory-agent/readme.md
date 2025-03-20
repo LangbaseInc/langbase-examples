@@ -24,10 +24,10 @@ A Retrieval-Augmented Generation (RAG) system built with TypeScript and Langbase
    pnpm install
    ```
 3. Copy the `.env.example` file to `.env` and add your Langbase API key:
-   ```bash
-   cp .env.example .env
-   ```
-4. Update the `.env` file with your Langbase API key
+```bash
+cp .env.example .env
+```
+1. Update the `.env` file with your Langbase API key
 
 ## Workflow
 
