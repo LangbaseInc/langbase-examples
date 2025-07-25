@@ -100,10 +100,6 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 [demo]: https://resume-tailor.langbase.dev
 [lb]: https://langbase.com
-[resumetailor]: https://langbase.com/examples/resume-tailor
-[resumeoptimizer]: https://langbase.com/examples/resume-optimizer
-[atsformatter]: https://langbase.com/examples/ats-formatter
-[jobanalysis]: https://langbase.com/examples/job-analysis
 [gh]: https://github.com/LangbaseInc/langbase-examples/tree/main/examples/resume-tailor
 [cover]: https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/resume-tailor/cover.jpg
 [download]: https://download-directory.github.io/?url=https://github.com/LangbaseInc/langbase-examples/tree/main/examples/resume-tailor
