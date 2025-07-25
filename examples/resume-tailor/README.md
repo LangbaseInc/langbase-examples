@@ -96,7 +96,7 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 - Saad Irfan ([@MrSaadIrfan][xsi]) - Founding Engineer, [Langbase][lb]
 
-**_Built by ⌘ [Langbase.com][lb] — Ship composable AI pipe agents with hyper-personalized memory (RAG)!_**
+**_Built by ⌘ [Langbase.com][lb] — Build, deploy, and scale serverless AI agents with tools and memory (RAG)_**
 
 [demo]: https://resume-tailor.langbase.dev
 [lb]: https://langbase.com
