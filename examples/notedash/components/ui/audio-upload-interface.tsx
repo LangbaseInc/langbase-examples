@@ -49,7 +49,6 @@ export const AudioUploadInterface = ({
 										fileInputRef.current?.click()
 									}
 									variant="outline"
-									className="gap-2 bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 backdrop-blur-sm rounded-xl"
 								>
 									<Upload className="w-4 h-4" />
 									Choose File
@@ -109,11 +108,11 @@ export const AudioUploadInterface = ({
 			</Button>
 
 			<div className="text-sm text-gray-400 bg-gray-800/30 rounded-xl p-3">
-				<p className="font-medium mb-1">Note:</p>
-				<p>
+				<span className="font-medium mb-1">Note: </span>
+				<span>
 					Audio files will be processed using AI speech-to-text
 					technology to generate transcripts for analysis.
-				</p>
+				</span>
 			</div>
 		</>
 	);

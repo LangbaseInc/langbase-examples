@@ -45,7 +45,7 @@ const generateNotes = async ({ notes }: { notes: string }) => {
 	});
 
 	const workflow = langbase.workflow({
-		debug: true
+		debug: false
 	});
 
 	const { step } = workflow;

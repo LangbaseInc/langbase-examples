@@ -49,14 +49,6 @@ export const useAudioUpload = () => {
 				// Convert audio file to text
 				const formData = new FormData();
 				formData.append('audio', uploadedFile);
-				console.log(
-					'Processing audio file:',
-					uploadedFile.name,
-					'Size:',
-					uploadedFile.size,
-					'Type:',
-					uploadedFile.type
-				);
 
 				const transcriptResponse = await fetch('/api/transcribe', {
 					method: 'POST',

@@ -44,7 +44,7 @@ const chatWithNotes = async ({
 	});
 
 	const workflow = langbase.workflow({
-		debug: true
+		debug: false
 	});
 
 	const { step } = workflow;

@@ -32,16 +32,16 @@ export async function POST(request: Request) {
 			});
 		}
 
-		// Convert audio file to text using ElevenLabs
+		// Convert audio file to text using OpenAI's Whisper model
 		const formData = new FormData();
 		formData.append('file', audioFile);
-		formData.append('model_id', 'scribe_v1');
+		formData.append('model', 'whisper-1');
 		const response = await fetch(
-			'https://api.elevenlabs.io/v1/speech-to-text',
+			'https://api.openai.com/v1/audio/transcriptions',
 			{
 				method: 'POST',
 				headers: {
-					'xi-api-key': process.env.ELEVENLABS_API_KEY!
+					Authorization: `Bearer ${process.env.OPENAI_API_KEY!}`
 				},
 				body: formData
 			}

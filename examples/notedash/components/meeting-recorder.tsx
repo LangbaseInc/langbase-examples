@@ -351,8 +351,8 @@ export const MeetingRecorder = () => {
 												{sessionSource === 'speech'
 													? 'Recording'
 													: sessionSource === 'text'
-													? 'Text'
-													: 'Audio'}
+														? 'Text'
+														: 'Audio'}
 											</span>
 										</div>
 									</div>
@@ -390,7 +390,7 @@ export const MeetingRecorder = () => {
 												? sessionTranscript.substring(
 														0,
 														200
-												  ) + '...'
+													) + '...'
 												: 'No transcript available.'}
 										</div>
 									</div>
@@ -475,7 +475,7 @@ export const MeetingRecorder = () => {
 												)}
 											</div>
 											<div
-												className={`rounded-2xl p-4 ${
+												className={`rounded-2xl p-4 w-[450px] ${
 													message.type === 'user'
 														? 'bg-gradient-to-br from-gray-900 to-black text-white border border-gray-600/50 shadow-lg shadow-black/30'
 														: 'bg-gray-800/50 backdrop-blur-sm border border-gray-700 text-gray-100'

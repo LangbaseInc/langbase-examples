@@ -60,10 +60,6 @@ LANGBASE_API_KEY="USER_OR_ORG_API_KEY"
 # OpenAI API key to work with GPT models for chat functionality
 # https://platform.openai.com/api-keys
 OPENAI_API_KEY="your_openai_api_key"
-
-# ElevenLabs API key for audio transcription (speech-to-text)
-# https://elevenlabs.io/app/speech-to-text
-ELEVENLABS_API_KEY="your_elevenlabs_api_key"
 ```
 
 ### 3. Install dependencies
