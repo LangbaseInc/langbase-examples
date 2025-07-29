@@ -31,7 +31,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "langbase": "^1.2.2",
+    "langbase": "1.2.2",
     "lucide-react": "^0.525.0",
     "mxcn": "^2.0.0",
     "next": "14.2.5",
