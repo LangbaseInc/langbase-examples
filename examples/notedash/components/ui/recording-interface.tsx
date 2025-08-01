@@ -52,7 +52,7 @@ export const RecordingInterface = ({
 			<div className="text-center space-y-6">
 				<div className="relative">
 					<div
-						className={`w-28 h-28 rounded-full border-4 flex items-center justify-center mx-auto transition-all duration-300 ${
+						className={`w-28 h-28 rounded-full border-4 flex items-center justify-center mx-auto transition-all duration-1500 ${
 							isRecording
 								? isPaused
 									? 'border-yellow-500 bg-yellow-500/10 backdrop-blur-sm'
