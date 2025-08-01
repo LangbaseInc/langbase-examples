@@ -267,7 +267,7 @@ export const MeetingRecorder = () => {
 	if (!speechSupported && currentView === 'recorder') {
 		return (
 			<div className="min-h-screen bg-black">
-				<Navbar />
+				<Navbar handleBackToRecorder={handleBackToRecorder} />
 				<div className="flex items-center justify-center p-4 min-h-[calc(100vh-80px)]">
 					<div className="bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 max-w-md">
 						<div className="flex items-center gap-3 text-red-400 mb-3">
@@ -291,7 +291,7 @@ export const MeetingRecorder = () => {
 	if (currentView === 'analysis') {
 		return (
 			<div className="min-h-screen bg-black text-white">
-				<Navbar />
+				<Navbar handleBackToRecorder={handleBackToRecorder} />
 				<div className="flex h-[calc(100vh-80px)]">
 					{/* Notes Sidebar */}
 					<div className="w-96 border-r border-gray-800 bg-gray-900/30 backdrop-blur-xl flex flex-col">
@@ -558,7 +558,7 @@ export const MeetingRecorder = () => {
 	// Main Recorder View
 	return (
 		<div className="min-h-screen bg-black text-white">
-			<Navbar />
+			<Navbar handleBackToRecorder={handleBackToRecorder} />
 
 			<div className="max-w-4xl mx-auto p-6">
 				{/* Hero Section */}
