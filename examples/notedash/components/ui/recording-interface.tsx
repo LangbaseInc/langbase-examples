@@ -57,7 +57,7 @@ export const RecordingInterface = ({
 								? isPaused
 									? 'border-yellow-500 bg-yellow-500/10 backdrop-blur-sm'
 									: 'border-red-500 bg-red-500/10 backdrop-blur-sm animate-pulse'
-								: 'border-gray-700 bg-gray-800/30 backdrop-blur-sm'
+								: 'border-muted bg-black backdrop-blur-sm'
 						}`}
 					>
 						{isRecording ? (
@@ -67,7 +67,7 @@ export const RecordingInterface = ({
 								<Mic className="w-10 h-10 text-red-400" />
 							)
 						) : (
-							<MicOff className="w-10 h-10 text-gray-500" />
+							<MicOff className="w-10 h-10 text-muted-foreground" />
 						)}
 					</div>
 					{isListening && (
@@ -87,7 +87,7 @@ export const RecordingInterface = ({
 									? isPaused
 										? 'border-yellow-500 text-yellow-400 bg-yellow-500/10'
 										: 'border-red-500 text-red-400 bg-red-500/10'
-									: 'border-gray-600 text-gray-400 bg-gray-800/30'
+									: 'border-muted text-gray-400 bg-gray-800/30'
 							} backdrop-blur-sm`}
 						>
 							{isRecording
@@ -117,7 +117,7 @@ export const RecordingInterface = ({
 						onClick={onStartRecording}
 						size="lg"
 						variant={'outline'}
-						className="gap-3 rounded-2xl px-8 py-3 text-white font-medium"
+						className="gap-3 rounded-lg px-8 py-3 text-white font-medium"
 					>
 						<Play className="w-5 h-5" />
 						Start Recording
@@ -129,7 +129,7 @@ export const RecordingInterface = ({
 							variant="outline"
 							size="lg"
 							disabled={isLoading}
-							className="gap-3 backdrop-blur-sm rounded-2xl px-6"
+							className="gap-3 backdrop-blur-sm rounded-lg px-6"
 						>
 							{isPaused ? (
 								<Play className="w-4 h-4" />
@@ -143,7 +143,7 @@ export const RecordingInterface = ({
 							onClick={onStopRecording}
 							size="lg"
 							disabled={isLoading}
-							className="gap-3 rounded-2xl px-6"
+							className="gap-3 rounded-lg px-6"
 						>
 							<Square className="w-4 h-4" />
 							Stop & Process
@@ -160,7 +160,7 @@ export const RecordingInterface = ({
 							Live Transcription
 						</h4>
 					</div>
-					<div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-2xl p-4 min-h-[150px] max-h-[300px] overflow-y-auto">
+					<div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-lg p-4 min-h-[150px] max-h-[300px] overflow-y-auto">
 						<div className="space-y-3">
 							{finalTranscript && (
 								<p className="text-sm text-gray-200 leading-relaxed">

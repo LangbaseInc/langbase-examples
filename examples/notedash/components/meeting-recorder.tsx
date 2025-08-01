@@ -564,7 +564,7 @@ export const MeetingRecorder = () => {
 				{/* Hero Section */}
 				<div className="text-center space-y-8 py-16">
 					<div className="space-y-6">
-						<p className="text-2xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+						<p className="text-xl font-semibold text-[#9785ff] bg-clip-text text-transparent">
 							Talk. Dash. Done.
 						</p>
 						<h1 className="text-5xl md:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto">
@@ -589,8 +589,8 @@ export const MeetingRecorder = () => {
 				)}
 
 				{/* Input Panel */}
-				<div className="bg-gray-900/30 backdrop-blur-xl border border-gray-800 rounded-3xl overflow-hidden">
-					<div className="p-6 border-b border-gray-800">
+				<div className="bg-black backdrop-blur-xl border rounded-3xl overflow-hidden">
+					<div className="p-6 border-b">
 						<div className="flex items-center gap-3">
 							<div className="w-10 h-10 bg-black rounded-2xl flex items-center justify-center">
 								<FileText className="w-5 h-5 text-white" />
@@ -615,24 +615,24 @@ export const MeetingRecorder = () => {
 							}
 							className="w-full"
 						>
-							<TabsList className="grid w-full grid-cols-3 bg-gray-800/50 border border-gray-700">
+							<TabsList className="grid w-full grid-cols-3 rounded-lg bg-muted border px-1 py-0">
 								<TabsTrigger
 									value="speech"
-									className="gap-2 text-gray-300 data-[state=active]:bg-gray-700 data-[state=active]:text-white"
+									className="gap-2 rounded-lg text-gray-300 data-[state=active]:bg-primary data-[state=active]:text-black"
 								>
 									<Mic className="w-4 h-4" />
 									Record
 								</TabsTrigger>
 								<TabsTrigger
 									value="text"
-									className="gap-2 text-gray-300 data-[state=active]:bg-gray-700 data-[state=active]:text-white"
+									className="gap-2 rounded-lg text-gray-300 data-[state=active]:bg-primary data-[state=active]:text-black"
 								>
 									<Type className="w-4 h-4" />
 									Type
 								</TabsTrigger>
 								<TabsTrigger
 									value="audio"
-									className="gap-2 text-gray-300 data-[state=active]:bg-gray-700 data-[state=active]:text-white"
+									className="gap-2 rounded-lg text-gray-300 data-[state=active]:bg-primary data-[state=active]:text-black"
 								>
 									<Upload className="w-4 h-4" />
 									Upload

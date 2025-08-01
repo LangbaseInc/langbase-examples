@@ -7,7 +7,7 @@ import { Providers } from './provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'NoteDash',
+	title: 'OpenGranola',
 	description: 'Created by Ashar Irfan'
 };
 

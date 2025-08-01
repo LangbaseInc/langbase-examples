@@ -24,10 +24,10 @@ export const AudioUploadInterface = ({
 		<>
 			<div className="space-y-4">
 				{!uploadedFile ? (
-					<div className="border-2 border-dashed border-gray-700 rounded-2xl p-8 text-center hover:border-gray-600 transition-colors">
+					<div className="border-2 border-dashed border-muted rounded-lg p-8 text-center transition-colors">
 						<div className="space-y-4">
-							<div className="w-16 h-16 bg-gray-800/50 rounded-2xl flex items-center justify-center mx-auto">
-								<FileAudio className="w-8 h-8 text-gray-400" />
+							<div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center mx-auto">
+								<FileAudio className="w-8 h-8 text-muted-foreground" />
 							</div>
 							<div>
 								<p className="text-gray-300 font-medium mb-2">
@@ -60,11 +60,11 @@ export const AudioUploadInterface = ({
 						</div>
 					</div>
 				) : (
-					<div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-2xl p-4">
+					<div className="bg-muted/30 backdrop-blur-sm border rounded-lg p-4">
 						<div className="flex items-center justify-between">
 							<div className="flex items-center gap-3">
-								<div className="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center">
-									<FileAudio className="w-5 h-5 text-blue-400" />
+								<div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+									<FileAudio className="w-5 h-5 text-muted-foreground" />
 								</div>
 								<div>
 									<p className="text-white font-medium">
@@ -92,11 +92,11 @@ export const AudioUploadInterface = ({
 			<Button
 				onClick={onProcessAudio}
 				disabled={!uploadedFile || isProcessingAudio}
-				className="w-full gap-3 bg-black hover:bg-gray-800 rounded-2xl py-3 text-white font-medium"
+				className="w-full gap-3 bg-black hover:bg-gray-800 rounded-lg py-3 text-white font-medium"
 			>
 				{isProcessingAudio ? (
 					<>
-						<div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+						<div className="w-5 h-5 border-2 border-white border-t-transparent rounded-lg animate-spin" />
 						Processing Audio...
 					</>
 				) : (
@@ -107,7 +107,7 @@ export const AudioUploadInterface = ({
 				)}
 			</Button>
 
-			<div className="text-sm text-gray-400 bg-gray-800/30 rounded-xl p-3">
+			<div className="text-sm text-gray-400 border border-muted rounded-lg p-3">
 				<span className="font-medium mb-1">Note: </span>
 				<span>
 					Audio files will be processed using AI speech-to-text

@@ -35,7 +35,7 @@ export const TextInputInterface = ({
 						disabled={isLoading}
 						onChange={e => onMeetingTitleChange(e.target.value)}
 						placeholder="e.g., Team Standup, Client Call, Project Review"
-						className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-400 rounded-xl"
+						className="bg-muted text-white placeholder:text-gray-400 rounded-lg"
 					/>
 				</div>
 
@@ -48,7 +48,7 @@ export const TextInputInterface = ({
 						disabled={isLoading}
 						onChange={e => onTextInputChange(e.target.value)}
 						placeholder="Paste your meeting transcript, notes, or any text content you'd like to analyze..."
-						className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-400 rounded-xl min-h-[200px] resize-none"
+						className="bg-muted border-muted text-white placeholder:text-gray-400 rounded-lg min-h-[200px] resize-none"
 					/>
 				</div>
 
