@@ -7,6 +7,8 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 import { ChatInput } from './chat-input'
 import { Opening } from './opening'
+import { Suggestions } from './suggestions'
+
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   id?: string // Optional: Thread ID if you want to persist the chat in a DB
@@ -31,6 +33,11 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
         setThreadId(lbThreadId)
       }
     })
+    
+    const sendSuggestedPrompt = (prompt: string) => {
+      setInput(prompt)
+    }
+
   return (
     <div className="min-h-screen">
       <div className={cn('pb-36 pt-4 md:pt-10', className)}>
@@ -39,7 +46,10 @@ export function Chatbot({ id, initialMessages, className }: ChatProps) {
             <ChatList messages={messages} />
           </>
         ) : (
-          <Opening />
+          <>
+            <Opening />
+            <Suggestions sendSuggestedPrompt={sendSuggestedPrompt} />
+          </>
         )}
       </div>
       <ChatInput
