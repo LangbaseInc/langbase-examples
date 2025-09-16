@@ -1,0 +1,15 @@
+{
+	"name": "agent",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"agent": "npx tsx agent.ts"
+	},
+	"dependencies": {
+		"dotenv": "^17.1.0",
+		"langbase": "^1.1.63",
+		"zod": "^3.25.67",
+		"zod-to-json-schema": "^3.24.6"
+	}
+}
