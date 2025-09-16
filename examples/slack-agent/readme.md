@@ -52,7 +52,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 ## Usage
 
-The project includes a React-based agent app in the [`app/`](app/) directory with:
+The project includes a React-based agent app in the [`src/`](src/) directory with:
 
 - UI components built with modern React patterns
 - API integration for agent communication
@@ -63,10 +63,9 @@ The project includes a React-based agent app in the [`app/`](app/) directory wit
 
 1. Install dependencies:
 
-To set up the app, navigate to the [`app/`](app/) directory and install dependencies:
+To set up the app, navigate to the [`src/`](src/) directory and install dependencies:
 
 ```bash
-cd app
 npm install
 ```
 
