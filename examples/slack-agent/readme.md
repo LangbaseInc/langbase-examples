@@ -37,13 +37,14 @@ This Slack Insight Agent provides seamless interaction with your Slack workspace
 - Node.js 21 or higher
 - npm or pnpm package manager
 - [Langbase API key](https://langbase.com/docs/api-reference/api-keys)
+- [Slack Bot Token](https://langbase.com/docs/mcp-servers/popular-mcp-servers#authentication)
 
 ## Getting Started
 
 1. Install dependencies:
 
 ```bash
-pnpm install
+npm install
 ```
 
 2. Set up environment variables:
@@ -81,7 +82,7 @@ To set up the app, navigate to the [`app/`](app/) directory and install dependen
 
 ```bash
 cd app
-pnpm install
+npm install
 ```
 
 2. Set up environment variables:
@@ -99,7 +100,8 @@ LANGBASE_API_KEY=your_langbase_api_key_here
 # Your OpenAI API key: https://platform.openai.com/api-keys
 OPENAI_API_KEY=your_openai_api_key_here
 
-# Add any other required environment variables
+# Your Slack Bot Token: https://langbase.com/docs/mcp-servers/popular-mcp-servers#authentication
+SLACK_BOT_TOKEN=your_slack_bot_token_here
 ```
 
 ### Usage
@@ -107,7 +109,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 To run the application, use:
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 ## Support
