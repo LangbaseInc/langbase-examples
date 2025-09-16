@@ -8,29 +8,14 @@ Check out the live demo here.
 
 This Slack Insight Agent provides seamless interaction with your Slack workspace through the following capabilities:
 
-- **List workspace users** → `slack_get_users`  
-  Retrieve all members along with basic profile details.  
-
-- **Add emoji reactions** → `slack_add_reaction`  
-  React to any message with Slack emojis.  
-
-- **List channels** → `slack_list_channels`  
-  Get a list of all channels in the workspace.  
-
-- **Send messages** → `slack_post_message`  
-  Post new messages directly to a channel.  
-
-- **Reply to threads** → `slack_reply_to_thread`  
-  Keep conversations organized by replying inside message threads.  
-
-- **Get user profile** → `slack_get_user_profile`  
-  Fetch detailed profile information for a specific user.  
-
-- **Get thread replies** → `slack_get_thread_replies`  
-  Retrieve all replies from any thread.  
-
-- **Get channel history** → `slack_get_channel_history`  
-  Access recent messages from a selected channel.  
+- Retrieve all members along with basic profile details.  
+- React to any message with Slack emojis.  
+- Get a list of all channels in the workspace.  
+- Post new messages directly to a channel.  
+- Keep conversations organized by replying inside message threads.  
+- Fetch detailed profile information for a specific user.  
+- Retrieve all replies from any thread.  
+- Access recent messages from a selected channel.  
 
 ## Prerequisites
 
@@ -111,6 +96,8 @@ To run the application, use:
 ```bash
 npm run dev
 ```
+
+Your app template should now be running on [localhost:3100](http://localhost:3100). Prompt the agent and manage your Slack workspace.
 
 ## Support
 
