@@ -1,35 +1,42 @@
-# Slack Insight agent
+# Slack Insight Agent
 
-A simple AI text summarizer app powered by Langbase. This tool uses the gpt-o model to generate a concise summary of any provided content.
+Get intelligent insights from your Slack workspace with AI-powered analysis
 
 Check out the live demo here.
 
-## Features
+## 🚀 Features
 
+This Slack Insight Agent provides seamless interaction with your Slack workspace through the following capabilities:
 
+- **List workspace users** → `slack_get_users`  
+  Retrieve all members along with basic profile details.  
 
-## Project Structure
+- **Add emoji reactions** → `slack_add_reaction`  
+  React to any message with Slack emojis.  
 
-```
-├── agent.ts                # Main workflow implementation
-├── package.json            # Project dependencies and scripts
-├── readme.md               # Project readme file
-├── .env.example            # Environment variables template
-└── app/                    # Agent App
-    ├── api/                # API endpoints
-    ├── src/                # React components and utilities
-    ├── public/             # Static assets
-    ├── .env.example        # Environment variables template
-    ├── package.json        # Project dependencies and scripts
-    ├── readme.md           # App readme file
-    └── vite.config.ts      # Vite configuration for the app
-```
+- **List channels** → `slack_list_channels`  
+  Get a list of all channels in the workspace.  
+
+- **Send messages** → `slack_post_message`  
+  Post new messages directly to a channel.  
+
+- **Reply to threads** → `slack_reply_to_thread`  
+  Keep conversations organized by replying inside message threads.  
+
+- **Get user profile** → `slack_get_user_profile`  
+  Fetch detailed profile information for a specific user.  
+
+- **Get thread replies** → `slack_get_thread_replies`  
+  Retrieve all replies from any thread.  
+
+- **Get channel history** → `slack_get_channel_history`  
+  Access recent messages from a selected channel.  
 
 ## Prerequisites
 
 - Node.js 21 or higher
 - npm or pnpm package manager
-- Langbase API key
+- [Langbase API key](https://langbase.com/docs/api-reference/api-keys)
 
 ## Getting Started
 
@@ -58,45 +65,6 @@ OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 ## Usage
-
-### Running the Agent
-
-Execute the agent with:
-
-```bash
-pnpm run agent
-```
-
-This will run the agent with the default test input defined in [`agent.ts`](agent.ts).
-
-### Customizing Input
-
-To test with your own text, modify the input in the IIFE at the bottom of [`agent.ts`](agent.ts):
-
-```typescript
-const event = {
-	json: async () => ({
-		input: `Your custom text to summarize goes here.`
-	})
-};
-```
-
-### Integration
-
-The agent exports a default function that can be integrated into other applications:
-
-```typescript
-import agent from './agent.ts';
-
-const event = {
-	json: async () => ({ input: 'Text to summarize' })
-};
-
-const result = await agent(event, {});
-console.log(result.summary);
-```
-
-## Agent App
 
 The project includes a React-based agent app in the [`app/`](app/) directory with:
 
