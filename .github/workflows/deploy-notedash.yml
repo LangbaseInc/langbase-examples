@@ -1,0 +1,79 @@
+name: Deploy NoteDash to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'examples/notedash/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'examples/notedash/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: ./examples/notedash
+
+      - name: Build for Cloudflare Pages
+        run: pnpm run cf-build
+        working-directory: ./examples/notedash
+        env:
+          NODE_ENV: production
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: wrangler pages deploy .vercel/output/static --project-name=notedash
+          workingDirectory: ./examples/notedash
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Set environment variables
+        if: github.ref == 'refs/heads/main'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: wrangler pages secret put LANGBASE_API_KEY --project-name=notedash
+          workingDirectory: ./examples/notedash
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          LANGBASE_API_KEY: ${{ secrets.NOTEDASH_LANGBASE_API_KEY }}
+
+      - name: Set OpenAI API Key
+        if: github.ref == 'refs/heads/main'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: wrangler pages secret put OPENAI_API_KEY --project-name=notedash
+          workingDirectory: ./examples/notedash
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          OPENAI_API_KEY: ${{ secrets.NOTEDASH_OPENAI_API_KEY }}
