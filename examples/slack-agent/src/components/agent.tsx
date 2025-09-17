@@ -1,78 +1,91 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
-import { Send, MessageSquare, Hash, Clock, FileText } from "lucide-react";
+import { Send, MessageSquare, Hash, Clock } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import type { ReactNode } from "react";
+
+type ExampleQuery = {
+  icon: ReactNode;
+  text: string;
+  category: string;
+};
+
+type ApiResponse = {
+  output?: string;
+  message?: string;
+  error?: string;
+  success?: boolean;
+  [key: string]: any;
+};
 
 export function Agent() {
-  const [input, setInput] = useState("");
-  const [response, setResponse] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [input, setInput] = useState<string>("");
+  const [response, setResponse] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const exampleQueries = [
-  {
-    icon: <MessageSquare className="w-4 h-4" />,
-    text: "Show me all users with their status and role",
-    category: "User Lookup"
-  },
-  {
-    icon: <MessageSquare className="w-4 h-4" />,
-    text: "Add 🚀 reaction to the last message in #launch",
-    category: "Engagement"
-  },
-  {
-    icon: <Hash className="w-4 h-4" />,
-    text: "List all public channels sorted by activity",
-    category: "Channel Discovery"
-  },
-  {
-    icon: <Send className="w-4 h-4" />,
-    text: "Post 'Don’t forget retro at 3 PM!' to #team-agile",
-    category: "Messaging"
-  },
-  {
-    icon: <Send className="w-4 h-4" />,
-    text: "Reply 'On it!' to the thread about the login bug in #engineering",
-    category: "Thread Replies"
-  },
-  {
-    icon: <MessageSquare className="w-4 h-4" />,
-    text: "Get my full profile — email, title, and timezone",
-    category: "Profile Lookup"
-  },
-  {
-    icon: <MessageSquare className="w-4 h-4" />,
-    text: "Show all replies in the 'Q3 Goals' thread in #leadership",
-    category: "Thread History"
-  },
-  {
-    icon: <Clock className="w-4 h-4" />,
-    text: "Get the last 10 messages from #support",
-    category: "Channel History"
-  }
-];
+  const exampleQueries: ExampleQuery[] = [
+    {
+      icon: <MessageSquare className="w-4 h-4" />,
+      text: "Show me all users with their status and role",
+      category: "User Lookup"
+    },
+    {
+      icon: <MessageSquare className="w-4 h-4" />,
+      text: "Add 🚀 reaction to the last message in #launch",
+      category: "Engagement"
+    },
+    {
+      icon: <Hash className="w-4 h-4" />,
+      text: "List all public channels sorted by activity",
+      category: "Channel Discovery"
+    },
+    {
+      icon: <Send className="w-4 h-4" />,
+      text: "Post 'Don’t forget retro at 3 PM!' to #team-agile",
+      category: "Messaging"
+    },
+    {
+      icon: <Send className="w-4 h-4" />,
+      text: "Reply 'On it!' to the thread about the login bug in #engineering",
+      category: "Thread Replies"
+    },
+    {
+      icon: <MessageSquare className="w-4 h-4" />,
+      text: "Get my full profile — email, title, and timezone",
+      category: "Profile Lookup"
+    },
+    {
+      icon: <MessageSquare className="w-4 h-4" />,
+      text: "Show all replies in the 'Q3 Goals' thread in #leadership",
+      category: "Thread History"
+    },
+    {
+      icon: <Clock className="w-4 h-4" />,
+      text: "Get the last 10 messages from #support",
+      category: "Channel History"
+    }
+  ];
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.trim()) return;
 
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8787/api/langbase", {
+      const response = await fetch("/api/langbase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ input: input.trim() })
       });
 
-      // Parse the response (with fallback for non-JSON)
-      let data;
+      let data: ApiResponse | string;
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {
         data = await response.json();
@@ -80,45 +93,44 @@ export function Agent() {
         data = await response.text();
       }
 
-      // Check for ANY error condition
-      if (!response.ok || (data && typeof data === 'object' && (data.success === false || data.error))) {
-        // Extract the most specific error message
-        const errorMessage = data.error || (data.message || `Error: ${response.status}`);
+      if (
+        !response.ok ||
+        (typeof data === "object" && (data.success === false || data.error))
+      ) {
+        const errorMessage =
+          typeof data === "object"
+            ? data.error || data.message || `Error: ${response.status}`
+            : `Error: ${response.status}`;
         throw new Error(errorMessage);
       }
 
-      // ONLY for successful responses, update the response
-      if (typeof data === 'string') {
+      if (typeof data === "string") {
         setResponse(data);
-      } else if (data && typeof data === 'object') {
+      } else if (typeof data === "object") {
         const responseText = data.output || data.message || JSON.stringify(data);
         setResponse(responseText);
       } else {
         setResponse(String(data));
       }
 
-      // ONLY for successful responses, show success toast
       toast.success("Query processed successfully", {
         closeButton: true,
         duration: 3000
       });
+    } catch (error: unknown) {
+      const err = error as Error;
+      console.error("Error processing Slack query:", err);
 
-    } catch (error) {
-      console.error("Error processing Slack query:", error);
-
-      // Show error toast with specific message
-      toast.error(error.message || "An error occurred while processing your Slack query", {
+      toast.error(err.message || "An error occurred while processing your Slack query", {
         closeButton: true,
         duration: Infinity
       });
-
-      // DON'T clear existing response on error
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleExampleClick = (exampleText) => {
+  const handleExampleClick = (exampleText: string) => {
     setInput(exampleText);
   };
 

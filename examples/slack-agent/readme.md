@@ -64,7 +64,7 @@ To run the application, use:
 npm run dev
 ```
 
-Your app template should now be running on [localhost:3100](http://localhost:3100). Prompt the agent and manage your Slack workspace.
+Your app template should now be running on [localhost:5173](http://localhost:5173). Prompt the agent and manage your Slack workspace.
 
 ## Support
 
