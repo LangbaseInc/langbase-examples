@@ -43,7 +43,7 @@ export function Agent() {
   },
   {
     icon: <MessageSquare className="w-4 h-4" />,
-    text: "Get Mairaj's full profile — email, title, and timezone",
+    text: "Get my full profile — email, title, and timezone",
     category: "Profile Lookup"
   },
   {

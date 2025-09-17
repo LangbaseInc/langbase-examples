@@ -5,7 +5,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "slack-agent",
-	"main": "src/index.ts",
+	"main": "worker/index.ts",
 	"compatibility_date": "2025-09-13",
 	"compatibility_flags": [
 		"global_fetch_strictly_public"
