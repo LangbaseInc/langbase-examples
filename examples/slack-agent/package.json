@@ -4,16 +4,12 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev:vite": "vite",
-		"build:vite": "vite build",
-		"build:worker": "wrangler deploy --dry-run worker/index.ts",
-		"build": "npm run build:vite && npm run build:worker",
+		"dev": "vite",
+		"build": "tsc -b && vite build",
 		"lint": "eslint .",
-		"dev:worker": "wrangler dev worker/index.ts",
 		"preview": "npm run build && vite preview",
 		"deploy": "npm run build && wrangler deploy",
-		"cf-typegen": "wrangler types",
-		"dev": "concurrently \"npm run dev:vite\" \"npm run dev:worker\""
+		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
 		"react": "^19.1.1",
