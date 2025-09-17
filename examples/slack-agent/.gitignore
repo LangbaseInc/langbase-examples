@@ -165,3 +165,11 @@ dist
 .env*
 !.env.example
 .wrangler/
+
+# Compiled JavaScript files (except config files)
+src/**/*.js
+src/**/*.js.map
+worker/**/*.js
+worker/**/*.js.map
+test/**/*.js
+test/**/*.js.map

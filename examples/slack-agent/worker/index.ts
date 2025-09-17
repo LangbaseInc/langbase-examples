@@ -5,8 +5,14 @@ import { prettyJSON } from 'hono/pretty-json';
 import { secureHeaders } from 'hono/secure-headers';
 import { registerLangbaseEndpoint } from './langbase';
 
+type Bindings = {
+  LANGBASE_API_KEY: string;
+  OPENAI_API_KEY: string;
+  SLACK_BOT_TOKEN: string;
+};
+
 // Create Hono app
-const app = new Hono();
+const app = new Hono<{ Bindings: Bindings }>();
 
 // Middleware
 app.use('*', logger());
@@ -52,4 +58,8 @@ app.onError((err, c) => {
 	);
 });
 
-export { app };
+export default {
+  fetch(request: Request, env: Bindings, ctx: any) {
+    return app.fetch(request, env, ctx)
+  }
+}
