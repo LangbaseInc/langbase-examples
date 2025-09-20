@@ -2,7 +2,7 @@
 
 A powerful AI-powered Slack agent built with Langbase that lets you interact with your Slack workspace using natural language. Ask questions, get insights, and manage your Slack workspace through an intelligent conversational interface.
 
-**🚀 [Live Demo](https://slack-agent.langbase.dev/)**
+**[Live Demo](https://slack-agent.langbase.dev/)**
 
 ## ✨ What This Agent Can Do
 
@@ -114,9 +114,10 @@ export const registerLangbaseEndpoint = (app) => {
 ### 1. **Clone and Install**
 
 ```bash
-git clone <repository-url>
+npx degit LangbaseInc/langbase-examples/examples/slack-agent slack-agent
 cd slack-agent
 npm install
+cp .env.example .env
 ```
 
 ### 2. **Environment Setup**
