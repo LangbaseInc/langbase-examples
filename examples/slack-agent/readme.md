@@ -114,9 +114,9 @@ export const registerLangbaseEndpoint = (app) => {
 ### 1. **Clone and Install**
 
 ```bash
-git clone <repository-url>
-cd slack-agent
+npx degit LangbaseInc/langbase-examples/examples/slack-agent slack-agent && cd slack-agent
 npm install
+cp .env.example .env
 ```
 
 ### 2. **Environment Setup**
