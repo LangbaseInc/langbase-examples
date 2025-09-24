@@ -145,14 +145,14 @@ export const registerLangbaseEndpoint = (app) => {
 - OpenAI API key
 - [EXA](https://exa.ai) API key
 
-1. **Clone and install:**
+### 1. **Clone and install:**
 ```bash
 npx degit LangbaseInc/langbase-examples/examples/newsgpt newsgpt && cd newsgpt
 cd newsgpt
 npm install
 ```
 
-2. **Environment setup**
+### 2. **Environment setup**
 
 Copy the environment template:
 
