@@ -1,26 +1,26 @@
-# newsGPT - AI-Powered News Summary Generator
+# newsGPT - AI-Powered News
 
-An AI-powered newsletter generator that turns long-form news and articles into concise, engaging TL;DR digests. Built with Langbase, it helps you stay up to date on tech and AI without the noise.
+An AI-powered newsletter generator that turns long-form news into concise, engaging TL;DR digests. Built with Langbase, it helps you stay up to date on tech and AI without the noise.
 
 🚀 [Live Demo](https://newsGPT.langbase.dev/)
 
 ## What newsGPT can do
 
-newsGPT simplifies how you consume news by generating structured newsletters:
+newsGPT simplifies how you consume news by generating newsletters based on prompt:
 
-- TL;DR Generation: Summarize long articles into short, scannable digests
-- Newsletter Creation: Generate daily or weekly AI/tech newsletters instantly
-- Context-Aware Summaries: Preserve important details while cutting the fluff
-- Smart Highlights: Extract key points, quotes, and insights from articles
-- Prompt Shortcuts: Pre-written prompts for quick newsletter creation
+- **TL;DR Generation**: Summarize long articles into short, scannable digests
+- **Newsletter Creation**: Generate daily or weekly AI/tech newsletters instantly
+- **Context-Aware Summaries**: Preserve important details while cutting the fluff
+- **Prompt Shortcuts**: Pre-written prompts for quick newsletter creation
 
 ## Architecture Overview
 
 This project demonstrates how to build a production-ready AI news tool using:
 
-- Frontend: React + TypeScript for a clean, modern UI
-- Backend: Cloudflare Workers for lightweight, serverless execution
-- AI Layer: Langbase workflows for structured summarization and newsletter generation
+- **Frontend**: React + TypeScript for a clean, modern UI
+- **Backend**: Cloudflare Workers for lightweight, serverless execution
+- **AI Layer**: Langbase workflows for structured summarization and newsletter generation
+- **Langbase Web Search**: Crawling web for relevant news articles
 
 ## How Langbase powers newsGPT
 
@@ -77,9 +77,9 @@ export async function newsGPT({ input, env }: newsGPTParams) {
 }
 ```
 
-### 2. Langbase web search tool
+### 2. Langbase Web Search tool
 
-It uses Exa search capability with Langbase web search.
+It uses Exa search capability with Langbase Web Search.
 
 ```typescript
 // worker/agent.ts
@@ -117,6 +117,9 @@ const jsonSchema = zodToJsonSchema(newsItemsSchema, { target: 'openAi' });
 ```
 
 ### 4. API endpoint setup
+
+This is the API endpoint that handles the request:
+
 ```typescript
 // worker/langbase.ts
 export const registerLangbaseEndpoint = (app) => {
@@ -222,9 +225,9 @@ export default {
 }
 ```
 
-### **Agent Instructions**
+### **Agent instructions**
 
-The agent is configured with comprehensive Slack knowledge:
+The agent is configured with special instructions:
 
 ```typescript
 instructions: `You are an AI news analyst specializing in technology trends.
@@ -234,7 +237,7 @@ For each article:
 2. Include the source website name
 3. Include the full URL
 
-Return a structured JSON with an array of news items.
+Return a structured JSON with an array of news items.`
 ```
 
 ## Deployment
@@ -255,7 +258,7 @@ npm run deploy
 ```bash
 wrangler secret put LANGBASE_API_KEY
 wrangler secret put OPENAI_API_KEY  
-wrangler secret put SLACK_BOT_TOKEN
+wrangler secret put EXA_API_KEY
 ```
 
 Your agent will be live at `https://your-worker.your-subdomain.workers.dev`
@@ -300,9 +303,9 @@ newsgpt/
 ## Learn More
 
 - **[Langbase Documentation](https://langbase.com/docs)** - Complete platform guide
+- **[Langbase Web Search](https://langbase.com/docs/examples/tools/web-search)** - Langbase Web Search integration
 - **[MCP Servers](https://langbase.com/docs/mcp-servers)** - Available integrations  
 - **[API Reference](https://langbase.com/docs/api-reference)** - Detailed API docs
-- **[Langbase Web Search](https://langbase.com/docs/examples/tools/web-search)** - Langbase Web Search integration
 
 ## 🤝 Contributing
 
