@@ -23,6 +23,50 @@ This project demonstrates how to build a production-ready AI news tool using:
 - **AI Layer**: Langbase workflows for structured summarization and newsletter generation
 - **Langbase Web Search**: Crawling web for relevant news articles
 
+## Quickstart
+
+### Prerequisites
+- Node.js 21+
+- A [Langbase account](https://langbase.com) and API key
+- OpenAI API key
+- [EXA](https://exa.ai) API key
+
+### 1. **Clone and install:**
+```bash
+npx degit LangbaseInc/langbase-examples/examples/newsgpt newsgpt && cd newsgpt
+npm install
+```
+
+### 2. **Environment setup**
+
+Copy the environment template:
+
+```bash
+cp .env.example .env
+```
+
+Add your API keys to `.env`:
+
+```env
+LANGBASE_API_KEY="your_langbase_api_key"
+OPENAI_API_KEY="your_openai_api_key"
+EXA_API_KEY="your_exa_api_key
+```
+### 3. **Run Development Server**
+
+```bash
+npm run dev
+```
+
+Visit [http://localhost:5173](http://localhost:5173) to start using newsGPT!
+
+## Example prompts
+
+- Summarize today's AI news with citations
+- TL;DR the top 5 market stories for busy executives
+- Brief me on climate policy updates this week
+- Explain 3 biggest sports headlines like I'm 12
+
 ## How Langbase powers newsGPT
 
 Langbase is the backbone of newsGPT's AI capabilities.
@@ -136,51 +180,6 @@ export const registerLangbaseEndpoint = (app) => {
   });
 };
 ```
-
-## Quick Start Guide
-
-### Prerequisites
-- Node.js 21+
-- A [Langbase account](https://langbase.com) and API key
-- OpenAI API key
-- [EXA](https://exa.ai) API key
-
-### 1. **Clone and install:**
-```bash
-npx degit LangbaseInc/langbase-examples/examples/newsgpt newsgpt && cd newsgpt
-cd newsgpt
-npm install
-```
-
-### 2. **Environment setup**
-
-Copy the environment template:
-
-```bash
-cp .env.example .env
-```
-
-Add your API keys to `.env`:
-
-```env
-LANGBASE_API_KEY="your_langbase_api_key"
-OPENAI_API_KEY="your_openai_api_key"
-EXA_API_KEY="your_exa_api_key
-```
-### 3. **Run Development Server**
-
-```bash
-npm run dev
-```
-
-Visit [http://localhost:5173](http://localhost:5173) to start using newsGPT!
-
-## Example prompts
-
-- Summarize today's AI news with citations
-- TL;DR the top 5 market stories for busy executives
-- Brief me on climate policy updates this week
-- Explain 3 biggest sports headlines like I'm 12
 
 ## Key Components Explained
 
