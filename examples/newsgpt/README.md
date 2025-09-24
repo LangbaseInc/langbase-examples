@@ -1,3 +1,4 @@
+![newsGPT by ⌘ Langbase][cover]
 # newsGPT - AI-Powered News
 
 An AI-powered newsletter generator that turns long-form news into concise, engaging TL;DR digests. Built with Langbase, it helps you stay up to date on tech and AI without the noise.
@@ -322,3 +323,5 @@ This project is open source and available under the MIT License.
 ---
 
 **Built with ❤️ using [Langbase](https://langbase.com) - The AI infrastructure for developers**
+
+[cover]: https://github.com/LangbaseInc/docs-images/blob/main/examples/newsgpt/newsgpt.png?raw=true
