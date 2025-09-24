@@ -2,9 +2,7 @@
 
 An AI-powered newsletter generator that turns long-form news and articles into concise, engaging TL;DR digests. Built with Langbase, it helps you stay up to date on tech and AI without the noise.
 
-## Live Demo
-
-Explore the live application at: [newsGPT.langbase.dev](https://newsGPT.langbase.dev/)
+🚀 [Live Demo](https://newsGPT.langbase.dev/)
 
 ## What newsGPT can do
 
@@ -16,15 +14,6 @@ newsGPT simplifies how you consume news by generating structured newsletters:
 - Smart Highlights: Extract key points, quotes, and insights from articles
 - Prompt Shortcuts: Pre-written prompts for quick newsletter creation
 
-## How it works
-
-newsGPT combines cutting-edge AI technologies to deliver relevant and accurate news summaries:
-
-1. **Web Search**: Uses the Exa API to search for the latest news articles based on your input query
-2. **AI Processing**: Leverages OpenAI's GPT-4.1-mini model to analyze and summarize the articles
-3. **Structured Output**: Returns structured JSON with article summaries, sources, and URLs
-4. **Frontend Display**: Beautifully formatted UI to present the news summary in an easy-to-scan format
-
 ## Architecture Overview
 
 This project demonstrates how to build a production-ready AI news tool using:
@@ -32,19 +21,6 @@ This project demonstrates how to build a production-ready AI news tool using:
 - Frontend: React + TypeScript for a clean, modern UI
 - Backend: Cloudflare Workers for lightweight, serverless execution
 - AI Layer: Langbase workflows for structured summarization and newsletter generation
-
-### Frontend (React + TypeScript)
-
-- Built with React 19 and TypeScript
-- Styled with Tailwind CSS and custom UI components
-- Uses Hono for HTTP server middleware
-- Implements error boundaries and toast notifications
-
-### Backend (Cloudflare Workers)
-- Built with Hono.js framework
-- Deployed as Cloudflare Workers for global distribution
-- Uses Langbase SDK to orchestrate AI workflows
-- Integrates with Exa API for web search and OpenAI for summarization
 
 ## How Langbase powers newsGPT
 
@@ -58,19 +34,60 @@ First, it defines workflow primitive to keep things structured:
 // worker/agent.ts
 import { Langbase } from "langbase"
 
-const workflow = langbase.workflow();
-const { step } = workflow;
+export async function newsGPT({ input, env }: newsGPTParams) {
+  const langbase = new Langbase({ apiKey: env.LANGBASE_API_KEY });
+
+  const workflow = langbase.workflow();
+  const { step } = workflow;
+
+  const processResult = await step({
+    id: "process_news",
+    run: async () => {
+      const response = await langbase.agent.run({
+        model: "openai:gpt-4.1-mini",
+        apiKey: env.OPENAI_API_KEY!,
+        instructions: `
+        You are an AI news analyst specializing in technology trends...
+      `,
+        input: [
+          {
+            role: "user",
+            content: `Here are the latest AI news articles.
+            Please analyze them and create newsletter items:\n\n${searchResults.map(result => `URL: ${result.url}\nContent: ${result.content}`).join('\n\n')
+              }`
+          }
+        ],
+        stream: false,
+        response_format: {
+          type: "json_schema",
+          json_schema: {
+            name: "NewsletterItems",
+            schema: jsonSchema,
+            strict: true,
+          },
+        },
+      });
+
+      const parsed = JSON.parse(response.output);
+      return parsed;
+    }
+  });
+  
+  return processResult
+}
 ```
 
 ### 2. Langbase web search tool
 
-It uses Exa search capability with Langbase web search to search news articles.
+It uses Exa search capability with Langbase web search.
 
 ```typescript
 // worker/agent.ts
 const searchResults = await step({
   id: "search_ai_news",
   run: async () => {
+    const query = input;
+
     return await langbase.tools.webSearch({
       service: 'exa',
       query: query,
@@ -80,28 +97,7 @@ const searchResults = await step({
   }
 });
 ```
-
-### 3. AI agent with structured outputs
-```typescript
-// worker/agent.ts
-const response = await langbase.agent.run({
-  model: "openai:gpt-4.1-mini",
-  apiKey: env.OPENAI_API_KEY!,
-  instructions: "You are an AI news analyst specializing in technology trends...",
-  input: [...],
-  stream: false,
-  response_format: {
-    type: "json_schema",
-    json_schema: {
-      name: "NewsletterItems",
-      schema: jsonSchema,
-      strict: true,
-    },
-  },
-});
-```
-
-### 4. Structured outputs
+### 3. Structured outputs
 
 Uses structured outputs to enforce consistent results from LLM.
 
@@ -116,6 +112,25 @@ const newsItemSchema = z.object({
 const newsItemsSchema = z.object({
   newsItems: z.array(newsItemSchema)
 });
+
+const jsonSchema = zodToJsonSchema(newsItemsSchema, { target: 'openAi' });
+```
+
+### 4. API endpoint setup
+```typescript
+// worker/langbase.ts
+export const registerLangbaseEndpoint = (app) => {
+  app.post("/api/langbase", async (c) => {
+    const { input } = await c.req.json();
+    
+    const output = await newsgpt({
+      input,
+      env: c.env, // Cloudflare environment variables
+    });
+
+    return c.json({ output });
+  });
+};
 ```
 
 ## Quick Start Guide
@@ -156,12 +171,71 @@ npm run dev
 
 Visit [http://localhost:5173](http://localhost:5173) to start using newsGPT!
 
-## Example Use Cases
+## Example prompts
 
 - Summarize today's AI news with citations
 - TL;DR the top 5 market stories for busy executives
 - Brief me on climate policy updates this week
 - Explain 3 biggest sports headlines like I'm 12
+
+## Key Components Explained
+
+### **Frontend (React)**
+
+The UI is built with modern React patterns:
+
+```typescript
+// src/components/App.tsx
+export function Agent() {
+  const handleSubmit = async (e) => {
+    const response = await fetch("/api/langbase", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ input: input.trim() })
+    });
+    
+    const data = await response.json();
+    setResponse(data.output);
+  };
+}
+```
+
+### **Worker Backend (Hono)**
+
+Cloudflare Workers handle the serverless backend:
+
+```typescript
+// worker/index.ts
+import { Hono } from 'hono';
+import { registerLangbaseEndpoint } from './langbase';
+
+const app = new Hono();
+app.use('*', cors());
+
+// Register the Langbase agent endpoint
+registerLangbaseEndpoint(app);
+
+export default {
+  fetch(request, env, ctx) {
+    return app.fetch(request, env, ctx)
+  }
+}
+```
+
+### **Agent Instructions**
+
+The agent is configured with comprehensive Slack knowledge:
+
+```typescript
+instructions: `You are an AI news analyst specializing in technology trends.
+Create a newsletter with summaries for each AI news article.
+For each article:
+1. One-liner summary
+2. Include the source website name
+3. Include the full URL
+
+Return a structured JSON with an array of news items.
+```
 
 ## Deployment
 
@@ -199,10 +273,10 @@ The project includes Cloudflare Workers testing setup with Vitest.
 ## Project Structure
 
 ```
-newsGPT/
+newsgpt/
 ├── src/                    # Frontend React application
 │   ├── components/         # React components
-│   │   └── newsGPT/        # newsGPT-specific components
+│   │   └── newsgpt/        # UI components
 │   ├── lib/               # Utility functions
 │   ├── App.tsx            # Main application component
 │   └── main.tsx           # Application entry point
@@ -213,25 +287,17 @@ newsGPT/
 ├── public/                # Static assets
 ├── package.json          # Dependencies and scripts
 ├── wrangler.jsonc        # Cloudflare Workers configuration
-├── vite.config.ts        # Vite build configuration
-└── README.md             # This file
+└── vite.config.ts        # Vite build configuration
 ```
 
 ## Key Langbase Features Used
 
 1. **Workflow primitive**: Orchestrates multi-step agent operations
-2. **MCP Integration**: Connects to Slack through standardized protocol  
+2. **Langbase Web Search**: Langbase-hosted web search tool
 3. **Agent Runtime**: Handles LLM interactions with context management
 4. **Step Functions**: Breaks complex operations into manageable steps
 
-## 🛡️ Security & Best Practices
-
-- Environment variables for sensitive API keys
-- CORS and security headers configured
-- Input validation and sanitization
-- Secure token storage and transmission
-
-## 📚 Learn More
+## Learn More
 
 - **[Langbase Documentation](https://langbase.com/docs)** - Complete platform guide
 - **[MCP Servers](https://langbase.com/docs/mcp-servers)** - Available integrations  
