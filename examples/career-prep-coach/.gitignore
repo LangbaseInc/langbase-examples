@@ -48,10 +48,6 @@ xxseed.sql
 /blob-report/
 /playwright/.cache/
 
-# No lock files.
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
 dist
 
 .vscode
