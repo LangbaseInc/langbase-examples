@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Send, MessageSquare, Hash, Clock } from "lucide-react";
-import ReactMarkdown from "react-markdown";
+import { Streamdown } from "streamdown";
 import type { ReactNode } from "react";
 
 type ExampleQuery = {
@@ -227,7 +227,7 @@ export function Agent() {
             </CardHeader>
             <CardContent>
               <div className="prose prose-sm max-w-none dark:prose-invert">
-                <ReactMarkdown>{response}</ReactMarkdown>
+                <Streamdown>{response}</Streamdown>
               </div>
             </CardContent>
           </Card>
