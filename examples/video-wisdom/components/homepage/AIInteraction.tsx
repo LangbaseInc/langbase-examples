@@ -13,9 +13,7 @@ import { IconX } from "../ui/iconists/icon-x";
 import { IconCommand } from "../ui/iconists/icon-command";
 import { fromReadableStream } from "langbase";
 import { toast } from "sonner";
-import { MemoizedReactMarkdown } from "../common/markdown";
-import remarkGfm from 'remark-gfm'
-import { CodeBlock } from "../common/codeblock";
+import { Streamdown } from 'streamdown';
 import { useCopyToClipboard } from "@/lib/hooks/use-copy-to-clipboard";
 import { IconCheck } from "../ui/iconists/icon-check";
 import { IconCopy } from "../ui/iconists/icon-copy";
@@ -167,35 +165,7 @@ export function AIInteraction({
 
                     <div className="text-sm mt-4 p-4 rounded-lg border font-regular text-zinc-100 shadow-md bg-muted flex flex-col">
                         <div className="text-sm">
-                            <MemoizedReactMarkdown
-                                remarkPlugins={[remarkGfm]}
-                                className="prose rounded-xl dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 break-words prose-pre:rounded-xl"
-                                components={{
-                                    p({ children }) {
-                                        return <p className="mb-2 last:mb-0">{children}</p>
-                                    },
-                                    h1({ children }) {
-                                        return <h1 className="text-sm font-semibold">{children}</h1>
-                                    },
-                                    h2({ children }) {
-                                        return <h2 className="text-sm font-semibold">{children}</h2>
-                                    },
-                                    h3({ children }) {
-                                        return <h3 className="text-sm font-semibold">{children}</h3>
-                                    },
-                                    h4({ children }) {
-                                        return <h4 className="text-sm font-semibold">{children}</h4>
-                                    },
-                                    h5({ children }) {
-                                        return <h5 className="text-xs font-semibold">{children}</h5>
-                                    },
-                                    h6({ children }) {
-                                        return <h6 className="text-xs font-normal">{children}</h6>
-                                    },
-                                }}
-                            >
-                                {aiResponse}
-                            </MemoizedReactMarkdown>
+                            <Streamdown>{aiResponse}</Streamdown>
                         </div>
                     </div>
                 </div>
