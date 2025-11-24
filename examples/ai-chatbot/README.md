@@ -30,7 +30,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 
 1. Fork the [AI Chatbot][pipe] Pipe on ⌘ Langbase.
 2. Go to Langbase API keys page and [generate an API key][api-key] (to be used on server-side only).
-3. Download the example project folder from [here][download] or clone the reppository.
+3. Download the example project folder from [here][download] or clone the repository.
 4. `cd` into the project directory and open it in your code editor.
 5. Duplicate the `.env.example` file in this project and rename it to `.env.local`.
 6. Add the following environment variables:
