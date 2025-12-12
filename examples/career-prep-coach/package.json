@@ -19,7 +19,7 @@
     "class-variance-authority": "^0.7.0",
     "lucide-react": "^0.427.0",
     "mxcn": "^2.0.0",
-    "next": "^14.2.5",
+    "next": "14.2.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.7",

@@ -17,7 +17,7 @@
 		"class-variance-authority": "^0.7.1",
 		"langbase": "^1.1.11",
 		"mxcn": "^2.0.0",
-		"next": "14.2.20",
+		"next": "14.2.35",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-markdown": "^8.0.7",
