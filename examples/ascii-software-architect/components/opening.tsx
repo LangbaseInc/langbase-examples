@@ -7,7 +7,7 @@ export function Opening() {
         <div className="absolute inset-y-2 left-2 w-0.5 rounded-full bg-[--callout-border]"></div>
         <div className="mb-2 mt-0 flex items-center justify-start gap-1">
           <span className="text-xs font-medium text-[--callout-title]">
-            Chatbot Example
+           Chatbot Example
           </span>
         </div>
 
@@ -33,9 +33,7 @@ export function Opening() {
             <div className="flex flex-col gap-4 mt-2 text-sm">
               <Dlink href="https://langbase.com/examples/ascii-software-architect">
                 <span>1.</span>
-                <span>
-                  Fork this ASCII Software Architect Chatbot Pipe on ⌘ Langbase
-                </span>
+                <span>Fork this ASCII Software Architect Chatbot Pipe on ⌘ Langbase</span>
               </Dlink>
               <Dlink href="https://github.com/LangbaseInc/langbase-examples/tree/main/examples/ascii-software-architect">
                 <span>2.</span>
