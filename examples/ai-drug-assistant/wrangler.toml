@@ -1,0 +1,2 @@
+name = "example-ai-drug-assistant"
+compatibility_flags = ["nodejs_compat"]

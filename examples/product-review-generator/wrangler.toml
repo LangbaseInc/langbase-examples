@@ -1,0 +1,2 @@
+name = "example-product-review-generator"
+compatibility_flags = ["nodejs_compat"]

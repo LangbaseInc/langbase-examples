@@ -1,0 +1,2 @@
+name = "example-expert-proofreader"
+compatibility_flags = ["nodejs_compat"]
