@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cf-build": "pnpm exec next-on-pages",
+    "deploy": "pnpm run cf-build && pnpm exec wrangler pages deploy .vercel/output/static --project-name=code-alchemist"
   },
   "dependencies": {
     "@codemirror/lang-sql": "^6.7.0",
@@ -28,7 +30,7 @@
     "remark-math": "^6.0.0",
     "sonner": "^1.5.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8"
+    "zod": "^3.24.0"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.2",
@@ -40,6 +42,10 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
-    "wrangler": "^3.72.0"
+    "vercel": "39.1.1",
+    "wrangler": "^3.107.2"
+  },
+  "overrides": {
+    "vercel": "$vercel"
   }
 }

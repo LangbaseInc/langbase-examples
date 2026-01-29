@@ -8,7 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"cf-build": "pnpm exec next-on-pages",
-		"deploy": "pnpm run cf-build && pnpm exec wrangler pages deploy .vercel/output/static"
+		"deploy": "pnpm run cf-build && pnpm exec wrangler pages deploy .vercel/output/static --project-name=example-ai-email-agent"
 	},
 	"dependencies": {
 		"@headlessui/tailwindcss": "^0.2.1",
