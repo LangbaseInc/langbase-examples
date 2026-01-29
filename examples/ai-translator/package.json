@@ -13,9 +13,9 @@
 		"class-variance-authority": "^0.7.0",
 		"langbase": "^1.1.0",
 		"mxcn": "^2.0.0",
-		"next": "14.2.35",
-		"react": "^18",
-		"react-dom": "^18",
+		"next": "15.5.10",
+		"react": "^19",
+		"react-dom": "^19",
 		"zod": "^3.22.4"
 	},
 	"devDependencies": {
@@ -23,8 +23,8 @@
 		"@cloudflare/workers-types": "^4.20240405.0",
 		"@tailwindcss/typography": "^0.5.12",
 		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
 		"postcss": "^8",
 		"tailwindcss": "^3.4.1",
 		"typescript": "^5"
