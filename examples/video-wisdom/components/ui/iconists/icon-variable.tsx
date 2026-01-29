@@ -1,4 +1,5 @@
-export function xIconVariables(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function xIconVariables(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}
@@ -18,7 +19,7 @@ export function xIconVariables(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
-export function IconVariables(props: JSX.IntrinsicElements['svg']) {
+export function IconVariables(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

@@ -1,4 +1,5 @@
-export function IconSandbox(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconSandbox(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

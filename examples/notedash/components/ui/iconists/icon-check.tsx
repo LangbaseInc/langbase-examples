@@ -1,4 +1,5 @@
-export function IconCheck(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconCheck(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}
@@ -18,7 +19,7 @@ export function IconCheck(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
-export function IconCheckSmall(props: JSX.IntrinsicElements['svg']) {
+export function IconCheckSmall(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

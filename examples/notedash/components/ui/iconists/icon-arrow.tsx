@@ -1,4 +1,5 @@
-export function IconArrow(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconArrow(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}
@@ -18,7 +19,7 @@ export function IconArrow(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
-export const xIconArrow = (props: JSX.IntrinsicElements['svg']) => {
+export const xIconArrow = (props: React.JSX.IntrinsicElements['svg']) => {
 	return (
 		<svg
 			{...props}

@@ -1,4 +1,5 @@
-export function IconArrowsOut(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconArrowsOut(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

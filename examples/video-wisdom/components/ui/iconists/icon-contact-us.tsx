@@ -1,4 +1,5 @@
-export function IconContactUs(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconContactUs(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

@@ -1,4 +1,5 @@
-export function xIconExperiments(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function xIconExperiments(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}
@@ -19,7 +20,7 @@ export function xIconExperiments(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
-export function xxIconExperiments(props: JSX.IntrinsicElements['svg']) {
+export function xxIconExperiments(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}
@@ -129,7 +130,7 @@ export function xxIconExperiments(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
-export function IconExperiments(props: JSX.IntrinsicElements['svg']) {
+export function IconExperiments(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

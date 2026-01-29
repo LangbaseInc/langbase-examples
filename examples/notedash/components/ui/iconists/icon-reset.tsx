@@ -1,4 +1,5 @@
-export function IconReset(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconReset(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

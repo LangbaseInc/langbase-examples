@@ -1,4 +1,5 @@
-export function IconSignUp(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconSignUp(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

@@ -49,7 +49,7 @@ function IconArrowRight({ className, ...props }: React.ComponentProps<'svg'>) {
   )
 }
 
-function IconUser(props: JSX.IntrinsicElements['svg']) {
+function IconUser(props: React.JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}
@@ -111,7 +111,7 @@ function IconRefresh({ className, ...props }: React.ComponentProps<'svg'>) {
   )
 }
 
-export function IconRegenerate(props: JSX.IntrinsicElements['svg']) {
+export function IconRegenerate(props: React.JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}
@@ -240,7 +240,7 @@ function IconSparkles({ className, ...props }: React.ComponentProps<'svg'>) {
   )
 }
 
-export function IconChat(props: JSX.IntrinsicElements['svg']) {
+export function IconChat(props: React.JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}
@@ -300,7 +300,7 @@ function IconFork({ className, ...props }: React.ComponentProps<'svg'>) {
   )
 }
 
-export function IconCommand(props: JSX.IntrinsicElements['svg']) {
+export function IconCommand(props: React.JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}
@@ -320,7 +320,7 @@ export function IconCommand(props: JSX.IntrinsicElements['svg']) {
   )
 }
 
-export function IconDocs(props: JSX.IntrinsicElements['svg']) {
+export function IconDocs(props: React.JSX.IntrinsicElements['svg']) {
   return (
     <svg
       {...props}

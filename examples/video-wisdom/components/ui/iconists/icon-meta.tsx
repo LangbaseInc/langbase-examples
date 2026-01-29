@@ -1,4 +1,5 @@
-export function IconMetax(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconMetax(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}
@@ -18,7 +19,7 @@ export function IconMetax(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
-export function IconMeta(props: JSX.IntrinsicElements['svg']) {
+export function IconMeta(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

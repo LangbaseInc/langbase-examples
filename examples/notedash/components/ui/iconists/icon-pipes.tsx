@@ -1,4 +1,5 @@
-export function IconPipes(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconPipes(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			width="24"
@@ -26,7 +27,7 @@ export function IconPipes(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
-export function IconPipesx(props: JSX.IntrinsicElements['svg']) {
+export function IconPipesx(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}
@@ -46,7 +47,7 @@ export function IconPipesx(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
-export function IconPipesxx(props: JSX.IntrinsicElements['svg']) {
+export function IconPipesxx(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

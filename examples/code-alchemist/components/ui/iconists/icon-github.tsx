@@ -1,4 +1,5 @@
-export function IconGitHub(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconGitHub(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

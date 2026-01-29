@@ -36,20 +36,18 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
             p({ children }) {
               return <p className="mb-2 last:mb-0">{children}</p>
             },
-            code({ node, inline, className, children, ...props }) {
-              if (children.length) {
-                if (children[0] == '▍') {
-                  return (
-                    <span className="mt-1 animate-pulse cursor-default">▍</span>
-                  )
-                }
+            code({ className, children, ...props }) {
+              const childArray = Array.isArray(children) ? children : [children]
 
-                children[0] = (children[0] as string).replace('`▍`', '▍')
+              if (childArray.length > 0 && childArray[0] === '▍') {
+                return (
+                  <span className="mt-1 animate-pulse cursor-default">▍</span>
+                )
               }
 
               const match = /language-(\w+)/.exec(className || '')
 
-              if (inline) {
+              if (!match) {
                 return (
                   <code className={className} {...props}>
                     {children}
@@ -60,7 +58,7 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
               return (
                 <CodeBlock
                   key={Math.random()}
-                  language={(match && match[1]) || ''}
+                  language={match[1] || ''}
                   value={String(children).replace(/\n$/, '')}
                   {...props}
                 />

@@ -1,4 +1,5 @@
-export function IconCourses(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconCourses(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

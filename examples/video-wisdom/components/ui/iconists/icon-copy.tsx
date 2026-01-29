@@ -1,4 +1,5 @@
-export function IconCopy(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconCopy(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

@@ -1,4 +1,5 @@
-export function IconSearch(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconSearch(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

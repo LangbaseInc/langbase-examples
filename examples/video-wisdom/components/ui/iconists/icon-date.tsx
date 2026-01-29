@@ -1,4 +1,5 @@
-export function IconDate(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconDate(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

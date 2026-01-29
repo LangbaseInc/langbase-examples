@@ -1,4 +1,5 @@
-export function IconRight(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconRight(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

@@ -1,4 +1,5 @@
-export function IconMenuDown(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconMenuDown(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}
