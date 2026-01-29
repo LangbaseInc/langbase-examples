@@ -1,4 +1,5 @@
-export function IconEyeClose(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconEyeClose(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

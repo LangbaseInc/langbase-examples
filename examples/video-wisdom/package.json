@@ -7,12 +7,12 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"pages:build": "npx @cloudflare/next-on-pages",
-		"deploy": "pnpm run pages:build && wrangler pages deploy"
+		"cf-build": "pnpm exec next-on-pages",
+		"deploy": "pnpm run cf-build && pnpm exec wrangler pages deploy .vercel/output/static"
 	},
 	"dependencies": {
 		"@headlessui/tailwindcss": "^0.2.1",
-		"@next/third-parties": "^14.2.7",
+		"@next/third-parties": "^15.5.10",
 		"@radix-ui/react-accordion": "^1.2.0",
 		"@radix-ui/react-alert-dialog": "^1.1.1",
 		"@radix-ui/react-checkbox": "^1.1.1",
@@ -35,11 +35,11 @@
 		"googleapis": "^140.0.1",
 		"langbase": "^1.1.0",
 		"mxcn": "^2.0.0",
-		"next": "14.2.35",
+		"next": "15.5.10",
 		"next-themes": "^0.3.0",
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
-		"react-markdown": "^9.0.1",
+		"react": "^19",
+		"react-dom": "^19",
+		"react-markdown": "^10.1.0",
 		"react-syntax-highlighter": "^15.5.0",
 		"react-textarea-autosize": "^8.5.3",
 		"remark-gfm": "^4.0.0",
@@ -54,12 +54,14 @@
 		"@tailwindcss/forms": "^0.5.7",
 		"@tailwindcss/typography": "^0.5.14",
 		"@types/node": "^20.16.1",
-		"@types/react": "^18.3.4",
-		"@types/react-dom": "^18.3.0",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
 		"@types/react-syntax-highlighter": "^15.5.13",
 		"postcss": "^8.4.41",
 		"tailwindcss": "^3.4.10",
-		"typescript": "^5.5.4"
+		"typescript": "^5.5.4",
+		"vercel": "39.1.1",
+		"wrangler": "^3.107.2"
 	},
 	"overrides": {
 		"vercel": "$vercel"

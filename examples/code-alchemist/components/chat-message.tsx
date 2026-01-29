@@ -25,7 +25,7 @@ export function ChatMessage({
 			>
 				<div
 					className={cn(
-						'flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-xl border shadow',
+						'flex size-8 shrink-0 select-none items-center justify-center rounded-xl border shadow',
 						'bg-primary text-primary-foreground'
 					)}
 				>

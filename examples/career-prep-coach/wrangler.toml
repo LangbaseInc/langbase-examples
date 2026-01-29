@@ -1,0 +1,2 @@
+name = "example-career-prep-coach"
+compatibility_flags = ["nodejs_compat"]

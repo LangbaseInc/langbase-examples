@@ -1,4 +1,5 @@
-export function IconTech(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconTech(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

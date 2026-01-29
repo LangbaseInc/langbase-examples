@@ -1,4 +1,5 @@
-export function IconDeploy(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconDeploy(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

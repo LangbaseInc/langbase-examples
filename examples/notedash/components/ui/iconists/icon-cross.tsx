@@ -1,4 +1,5 @@
-export function IconCross(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconCross(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}
@@ -18,7 +19,7 @@ export function IconCross(props: JSX.IntrinsicElements['svg']) {
 	);
 }
 
-export function IconCrossSmall(props: JSX.IntrinsicElements['svg']) {
+export function IconCrossSmall(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

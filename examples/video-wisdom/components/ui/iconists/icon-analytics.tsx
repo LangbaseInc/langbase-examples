@@ -1,4 +1,5 @@
-export function IconAnalytics(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconAnalytics(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

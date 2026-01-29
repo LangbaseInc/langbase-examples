@@ -1,4 +1,5 @@
-export function IconCustomerSupport(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconCustomerSupport(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

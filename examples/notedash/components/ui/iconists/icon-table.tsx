@@ -1,4 +1,5 @@
-export function IconTable(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconTable(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

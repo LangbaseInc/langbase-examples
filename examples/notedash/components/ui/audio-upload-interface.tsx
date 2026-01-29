@@ -6,7 +6,7 @@ import { Upload, FileAudio, X } from 'lucide-react';
 interface AudioUploadInterfaceProps {
 	uploadedFile: File | null;
 	isProcessingAudio: boolean;
-	fileInputRef: React.RefObject<HTMLInputElement>;
+	fileInputRef: React.RefObject<HTMLInputElement | null>;
 	onFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	onProcessAudio: () => void;
 	onRemoveFile: () => void;

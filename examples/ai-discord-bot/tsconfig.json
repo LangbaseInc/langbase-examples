@@ -3,7 +3,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "rootDir": "src",
     "skipLibCheck": true,
     "types": ["@cloudflare/workers-types"],

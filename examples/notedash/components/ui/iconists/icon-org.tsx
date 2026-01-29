@@ -1,7 +1,8 @@
+import * as React from 'react';
 import { forwardRef } from 'react';
 
 // Defining PropsType for better readability
-type PropsType = JSX.IntrinsicElements['svg'];
+type PropsType = React.JSX.IntrinsicElements['svg'];
 
 export const IconOrg = forwardRef<SVGSVGElement, PropsType>((props, ref) => {
 	return (

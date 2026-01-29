@@ -1,0 +1,2 @@
+name = "example-excel-master"
+compatibility_flags = ["nodejs_compat"]

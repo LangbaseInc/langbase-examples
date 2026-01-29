@@ -1,0 +1,2 @@
+name = "example-ai-chatbot"
+compatibility_flags = ["nodejs_compat"]

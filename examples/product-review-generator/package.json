@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cf-build": "pnpm exec next-on-pages",
+    "deploy": "pnpm run cf-build && pnpm exec wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.0.2",
@@ -16,26 +18,27 @@
     "ai": "3.0.16",
     "class-variance-authority": "^0.7.0",
     "mxcn": "^2.0.0",
-    "next": "14.2.35",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.7",
+    "next": "15.5.10",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-markdown": "^10.1.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-textarea-autosize": "^8.4.1",
-    "remark-gfm": "^3.0.1",
-    "remark-math": "^5.1.1",
-    "sonner": "^1.5.0"
+    "remark-gfm": "^4.0.0",
+    "remark-math": "^6.0.0",
+    "sonner": "^1.5.0",
+    "zod": "^3.24.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^17.0.12",
-    "@types/react": "^18.0.22",
-    "@types/react-dom": "^18.0.7",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@types/react-syntax-highlighter": "^15.5.6",
     "@typescript-eslint/parser": "^5.59.7",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.31.0",
-    "eslint-config-next": "13.4.19",
+    "eslint-config-next": "15.5.10",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-tailwindcss": "^3.12.0",
     "postcss": "^8.4.21",
@@ -44,6 +47,12 @@
     "tailwind-merge": "^1.12.0",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.5",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "@cloudflare/next-on-pages": "^1.13.2",
+    "vercel": "39.1.1",
+    "wrangler": "^3.107.2"
+  },
+  "overrides": {
+    "vercel": "$vercel"
   }
 }

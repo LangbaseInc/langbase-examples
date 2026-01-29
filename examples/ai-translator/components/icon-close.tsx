@@ -1,4 +1,5 @@
-export function IconClose(props: JSX.IntrinsicElements["svg"]) {
+import * as React from 'react';
+export function IconClose(props: React.JSX.IntrinsicElements["svg"]) {
   return (
     <svg
       {...props}
@@ -18,7 +19,7 @@ export function IconClose(props: JSX.IntrinsicElements["svg"]) {
   );
 }
 
-export function IconCloseSmall(props: JSX.IntrinsicElements["svg"]) {
+export function IconCloseSmall(props: React.JSX.IntrinsicElements["svg"]) {
   return (
     <svg
       {...props}

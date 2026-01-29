@@ -1,4 +1,5 @@
-export function IconPrompt(props: JSX.IntrinsicElements['svg']) {
+import * as React from 'react';
+export function IconPrompt(props: React.JSX.IntrinsicElements['svg']) {
 	return (
 		<svg
 			{...props}

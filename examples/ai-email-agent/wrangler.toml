@@ -1,0 +1,2 @@
+name = "example-ai-email-agent"
+compatibility_flags = ["nodejs_compat"]
