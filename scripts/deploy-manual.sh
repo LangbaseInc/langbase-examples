@@ -8,7 +8,8 @@ export CLOUDFLARE_ACCOUNT_ID=928c63e31d813db161f334371e0d44f6
 
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
+# Navigate to the examples directory (one level up from scripts, then into examples)
+cd "$SCRIPT_DIR/../examples"
 
 # Projects with no git connection: "local-folder:cf-project-name"
 projects=(
