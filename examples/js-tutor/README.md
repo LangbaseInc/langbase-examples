@@ -5,7 +5,7 @@
 
 ## Build JavaScript Tutor with Pipes — ⌘ Langbase
 
-This chatbot is built by using an AI Pipe on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
+This chatbot is built by using an agentic Pipe on Langbase, it works with 30+ LLMs (OpenAI, Gemini, Mistral, Llama, Gemma, etc), any Data (10M+ context with Memory sets), and any Framework (standard web API you can use with any software).
 
 Check out the live demo [here][demo].
 
@@ -37,7 +37,7 @@ To get started with Langbase, you'll need to [create a free personal account on 
 6. Add the following environment variables (.env.local):
 ```
     # Replace `PIPE_API_KEY` with the copied API key.
-    NEXT_LB_PIPE_API_KEY="PIPE_API_KEY"
+    LB_PIPE_API_KEY="PIPE_API_KEY"
 ```
 7. In your CLI issue the following:
 ```
@@ -63,7 +63,8 @@ This project is created by [Langbase][lb] team members, with contributions from:
 
 **_Built by ⌘ [Langbase.com][lb] — Ship hyper-personalized AI assistants with memory!_**
 
-[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/js_tutor/js_tutor.png
+
+[cover]:https://raw.githubusercontent.com/LangbaseInc/docs-images/main/examples/js_tutor/js-tutor-chatbot.png
 [demo]: https://js-tutor.langbase.dev
 [lb]: https://langbase.com
 [pipe]: https://langbase.com/examples/js-tutor
