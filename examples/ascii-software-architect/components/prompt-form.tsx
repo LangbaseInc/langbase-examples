@@ -4,6 +4,8 @@ import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { UseChatHelpers } from 'ai/react'
 import * as React from 'react'
 import Textarea from 'react-textarea-autosize'
+import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/hovercard'
+
 
 export interface PromptProps
   extends Pick<UseChatHelpers, 'input' | 'setInput'> {
@@ -49,7 +51,19 @@ export function PromptForm({
                 className="text-muted-foreground/50 h-5 w-5"
                 aria-hidden="true"
               />
-              <h3>Chat</h3>
+              <h3>Ask</h3>
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <Button variant="link" size="lg" className="text-inherit">@conversation tips</Button>
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  <ul className="list-disc pl-4">
+                    <li>Say Hello to start a conversation, or simply enter code in C++, Python, JavaScript, TypeScript, or Java along with a prompt to generate a UML class diagram.</li>
+                    <li>ASCII Software Architect is an AI agent that specializes in creating ASCII-based UML class diagrams from the provided code.</li>
+                    <li>Please note, ASCII Software Architect works best with advanced LLMs such as Claude 3.5, GPT-4 Turbo, or GPT-4o.</li>
+                  </ul>
+                </HoverCardContent>
+              </HoverCard>
             </div>
 
             <div className="flex items-center justify-center gap-2 md:justify-start">
