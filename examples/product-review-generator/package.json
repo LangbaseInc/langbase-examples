@@ -11,12 +11,15 @@
     "deploy": "pnpm run cf-build && pnpm exec wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.0",
+    "@radix-ui/react-hover-card": "^1.1.1",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
     "ai": "3.0.16",
     "class-variance-authority": "^0.7.0",
+    "lucide-react": "^0.438.0",
     "mxcn": "^2.0.0",
     "next": "15.5.10",
     "react": "^19",
