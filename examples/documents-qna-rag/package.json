@@ -17,7 +17,7 @@
 		"lucide-react": "^0.416.0",
 		"mxcn": "^2.0.0",
 		"langbase": "^0.2.5",
-		"next": "15.5.10",
+		"next": "15.5.15",
 		"react": "^19",
 		"react-dom": "^19",
 		"tailwind-merge": "^2.4.0",
