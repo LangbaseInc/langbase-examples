@@ -13,7 +13,7 @@
 		"class-variance-authority": "^0.7.0",
 		"langbase": "^1.1.0",
 		"mxcn": "^2.0.0",
-		"next": "15.5.10",
+		"next": "15.5.15",
 		"react": "^19",
 		"react-dom": "^19",
 		"zod": "^3.22.4"

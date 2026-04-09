@@ -13,7 +13,7 @@
 	"dependencies": {
 		"ai": "3.0.16",
 		"mxcn": "^2.0.0",
-		"next": "15.5.10",
+		"next": "15.5.15",
 		"react": "^19",
 		"react-dom": "^19",
 		"react-markdown": "^10.1.0",
